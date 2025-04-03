@@ -1,0 +1,122 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\records\\response\\numerocontrolresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\records\\response\\numerocontrolresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\records\\request\\numerocontrolrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\records\\request\\numerocontrolrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\handlers\\numerocontrol\\updatenumerocontrolhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\handlers\\numerocontrol\\updatenumerocontrolhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\domain\\entities\\numerocontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\domain\\entities\\numerocontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\handlers\\numerocontrol\\getbyidnumerocontrolhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\handlers\\numerocontrol\\getbyidnumerocontrolhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\handlers\\numerocontrol\\getallnumerocontrolhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\handlers\\numerocontrol\\getallnumerocontrolhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "NumeroControlResponse.cs",
+              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Records\\Response\\NumeroControlResponse.cs",
+              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Records\\Response\\NumeroControlResponse.cs",
+              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Records\\Response\\NumeroControlResponse.cs",
+              "RelativeToolTip": "src\\clientes-ms\\Application\\Records\\Response\\NumeroControlResponse.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T20:04:53.081Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "NumeroControlRequest.cs",
+              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Records\\Request\\NumeroControlRequest.cs",
+              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Records\\Request\\NumeroControlRequest.cs",
+              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Records\\Request\\NumeroControlRequest.cs",
+              "RelativeToolTip": "src\\clientes-ms\\Application\\Records\\Request\\NumeroControlRequest.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T20:04:41.867Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UpdateNumeroControlHandler.cs",
+              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\NumeroControl\\UpdateNumeroControlHandler.cs",
+              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Handlers\\NumeroControl\\UpdateNumeroControlHandler.cs",
+              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\NumeroControl\\UpdateNumeroControlHandler.cs",
+              "RelativeToolTip": "src\\clientes-ms\\Application\\Handlers\\NumeroControl\\UpdateNumeroControlHandler.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T20:04:18.047Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GetAllNumeroControlHandler.cs",
+              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\NumeroControl\\GetAllNumeroControlHandler.cs",
+              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Handlers\\NumeroControl\\GetAllNumeroControlHandler.cs",
+              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\NumeroControl\\GetAllNumeroControlHandler.cs",
+              "RelativeToolTip": "src\\clientes-ms\\Application\\Handlers\\NumeroControl\\GetAllNumeroControlHandler.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAArwBcAAABsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T19:56:01.295Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "NumeroControl.cs",
+              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Domain\\Entities\\NumeroControl.cs",
+              "RelativeDocumentMoniker": "src\\clientes-ms\\Domain\\Entities\\NumeroControl.cs",
+              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Domain\\Entities\\NumeroControl.cs",
+              "RelativeToolTip": "src\\clientes-ms\\Domain\\Entities\\NumeroControl.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T19:55:39.824Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GetByIdNumeroControlHandler.cs",
+              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\NumeroControl\\GetByIdNumeroControlHandler.cs",
+              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Handlers\\NumeroControl\\GetByIdNumeroControlHandler.cs",
+              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\NumeroControl\\GetByIdNumeroControlHandler.cs",
+              "RelativeToolTip": "src\\clientes-ms\\Application\\Handlers\\NumeroControl\\GetByIdNumeroControlHandler.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAtwAoAAACIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T19:41:40.134Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
