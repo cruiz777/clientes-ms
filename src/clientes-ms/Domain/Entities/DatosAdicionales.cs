@@ -17,5 +17,5 @@ public partial class DatosAdicionales
 
     public string? Web { get; set; }
 
-    public virtual ICollection<Clientes> Clientes { get; set; } = new List<Clientes>();
+    public long? ClientesCodigo { get; set; }
 }

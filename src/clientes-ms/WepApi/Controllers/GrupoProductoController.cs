@@ -10,12 +10,12 @@ namespace clientes_ms.WebApi.Controllers
 
     // Define la ruta base para este controlador
     [Route("api/[Controller]")]
-    public class GrupoEmpresaController : ControllerBase
+    public class GrupoProductoController : ControllerBase
     {
         private readonly IMediator _mediator;
 
         // Constructor con inyección de dependencia del Mediator
-        public GrupoEmpresaController(IMediator mediator)
+        public GrupoProductoController(IMediator mediator)
         {
             _mediator = mediator;
         }
@@ -25,7 +25,7 @@ namespace clientes_ms.WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var result = await _mediator.Send(new GetAllGrupoEmpresaQuery()); // Envía la query a su handler correspondiente
+            var result = await _mediator.Send(new GetAllGrupoProductoQuery()); // Envía la query a su handler correspondiente
             return Ok(result); // Devuelve la respuesta con estado 200
         }
 
@@ -34,7 +34,7 @@ namespace clientes_ms.WebApi.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(long id)
         {
-            var result = await _mediator.Send(new GetGrupoEmpresaByIdQuery(id));
+            var result = await _mediator.Send(new GetGrupoProductoByIdQuery(id));
             return Ok(result);
         }
 
@@ -50,18 +50,18 @@ namespace clientes_ms.WebApi.Controllers
         // POST api/examples
         // Crea un nuevo registro de Example
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] GrupoEmpresaRequest request)
+        public async Task<IActionResult> Create([FromBody] GrupoProductoRequest request)
         {
-            var result = await _mediator.Send(new CreateGrupoEmpresaCommand(request));
+            var result = await _mediator.Send(new CreateGrupoProductoCommand(request));
             return Ok(result);
         }
 
         // PUT api/examples/{id}
         // Actualiza un registro existente de Example
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(long id, [FromBody] GrupoEmpresaRequest request)
+        public async Task<IActionResult> Update(long id, [FromBody] GrupoProductoRequest request)
         {
-            var result = await _mediator.Send(new UpdateGrupoEmpresaCommand(id, request));
+            var result = await _mediator.Send(new UpdateGrupoProductoCommand(id, request));
             return Ok(result);
         }
 
@@ -70,7 +70,7 @@ namespace clientes_ms.WebApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(long id)
         {
-            var result = await _mediator.Send(new DeleteGrupoEmpresaCommand(id));
+            var result = await _mediator.Send(new DeleteGrupoProductoCommand(id));
             return Ok(result);
         }
 

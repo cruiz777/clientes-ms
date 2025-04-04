@@ -9,17 +9,15 @@ public partial class Prefijos
 
     public string Codpre { get; set; } = null!;
 
-    public long ClientesCodigo { get; set; }
-
     public DateOnly? Fecha { get; set; }
 
-    public byte[]? FechaCierre { get; set; }
+    public DateTime? FechaCierre { get; set; }
 
     public string? Observacion { get; set; }
 
     public string? Digitos { get; set; }
 
-    public short? Estado { get; set; }
+    public bool? Estado { get; set; }
 
     public int? Control { get; set; }
 
@@ -43,5 +41,5 @@ public partial class Prefijos
 
     public int? Orden { get; set; }
 
-    public virtual Clientes ClientesCodigoNavigation { get; set; } = null!;
+    public long? ClientesCodigo { get; set; }
 }

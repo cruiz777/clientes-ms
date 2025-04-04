@@ -1,0 +1,5 @@
+UPDATE T1
+SET T1.id_canton = T2.id_canton
+FROM seguridades.ciudades T1
+JOIN seguridades.cantones T2 
+    ON LEFT(T1.referencia, 4) = LEFT(T2.referencia, 4)

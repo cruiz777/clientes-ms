@@ -29,8 +29,6 @@ public partial class Personas
 
     public long IdCiudad { get; set; }
 
-    public virtual ICollection<Clientes> Clientes { get; set; } = new List<Clientes>();
-
     public virtual ICollection<Correos> Correos { get; set; } = new List<Correos>();
 
     public virtual ICollection<Direcciones> Direcciones { get; set; } = new List<Direcciones>();

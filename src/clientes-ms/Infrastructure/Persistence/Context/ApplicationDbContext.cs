@@ -194,21 +194,40 @@ public partial class ApplicationDbContext : DbContext
 
             entity.ToTable("clientes", "sic");
 
-            entity.Property(e => e.ClientesCodigo).HasColumnName("clientes_codigo");
+            entity.Property(e => e.ClientesCodigo)
+                .ValueGeneratedNever()
+                .HasColumnName("clientes_codigo");
             entity.Property(e => e.Ciudad)
                 .HasMaxLength(30)
                 .IsUnicode(false)
                 .HasColumnName("ciudad");
-            entity.Property(e => e.CiudadCodigo).HasColumnName("ciudad_codigo");
             entity.Property(e => e.Codcue)
                 .HasMaxLength(10)
                 .IsUnicode(false)
                 .HasColumnName("codcue");
+            entity.Property(e => e.CodigoPostal)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("codigo_postal");
+            entity.Property(e => e.CodigoPostal2)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("codigo_postal2");
+            entity.Property(e => e.Concli)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("concli");
             entity.Property(e => e.Delestado).HasColumnName("delestado");
             entity.Property(e => e.Desde).HasColumnName("desde");
-            entity.Property(e => e.Empid).HasColumnName("empid");
+            entity.Property(e => e.Dircli)
+                .HasMaxLength(300)
+                .IsUnicode(false)
+                .HasColumnName("dircli");
+            entity.Property(e => e.Email)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("email");
             entity.Property(e => e.EmpresaCodigo).HasColumnName("empresa_codigo");
-            entity.Property(e => e.Estado).HasColumnName("estado");
             entity.Property(e => e.Fax)
                 .HasMaxLength(20)
                 .IsUnicode(false)
@@ -224,8 +243,7 @@ public partial class ApplicationDbContext : DbContext
             entity.Property(e => e.Fecfac5).HasColumnName("fecfac5");
             entity.Property(e => e.Fechaactinact).HasColumnName("fechaactinact");
             entity.Property(e => e.Fechtre)
-                .IsRowVersion()
-                .IsConcurrencyToken()
+                .HasColumnType("datetime")
                 .HasColumnName("fechtre");
             entity.Property(e => e.Fecing).HasColumnName("fecing");
             entity.Property(e => e.Fecnac).HasColumnName("fecnac");
@@ -238,9 +256,8 @@ public partial class ApplicationDbContext : DbContext
                 .HasMaxLength(77)
                 .IsUnicode(false)
                 .HasColumnName("hello");
-            entity.Property(e => e.IdContactosClientes).HasColumnName("id_contactos_clientes");
-            entity.Property(e => e.IdDatosAdicionales).HasColumnName("id_datos_adicionales");
-            entity.Property(e => e.IdEstadoEmpresaCodigo).HasColumnName("id_estado_empresa_codigo");
+            entity.Property(e => e.IdCiudad).HasColumnName("id_ciudad");
+            entity.Property(e => e.IdEstadoEmpresa).HasColumnName("id_estado_empresa");
             entity.Property(e => e.IdGrupoEmpresa).HasColumnName("id_grupo_empresa");
             entity.Property(e => e.IdGrupoProducto).HasColumnName("id_grupo_producto");
             entity.Property(e => e.IdPersona).HasColumnName("id_persona");
@@ -272,10 +289,26 @@ public partial class ApplicationDbContext : DbContext
                 .HasMaxLength(1)
                 .IsUnicode(false)
                 .HasColumnName("marca5");
+            entity.Property(e => e.Ncomercial)
+                .HasMaxLength(300)
+                .IsUnicode(false)
+                .HasColumnName("ncomercial");
+            entity.Property(e => e.Nomcli)
+                .HasMaxLength(200)
+                .IsUnicode(false)
+                .HasColumnName("nomcli");
             entity.Property(e => e.Obs)
                 .HasMaxLength(500)
                 .IsUnicode(false)
                 .HasColumnName("obs");
+            entity.Property(e => e.RazonSocial)
+                .HasMaxLength(300)
+                .IsUnicode(false)
+                .HasColumnName("razon_social");
+            entity.Property(e => e.Representante)
+                .HasMaxLength(300)
+                .IsUnicode(false)
+                .HasColumnName("representante");
             entity.Property(e => e.Ruc)
                 .HasMaxLength(13)
                 .IsUnicode(false)
@@ -284,46 +317,25 @@ public partial class ApplicationDbContext : DbContext
                 .HasColumnType("numeric(8, 2)")
                 .HasColumnName("saldo");
             entity.Property(e => e.Seguimiento).HasColumnName("seguimiento");
-            entity.Property(e => e.SicClientesDireccion)
-                .HasMaxLength(300)
-                .IsUnicode(false)
-                .HasColumnName("sic_clientes_direccion");
-            entity.Property(e => e.SicClientesRazonNombreComercial)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("sic_clientes_razon_nombre_comercial");
-            entity.Property(e => e.SicClientesRazonSocial)
-                .HasMaxLength(300)
-                .IsUnicode(false)
-                .HasColumnName("sic_clientes_razon_social");
-            entity.Property(e => e.SicClientesTelefono)
+            entity.Property(e => e.Telefono)
                 .HasMaxLength(20)
                 .IsUnicode(false)
-                .HasColumnName("sic_clientes_telefono");
+                .HasColumnName("telefono");
             entity.Property(e => e.Telefono1)
                 .HasMaxLength(20)
                 .IsUnicode(false)
                 .HasColumnName("telefono1");
-            entity.Property(e => e.TipoOrigenIngresos).HasColumnName("tipo_origen_ingresos");
-            entity.Property(e => e.Tiprep)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("tiprep");
-
-            entity.HasOne(d => d.CiudadCodigoNavigation).WithMany(p => p.Clientes)
-                .HasForeignKey(d => d.CiudadCodigo)
-                .HasConstraintName("FK_sic_clientes_sic_ciudad");
 
             entity.HasOne(d => d.EmpresaCodigoNavigation).WithMany(p => p.Clientes)
                 .HasForeignKey(d => d.EmpresaCodigo)
                 .HasConstraintName("FK_sic_clientes_empresa");
 
-            entity.HasOne(d => d.IdDatosAdicionalesNavigation).WithMany(p => p.Clientes)
-                .HasForeignKey(d => d.IdDatosAdicionales)
-                .HasConstraintName("FK_sic_clientes_sic_datos_adicionales");
+            entity.HasOne(d => d.IdCiudadNavigation).WithMany(p => p.Clientes)
+                .HasForeignKey(d => d.IdCiudad)
+                .HasConstraintName("FK_sic_clientes_sic_ciudad");
 
-            entity.HasOne(d => d.IdEstadoEmpresaCodigoNavigation).WithMany(p => p.Clientes)
-                .HasForeignKey(d => d.IdEstadoEmpresaCodigo)
+            entity.HasOne(d => d.IdEstadoEmpresaNavigation).WithMany(p => p.Clientes)
+                .HasForeignKey(d => d.IdEstadoEmpresa)
                 .HasConstraintName("FK_sic_clientes_sic_estado_empresa");
 
             entity.HasOne(d => d.IdGrupoEmpresaNavigation).WithMany(p => p.Clientes)
@@ -333,10 +345,6 @@ public partial class ApplicationDbContext : DbContext
             entity.HasOne(d => d.IdGrupoProductoNavigation).WithMany(p => p.Clientes)
                 .HasForeignKey(d => d.IdGrupoProducto)
                 .HasConstraintName("FK_sic_clientes_sic_grupo_producto");
-
-            entity.HasOne(d => d.IdPersonaNavigation).WithMany(p => p.Clientes)
-                .HasForeignKey(d => d.IdPersona)
-                .HasConstraintName("FK_sic_clientes_personas");
 
             entity.HasOne(d => d.IdTipoClienteNavigation).WithMany(p => p.Clientes)
                 .HasForeignKey(d => d.IdTipoCliente)
@@ -349,10 +357,6 @@ public partial class ApplicationDbContext : DbContext
             entity.HasOne(d => d.IdZonaNavigation).WithMany(p => p.Clientes)
                 .HasForeignKey(d => d.IdZona)
                 .HasConstraintName("FK_sic_clientes_sic_zona");
-
-            entity.HasOne(d => d.TipoOrigenIngresosNavigation).WithMany(p => p.Clientes)
-                .HasForeignKey(d => d.TipoOrigenIngresos)
-                .HasConstraintName("FK_sic_clientes_sic_tipo_origen_ingresos");
         });
 
         modelBuilder.Entity<Codigos14>(entity =>
@@ -433,11 +437,11 @@ public partial class ApplicationDbContext : DbContext
 
         modelBuilder.Entity<ContactosClientes>(entity =>
         {
-            entity.HasKey(e => e.IdContaactos).HasName("pk_sic_contactos_clientes");
+            entity.HasKey(e => e.IdContactosClientes).HasName("pk_sic_contactos_clientes");
 
             entity.ToTable("contactos_clientes", "sic");
 
-            entity.Property(e => e.IdContaactos).HasColumnName("id_contaactos");
+            entity.Property(e => e.IdContactosClientes).HasColumnName("id_contactos_clientes");
             entity.Property(e => e.Cargo)
                 .HasMaxLength(70)
                 .IsUnicode(false)
@@ -455,10 +459,6 @@ public partial class ApplicationDbContext : DbContext
                 .HasMaxLength(20)
                 .IsUnicode(false)
                 .HasColumnName("telefono");
-
-            entity.HasOne(d => d.ClientesCodigoNavigation).WithMany(p => p.ContactosClientes)
-                .HasForeignKey(d => d.ClientesCodigo)
-                .HasConstraintName("FK_sic_contactos_clientes_sic_clientes");
         });
 
         modelBuilder.Entity<Correos>(entity =>
@@ -495,6 +495,7 @@ public partial class ApplicationDbContext : DbContext
             entity.ToTable("datos_adicionales", "sic");
 
             entity.Property(e => e.IdDatosAdicionales).HasColumnName("id_datos_adicionales");
+            entity.Property(e => e.ClientesCodigo).HasColumnName("clientes_codigo");
             entity.Property(e => e.Expprod).HasColumnName("expprod");
             entity.Property(e => e.Gas1org).HasColumnName("gas1org");
             entity.Property(e => e.Gs1ec).HasColumnName("gs1ec");
@@ -1373,8 +1374,7 @@ public partial class ApplicationDbContext : DbContext
                 .HasColumnName("fecfac");
             entity.Property(e => e.Fecha).HasColumnName("fecha");
             entity.Property(e => e.FechaCierre)
-                .IsRowVersion()
-                .IsConcurrencyToken()
+                .HasColumnType("datetime")
                 .HasColumnName("fecha_cierre");
             entity.Property(e => e.Ngln).HasColumnName("ngln");
             entity.Property(e => e.Nombre)
@@ -1398,11 +1398,6 @@ public partial class ApplicationDbContext : DbContext
                 .HasMaxLength(10)
                 .IsUnicode(false)
                 .HasColumnName("referencia_interna");
-
-            entity.HasOne(d => d.ClientesCodigoNavigation).WithMany(p => p.Prefijos)
-                .HasForeignKey(d => d.ClientesCodigo)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_sic_prefijos_sic_clientes");
         });
 
         modelBuilder.Entity<Producto>(entity =>

@@ -7,31 +7,23 @@ public partial class Clientes
 {
     public long ClientesCodigo { get; set; }
 
-    public long? IdVendedor { get; set; }
+    public string? Nomcli { get; set; }
 
-    public long? CiudadCodigo { get; set; }
+    public string? Dircli { get; set; }
 
-    public long? IdZona { get; set; }
+    public string? Concli { get; set; }
 
-    public long? IdDatosAdicionales { get; set; }
+    public string? Email { get; set; }
 
-    public long? IdGrupoEmpresa { get; set; }
-
-    public string? SicClientesRazonSocial { get; set; }
-
-    public string? SicClientesRazonNombreComercial { get; set; }
-
-    public string? SicClientesDireccion { get; set; }
-
-    public string? SicClientesTelefono { get; set; }
+    public string? Telefono { get; set; }
 
     public string? Telefono1 { get; set; }
+
+    public string? RazonSocial { get; set; }
 
     public string? Fax { get; set; }
 
     public string? Ruc { get; set; }
-
-    public long? IdContactosClientes { get; set; }
 
     public DateOnly? Fecing { get; set; }
 
@@ -63,7 +55,9 @@ public partial class Clientes
 
     public double? Desde { get; set; }
 
-    public byte[]? Fechtre { get; set; }
+    public DateTime? Fechtre { get; set; }
+
+    public string? Ncomercial { get; set; }
 
     public decimal? Saldo { get; set; }
 
@@ -79,17 +73,13 @@ public partial class Clientes
 
     public string? Infcamahabitacion { get; set; }
 
-    public long? Empid { get; set; }
-
-    public string? Tiprep { get; set; }
+    public long? EmpresaCodigo { get; set; }
 
     public short? Seguimiento { get; set; }
 
     public DateOnly? Fechaactinact { get; set; }
 
-    public short? Estado { get; set; }
-
-    public long? IdEstadoEmpresaCodigo { get; set; }
+    public long? IdEstadoEmpresa { get; set; }
 
     public int? Formatodocumento { get; set; }
 
@@ -99,27 +89,31 @@ public partial class Clientes
 
     public long? IdGrupoProducto { get; set; }
 
-    public long? TipoOrigenIngresos { get; set; }
-
     public long? IdPersona { get; set; }
 
-    public long? EmpresaCodigo { get; set; }
+    public string? CodigoPostal { get; set; }
 
-    public virtual Ciudades? CiudadCodigoNavigation { get; set; }
+    public string? CodigoPostal2 { get; set; }
 
-    public virtual ICollection<ContactosClientes> ContactosClientes { get; set; } = new List<ContactosClientes>();
+    public long? IdVendedor { get; set; }
+
+    public long? IdCiudad { get; set; }
+
+    public long? IdZona { get; set; }
+
+    public long? IdGrupoEmpresa { get; set; }
+
+    public string? Representante { get; set; }
 
     public virtual Empresas? EmpresaCodigoNavigation { get; set; }
 
-    public virtual DatosAdicionales? IdDatosAdicionalesNavigation { get; set; }
+    public virtual Ciudades? IdCiudadNavigation { get; set; }
 
-    public virtual EstadoEmpresa? IdEstadoEmpresaCodigoNavigation { get; set; }
+    public virtual EstadoEmpresa? IdEstadoEmpresaNavigation { get; set; }
 
     public virtual GrupoEmpresa? IdGrupoEmpresaNavigation { get; set; }
 
     public virtual GrupoProducto? IdGrupoProductoNavigation { get; set; }
-
-    public virtual Personas? IdPersonaNavigation { get; set; }
 
     public virtual TipoCliente? IdTipoClienteNavigation { get; set; }
 
@@ -127,9 +121,5 @@ public partial class Clientes
 
     public virtual Zona? IdZonaNavigation { get; set; }
 
-    public virtual ICollection<Prefijos> Prefijos { get; set; } = new List<Prefijos>();
-
     public virtual ICollection<TipoEmpresaLocalizacion> TipoEmpresaLocalizacion { get; set; } = new List<TipoEmpresaLocalizacion>();
-
-    public virtual TipoOrigenIngresos? TipoOrigenIngresosNavigation { get; set; }
 }
