@@ -13,30 +13,45 @@ Env.Load();
 // Obtener cadena de conexión
 var connectionString = EnvironmentConfiguration.GetConnectionString();
 
-// Agregar DbContext con cadena de conexión
+// Configurar DbContext
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
-// Añadir servicios con DIP
+// Inyectar repositorios genéricos
 builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 
-//Este comando ensambla todos los queries, commands y handlers de mi capa de aplicacion
+// Cargar MediatR
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
 
-// Configuración estándar
+// 🔥 Configuración de CORS para permitir cualquier origen
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
+// Servicios adicionales
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Middleware y endpoints
+// Swagger solo en entorno de desarrollo
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
+// 🔥 Usar la política de CORS antes de Authorization
+app.UseCors("AllowAllOrigins");
+
 app.UseAuthorization();
 app.MapControllers();
+
 app.Run();
