@@ -75,4 +75,9 @@ public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : 
             }
         }
     }
+
+    public IQueryable<TEntity> AsQueryable()
+    {
+        return _context.Set<TEntity>().AsQueryable();
+    }
 }

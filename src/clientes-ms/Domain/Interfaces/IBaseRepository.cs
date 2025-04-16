@@ -10,6 +10,8 @@
         Task<IEnumerable<TEntity>> GetByStatusAsync(bool status);
         Task SoftDeleteAsync(long id);
 
+        //Queryable para aplicar filtros personalizados
+        IQueryable<TEntity> AsQueryable();
 
     }
 }
