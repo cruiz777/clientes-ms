@@ -22,7 +22,7 @@ namespace clientes_ms.Application.Records.Response
         public string RazonSocial { get; set; } = string.Empty;
         public string Fax { get; set; } = string.Empty;
         public string Ruc { get; set; } = string.Empty;
-        public DateOnly Fecing { get; set; }=DateOnly.MinValue;
+        public DateOnly? Fecing { get; set; }=DateOnly.MinValue;
         public DateOnly Fecnac { get; set; } = DateOnly.MinValue;
         public DateOnly Fecfac1 { get; set; } = DateOnly.MinValue;
         public DateOnly Fecfac2 { get; set; } = DateOnly.MinValue;
@@ -64,11 +64,12 @@ namespace clientes_ms.Application.Records.Response
         public long IdZona { get; set; } = 0;
         public long IdGrupoEmpresa { get; set; } = 0;
         public string Representante{ get; set; } = string.Empty;
-
+        public string ZonaReferencia {  get; set; } = string.Empty;
+        public string EstadoNombre { get; set; } = string.Empty;
         public ClientesResponse() { }
         public ClientesResponse(
          long    ClientesCodigo ,
-
+     
      string Nomcli,
 
      string Dircli,
@@ -165,7 +166,9 @@ namespace clientes_ms.Application.Records.Response
 
      long IdGrupoEmpresa,
 
-     string Representante
+     string Representante,
+     string ZonaReferencia,
+     string EstadoNombre
 )
         {
             this.ClientesCodigo = ClientesCodigo;
@@ -218,7 +221,8 @@ namespace clientes_ms.Application.Records.Response
             this.IdZona = IdZona;
             this.IdGrupoEmpresa = IdGrupoEmpresa;
             this.Representante = Representante;
-
+            this.ZonaReferencia = ZonaReferencia;
+            this.EstadoNombre = EstadoNombre;
 
         }
     }

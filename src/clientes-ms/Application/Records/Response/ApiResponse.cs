@@ -8,13 +8,14 @@
             public string Type { get; init; } = string.Empty;
             public T? Data { get; init; } 
             public string? Message { get; init; } = string.Empty;
-
-            public ApiResponse(Guid Id, string Type, T? Data, string? Message)
+            public int? Count { get; init; }
+        public ApiResponse(Guid Id, string Type, T? Data ,string? Message, int? Count = null)
             {
                 this.Id = Id;
                 this.Type = Type;
                 this.Data = Data;
                 this.Message = Message;
+                this.Count = Count;
             }
             public ApiResponse() { }
         }

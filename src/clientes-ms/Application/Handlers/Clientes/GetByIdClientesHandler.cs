@@ -64,7 +64,9 @@ e.IdVendedor ?? 0,
 e.IdCiudad ?? 0,
 e.IdZona ?? 0,
 e.IdGrupoEmpresa??0,
-e.Representante?.Trim() ?? string.Empty
+e.Representante?.Trim() ?? string.Empty,
+e.IdZonaNavigation!.Referencia!,
+e.IdEstadoEmpresaNavigation!.Nombre!
 
                 ), "Success");
         }

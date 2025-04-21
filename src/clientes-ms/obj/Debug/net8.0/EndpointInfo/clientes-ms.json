@@ -421,6 +421,18 @@
         }
       }
     },
+    "/api/resumen": {
+      "get": {
+        "tags": [
+          "Clientes"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Clientes/{id}": {
       "get": {
         "tags": [

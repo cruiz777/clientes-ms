@@ -980,6 +980,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "clientes_ms.WebApi.Controllers.ClientesController",
+    "Method": "GetClientesResumen",
+    "RelativePath": "api/resumen",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "clientes_ms.WebApi.Controllers.SectorController",
     "Method": "GetAll",
     "RelativePath": "api/Sector",

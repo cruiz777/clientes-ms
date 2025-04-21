@@ -29,6 +29,14 @@ namespace clientes_ms.WebApi.Controllers
             return Ok(result); // Devuelve la respuesta con estado 200
         }
 
+        [HttpGet]
+        [Route("/api/resumen")]
+        public async Task<IActionResult> GetClientesResumen()
+        {
+            var result = await _mediator.Send(new GetClientesByResumen()); // Envía la query a su handler correspondiente
+            return Ok(result); // Devuelve la respuesta con estado 200
+        }
+
         // GET api/examples/{id}
         // Obtiene un registro específico por su ID
         [HttpGet("{id}")]
