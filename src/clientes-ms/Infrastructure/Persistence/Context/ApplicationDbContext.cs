@@ -195,7 +195,8 @@ public partial class ApplicationDbContext : DbContext
             entity.ToTable("clientes", "sic");
 
             entity.Property(e => e.ClientesCodigo)
-                .ValueGeneratedNever()
+                 // .ValueGeneratedNever() para no generar identity
+                 .ValueGeneratedOnAdd()
                 .HasColumnName("clientes_codigo");
             entity.Property(e => e.Ciudad)
                 .HasMaxLength(30)

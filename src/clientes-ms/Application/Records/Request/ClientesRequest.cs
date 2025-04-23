@@ -5,9 +5,8 @@ namespace clientes_ms.Application.Records.Request
     //Crear los Request con su constructor para poder enviar los datos como un JSON siempre
     public record ClientesRequest
     {
-        [JsonPropertyName("clientescodigo")]
-        public long IdClientes { get; set; }
-        [JsonPropertyName("codigo")]
+      
+        
         public long ClientesCodigo { get; set; } 
         public string Nomcli { get; set; } = string.Empty;
         public string Dircli { get; set; } = string.Empty;

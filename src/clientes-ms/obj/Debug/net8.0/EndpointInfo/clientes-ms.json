@@ -2142,11 +2142,7 @@
       "ClientesRequest": {
         "type": "object",
         "properties": {
-          "clientescodigo": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "codigo": {
+          "clientesCodigo": {
             "type": "integer",
             "format": "int64"
           },
