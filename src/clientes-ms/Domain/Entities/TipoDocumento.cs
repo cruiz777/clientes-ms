@@ -9,7 +9,7 @@ public partial class TipoDocumento
 
     public string? Descripcion { get; set; }
 
-    public string? TipoDocumento1 { get; set; }
+    public string? Referencia { get; set; }
 
     public bool? Status { get; set; }
 

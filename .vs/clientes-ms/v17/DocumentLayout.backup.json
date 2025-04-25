@@ -3,40 +3,24 @@
   "WorkspaceRootPath": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\handlers\\numerocontrol\\updatenumerocontrolhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\handlers\\numerocontrol\\updatenumerocontrolhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\handlers\\clientes\\getresumenclienteshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\handlers\\clientes\\getresumenclienteshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\dtos\\numerocontrol\\updatenumerocontroldto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\dtos\\numerocontrol\\updatenumerocontroldto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\domain\\entities\\clientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\domain\\entities\\clientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\commands\\numerocontrol\\updatenumerocontrolcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\commands\\numerocontrol\\updatenumerocontrolcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\infrastructure\\persistence\\context\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\infrastructure\\persistence\\context\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\commands\\numerocontrol\\updatenumerocontrolcommandn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\commands\\numerocontrol\\updatenumerocontrolcommandn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\records\\request\\prefijosrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\records\\request\\prefijosrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\wepapi\\controllers\\numerocontrolcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\wepapi\\controllers\\numerocontrolcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\handlers\\clientes\\getclientesbyruchandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\handlers\\clientes\\getclientesbyruchandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\wepapi\\controllers\\clientescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\wepapi\\controllers\\clientescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\records\\request\\numerocontrolrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\records\\request\\numerocontrolrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\queries\\clientes\\getclientesbyrucquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\queries\\clientes\\getclientesbyrucquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\records\\response\\clientesresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\records\\response\\clientesresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,116 +30,72 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "UpdateNumeroControlCommand.cs",
-              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Commands\\NumeroControl\\UpdateNumeroControlCommand.cs",
-              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Commands\\NumeroControl\\UpdateNumeroControlCommand.cs",
-              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Commands\\NumeroControl\\UpdateNumeroControlCommand.cs",
-              "RelativeToolTip": "src\\clientes-ms\\Application\\Commands\\NumeroControl\\UpdateNumeroControlCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Infrastructure\\Persistence\\Context\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "src\\clientes-ms\\Infrastructure\\Persistence\\Context\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Infrastructure\\Persistence\\Context\\ApplicationDbContext.cs",
+              "RelativeToolTip": "src\\clientes-ms\\Infrastructure\\Persistence\\Context\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAMQIAAAAAAAAAAAiwNUIAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-24T21:59:58.226Z"
+              "WhenOpened": "2025-04-25T20:52:06.753Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "NumeroControlController.cs",
-              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\WepApi\\Controllers\\NumeroControlController.cs",
-              "RelativeDocumentMoniker": "src\\clientes-ms\\WepApi\\Controllers\\NumeroControlController.cs",
-              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\WepApi\\Controllers\\NumeroControlController.cs",
-              "RelativeToolTip": "src\\clientes-ms\\WepApi\\Controllers\\NumeroControlController.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAwwAQAAAAAAAAAAAAAAA==",
+              "Title": "ClientesResponse.cs",
+              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Records\\Response\\ClientesResponse.cs",
+              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Records\\Response\\ClientesResponse.cs",
+              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Records\\Response\\ClientesResponse.cs",
+              "RelativeToolTip": "src\\clientes-ms\\Application\\Records\\Response\\ClientesResponse.cs",
+              "ViewState": "AgIAANAAAAAAAAAAAAAqwOIAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-24T21:41:57.831Z"
+              "WhenOpened": "2025-04-25T20:46:40.831Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Clientes.cs",
+              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Domain\\Entities\\Clientes.cs",
+              "RelativeDocumentMoniker": "src\\clientes-ms\\Domain\\Entities\\Clientes.cs",
+              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Domain\\Entities\\Clientes.cs",
+              "RelativeToolTip": "src\\clientes-ms\\Domain\\Entities\\Clientes.cs",
+              "ViewState": "AgIAAHcAAAAAAAAAAAAAAH8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T20:43:23.205Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "UpdateNumeroControlHandler.cs",
-              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\NumeroControl\\UpdateNumeroControlHandler.cs",
-              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Handlers\\NumeroControl\\UpdateNumeroControlHandler.cs",
-              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\NumeroControl\\UpdateNumeroControlHandler.cs",
-              "RelativeToolTip": "src\\clientes-ms\\Application\\Handlers\\NumeroControl\\UpdateNumeroControlHandler.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAgwBYAAAANAAAAAAAAAA==",
+              "Title": "GetResumenClientesHandler.cs",
+              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\Clientes\\GetResumenClientesHandler.cs",
+              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Handlers\\Clientes\\GetResumenClientesHandler.cs",
+              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\Clientes\\GetResumenClientesHandler.cs",
+              "RelativeToolTip": "src\\clientes-ms\\Application\\Handlers\\Clientes\\GetResumenClientesHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-24T21:33:49.317Z",
+              "WhenOpened": "2025-04-25T20:36:59.842Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "UpdateNumeroControlCommandN.cs",
-              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Commands\\NumeroControl\\UpdateNumeroControlCommandN.cs",
-              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Commands\\NumeroControl\\UpdateNumeroControlCommandN.cs",
-              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Commands\\NumeroControl\\UpdateNumeroControlCommandN.cs",
-              "RelativeToolTip": "src\\clientes-ms\\Application\\Commands\\NumeroControl\\UpdateNumeroControlCommandN.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAkAAAAAAAAAA==",
+              "Title": "PrefijosRequest.cs",
+              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Records\\Request\\PrefijosRequest.cs",
+              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Records\\Request\\PrefijosRequest.cs",
+              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Records\\Request\\PrefijosRequest.cs",
+              "RelativeToolTip": "src\\clientes-ms\\Application\\Records\\Request\\PrefijosRequest.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAiwDkAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-24T21:32:09.627Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UpdateNumeroControlDto.cs",
-              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\DTOs\\NumeroControl\\UpdateNumeroControlDto.cs",
-              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\DTOs\\NumeroControl\\UpdateNumeroControlDto.cs",
-              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\DTOs\\NumeroControl\\UpdateNumeroControlDto.cs",
-              "RelativeToolTip": "src\\clientes-ms\\Application\\DTOs\\NumeroControl\\UpdateNumeroControlDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-24T21:30:10.153Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "NumeroControlRequest.cs",
-              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Records\\Request\\NumeroControlRequest.cs",
-              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Records\\Request\\NumeroControlRequest.cs",
-              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Records\\Request\\NumeroControlRequest.cs",
-              "RelativeToolTip": "src\\clientes-ms\\Application\\Records\\Request\\NumeroControlRequest.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAoAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-24T21:04:55.128Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "GetClientesByRucHandler.cs",
-              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\Clientes\\GetClientesByRucHandler.cs",
-              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Handlers\\Clientes\\GetClientesByRucHandler.cs",
-              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\Clientes\\GetClientesByRucHandler.cs",
-              "RelativeToolTip": "src\\clientes-ms\\Application\\Handlers\\Clientes\\GetClientesByRucHandler.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABYAAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-24T14:08:43.81Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ClientesController.cs",
-              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\WepApi\\Controllers\\ClientesController.cs",
-              "RelativeDocumentMoniker": "src\\clientes-ms\\WepApi\\Controllers\\ClientesController.cs",
-              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\WepApi\\Controllers\\ClientesController.cs",
-              "RelativeToolTip": "src\\clientes-ms\\WepApi\\Controllers\\ClientesController.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAAADEAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-24T14:06:05.338Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "GetClientesByRucQuery.cs",
-              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Queries\\Clientes\\GetClientesByRucQuery.cs",
-              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Queries\\Clientes\\GetClientesByRucQuery.cs",
-              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Queries\\Clientes\\GetClientesByRucQuery.cs",
-              "RelativeToolTip": "src\\clientes-ms\\Application\\Queries\\Clientes\\GetClientesByRucQuery.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-24T14:05:21.231Z"
+              "WhenOpened": "2025-04-25T20:28:06.901Z",
+              "EditorCaption": ""
             }
           ]
         }

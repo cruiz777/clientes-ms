@@ -42,4 +42,6 @@ public partial class Prefijos
     public int? Orden { get; set; }
 
     public long? ClientesCodigo { get; set; }
+
+    public virtual Clientes? ClientesCodigoNavigation { get; set; }
 }

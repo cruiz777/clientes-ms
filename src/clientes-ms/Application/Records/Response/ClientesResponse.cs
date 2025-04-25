@@ -66,6 +66,7 @@ namespace clientes_ms.Application.Records.Response
         public string Representante{ get; set; } = string.Empty;
         public string ZonaReferencia {  get; set; } = string.Empty;
         public string EstadoNombre { get; set; } = string.Empty;
+        public string Prefijo { get; set; } = string.Empty;
         public ClientesResponse() { }
         public ClientesResponse(
          long    ClientesCodigo ,
@@ -223,6 +224,7 @@ namespace clientes_ms.Application.Records.Response
             this.Representante = Representante;
             this.ZonaReferencia = ZonaReferencia;
             this.EstadoNombre = EstadoNombre;
+            this.Prefijo = Prefijo;
 
         }
     }

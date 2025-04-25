@@ -5,59 +5,41 @@ namespace clientes_ms.Domain.Entities;
 
 public partial class Empresas
 {
-    public long EmpresaCodigo { get; set; }
+    public long IdEmpresa { get; set; }
 
-    public string? EmpresaNombre { get; set; }
+    public string? Nombre { get; set; }
 
-    public string? EmpresaSistema { get; set; }
+    public string? Sistema { get; set; }
 
-    public string? EmpresaRuc { get; set; }
+    public string? Ruc { get; set; }
 
-    public string? EmpresaDireccion { get; set; }
+    public string? Direccion { get; set; }
 
-    public string? EmpresaTelefono1 { get; set; }
+    public string? Telefono1 { get; set; }
 
-    public string? EmpresaTelefono2 { get; set; }
+    public string? Telefono2 { get; set; }
 
-    public string? EmpresaFax { get; set; }
+    public string? Fax { get; set; }
 
-    public string? EmpresaEmail { get; set; }
+    public string? Email { get; set; }
 
-    public string? EmpresaGerente { get; set; }
+    public string? Logo { get; set; }
 
-    public string? EmpresaCedulaGerente { get; set; }
+    public string? Moneda { get; set; }
 
-    public string? EmpresaDireccionGerente { get; set; }
+    public string? TipoCambio { get; set; }
 
-    public string? EmpresaNombreContador { get; set; }
+    public string? Establecimiento { get; set; }
 
-    public string? EmpresaTelefonoGerente { get; set; }
+    public string? TipoFacturacion { get; set; }
 
-    public string? EmpresaRegistroContador { get; set; }
+    public string? ContribuyenteEspecial { get; set; }
 
-    public string? EmpresaTelefonoContador { get; set; }
+    public string ObligadoContabilidad { get; set; } = null!;
 
-    public string? EmpresaDireccionContador { get; set; }
+    public string? CodigoEntidad { get; set; }
 
-    public string? EmpresaCedulaContador { get; set; }
-
-    public string? EmpresaLogo { get; set; }
-
-    public string? EmpresaMoneda { get; set; }
-
-    public string? EmpresaTipoCambio { get; set; }
-
-    public string? EmpresaEstablecimiento { get; set; }
-
-    public string? EmpresaTipoFacturacion { get; set; }
-
-    public string? EmpresaContribuyenteEspecial { get; set; }
-
-    public string EmpresaObligadoContabilidad { get; set; } = null!;
-
-    public string? EmpresaCodigoEntidad { get; set; }
-
-    public string? EmpresaDirectorio { get; set; }
+    public string? Directorio { get; set; }
 
     public bool Status { get; set; }
 
@@ -65,7 +47,11 @@ public partial class Empresas
 
     public virtual ICollection<Clientes> Clientes { get; set; } = new List<Clientes>();
 
+    public virtual ICollection<Contadores> Contadores { get; set; } = new List<Contadores>();
+
     public virtual ICollection<EstadoEmpresa> EstadoEmpresa { get; set; } = new List<EstadoEmpresa>();
+
+    public virtual ICollection<Gerentes> Gerentes { get; set; } = new List<Gerentes>();
 
     public virtual Ciudades IdCiudadNavigation { get; set; } = null!;
 

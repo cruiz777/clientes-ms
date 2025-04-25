@@ -55,6 +55,8 @@ namespace clientes_ms.Application.Records.Request
             this.OrigenPrefijo = OrigenPrefijo.Trim();
             this.Orden = Orden;
             this.ClientesCodigo = ClientesCodigo;
+          
+            
 
 
         }

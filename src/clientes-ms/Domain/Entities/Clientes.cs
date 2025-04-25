@@ -121,5 +121,7 @@ public partial class Clientes
 
     public virtual Zona? IdZonaNavigation { get; set; }
 
+    public virtual ICollection<Prefijos> Prefijos { get; set; } = new List<Prefijos>();
+
     public virtual ICollection<TipoEmpresaLocalizacion> TipoEmpresaLocalizacion { get; set; } = new List<TipoEmpresaLocalizacion>();
 }
