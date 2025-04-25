@@ -4,7 +4,7 @@ using MediatR;
 
 namespace clientes_ms.Application.Commands.NumeroControl
 {
-    public class UpdateNumeroControlCommand : IRequest<ApiResponse<bool>>
+    public class UpdateNumeroControlCommandN : IRequest<ApiResponse<bool>>
     {
         public long Id { get; set; }
         public UpdateNumeroControlDto Request { get; set; } = null!;

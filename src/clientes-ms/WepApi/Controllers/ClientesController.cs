@@ -39,10 +39,18 @@ namespace clientes_ms.WebApi.Controllers
 
         // GET api/examples/{id}
         // Obtiene un registro específico por su ID
-        [HttpGet("{id}")]
+        [HttpGet("/{id}")]
         public async Task<IActionResult> GetById(long id)
         {
             var result = await _mediator.Send(new GetClientesByIdQuery(id));
+            return Ok(result);
+        }
+
+        [HttpGet]
+        [Route("/api/ruc")]
+        public async Task<IActionResult> GetByRuc(string ruc)
+        {
+            var result = await _mediator.Send(new GetClientesByRucQuery(ruc));
             return Ok(result);
         }
 

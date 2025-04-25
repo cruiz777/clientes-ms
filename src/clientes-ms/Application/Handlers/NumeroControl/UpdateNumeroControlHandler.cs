@@ -1,16 +1,22 @@
-﻿using clientes_ms.Application.Records.Response;
-using clientes_ms.Domain.Entities;
+﻿using clientes_ms.Application.Commands.NumeroControl;
+using clientes_ms.Application.DTOs.NumeroControl;
+using clientes_ms.Application.Records.Response;
+using EntNumeroControl = clientes_ms.Domain.Entities.NumeroControl; // Alias para evitar colisión
 using MediatR;
 using MicroservicesTemplate.Domain.Repositories;
 
-public class UpdateNumeroControlHandler : IRequestHandler<UpdateNumeroControlCommand, ApiResponse<bool>>
+namespace clientes_ms.Application.Handlers.NumeroControl
 {
-    private readonly IBaseRepository<NumeroControl> _repository;
-    public UpdateNumeroControlHandler(IBaseRepository<NumeroControl> repository) => _repository = repository;
-
-    public async Task<ApiResponse<bool>> Handle(UpdateNumeroControlCommand request, CancellationToken cancellationToken)
+    public class UpdateNumeroControlHandler : IRequestHandler<UpdateNumeroControlCommand, ApiResponse<bool>>
     {
-        try
+        private readonly IBaseRepository<EntNumeroControl> _repository;
+
+        public UpdateNumeroControlHandler(IBaseRepository<EntNumeroControl> repository)
+        {
+            _repository = repository;
+        }
+
+        public async Task<ApiResponse<bool>> Handle(UpdateNumeroControlCommand request, CancellationToken cancellationToken)
         {
             var existing = await _repository.GetByIdAsync(request.Id);
             if (existing == null)
@@ -19,34 +25,19 @@ public class UpdateNumeroControlHandler : IRequestHandler<UpdateNumeroControlCom
                     Guid.NewGuid(),
                     "OBJECT",
                     false,
-                    $"NumeroControl with ID {request.Id} not found."
-                );
+                    $"NumeroControl with ID {request.Id} not found.");
             }
 
-            // Solo se actualizan campos permitidos (sin modificar la clave primaria)
-            existing.Codcon = request.Request.Codcon;
-            existing.Modcon = request.Request.Modcon.Trim();
-            existing.Tipcon = request.Request.Tipcon.Trim();
             existing.Numcon = request.Request.Numcon.Trim();
             existing.Ocupado = request.Request.Ocupado;
-            existing.EmpresaCodigo = request.Request.EmpresaCodigo;
+
             await _repository.UpdateAsync(request.Id, existing);
 
             return new ApiResponse<bool>(
                 Guid.NewGuid(),
                 "BOOLEAN",
                 true,
-                "Updated successfully"
-            );
-        }
-        catch (Exception ex)
-        {
-            return new ApiResponse<bool>(
-                Guid.NewGuid(),
-                "ERROR",
-                false,
-                ex.Message
-            );
+                "Updated successfully");
         }
     }
 }

@@ -433,7 +433,7 @@
         }
       }
     },
-    "/api/Clientes/{id}": {
+    "/{id}": {
       "get": {
         "tags": [
           "Clientes"
@@ -454,7 +454,30 @@
             "description": "OK"
           }
         }
-      },
+      }
+    },
+    "/api/ruc": {
+      "get": {
+        "tags": [
+          "Clientes"
+        ],
+        "parameters": [
+          {
+            "name": "ruc",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Clientes/{id}": {
       "put": {
         "tags": [
           "Clientes"
@@ -1269,17 +1292,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NumeroControlRequest"
+                "$ref": "#/components/schemas/UpdateNumeroControlDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/NumeroControlRequest"
+                "$ref": "#/components/schemas/UpdateNumeroControlDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/NumeroControlRequest"
+                "$ref": "#/components/schemas/UpdateNumeroControlDto"
               }
             }
           }
@@ -2710,6 +2733,19 @@
           "empresaCodigo": {
             "type": "integer",
             "format": "int64"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateNumeroControlDto": {
+        "type": "object",
+        "properties": {
+          "numcon": {
+            "type": "string",
+            "nullable": true
+          },
+          "ocupado": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
