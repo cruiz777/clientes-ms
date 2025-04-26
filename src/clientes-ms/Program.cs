@@ -7,6 +7,11 @@ using MicroservicesTemplate.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(90); // Escucha en el puerto 80 para que Docker lo pueda mapear
+});
+
 // Cargar variables del .env
 Env.Load();
 
