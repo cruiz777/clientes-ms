@@ -960,6 +960,131 @@
         }
       }
     },
+    "/api/Gln": {
+      "get": {
+        "tags": [
+          "Gln"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Gln"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateGlnCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateGlnCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateGlnCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Gln/{id}": {
+      "get": {
+        "tags": [
+          "Gln"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Gln"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GlnRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GlnRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GlnRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Gln"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/GrupoEmpresa": {
       "get": {
         "tags": [
@@ -1450,6 +1575,27 @@
             "schema": {
               "type": "integer",
               "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Codpre": {
+      "get": {
+        "tags": [
+          "Prefijos"
+        ],
+        "parameters": [
+          {
+            "name": "Codpre",
+            "in": "query",
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -2398,6 +2544,15 @@
         },
         "additionalProperties": false
       },
+      "CreateGlnCommand": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "$ref": "#/components/schemas/GlnRequest"
+          }
+        },
+        "additionalProperties": false
+      },
       "EstadoEmpresaRequest": {
         "type": "object",
         "properties": {
@@ -2433,6 +2588,241 @@
           },
           "status": {
             "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GlnRequest": {
+        "type": "object",
+        "properties": {
+          "id_Gln": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "id_prefijos": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "clientesCodigo": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "gln1": {
+            "type": "string",
+            "nullable": true
+          },
+          "idTipoLocalizacion": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "glnLatitud": {
+            "type": "string",
+            "nullable": true
+          },
+          "glnLongitud": {
+            "type": "string",
+            "nullable": true
+          },
+          "idPais": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "direccion": {
+            "type": "string",
+            "nullable": true
+          },
+          "telefono": {
+            "type": "string",
+            "nullable": true
+          },
+          "fax": {
+            "type": "string",
+            "nullable": true
+          },
+          "contacto": {
+            "type": "string",
+            "nullable": true
+          },
+          "contactoTel": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "web": {
+            "type": "string",
+            "nullable": true
+          },
+          "fda": {
+            "type": "string",
+            "nullable": true
+          },
+          "europa": {
+            "type": "string",
+            "nullable": true
+          },
+          "glnGlobal": {
+            "type": "string",
+            "nullable": true
+          },
+          "glnFecha": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "idCiudad": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "glnCodigopostal": {
+            "type": "string",
+            "nullable": true
+          },
+          "glnCelular": {
+            "type": "string",
+            "nullable": true
+          },
+          "glnContacto2": {
+            "type": "string",
+            "nullable": true
+          },
+          "glnEmail2": {
+            "type": "string",
+            "nullable": true
+          },
+          "glnTel2": {
+            "type": "string",
+            "nullable": true
+          },
+          "glnContacto3": {
+            "type": "string",
+            "nullable": true
+          },
+          "glnEmail3": {
+            "type": "string",
+            "nullable": true
+          },
+          "glnTel3": {
+            "type": "string",
+            "nullable": true
+          },
+          "glnFacturar": {
+            "type": "string",
+            "nullable": true
+          },
+          "glnCodpro": {
+            "type": "string",
+            "nullable": true
+          },
+          "glnNombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "glnOtro1": {
+            "type": "string",
+            "nullable": true
+          },
+          "glnOtro2": {
+            "type": "string",
+            "nullable": true
+          },
+          "glnObs1": {
+            "type": "string",
+            "nullable": true
+          },
+          "glnObs2": {
+            "type": "string",
+            "nullable": true
+          },
+          "glnOrigenprefijo": {
+            "type": "string",
+            "nullable": true
+          },
+          "glnPrefijogs1": {
+            "type": "string",
+            "nullable": true
+          },
+          "glnGlnp": {
+            "type": "string",
+            "nullable": true
+          },
+          "glnGlne": {
+            "type": "string",
+            "nullable": true
+          },
+          "nombreLocalizacion": {
+            "type": "string",
+            "nullable": true
+          },
+          "observ": {
+            "type": "string",
+            "nullable": true
+          },
+          "expprod": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "gs1ec": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "gs1latam": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "gas1org": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "google": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "gs1otros": {
+            "type": "string",
+            "nullable": true
+          },
+          "longG": {
+            "type": "string",
+            "nullable": true
+          },
+          "longM": {
+            "type": "string",
+            "nullable": true
+          },
+          "longS": {
+            "type": "string",
+            "nullable": true
+          },
+          "longE": {
+            "type": "string",
+            "nullable": true
+          },
+          "latiG": {
+            "type": "string",
+            "nullable": true
+          },
+          "latiM": {
+            "type": "string",
+            "nullable": true
+          },
+          "latiS": {
+            "type": "string",
+            "nullable": true
+          },
+          "latiE": {
+            "type": "string",
+            "nullable": true
+          },
+          "idUsuario": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
           }
         },
         "additionalProperties": false

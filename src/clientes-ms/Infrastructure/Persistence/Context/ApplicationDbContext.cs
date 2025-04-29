@@ -759,8 +759,7 @@ public partial class ApplicationDbContext : DbContext
             entity.ToTable("gln", "sic");
 
             entity.Property(e => e.IdGln).HasColumnName("id_gln");
-            entity.Property(e => e.CantonCodigo).HasColumnName("canton_codigo");
-            entity.Property(e => e.CiudadCodigo).HasColumnName("ciudad_codigo");
+            entity.Property(e => e.ClientesCodigo).HasColumnName("clientes_codigo");
             entity.Property(e => e.Contacto)
                 .HasMaxLength(100)
                 .IsUnicode(false)
@@ -890,8 +889,10 @@ public partial class ApplicationDbContext : DbContext
             entity.Property(e => e.Gs1otros)
                 .HasMaxLength(500)
                 .HasColumnName("gs1otros");
-            entity.Property(e => e.IdClientes).HasColumnName("id_clientes");
-            entity.Property(e => e.IdPrefijios).HasColumnName("id_prefijios");
+            entity.Property(e => e.IdCiudad).HasColumnName("id_ciudad");
+            entity.Property(e => e.IdPais).HasColumnName("id_pais");
+            entity.Property(e => e.IdPrefijos).HasColumnName("id_prefijos");
+            entity.Property(e => e.IdTipoLocalizacion).HasColumnName("id_tipo_localizacion");
             entity.Property(e => e.IdUsuario).HasColumnName("id_usuario");
             entity.Property(e => e.LatiE).HasMaxLength(5);
             entity.Property(e => e.LatiG).HasMaxLength(5);
@@ -907,41 +908,30 @@ public partial class ApplicationDbContext : DbContext
             entity.Property(e => e.Observ)
                 .HasMaxLength(500)
                 .HasColumnName("observ");
-            entity.Property(e => e.PaisCodigo).HasColumnName("pais_codigo");
-            entity.Property(e => e.ProvinciaCodigo).HasColumnName("provincia_codigo");
             entity.Property(e => e.Telefono)
                 .HasMaxLength(20)
                 .IsUnicode(false)
                 .HasColumnName("telefono");
-            entity.Property(e => e.TipoLocalizacion).HasColumnName("tipo_localizacion");
             entity.Property(e => e.Web)
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("web");
 
-            entity.HasOne(d => d.CantonCodigoNavigation).WithMany(p => p.Gln)
-                .HasForeignKey(d => d.CantonCodigo)
-                .HasConstraintName("FK_sic_gln_sic_canton");
-
-            entity.HasOne(d => d.CiudadCodigoNavigation).WithMany(p => p.Gln)
-                .HasForeignKey(d => d.CiudadCodigo)
+            entity.HasOne(d => d.IdCiudadNavigation).WithMany(p => p.Gln)
+                .HasForeignKey(d => d.IdCiudad)
                 .HasConstraintName("FK_sic_gln_sic_ciudad");
+
+            entity.HasOne(d => d.IdPaisNavigation).WithMany(p => p.Gln)
+                .HasForeignKey(d => d.IdPais)
+                .HasConstraintName("FK_sic_gln_sic_pais");
+
+            entity.HasOne(d => d.IdTipoLocalizacionNavigation).WithMany(p => p.Gln)
+                .HasForeignKey(d => d.IdTipoLocalizacion)
+                .HasConstraintName("FK_sic_gln_sic_tipo_localizacion");
 
             entity.HasOne(d => d.IdUsuarioNavigation).WithMany(p => p.Gln)
                 .HasForeignKey(d => d.IdUsuario)
                 .HasConstraintName("FK_sic_gln_usuarios");
-
-            entity.HasOne(d => d.PaisCodigoNavigation).WithMany(p => p.Gln)
-                .HasForeignKey(d => d.PaisCodigo)
-                .HasConstraintName("FK_sic_gln_sic_pais");
-
-            entity.HasOne(d => d.ProvinciaCodigoNavigation).WithMany(p => p.Gln)
-                .HasForeignKey(d => d.ProvinciaCodigo)
-                .HasConstraintName("FK_sic_gln_sic_provincia");
-
-            entity.HasOne(d => d.TipoLocalizacionNavigation).WithMany(p => p.Gln)
-                .HasForeignKey(d => d.TipoLocalizacion)
-                .HasConstraintName("FK_sic_gln_sic_tipo_localizacion");
         });
 
         modelBuilder.Entity<GrupoEmpresa>(entity =>

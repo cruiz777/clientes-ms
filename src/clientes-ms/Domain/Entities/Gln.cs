@@ -7,21 +7,19 @@ public partial class Gln
 {
     public long IdGln { get; set; }
 
-    public long IdPrefijios { get; set; }
+    public long IdPrefijos { get; set; }
 
-    public long IdClientes { get; set; }
+    public long ClientesCodigo { get; set; }
 
     public string? Gln1 { get; set; }
 
-    public long? TipoLocalizacion { get; set; }
+    public long? IdTipoLocalizacion { get; set; }
 
     public string? GlnLatitud { get; set; }
 
     public string? GlnLongitud { get; set; }
 
-    public long? PaisCodigo { get; set; }
-
-    public long? ProvinciaCodigo { get; set; }
+    public long? IdPais { get; set; }
 
     public string? Direccion { get; set; }
 
@@ -45,7 +43,7 @@ public partial class Gln
 
     public DateOnly? GlnFecha { get; set; }
 
-    public long? CiudadCodigo { get; set; }
+    public long? IdCiudad { get; set; }
 
     public string? GlnCodigopostal { get; set; }
 
@@ -62,8 +60,6 @@ public partial class Gln
     public string? GlnEmail3 { get; set; }
 
     public string? GlnTel3 { get; set; }
-
-    public long? CantonCodigo { get; set; }
 
     public string? GlnFacturar { get; set; }
 
@@ -121,15 +117,13 @@ public partial class Gln
 
     public long? IdUsuario { get; set; }
 
-    public virtual Cantones? CantonCodigoNavigation { get; set; }
+    public virtual Ciudades? IdCiudadNavigation { get; set; }
 
-    public virtual Ciudades? CiudadCodigoNavigation { get; set; }
+    public virtual Paises? IdPaisNavigation { get; set; }
+
+    public virtual TipoLocalizacion? IdTipoLocalizacionNavigation { get; set; }
 
     public virtual Usuarios? IdUsuarioNavigation { get; set; }
 
-    public virtual Paises? PaisCodigoNavigation { get; set; }
-
-    public virtual Provincia? ProvinciaCodigoNavigation { get; set; }
-
-    public virtual TipoLocalizacion? TipoLocalizacionNavigation { get; set; }
+    
 }

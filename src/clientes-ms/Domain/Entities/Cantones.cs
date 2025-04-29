@@ -15,7 +15,5 @@ public partial class Cantones
 
     public virtual ICollection<Ciudades> Ciudades { get; set; } = new List<Ciudades>();
 
-    public virtual ICollection<Gln> Gln { get; set; } = new List<Gln>();
-
     public virtual Provincia IdProvinciaNavigation { get; set; } = null!;
 }

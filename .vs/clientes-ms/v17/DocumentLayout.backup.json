@@ -3,24 +3,32 @@
   "WorkspaceRootPath": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\handlers\\clientes\\getresumenclienteshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\handlers\\clientes\\getresumenclienteshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\wepapi\\controllers\\glncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\wepapi\\controllers\\glncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\domain\\entities\\clientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\domain\\entities\\clientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\commands\\gln\\createglncommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\commands\\gln\\createglncommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\infrastructure\\persistence\\context\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\infrastructure\\persistence\\context\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\commands\\grupoempresa\\creategrupoempresacommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\commands\\grupoempresa\\creategrupoempresacommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\records\\request\\prefijosrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\records\\request\\prefijosrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\handlers\\gln\\updateglnhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\handlers\\gln\\updateglnhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\records\\response\\clientesresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\records\\response\\clientesresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\records\\request\\glnrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\records\\request\\glnrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\handlers\\gln\\createglnhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\handlers\\gln\\createglnhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\records\\response\\glnresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\records\\response\\glnresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,71 +38,97 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Infrastructure\\Persistence\\Context\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "src\\clientes-ms\\Infrastructure\\Persistence\\Context\\ApplicationDbContext.cs",
-              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Infrastructure\\Persistence\\Context\\ApplicationDbContext.cs",
-              "RelativeToolTip": "src\\clientes-ms\\Infrastructure\\Persistence\\Context\\ApplicationDbContext.cs",
-              "ViewState": "AgIAAMQIAAAAAAAAAAAiwNUIAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "GlnController.cs",
+              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\WepApi\\Controllers\\GlnController.cs",
+              "RelativeDocumentMoniker": "src\\clientes-ms\\WepApi\\Controllers\\GlnController.cs",
+              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\WepApi\\Controllers\\GlnController.cs",
+              "RelativeToolTip": "src\\clientes-ms\\WepApi\\Controllers\\GlnController.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAewDgAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-25T20:52:06.753Z",
+              "WhenOpened": "2025-04-29T21:30:57.039Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ClientesResponse.cs",
-              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Records\\Response\\ClientesResponse.cs",
-              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Records\\Response\\ClientesResponse.cs",
-              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Records\\Response\\ClientesResponse.cs",
-              "RelativeToolTip": "src\\clientes-ms\\Application\\Records\\Response\\ClientesResponse.cs",
-              "ViewState": "AgIAANAAAAAAAAAAAAAqwOIAAAAjAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "CreateGrupoEmpresaCommand.cs",
+              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Commands\\GrupoEmpresa\\CreateGrupoEmpresaCommand.cs",
+              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Commands\\GrupoEmpresa\\CreateGrupoEmpresaCommand.cs",
+              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Commands\\GrupoEmpresa\\CreateGrupoEmpresaCommand.cs",
+              "RelativeToolTip": "src\\clientes-ms\\Application\\Commands\\GrupoEmpresa\\CreateGrupoEmpresaCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAABjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-25T20:46:40.831Z",
+              "WhenOpened": "2025-04-29T21:26:44.733Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Clientes.cs",
-              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Domain\\Entities\\Clientes.cs",
-              "RelativeDocumentMoniker": "src\\clientes-ms\\Domain\\Entities\\Clientes.cs",
-              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Domain\\Entities\\Clientes.cs",
-              "RelativeToolTip": "src\\clientes-ms\\Domain\\Entities\\Clientes.cs",
-              "ViewState": "AgIAAHcAAAAAAAAAAAAAAH8AAAAAAAAAAAAAAA==",
+              "Title": "CreateGlnCommand.cs",
+              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Commands\\Gln\\CreateGlnCommand.cs",
+              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Commands\\Gln\\CreateGlnCommand.cs",
+              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Commands\\Gln\\CreateGlnCommand.cs",
+              "RelativeToolTip": "src\\clientes-ms\\Application\\Commands\\Gln\\CreateGlnCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-25T20:43:23.205Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "GetResumenClientesHandler.cs",
-              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\Clientes\\GetResumenClientesHandler.cs",
-              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Handlers\\Clientes\\GetResumenClientesHandler.cs",
-              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\Clientes\\GetResumenClientesHandler.cs",
-              "RelativeToolTip": "src\\clientes-ms\\Application\\Handlers\\Clientes\\GetResumenClientesHandler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-25T20:36:59.842Z",
+              "WhenOpened": "2025-04-29T21:17:29.937Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "PrefijosRequest.cs",
-              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Records\\Request\\PrefijosRequest.cs",
-              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Records\\Request\\PrefijosRequest.cs",
-              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Records\\Request\\PrefijosRequest.cs",
-              "RelativeToolTip": "src\\clientes-ms\\Application\\Records\\Request\\PrefijosRequest.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAiwDkAAAAKAAAAAAAAAA==",
+              "Title": "UpdateGlnHandler.cs",
+              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\Gln\\UpdateGlnHandler.cs",
+              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Handlers\\Gln\\UpdateGlnHandler.cs",
+              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\Gln\\UpdateGlnHandler.cs",
+              "RelativeToolTip": "src\\clientes-ms\\Application\\Handlers\\Gln\\UpdateGlnHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-25T20:28:06.901Z",
+              "WhenOpened": "2025-04-29T21:19:24.038Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GlnRequest.cs",
+              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Records\\Request\\GlnRequest.cs",
+              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Records\\Request\\GlnRequest.cs",
+              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Records\\Request\\GlnRequest.cs",
+              "RelativeToolTip": "src\\clientes-ms\\Application\\Records\\Request\\GlnRequest.cs",
+              "ViewState": "AgIAAO8AAAAAAAAAAAAAABYAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-29T21:17:40.675Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CreateGlnHandler.cs",
+              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\Gln\\CreateGlnHandler.cs",
+              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Handlers\\Gln\\CreateGlnHandler.cs",
+              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\Gln\\CreateGlnHandler.cs",
+              "RelativeToolTip": "src\\clientes-ms\\Application\\Handlers\\Gln\\CreateGlnHandler.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABUAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-29T21:17:16.806Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "GlnResponse.cs",
+              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Records\\Response\\GlnResponse.cs",
+              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Records\\Response\\GlnResponse.cs",
+              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Records\\Response\\GlnResponse.cs",
+              "RelativeToolTip": "src\\clientes-ms\\Application\\Records\\Response\\GlnResponse.cs",
+              "ViewState": "AgIAAMYAAAAAAAAAAAAjwMwAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-29T21:16:54.759Z",
               "EditorCaption": ""
             }
           ]

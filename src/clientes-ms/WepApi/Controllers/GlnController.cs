@@ -10,12 +10,12 @@ namespace clientes_ms.WebApi.Controllers
 
     // Define la ruta base para este controlador
     [Route("api/[Controller]")]
-    public class PrefijosController : ControllerBase
+    public class GlnController : ControllerBase
     {
         private readonly IMediator _mediator;
 
         // Constructor con inyección de dependencia del Mediator
-        public PrefijosController(IMediator mediator)
+        public GlnController(IMediator mediator)
         {
             _mediator = mediator;
         }
@@ -25,7 +25,7 @@ namespace clientes_ms.WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var result = await _mediator.Send(new GetAllPrefijosQuery()); // Envía la query a su handler correspondiente
+            var result = await _mediator.Send(new GetAllGlnQuery()); // Envía la query a su handler correspondiente
             return Ok(result); // Devuelve la respuesta con estado 200
         }
 
@@ -34,19 +34,9 @@ namespace clientes_ms.WebApi.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(long id)
         {
-            var result = await _mediator.Send(new GetPrefijosByIdQuery(id));
+            var result = await _mediator.Send(new GetGlnByIdQuery(id));
             return Ok(result);
         }
-
-        [HttpGet]
-        [Route("/api/Codpre")]
-        public async Task<IActionResult> GetByCodpre(string Codpre)
-        {
-            var result = await _mediator.Send(new GetPefijosByCodpreQuery(Codpre));
-            return Ok(result);
-        }
-
-
 
         // GET api/examples/status/{status}
         // Obtiene todos los registros activos o inactivos según el parámetro
@@ -60,18 +50,18 @@ namespace clientes_ms.WebApi.Controllers
         // POST api/examples
         // Crea un nuevo registro de Example
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] PrefijosRequest request)
+        public async Task<IActionResult> Create([FromBody] CreateGlnCommand command)
         {
-            var result = await _mediator.Send(new CreatePrefijosCommand(request));
+            var result = await _mediator.Send(command);
             return Ok(result);
         }
 
         // PUT api/examples/{id}
         // Actualiza un registro existente de Example
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(long id, [FromBody] PrefijosRequest request)
+        public async Task<IActionResult> Update(long id, [FromBody] GlnRequest request)
         {
-            var result = await _mediator.Send(new UpdatePrefijosCommand(id, request));
+            var result = await _mediator.Send(new UpdateGlnCommand(id, request));
             return Ok(result);
         }
 
@@ -80,7 +70,7 @@ namespace clientes_ms.WebApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(long id)
         {
-            var result = await _mediator.Send(new DeletePrefijosCommand(id));
+            var result = await _mediator.Send(new DeleteGlnCommand(id));
             return Ok(result);
         }
 

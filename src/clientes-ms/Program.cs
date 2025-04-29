@@ -7,10 +7,10 @@ using MicroservicesTemplate.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.WebHost.ConfigureKestrel(options =>
-{
-    options.ListenAnyIP(90); // Escucha en el puerto 80 para que Docker lo pueda mapear
-});
+//builder.WebHost.ConfigureKestrel(options =>
+//{
+//   // options.ListenAnyIP(90); // Escucha en el puerto 80 para que Docker lo pueda mapear
+//});
 
 // Cargar variables del .env
 Env.Load();
@@ -46,12 +46,29 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Swagger solo en entorno de desarrollo
+
+var apiRootPath = EnvironmentConfiguration.GetApiRootPath();
+if (!string.IsNullOrEmpty(apiRootPath))
+{
+    app.UsePathBase(apiRootPath);
+}
+
 if (app.Environment.IsDevelopment())
 {
+
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint($"{apiRootPath}/swagger/v1/swagger.json", "Clientes API V1");
+        c.RoutePrefix = "swagger";  //Se deja esto si quieres acceder mediante /clients/swagger
+    });
 }
+//// Swagger solo en entorno de desarrollo
+//if (app.Environment.IsDevelopment())
+//{
+//    app.UseSwagger();
+//    app.UseSwaggerUI();
+//}
 
 // 🔥 Usar la política de CORS antes de Authorization
 app.UseCors("AllowAllOrigins");
