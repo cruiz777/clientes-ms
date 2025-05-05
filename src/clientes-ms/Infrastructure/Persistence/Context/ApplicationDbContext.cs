@@ -289,10 +289,6 @@ public partial class ApplicationDbContext : DbContext
                 .HasMaxLength(1)
                 .IsUnicode(false)
                 .HasColumnName("marca5");
-            entity.Property(e => e.Ncomercial)
-                .HasMaxLength(300)
-                .IsUnicode(false)
-                .HasColumnName("ncomercial");
             entity.Property(e => e.Nomcli)
                 .HasMaxLength(200)
                 .IsUnicode(false)
@@ -325,6 +321,10 @@ public partial class ApplicationDbContext : DbContext
                 .HasMaxLength(20)
                 .IsUnicode(false)
                 .HasColumnName("telefono1");
+            entity.Property(e => e.Web)
+                .HasMaxLength(300)
+                .IsUnicode(false)
+                .HasColumnName("web");
 
             entity.HasOne(d => d.EmpresaCodigoNavigation).WithMany(p => p.Clientes)
                 .HasForeignKey(d => d.EmpresaCodigo)
@@ -502,9 +502,6 @@ public partial class ApplicationDbContext : DbContext
                 .HasMaxLength(255)
                 .IsUnicode(false)
                 .HasColumnName("email");
-            entity.Property(e => e.EsPrincipal)
-                .HasDefaultValue(false)
-                .HasColumnName("es_principal");
             entity.Property(e => e.IdPersona).HasColumnName("id_persona");
             entity.Property(e => e.Tipo)
                 .HasMaxLength(50)
@@ -525,9 +522,11 @@ public partial class ApplicationDbContext : DbContext
             entity.Property(e => e.IdDatosAdicionales).HasColumnName("id_datos_adicionales");
             entity.Property(e => e.ClientesCodigo).HasColumnName("clientes_codigo");
             entity.Property(e => e.Expprod).HasColumnName("expprod");
-            entity.Property(e => e.Gas1org).HasColumnName("gas1org");
+            entity.Property(e => e.Facebook).HasColumnName("facebook");
             entity.Property(e => e.Gs1ec).HasColumnName("gs1ec");
-            entity.Property(e => e.Gs1latam).HasColumnName("gs1latam");
+            entity.Property(e => e.Instagram).HasColumnName("instagram");
+            entity.Property(e => e.Medico).HasColumnName("medico");
+            entity.Property(e => e.Vendeus).HasColumnName("vendeus");
             entity.Property(e => e.Web)
                 .HasMaxLength(200)
                 .IsUnicode(false)
@@ -1970,9 +1969,6 @@ public partial class ApplicationDbContext : DbContext
             entity.ToTable("telefonos", "seguridades");
 
             entity.Property(e => e.IdTelefono).HasColumnName("id_telefono");
-            entity.Property(e => e.EsPrincipal)
-                .HasDefaultValue(false)
-                .HasColumnName("es_principal");
             entity.Property(e => e.IdPersona).HasColumnName("id_persona");
             entity.Property(e => e.Numero)
                 .HasMaxLength(20)

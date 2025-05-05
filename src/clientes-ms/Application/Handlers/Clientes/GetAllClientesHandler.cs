@@ -49,7 +49,7 @@ public class GetAllClientesHandler : IRequestHandler<GetAllClientesQuery, ApiRes
         Hello = e.Hello ?? string.Empty,
         Desde = e.Desde ?? 0,
         Fechtre = e.Fechtre ?? DateTime.MinValue,
-        Ncomercial = e.Ncomercial ?? string.Empty,
+        Web = e.Web ?? string.Empty,
         Saldo = e.Saldo ?? 0,
         Fecfac = e.Fecfac ?? string.Empty,
         Ciudad = e.Ciudad ?? string.Empty,

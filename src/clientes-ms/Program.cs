@@ -6,6 +6,8 @@ using MicroservicesTemplate.Domain.Repositories;
 using MicroservicesTemplate.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
+//forzar a q salga por ese puerto
+///builder.WebHost.UseUrls("http://localhost:5002");
 
 //builder.WebHost.ConfigureKestrel(options =>
 //{

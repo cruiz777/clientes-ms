@@ -38,7 +38,7 @@ public class CreateClientesHandler : IRequestHandler<CreateClientesCommand, ApiR
                 Hello = request.Request.Hello.Trim(),
                 Desde = request.Request.Desde,
                 Fechtre = request.Request.Fechtre,
-                Ncomercial = request.Request.Ncomercial.Trim(),
+                Web = request.Request.Web.Trim(),
                 Saldo = request.Request.Saldo,
                 Fecfac = request.Request.Fecfac.Trim(),
                 Ciudad = request.Request.Ciudad.Trim(),

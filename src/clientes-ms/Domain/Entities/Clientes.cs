@@ -57,7 +57,7 @@ public partial class Clientes
 
     public DateTime? Fechtre { get; set; }
 
-    public string? Ncomercial { get; set; }
+    public string? Web { get; set; }
 
     public decimal? Saldo { get; set; }
 

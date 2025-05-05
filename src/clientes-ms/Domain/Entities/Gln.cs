@@ -124,6 +124,4 @@ public partial class Gln
     public virtual TipoLocalizacion? IdTipoLocalizacionNavigation { get; set; }
 
     public virtual Usuarios? IdUsuarioNavigation { get; set; }
-
-    
 }

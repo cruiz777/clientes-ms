@@ -13,7 +13,5 @@ public partial class Telefonos
 
     public string Numero { get; set; } = null!;
 
-    public bool? EsPrincipal { get; set; }
-
     public virtual Personas IdPersonaNavigation { get; set; } = null!;
 }

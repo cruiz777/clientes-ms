@@ -38,13 +38,17 @@ namespace clientes_ms.WebApi.Controllers
         }
 
         // GET api/examples/{id}
-        // Obtiene un registro específico por su ID
-        [HttpGet("/{id}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetById(long id)
         {
             var result = await _mediator.Send(new GetClientesByIdQuery(id));
+
+            if (result == null)
+                return NotFound(new { message = "Cliente no encontrado" });
+
             return Ok(result);
         }
+
 
         [HttpGet]
         [Route("/api/ruc")]

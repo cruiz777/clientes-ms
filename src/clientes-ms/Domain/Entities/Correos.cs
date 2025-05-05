@@ -13,7 +13,5 @@ public partial class Correos
 
     public string Email { get; set; } = null!;
 
-    public bool? EsPrincipal { get; set; }
-
     public virtual Personas IdPersonaNavigation { get; set; } = null!;
 }

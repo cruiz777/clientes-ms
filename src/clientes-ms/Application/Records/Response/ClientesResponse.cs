@@ -40,7 +40,7 @@ namespace clientes_ms.Application.Records.Response
 
         public DateTime Fechtre {  get; set; } = DateTime.MinValue;
 
-        public string Ncomercial { get; set; } = string.Empty;
+        public string Web { get; set; } = string.Empty;
         public decimal Saldo { get; set; } = 0;
         public string Fecfac{ get; set; } = string.Empty;
         public string Ciudad {  get; set; } = string.Empty;
@@ -121,7 +121,7 @@ namespace clientes_ms.Application.Records.Response
 
      DateTime Fechtre,
 
-     string Ncomercial,
+     string Web,
 
      decimal Saldo,
 
@@ -198,7 +198,7 @@ namespace clientes_ms.Application.Records.Response
             this.Hello = Hello;
             this.Desde = Desde;
             this.Fechtre = Fechtre;
-            this.Ncomercial = Ncomercial;
+            this.Web = Web;
             this.Saldo = Saldo;
             this.Fecfac = Fecfac;
             this.Ciudad = Ciudad;

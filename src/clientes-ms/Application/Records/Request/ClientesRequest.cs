@@ -33,7 +33,7 @@ namespace clientes_ms.Application.Records.Request
         public string Hello { get; set; } = string.Empty;
         public double Desde { get; set; }
         public DateTime Fechtre { get; set; } = DateTime.MinValue;
-        public string Ncomercial { get; set; } = string.Empty;
+        public string Web { get; set; } = string.Empty;
         public decimal Saldo { get; set; }
         public string Fecfac { get; set; } = string.Empty;
         public string Ciudad { get; set; } = string.Empty;
@@ -112,7 +112,7 @@ namespace clientes_ms.Application.Records.Request
 
     DateTime Fechtre,
 
-     string Ncomercial,
+     string Web,
 
      decimal Saldo,
 
@@ -186,7 +186,7 @@ namespace clientes_ms.Application.Records.Request
             this.Hello = Hello;
             this.Desde = Desde;
             this.Fechtre = Fechtre;
-            this.Ncomercial = Ncomercial;
+            this.Web = Web;
             this.Saldo = Saldo;
             this.Fecfac = Fecfac;
             this.Ciudad = Ciudad;

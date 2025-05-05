@@ -49,7 +49,7 @@ public class UpdateClientesHandler : IRequestHandler<UpdateClientesCommand, ApiR
             existing.Hello = request.Request.Hello.Trim();
             existing.Desde = request.Request.Desde;
             existing.Fechtre = request.Request.Fechtre;
-            existing.Ncomercial = request.Request.Ncomercial.Trim();
+            existing.Web = request.Request.Web.Trim();
             existing.Saldo = request.Request.Saldo;
             existing.Fecfac = request.Request.Fecfac.Trim();
             existing.Ciudad = request.Request.Ciudad.Trim();

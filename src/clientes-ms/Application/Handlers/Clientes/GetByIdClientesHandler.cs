@@ -41,7 +41,7 @@ e.Codcue?.Trim() ?? string.Empty,
 e.Hello?.Trim() ?? string.Empty,
 e.Desde ?? 0,
 e.Fechtre ?? DateTime.MinValue,
-e.Ncomercial?.Trim() ?? string.Empty,
+e.Web?.Trim() ?? string.Empty,
 e.Saldo??0,
 e.Fecfac?.Trim() ?? string.Empty,
 e.Ciudad?.Trim() ?? string.Empty,
@@ -65,8 +65,9 @@ e.IdCiudad ?? 0,
 e.IdZona ?? 0,
 e.IdGrupoEmpresa??0,
 e.Representante?.Trim() ?? string.Empty,
-e.IdZonaNavigation!.Referencia!,
-e.IdEstadoEmpresaNavigation!.Nombre!
+e.IdZonaNavigation?.Referencia ?? string.Empty,
+e.IdEstadoEmpresaNavigation?.Nombre ?? string.Empty
+
 
                 ), "Success");
         }
