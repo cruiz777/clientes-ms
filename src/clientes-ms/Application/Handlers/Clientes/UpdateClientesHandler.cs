@@ -23,58 +23,155 @@ public class UpdateClientesHandler : IRequestHandler<UpdateClientesCommand, ApiR
                 );
             }
 
-            // Solo se actualizan campos permitidos (sin modificar la clave primaria)
-            existing.Nomcli = request.Request.Nomcli.Trim();
-            existing.Dircli = request.Request.Dircli.Trim();
-            existing.Concli = request.Request.Concli.Trim();
-            existing.Email = request.Request.Email.Trim();
-            existing.Telefono = request.Request.Telefono.Trim();
-            existing.Telefono1 = request.Request.Telefono1.Trim();
-            existing.RazonSocial = request.Request.RazonSocial.Trim();
-            existing.Fax = request.Request.Fax.Trim();
-            existing.Ruc = request.Request.Ruc.Trim();
-            existing.Fecing = request.Request.Fecing;
-            existing.Fecnac = request.Request.Fecnac;
-            existing.Fecfac1 = request.Request.Fecfac1;
-            existing.Fecfac2 = request.Request.Fecfac2;
-            existing.Fecfac3 = request.Request.Fecfac3;
-            existing.Fecfac4 = request.Request.Fecfac4;
-            existing.Fecfac5 = request.Request.Fecfac5;
-            existing.Marca1 = request.Request.Marca1.Trim();
-            existing.Marca2 = request.Request.Marca2.Trim();
-            existing.Marca3 = request.Request.Marca3.Trim();
-            existing.Marca4 = request.Request.Marca4.Trim();
-            existing.Marca5 = request.Request.Marca5.Trim();
-            existing.Codcue = request.Request.Codcue.Trim();
-            existing.Hello = request.Request.Hello.Trim();
-            existing.Desde = request.Request.Desde;
-            existing.Fechtre = request.Request.Fechtre;
-            existing.Web = request.Request.Web.Trim();
-            existing.Saldo = request.Request.Saldo;
-            existing.Fecfac = request.Request.Fecfac.Trim();
-            existing.Ciudad = request.Request.Ciudad.Trim();
-            existing.Obs = request.Request.Obs.Trim();
-            existing.Delestado = request.Request.Delestado;
-            existing.Genero = request.Request.Genero.Trim();
-            existing.Infcamahabitacion = request.Request.Infcamahabitacion.Trim();
-            existing.EmpresaCodigo = request.Request.EmpresaCodigo;
-            existing.Seguimiento = request.Request.Seguimiento;
-            existing.Fechaactinact = request.Request.Fechaactinact;
-            existing.IdEstadoEmpresa = request.Request.IdEstadoEmpresa;
-            existing.Formatodocumento = request.Request.Formatodocumento;
-            existing.Imprimeobstramite = request.Request.Imprimeobstramite;
-            existing.IdTipoCliente = request.Request.IdTipoCliente;
-            existing.IdGrupoProducto = request.Request.IdGrupoProducto;
-            existing.IdPersona = request.Request.IdPersona;
-            existing.CodigoPostal = request.Request.CodigoPostal.Trim();
-            existing.CodigoPostal2 = request.Request.CodigoPostal2.Trim();
-            existing.IdVendedor = request.Request.IdVendedor;
-            existing.IdCiudad = request.Request.IdCiudad;
-            existing.IdZona = request.Request.IdZona;
-            existing.IdGrupoEmpresa = request.Request.IdGrupoEmpresa;
-            existing.Representante = request.Request.Representante.Trim();
+            // Condicionales solo si el valor viene definido
+            // Asignaciones condicionales para actualización parcial del cliente
 
+            if (!string.IsNullOrWhiteSpace(request.Request.Nomcli))
+                existing.Nomcli = request.Request.Nomcli.Trim();
 
+            if (!string.IsNullOrWhiteSpace(request.Request.Dircli))
+                existing.Dircli = request.Request.Dircli.Trim();
+
+            if (!string.IsNullOrWhiteSpace(request.Request.Concli))
+                existing.Concli = request.Request.Concli.Trim();
+
+            if (!string.IsNullOrWhiteSpace(request.Request.Email))
+                existing.Email = request.Request.Email.Trim();
+
+            if (!string.IsNullOrWhiteSpace(request.Request.Telefono))
+                existing.Telefono = request.Request.Telefono.Trim();
+
+            if (!string.IsNullOrWhiteSpace(request.Request.Telefono1))
+                existing.Telefono1 = request.Request.Telefono1.Trim();
+
+            if (!string.IsNullOrWhiteSpace(request.Request.RazonSocial))
+                existing.RazonSocial = request.Request.RazonSocial.Trim();
+
+            if (!string.IsNullOrWhiteSpace(request.Request.Fax))
+                existing.Fax = request.Request.Fax.Trim();
+
+            //if (!string.IsNullOrWhiteSpace(request.Request.Ruc))
+            //    existing.Ruc = request.Request.Ruc.Trim();
+
+            //if (request.Request.Fecing.HasValue)
+            //    existing.Fecing = request.Request.Fecing.Value;
+
+            //if (request.Request.Fecnac.HasValue)
+            //    existing.Fecnac = request.Request.Fecnac.Value;
+
+            //if (request.Request.Fecfac1.HasValue)
+            //    existing.Fecfac1 = request.Request.Fecfac1.Value;
+
+            //if (request.Request.Fecfac2.HasValue)
+            //    existing.Fecfac2 = request.Request.Fecfac2.Value;
+
+            //if (request.Request.Fecfac3.HasValue)
+            //    existing.Fecfac3 = request.Request.Fecfac3.Value;
+
+            //if (request.Request.Fecfac4.HasValue)
+            //    existing.Fecfac4 = request.Request.Fecfac4.Value;
+
+            //if (request.Request.Fecfac5.HasValue)
+            //    existing.Fecfac5 = request.Request.Fecfac5.Value;
+
+            //if (!string.IsNullOrWhiteSpace(request.Request.Marca1))
+            //    existing.Marca1 = request.Request.Marca1.Trim();
+
+            //if (!string.IsNullOrWhiteSpace(request.Request.Marca2))
+            //    existing.Marca2 = request.Request.Marca2.Trim();
+
+            //if (!string.IsNullOrWhiteSpace(request.Request.Marca3))
+            //    existing.Marca3 = request.Request.Marca3.Trim();
+
+            //if (!string.IsNullOrWhiteSpace(request.Request.Marca4))
+            //    existing.Marca4 = request.Request.Marca4.Trim();
+
+            //if (!string.IsNullOrWhiteSpace(request.Request.Marca5))
+            //    existing.Marca5 = request.Request.Marca5.Trim();
+
+            //if (!string.IsNullOrWhiteSpace(request.Request.Codcue))
+            //    existing.Codcue = request.Request.Codcue.Trim();
+
+            //if (!string.IsNullOrWhiteSpace(request.Request.Hello))
+            //    existing.Hello = request.Request.Hello.Trim();
+
+            //if (request.Request.Desde.HasValue)
+            //    existing.Desde = request.Request.Desde.Value;
+
+            //if (request.Request.Fechtre.HasValue)
+            //    existing.Fechtre = request.Request.Fechtre.Value;
+
+            if (!string.IsNullOrWhiteSpace(request.Request.Web))
+                existing.Web = request.Request.Web.Trim();
+
+            //if (request.Request.Saldo.HasValue)
+            //    existing.Saldo = request.Request.Saldo.Value;
+
+            //if (!string.IsNullOrWhiteSpace(request.Request.Fecfac))
+            //    existing.Fecfac = request.Request.Fecfac.Trim();
+
+            //if (!string.IsNullOrWhiteSpace(request.Request.Ciudad))
+            //    existing.Ciudad = request.Request.Ciudad.Trim();
+
+            //if (!string.IsNullOrWhiteSpace(request.Request.Obs))
+            //    existing.Obs = request.Request.Obs.Trim();
+
+            //if (request.Request.Delestado.HasValue)
+            //    existing.Delestado = request.Request.Delestado.Value;
+
+            //if (!string.IsNullOrWhiteSpace(request.Request.Genero))
+            //    existing.Genero = request.Request.Genero.Trim();
+
+            //if (!string.IsNullOrWhiteSpace(request.Request.Infcamahabitacion))
+            //    existing.Infcamahabitacion = request.Request.Infcamahabitacion.Trim();
+
+            //if (request.Request.EmpresaCodigo.HasValue)
+            //    existing.EmpresaCodigo = request.Request.EmpresaCodigo.Value;
+
+            //if (request.Request.Seguimiento.HasValue)
+            //    existing.Seguimiento = request.Request.Seguimiento.Value;
+
+            //if (request.Request.Fechaactinact.HasValue)
+            //    existing.Fechaactinact = request.Request.Fechaactinact.Value;
+
+            if (request.Request.IdEstadoEmpresa.HasValue)
+                existing.IdEstadoEmpresa = request.Request.IdEstadoEmpresa.Value;
+
+            //if (request.Request.Formatodocumento.HasValue)
+            //    existing.Formatodocumento = request.Request.Formatodocumento.Value;
+
+            //if (request.Request.Imprimeobstramite.HasValue)
+            //    existing.Imprimeobstramite = request.Request.Imprimeobstramite.Value;
+
+            if (request.Request.IdTipoCliente.HasValue)
+                existing.IdTipoCliente = request.Request.IdTipoCliente.Value;
+
+            if (request.Request.IdGrupoProducto.HasValue)
+                existing.IdGrupoProducto = request.Request.IdGrupoProducto.Value;
+
+            //if (request.Request.IdPersona.HasValue)
+            //    existing.IdPersona = request.Request.IdPersona.Value;
+
+            if (!string.IsNullOrWhiteSpace(request.Request.CodigoPostal))
+                existing.CodigoPostal = request.Request.CodigoPostal.Trim();
+
+            //if (!string.IsNullOrWhiteSpace(request.Request.CodigoPostal2))
+            //    existing.CodigoPostal2 = request.Request.CodigoPostal2.Trim();
+
+            //if (request.Request.IdVendedor.HasValue)
+            //    existing.IdVendedor = request.Request.IdVendedor.Value;
+
+            if (request.Request.IdCiudad.HasValue)
+                existing.IdCiudad = request.Request.IdCiudad.Value;
+
+            if (request.Request.IdZona.HasValue)
+                existing.IdZona = request.Request.IdZona.Value;
+
+            if (request.Request.IdGrupoEmpresa.HasValue)
+                existing.IdGrupoEmpresa = request.Request.IdGrupoEmpresa.Value;
+
+            if (!string.IsNullOrWhiteSpace(request.Request.Representante))
+                existing.Representante = request.Request.Representante.Trim();
 
             await _repository.UpdateAsync(request.IdClientes, existing);
 

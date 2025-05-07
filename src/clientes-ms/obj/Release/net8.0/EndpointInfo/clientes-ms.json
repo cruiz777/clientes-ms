@@ -2311,7 +2311,8 @@
         "properties": {
           "clientesCodigo": {
             "type": "integer",
-            "format": "int64"
+            "format": "int64",
+            "nullable": true
           },
           "nomcli": {
             "type": "string",
@@ -2351,31 +2352,38 @@
           },
           "fecing": {
             "type": "string",
-            "format": "date"
+            "format": "date",
+            "nullable": true
           },
           "fecnac": {
             "type": "string",
-            "format": "date"
+            "format": "date",
+            "nullable": true
           },
           "fecfac1": {
             "type": "string",
-            "format": "date"
+            "format": "date",
+            "nullable": true
           },
           "fecfac2": {
             "type": "string",
-            "format": "date"
+            "format": "date",
+            "nullable": true
           },
           "fecfac3": {
             "type": "string",
-            "format": "date"
+            "format": "date",
+            "nullable": true
           },
           "fecfac4": {
             "type": "string",
-            "format": "date"
+            "format": "date",
+            "nullable": true
           },
           "fecfac5": {
             "type": "string",
-            "format": "date"
+            "format": "date",
+            "nullable": true
           },
           "marca1": {
             "type": "string",
@@ -2407,11 +2415,13 @@
           },
           "desde": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "fechtre": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "nullable": true
           },
           "web": {
             "type": "string",
@@ -2419,7 +2429,8 @@
           },
           "saldo": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "fecfac": {
             "type": "string",
@@ -2435,7 +2446,8 @@
           },
           "delestado": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "genero": {
             "type": "string",
@@ -2447,39 +2459,48 @@
           },
           "empresaCodigo": {
             "type": "integer",
-            "format": "int64"
+            "format": "int64",
+            "nullable": true
           },
           "seguimiento": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "fechaactinact": {
             "type": "string",
-            "format": "date"
+            "format": "date",
+            "nullable": true
           },
           "idEstadoEmpresa": {
             "type": "integer",
-            "format": "int64"
+            "format": "int64",
+            "nullable": true
           },
           "formatodocumento": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "imprimeobstramite": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "idTipoCliente": {
             "type": "integer",
-            "format": "int64"
+            "format": "int64",
+            "nullable": true
           },
           "idGrupoProducto": {
             "type": "integer",
-            "format": "int64"
+            "format": "int64",
+            "nullable": true
           },
           "idPersona": {
             "type": "integer",
-            "format": "int64"
+            "format": "int64",
+            "nullable": true
           },
           "codigoPostal": {
             "type": "string",
@@ -2491,19 +2512,23 @@
           },
           "idVendedor": {
             "type": "integer",
-            "format": "int64"
+            "format": "int64",
+            "nullable": true
           },
           "idCiudad": {
             "type": "integer",
-            "format": "int64"
+            "format": "int64",
+            "nullable": true
           },
           "idZona": {
             "type": "integer",
-            "format": "int64"
+            "format": "int64",
+            "nullable": true
           },
           "idGrupoEmpresa": {
             "type": "integer",
-            "format": "int64"
+            "format": "int64",
+            "nullable": true
           },
           "representante": {
             "type": "string",

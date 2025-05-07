@@ -7,23 +7,23 @@ namespace clientes_ms.Application.Records.Request
     {
       
         
-        public long ClientesCodigo { get; set; } 
-        public string Nomcli { get; set; } = string.Empty;
-        public string Dircli { get; set; } = string.Empty;
-        public string Concli { get; set; } = string.Empty;
-        public string Email { get; set; } = string.Empty;
-        public string Telefono { get; set; } = string.Empty;
-        public string Telefono1 { get; set; } = string.Empty;
-        public string RazonSocial { get; set; } = string.Empty;
-        public string Fax { get; set; } = string.Empty;
-        public string Ruc { get; set; } = string.Empty;
-        public DateOnly Fecing { get; set; }
-        public DateOnly Fecnac { get; set; }
-        public DateOnly Fecfac1 { get; set; }
-        public DateOnly Fecfac2 { get; set; }
-        public DateOnly Fecfac3 { get; set; }
-        public DateOnly Fecfac4 { get; set; }
-        public DateOnly Fecfac5 { get; set; }
+        public long? ClientesCodigo { get; set; } 
+        public string? Nomcli { get; set; } = string.Empty;
+        public string? Dircli { get; set; } = string.Empty;
+        public string? Concli { get; set; } = string.Empty;
+        public string? Email { get; set; } = string.Empty;
+        public string? Telefono { get; set; } = string.Empty;
+        public string? Telefono1 { get; set; } = string.Empty;
+        public string? RazonSocial { get; set; } = string.Empty;
+        public string? Fax { get; set; } = string.Empty;
+        public string? Ruc { get; set; } = string.Empty;
+        public DateOnly? Fecing { get; set; }
+        public DateOnly? Fecnac { get; set; }
+        public DateOnly? Fecfac1 { get; set; }
+        public DateOnly? Fecfac2 { get; set; }
+        public DateOnly? Fecfac3 { get; set; }
+        public DateOnly? Fecfac4 { get; set; }
+        public DateOnly? Fecfac5 { get; set; }
         public string Marca1 { get; set; } = string.Empty;
         public string Marca2 { get; set; } = string.Empty;
         public string Marca3 { get; set; } = string.Empty;
@@ -31,32 +31,32 @@ namespace clientes_ms.Application.Records.Request
         public string Marca5 { get; set; } = string.Empty;
         public string Codcue { get; set; } = string.Empty;
         public string Hello { get; set; } = string.Empty;
-        public double Desde { get; set; }
-        public DateTime Fechtre { get; set; } = DateTime.MinValue;
-        public string Web { get; set; } = string.Empty;
-        public decimal Saldo { get; set; }
-        public string Fecfac { get; set; } = string.Empty;
-        public string Ciudad { get; set; } = string.Empty;
-        public string Obs { get; set; } = string.Empty;
-        public short Delestado { get; set; }
-        public string Genero { get; set; } = string.Empty;
-        public string Infcamahabitacion { get; set; } = string.Empty;
-        public long EmpresaCodigo { get; set; }
-        public short Seguimiento { get; set; }
-        public DateOnly Fechaactinact { get; set; }
-        public long IdEstadoEmpresa { get; set; }
-        public int Formatodocumento { get; set; }
-        public int Imprimeobstramite { get; set; }
-        public long IdTipoCliente { get; set; }
-        public long IdGrupoProducto { get; set; }
-        public long IdPersona { get; set; }
-        public string CodigoPostal { get; set; } = string.Empty;
-        public string CodigoPostal2 { get; set; } = string.Empty;
-        public long IdVendedor { get; set; }
-        public long IdCiudad { get; set; }
-        public long IdZona { get; set; }
-        public long IdGrupoEmpresa { get; set; }
-        public string Representante { get; set; } = string.Empty;
+        public double? Desde { get; set; }
+        public DateTime? Fechtre { get; set; } = DateTime.MinValue;
+        public string? Web { get; set; } = string.Empty;
+        public decimal? Saldo { get; set; }
+        public string? Fecfac { get; set; } = string.Empty;
+        public string? Ciudad { get; set; } = string.Empty;
+        public string? Obs { get; set; } = string.Empty;
+        public short? Delestado { get; set; }
+        public string? Genero { get; set; } = string.Empty;
+        public string? Infcamahabitacion { get; set; } = string.Empty;
+        public long? EmpresaCodigo { get; set; }
+        public short? Seguimiento { get; set; }
+        public DateOnly? Fechaactinact { get; set; }
+        public long? IdEstadoEmpresa { get; set; }
+        public int? Formatodocumento { get; set; }
+        public int? Imprimeobstramite { get; set; }
+        public long? IdTipoCliente { get; set; }
+        public long? IdGrupoProducto { get; set; }
+        public long? IdPersona { get; set; }
+        public string? CodigoPostal { get; set; } = string.Empty;
+        public string? CodigoPostal2 { get; set; } = string.Empty;
+        public long? IdVendedor { get; set; }
+        public long? IdCiudad { get; set; }
+        public long? IdZona { get; set; }
+        public long? IdGrupoEmpresa { get; set; }
+        public string? Representante { get; set; } = string.Empty;
 
 
         public ClientesRequest() { }
