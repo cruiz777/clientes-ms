@@ -1895,7 +1895,7 @@
         }
       }
     },
-    "/api/listado": {
+    "/api/listadotipocliente": {
       "get": {
         "tags": [
           "TipoCliente"

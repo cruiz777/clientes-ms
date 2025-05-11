@@ -840,7 +840,7 @@
   {
     "ContainingType": "clientes_ms.WebApi.Controllers.TipoClienteController",
     "Method": "GetTipoClienteResumen",
-    "RelativePath": "api/listado",
+    "RelativePath": "api/listadotipocliente",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

@@ -29,7 +29,7 @@ namespace clientes_ms.WebApi.Controllers
             return Ok(result); // Devuelve la respuesta con estado 200
         }
         [HttpGet]
-        [Route("/api/listado")]
+        [Route("/api/listadotipocliente")]
         public async Task<IActionResult> GetTipoClienteResumen()
         {
             var result = await _mediator.Send(new GetTipoClienteByResumen()); // Envía la query a su handler correspondiente
