@@ -24,24 +24,60 @@ public class UpdatePrefijosHandler : IRequestHandler<UpdatePrefijosCommand, ApiR
             }
 
             // Solo se actualizan campos permitidos (sin modificar la clave primaria)
-            existing.Codpre = request.Request.Codpre.Trim();
-            existing.Fecha = request.Request.Fecha;
-            existing.FechaCierre = request.Request.FechaCierre;
-            existing.Observacion = request.Request.Observacion.Trim();
-            existing.Digitos = request.Request.Digitos.Trim();
-            existing.Estado = request.Request.Estado;
-            existing.Control = request.Request.Control;
-            existing.Ngln = request.Request.Ngln;
-            existing.Bandera = request.Request.Bandera;
-            existing.Facturar = request.Request.Facturar.Trim();
-            existing.Codpro = request.Request.Codpro.Trim();
-            existing.Nombre = request.Request.Nombre.Trim();
-            existing.Fecfac = request.Request.Fecfac.Trim();
-            existing.ReferenciaInterna = request.Request.ReferenciaInterna.Trim();
-            existing.Prefijosgs1 = request.Request.Prefijosgs1.Trim();
-            existing.OrigenPrefijo=request.Request.OrigenPrefijo.Trim();
-            existing.Orden = request.Request.Orden;
-            existing.ClientesCodigo = request.Request.ClientesCodigo;
+            //if (!string.IsNullOrWhiteSpace(request.Request.Codpre))
+            //    existing.Codpre = request.Request.Codpre.Trim();
+
+            //if (request.Request.Fecha != null)
+            //    existing.Fecha = request.Request.Fecha;
+
+            if (request.Request.FechaCierre != null)
+                existing.FechaCierre = request.Request.FechaCierre;
+
+            if (!string.IsNullOrWhiteSpace(request.Request.Observacion))
+                existing.Observacion = request.Request.Observacion.Trim();
+
+            //if (!string.IsNullOrWhiteSpace(request.Request.Digitos))
+            //    existing.Digitos = request.Request.Digitos.Trim();
+
+            if (request.Request.Estado != null)
+                existing.Estado = request.Request.Estado;
+
+            //if (request.Request.Control != null)
+            //    existing.Control = request.Request.Control;
+
+            //if (request.Request.Ngln != null)
+            //    existing.Ngln = request.Request.Ngln;
+
+            //if (request.Request.Bandera != null)
+            //    existing.Bandera = request.Request.Bandera;
+
+            //if (!string.IsNullOrWhiteSpace(request.Request.Facturar))
+            //    existing.Facturar = request.Request.Facturar.Trim();
+
+            //if (!string.IsNullOrWhiteSpace(request.Request.Codpro))
+            //    existing.Codpro = request.Request.Codpro.Trim();
+
+            //if (!string.IsNullOrWhiteSpace(request.Request.Nombre))
+            //    existing.Nombre = request.Request.Nombre.Trim();
+
+            //if (!string.IsNullOrWhiteSpace(request.Request.Fecfac))
+            //    existing.Fecfac = request.Request.Fecfac.Trim();
+
+            //if (!string.IsNullOrWhiteSpace(request.Request.ReferenciaInterna))
+            //    existing.ReferenciaInterna = request.Request.ReferenciaInterna.Trim();
+
+            //if (!string.IsNullOrWhiteSpace(request.Request.Prefijosgs1))
+            //    existing.Prefijosgs1 = request.Request.Prefijosgs1.Trim();
+
+            //if (!string.IsNullOrWhiteSpace(request.Request.OrigenPrefijo))
+            //    existing.OrigenPrefijo = request.Request.OrigenPrefijo.Trim();
+
+            //if (request.Request.Orden != null)
+            //    existing.Orden = request.Request.Orden;
+
+            if (request.Request.ClientesCodigo != null)
+                existing.ClientesCodigo = request.Request.ClientesCodigo;
+
 
 
             await _repository.UpdateAsync(request.IdPrefijos, existing);

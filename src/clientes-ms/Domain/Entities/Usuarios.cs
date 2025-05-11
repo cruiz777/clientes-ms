@@ -23,6 +23,8 @@ public partial class Usuarios
 
     public long IdDepartamento { get; set; }
 
+    public virtual ICollection<AuditoriaTransferencia> AuditoriaTransferencia { get; set; } = new List<AuditoriaTransferencia>();
+
     public virtual ICollection<Codigos14> Codigos14 { get; set; } = new List<Codigos14>();
 
     public virtual ICollection<Gln> Gln { get; set; } = new List<Gln>();

@@ -43,5 +43,7 @@ public partial class Prefijos
 
     public long? ClientesCodigo { get; set; }
 
+    public virtual ICollection<AuditoriaTransferencia> AuditoriaTransferencia { get; set; } = new List<AuditoriaTransferencia>();
+
     public virtual Clientes? ClientesCodigoNavigation { get; set; }
 }

@@ -19,6 +19,8 @@ namespace clientes_ms.Application.Records.Response
         public long IdEmpresa { get; init; } = 0;
         [JsonPropertyName("empresa")]
         public string Empresa {  get; init; } = string.Empty;
+
+     
         public TipoClienteResponse() { }
         public TipoClienteResponse(long id_tipo_cliente, string descripcion,string cuenta,long id_empresa,bool estado,string empresa)
         {
@@ -28,6 +30,7 @@ namespace clientes_ms.Application.Records.Response
             this.IdEmpresa=id_empresa;
             this.Estado = estado;
             this.Empresa = empresa;
+           
           
         }
     }

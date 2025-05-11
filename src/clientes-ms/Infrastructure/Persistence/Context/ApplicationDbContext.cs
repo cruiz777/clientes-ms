@@ -14,6 +14,8 @@ public partial class ApplicationDbContext : DbContext
 
     public virtual DbSet<Apisexternas> Apisexternas { get; set; }
 
+    public virtual DbSet<AuditoriaTransferencia> AuditoriaTransferencia { get; set; }
+
     public virtual DbSet<Cantones> Cantones { get; set; }
 
     public virtual DbSet<Ciudades> Ciudades { get; set; }
@@ -148,6 +150,42 @@ public partial class ApplicationDbContext : DbContext
             entity.Property(e => e.Urlbase)
                 .HasMaxLength(500)
                 .HasColumnName("urlbase");
+        });
+
+        modelBuilder.Entity<AuditoriaTransferencia>(entity =>
+        {
+            entity.HasKey(e => e.IdTransferenciaPrefijo);
+
+            entity.ToTable("auditoria_transferencia", "sic");
+
+            entity.Property(e => e.IdTransferenciaPrefijo).HasColumnName("id_transferencia_prefijo");
+            entity.Property(e => e.ClientesCodigoDestino).HasColumnName("clientes_codigo_destino");
+            entity.Property(e => e.ClientesCodigoOrigen).HasColumnName("clientes_codigo_origen");
+            entity.Property(e => e.Fecha)
+                .HasColumnType("datetime")
+                .HasColumnName("fecha");
+            entity.Property(e => e.IdPrefijos).HasColumnName("id_prefijos");
+            entity.Property(e => e.IdUsuario).HasColumnName("id_usuario");
+            entity.Property(e => e.Tipo)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("tipo");
+
+            entity.HasOne(d => d.ClientesCodigoDestinoNavigation).WithMany(p => p.AuditoriaTransferenciaClientesCodigoDestinoNavigation)
+                .HasForeignKey(d => d.ClientesCodigoDestino)
+                .HasConstraintName("FK_AuditoriaTransferencia_ClienteDestino");
+
+            entity.HasOne(d => d.ClientesCodigoOrigenNavigation).WithMany(p => p.AuditoriaTransferenciaClientesCodigoOrigenNavigation)
+                .HasForeignKey(d => d.ClientesCodigoOrigen)
+                .HasConstraintName("FK_AuditoriaTransferencia_ClienteOrigen");
+
+            entity.HasOne(d => d.IdPrefijosNavigation).WithMany(p => p.AuditoriaTransferencia)
+                .HasForeignKey(d => d.IdPrefijos)
+                .HasConstraintName("FK_AuditoriaTransferencia_Prefijo");
+
+            entity.HasOne(d => d.IdUsuarioNavigation).WithMany(p => p.AuditoriaTransferencia)
+                .HasForeignKey(d => d.IdUsuario)
+                .HasConstraintName("FK_AuditoriaTransferencia_Usuario");
         });
 
         modelBuilder.Entity<Cantones>(entity =>

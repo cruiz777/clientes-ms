@@ -105,6 +105,10 @@ public partial class Clientes
 
     public string? Representante { get; set; }
 
+    public virtual ICollection<AuditoriaTransferencia> AuditoriaTransferenciaClientesCodigoDestinoNavigation { get; set; } = new List<AuditoriaTransferencia>();
+
+    public virtual ICollection<AuditoriaTransferencia> AuditoriaTransferenciaClientesCodigoOrigenNavigation { get; set; } = new List<AuditoriaTransferencia>();
+
     public virtual Empresas? EmpresaCodigoNavigation { get; set; }
 
     public virtual Ciudades? IdCiudadNavigation { get; set; }

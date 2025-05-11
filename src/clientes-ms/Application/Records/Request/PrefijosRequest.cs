@@ -7,27 +7,25 @@ namespace clientes_ms.Application.Records.Request
     {
         [JsonPropertyName("id_prefijos")]
         public long IdPrefijos { get; set; }
-        [JsonPropertyName("codpre")]
-        public string Codpre { get; set; } = string.Empty;
 
-        public DateOnly Fecha { get; set; } = DateOnly.MinValue;
-
-        public DateTime FechaCierre { get; set; } = DateTime.MinValue;
-        public string Observacion { get; set; } = string.Empty;
-        public string Digitos { get; set; } = string.Empty;
-        public bool Estado { get; set; } =false;
-        public int Control { get; set; } = 0;
-        public int Ngln { get; set; } = 0;
-        public int Bandera { get; set; } = 0;
-        public string Facturar { get; set; } = string.Empty;
-        public string Codpro { get; set; } = string.Empty;
-        public string Nombre { get; set; } = string.Empty;
-        public string Fecfac { get; set; } = string.Empty;
-        public string ReferenciaInterna { get; set; } = string.Empty;
-        public string Prefijosgs1 { get; set; } = string.Empty;
-        public string OrigenPrefijo { get; set; } = string.Empty;
-        public int Orden {  get; set; } = 0;
-        public long ClientesCodigo { get; set; } = 0;
+        public string? Codpre { get; set; }
+        public DateOnly? Fecha { get; set; }
+        public DateTime? FechaCierre { get; set; }
+        public string? Observacion { get; set; }
+        public string? Digitos { get; set; }
+        public bool? Estado { get; set; }
+        public int? Control { get; set; }
+        public int? Ngln { get; set; }
+        public int? Bandera { get; set; }
+        public string? Facturar { get; set; }
+        public string? Codpro { get; set; }
+        public string? Nombre { get; set; }
+        public string? Fecfac { get; set; }
+        public string? ReferenciaInterna { get; set; }
+        public string? Prefijosgs1 { get; set; }
+        public string? OrigenPrefijo { get; set; }
+        public int? Orden { get; set; }
+        public long? ClientesCodigo { get; set; }
         public PrefijosRequest() { }
         public PrefijosRequest(long IdPrefijos, string Codpre, long ClientesCodigo, DateOnly Fecha,
  DateTime FechaCierre, string Observacion, string Digitos,

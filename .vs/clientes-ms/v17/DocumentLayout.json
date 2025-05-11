@@ -3,32 +3,24 @@
   "WorkspaceRootPath": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\handlers\\tipocliente\\getresumentipocliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\handlers\\tipocliente\\getresumentipocliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\handlers\\auditoriatransferencia\\getbyidauditoriatransferenciahandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\handlers\\auditoriatransferencia\\getbyidauditoriatransferenciahandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\wepapi\\controllers\\tipoclientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\wepapi\\controllers\\tipoclientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\handlers\\auditoriatransferencia\\getallauditoriatransferenciahandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\handlers\\auditoriatransferencia\\getallauditoriatransferenciahandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\domain\\entities\\tipocliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\domain\\entities\\tipocliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\wepapi\\controllers\\auditoriatransferencia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\wepapi\\controllers\\auditoriatransferencia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\records\\response\\tipoclienteresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\records\\response\\tipoclienteresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\domain\\entities\\auditoriatransferencia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\domain\\entities\\auditoriatransferencia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\handlers\\tipocliente\\getbyidtipoclientehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\handlers\\tipocliente\\getbyidtipoclientehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\domain\\entities\\empresas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\domain\\entities\\empresas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\handlers\\clientes\\getresumenclienteshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\handlers\\clientes\\getresumenclienteshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\handlers\\auditoriatransferencia\\getresumenauditoriatransferencia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\handlers\\auditoriatransferencia\\getresumenauditoriatransferencia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,92 +30,71 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "TipoClienteController.cs",
-              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\WepApi\\Controllers\\TipoClienteController.cs",
-              "RelativeDocumentMoniker": "src\\clientes-ms\\WepApi\\Controllers\\TipoClienteController.cs",
-              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\WepApi\\Controllers\\TipoClienteController.cs",
-              "RelativeToolTip": "src\\clientes-ms\\WepApi\\Controllers\\TipoClienteController.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAUwB8AAAAnAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "GetByIdAuditoriaTransferenciaHandler.cs",
+              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\AuditoriaTransferencia\\GetByIdAuditoriaTransferenciaHandler.cs",
+              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Handlers\\AuditoriaTransferencia\\GetByIdAuditoriaTransferenciaHandler.cs",
+              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\AuditoriaTransferencia\\GetByIdAuditoriaTransferenciaHandler.cs",
+              "RelativeToolTip": "src\\clientes-ms\\Application\\Handlers\\AuditoriaTransferencia\\GetByIdAuditoriaTransferenciaHandler.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAswBsAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-11T00:06:42.487Z",
+              "WhenOpened": "2025-05-11T07:10:35.213Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GetAllAuditoriaTransferenciaHandler.cs",
+              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\AuditoriaTransferencia\\GetAllAuditoriaTransferenciaHandler.cs",
+              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Handlers\\AuditoriaTransferencia\\GetAllAuditoriaTransferenciaHandler.cs",
+              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\AuditoriaTransferencia\\GetAllAuditoriaTransferenciaHandler.cs",
+              "RelativeToolTip": "src\\clientes-ms\\Application\\Handlers\\AuditoriaTransferencia\\GetAllAuditoriaTransferenciaHandler.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAIAwwCEAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-11T07:09:50.078Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "TipoCliente.cs",
-              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Domain\\Entities\\TipoCliente.cs",
-              "RelativeDocumentMoniker": "src\\clientes-ms\\Domain\\Entities\\TipoCliente.cs",
-              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Domain\\Entities\\TipoCliente.cs",
-              "RelativeToolTip": "src\\clientes-ms\\Domain\\Entities\\TipoCliente.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAxwBUAAAAAAAAAAAAAAA==",
+              "Title": "AuditoriaTransferencia.cs",
+              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\WepApi\\Controllers\\AuditoriaTransferencia.cs",
+              "RelativeDocumentMoniker": "src\\clientes-ms\\WepApi\\Controllers\\AuditoriaTransferencia.cs",
+              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\WepApi\\Controllers\\AuditoriaTransferencia.cs",
+              "RelativeToolTip": "src\\clientes-ms\\WepApi\\Controllers\\AuditoriaTransferencia.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAAAB0AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T23:58:04.044Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "GetByIdTipoClienteHandler.cs",
-              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\TipoCliente\\GetByIdTipoClienteHandler.cs",
-              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Handlers\\TipoCliente\\GetByIdTipoClienteHandler.cs",
-              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\TipoCliente\\GetByIdTipoClienteHandler.cs",
-              "RelativeToolTip": "src\\clientes-ms\\Application\\Handlers\\TipoCliente\\GetByIdTipoClienteHandler.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAADRAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-11T00:01:09.297Z"
+              "WhenOpened": "2025-05-11T07:09:06.788Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "TipoClienteResponse.cs",
-              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Records\\Response\\TipoClienteResponse.cs",
-              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Records\\Response\\TipoClienteResponse.cs",
-              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Records\\Response\\TipoClienteResponse.cs",
-              "RelativeToolTip": "src\\clientes-ms\\Application\\Records\\Response\\TipoClienteResponse.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAgwCIAAAAAAAAAAAAAAA==",
+              "Title": "AuditoriaTransferencia.cs",
+              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Domain\\Entities\\AuditoriaTransferencia.cs",
+              "RelativeDocumentMoniker": "src\\clientes-ms\\Domain\\Entities\\AuditoriaTransferencia.cs",
+              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Domain\\Entities\\AuditoriaTransferencia.cs",
+              "RelativeToolTip": "src\\clientes-ms\\Domain\\Entities\\AuditoriaTransferencia.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T23:56:32.621Z"
+              "WhenOpened": "2025-05-11T07:08:49.046Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Empresas.cs",
-              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Domain\\Entities\\Empresas.cs",
-              "RelativeDocumentMoniker": "src\\clientes-ms\\Domain\\Entities\\Empresas.cs",
-              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Domain\\Entities\\Empresas.cs",
-              "RelativeToolTip": "src\\clientes-ms\\Domain\\Entities\\Empresas.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAgwAUAAAAVAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "GetResumenAuditoriaTransferencia.cs",
+              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\AuditoriaTransferencia\\GetResumenAuditoriaTransferencia.cs",
+              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Handlers\\AuditoriaTransferencia\\GetResumenAuditoriaTransferencia.cs",
+              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\AuditoriaTransferencia\\GetResumenAuditoriaTransferencia.cs",
+              "RelativeToolTip": "src\\clientes-ms\\Application\\Handlers\\AuditoriaTransferencia\\GetResumenAuditoriaTransferencia.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T23:46:08.724Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "GetResumenClientesHandler.cs",
-              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\Clientes\\GetResumenClientesHandler.cs",
-              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Handlers\\Clientes\\GetResumenClientesHandler.cs",
-              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\Clientes\\GetResumenClientesHandler.cs",
-              "RelativeToolTip": "src\\clientes-ms\\Application\\Handlers\\Clientes\\GetResumenClientesHandler.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T23:40:10.568Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "GetResumenTipoCliente.cs",
-              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\TipoCliente\\GetResumenTipoCliente.cs",
-              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Handlers\\TipoCliente\\GetResumenTipoCliente.cs",
-              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\TipoCliente\\GetResumenTipoCliente.cs",
-              "RelativeToolTip": "src\\clientes-ms\\Application\\Handlers\\TipoCliente\\GetResumenTipoCliente.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAcwBEAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T23:18:47.108Z",
+              "WhenOpened": "2025-05-11T07:02:21.675Z",
               "EditorCaption": ""
             }
           ]

@@ -5,6 +5,143 @@
     "version": "1.0"
   },
   "paths": {
+    "/api/AuditoriaTransferencia": {
+      "get": {
+        "tags": [
+          "AuditoriaTransferencia"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "AuditoriaTransferencia"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuditoriaTransferenciaRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuditoriaTransferenciaRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuditoriaTransferenciaRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/listadoAuditoriaTransferencia": {
+      "get": {
+        "tags": [
+          "AuditoriaTransferencia"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/AuditoriaTransferencia/{id}": {
+      "get": {
+        "tags": [
+          "AuditoriaTransferencia"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "AuditoriaTransferencia"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuditoriaTransferenciaRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuditoriaTransferenciaRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuditoriaTransferenciaRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "AuditoriaTransferencia"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Cantones": {
       "get": {
         "tags": [
@@ -2369,6 +2506,45 @@
   },
   "components": {
     "schemas": {
+      "AuditoriaTransferenciaRequest": {
+        "type": "object",
+        "properties": {
+          "id_traferencia_prefijo": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "clientesCodigoOrigen": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "clientesCodigoDestino": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "fecha": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "idPrefijos": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "tipo": {
+            "type": "string",
+            "nullable": true
+          },
+          "idUsuario": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "CantonesRequest": {
         "type": "object",
         "properties": {
@@ -3173,11 +3349,13 @@
           },
           "fecha": {
             "type": "string",
-            "format": "date"
+            "format": "date",
+            "nullable": true
           },
           "fechaCierre": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "nullable": true
           },
           "observacion": {
             "type": "string",
@@ -3188,19 +3366,23 @@
             "nullable": true
           },
           "estado": {
-            "type": "boolean"
+            "type": "boolean",
+            "nullable": true
           },
           "control": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "ngln": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "bandera": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "facturar": {
             "type": "string",
@@ -3232,11 +3414,13 @@
           },
           "orden": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "clientesCodigo": {
             "type": "integer",
-            "format": "int64"
+            "format": "int64",
+            "nullable": true
           }
         },
         "additionalProperties": false
