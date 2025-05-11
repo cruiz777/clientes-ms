@@ -433,7 +433,7 @@
         }
       }
     },
-    "/{id}": {
+    "/api/Clientes/{id}": {
       "get": {
         "tags": [
           "Clientes"
@@ -454,30 +454,7 @@
             "description": "OK"
           }
         }
-      }
-    },
-    "/api/ruc": {
-      "get": {
-        "tags": [
-          "Clientes"
-        ],
-        "parameters": [
-          {
-            "name": "ruc",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Clientes/{id}": {
+      },
       "put": {
         "tags": [
           "Clientes"
@@ -530,6 +507,27 @@
             "schema": {
               "type": "integer",
               "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/ruc": {
+      "get": {
+        "tags": [
+          "Clientes"
+        ],
+        "parameters": [
+          {
+            "name": "ruc",
+            "in": "query",
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -1897,6 +1895,18 @@
         }
       }
     },
+    "/api/listado": {
+      "get": {
+        "tags": [
+          "TipoCliente"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/TipoCliente/{id}": {
       "get": {
         "tags": [
@@ -1962,6 +1972,131 @@
       "delete": {
         "tags": [
           "TipoCliente"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/TipoLocalizacion": {
+      "get": {
+        "tags": [
+          "TipoLocalizacion"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "TipoLocalizacion"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TipoLocalizacionRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TipoLocalizacionRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TipoLocalizacionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/TipoLocalizacion/{id}": {
+      "get": {
+        "tags": [
+          "TipoLocalizacion"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "TipoLocalizacion"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TipoLocalizacionRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TipoLocalizacionRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TipoLocalizacionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "TipoLocalizacion"
         ],
         "parameters": [
           {
@@ -2313,7 +2448,8 @@
         "properties": {
           "clientesCodigo": {
             "type": "integer",
-            "format": "int64"
+            "format": "int64",
+            "nullable": true
           },
           "nomcli": {
             "type": "string",
@@ -2353,31 +2489,38 @@
           },
           "fecing": {
             "type": "string",
-            "format": "date"
+            "format": "date",
+            "nullable": true
           },
           "fecnac": {
             "type": "string",
-            "format": "date"
+            "format": "date",
+            "nullable": true
           },
           "fecfac1": {
             "type": "string",
-            "format": "date"
+            "format": "date",
+            "nullable": true
           },
           "fecfac2": {
             "type": "string",
-            "format": "date"
+            "format": "date",
+            "nullable": true
           },
           "fecfac3": {
             "type": "string",
-            "format": "date"
+            "format": "date",
+            "nullable": true
           },
           "fecfac4": {
             "type": "string",
-            "format": "date"
+            "format": "date",
+            "nullable": true
           },
           "fecfac5": {
             "type": "string",
-            "format": "date"
+            "format": "date",
+            "nullable": true
           },
           "marca1": {
             "type": "string",
@@ -2409,19 +2552,22 @@
           },
           "desde": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "fechtre": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "nullable": true
           },
-          "ncomercial": {
+          "web": {
             "type": "string",
             "nullable": true
           },
           "saldo": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "fecfac": {
             "type": "string",
@@ -2437,7 +2583,8 @@
           },
           "delestado": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "genero": {
             "type": "string",
@@ -2449,39 +2596,48 @@
           },
           "empresaCodigo": {
             "type": "integer",
-            "format": "int64"
+            "format": "int64",
+            "nullable": true
           },
           "seguimiento": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "fechaactinact": {
             "type": "string",
-            "format": "date"
+            "format": "date",
+            "nullable": true
           },
           "idEstadoEmpresa": {
             "type": "integer",
-            "format": "int64"
+            "format": "int64",
+            "nullable": true
           },
           "formatodocumento": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "imprimeobstramite": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "idTipoCliente": {
             "type": "integer",
-            "format": "int64"
+            "format": "int64",
+            "nullable": true
           },
           "idGrupoProducto": {
             "type": "integer",
-            "format": "int64"
+            "format": "int64",
+            "nullable": true
           },
           "idPersona": {
             "type": "integer",
-            "format": "int64"
+            "format": "int64",
+            "nullable": true
           },
           "codigoPostal": {
             "type": "string",
@@ -2493,19 +2649,23 @@
           },
           "idVendedor": {
             "type": "integer",
-            "format": "int64"
+            "format": "int64",
+            "nullable": true
           },
           "idCiudad": {
             "type": "integer",
-            "format": "int64"
+            "format": "int64",
+            "nullable": true
           },
           "idZona": {
             "type": "integer",
-            "format": "int64"
+            "format": "int64",
+            "nullable": true
           },
           "idGrupoEmpresa": {
             "type": "integer",
-            "format": "int64"
+            "format": "int64",
+            "nullable": true
           },
           "representante": {
             "type": "string",
@@ -2844,19 +3004,23 @@
           },
           "inscripcion": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "asignacion": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "mantenimiento": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "fecha": {
             "type": "string",
-            "format": "date"
+            "format": "date",
+            "nullable": true
           },
           "productoInscripcion": {
             "type": "string",
@@ -2872,19 +3036,27 @@
           },
           "asignacionDolar": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "mantenimientoDolar": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "inscripcionDolar": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "valorAnual": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
+          },
+          "estado": {
+            "type": "boolean",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -3120,9 +3292,29 @@
             "type": "string",
             "nullable": true
           },
-          "empresaCodigo": {
+          "idEmpresa": {
             "type": "integer",
             "format": "int64"
+          },
+          "estado": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TipoLocalizacionRequest": {
+        "type": "object",
+        "properties": {
+          "id_tipo_cliente": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "descripcion": {
+            "type": "string",
+            "nullable": true
+          },
+          "estado": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false

@@ -24,19 +24,38 @@ public class UpdateGrupoEmpresaHandler : IRequestHandler<UpdateGrupoEmpresaComma
             }
 
             // Solo se actualizan campos permitidos (sin modificar la clave primaria)
-            existing.Codigo = request.Request.Codigo.Trim();
-            existing.Nombre = request.Request.Nombre.Trim();
-            existing.Inscripcion = request.Request.Inscripcion;
-            existing.Asignacion = request.Request.Asignacion;
-            existing.Mantenimiento = request.Request.Mantenimiento;
-            existing.Fecha = request.Request.Fecha;
-            existing.ProductoInscripcion = request.Request.ProductoInscripcion.Trim();
-            existing.ProductoMantenimiento = request.Request.ProductoMantenimiento.Trim();
-            existing.ProductoAsignacion = request.Request.ProductoAsignacion.Trim();
-            existing.AsignacionDolar = request.Request.AsignacionDolar;
-            existing.MantenimientoDolar = request.Request.MantenimientoDolar;
-            existing.InscripcionDolar = request.Request.InscripcionDolar;
-            existing.ValorAnual = request.Request.ValorAnual;
+            //existing.Codigo = request.Request.Codigo.Trim();
+            //existing.Nombre = request.Request.Nombre.Trim();
+            //existing.Inscripcion = request.Request.Inscripcion;
+            //existing.Asignacion = request.Request.Asignacion;
+            //existing.Mantenimiento = request.Request.Mantenimiento;
+            //existing.Fecha = request.Request.Fecha;
+            //existing.ProductoInscripcion = request.Request.ProductoInscripcion.Trim();
+            //existing.ProductoMantenimiento = request.Request.ProductoMantenimiento.Trim();
+            //existing.ProductoAsignacion = request.Request.ProductoAsignacion.Trim();
+            //existing.AsignacionDolar = request.Request.AsignacionDolar;
+            //existing.MantenimientoDolar = request.Request.MantenimientoDolar;
+            //existing.InscripcionDolar = request.Request.InscripcionDolar;
+            //existing.ValorAnual = request.Request.ValorAnual;
+            //existing.Estado = request.Request.Estado;
+
+            if (request.Request.Asignacion.HasValue)
+                existing.Asignacion = request.Request.Asignacion.Value;
+
+            if (request.Request.Inscripcion.HasValue)
+                existing.Inscripcion = request.Request.Inscripcion.Value;
+
+            if (request.Request.Mantenimiento.HasValue)
+                existing.Mantenimiento = request.Request.Mantenimiento.Value;
+
+            if (request.Request.ValorAnual.HasValue)
+                existing.ValorAnual = request.Request.ValorAnual.Value;
+
+
+            if (request.Request.Fecha.HasValue)
+                existing.Fecha = request.Request.Fecha.Value;
+
+
 
 
             await _repository.UpdateAsync(request.IdGrupoEmpresa, existing);

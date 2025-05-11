@@ -25,6 +25,9 @@ public class UpdateTipoClienteHandler : IRequestHandler<UpdateTipoClienteCommand
 
             // Solo se actualizan campos permitidos (sin modificar la clave primaria)
             existing.Descripcion = request.Request.Descripcion.Trim();
+            existing.Cuenta = request.Request.Cuenta.Trim();
+            existing.Estado = request.Request.Estado;
+            existing.IdEmpresa = request.Request.IdEmpresa;
 
             await _repository.UpdateAsync(request.IdTipoCliente, existing);
 

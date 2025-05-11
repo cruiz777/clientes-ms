@@ -1895,6 +1895,18 @@
         }
       }
     },
+    "/api/listado": {
+      "get": {
+        "tags": [
+          "TipoCliente"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/TipoCliente/{id}": {
       "get": {
         "tags": [
@@ -1960,6 +1972,131 @@
       "delete": {
         "tags": [
           "TipoCliente"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/TipoLocalizacion": {
+      "get": {
+        "tags": [
+          "TipoLocalizacion"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "TipoLocalizacion"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TipoLocalizacionRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TipoLocalizacionRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TipoLocalizacionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/TipoLocalizacion/{id}": {
+      "get": {
+        "tags": [
+          "TipoLocalizacion"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "TipoLocalizacion"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TipoLocalizacionRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TipoLocalizacionRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TipoLocalizacionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "TipoLocalizacion"
         ],
         "parameters": [
           {
@@ -2867,19 +3004,23 @@
           },
           "inscripcion": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "asignacion": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "mantenimiento": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "fecha": {
             "type": "string",
-            "format": "date"
+            "format": "date",
+            "nullable": true
           },
           "productoInscripcion": {
             "type": "string",
@@ -2895,19 +3036,27 @@
           },
           "asignacionDolar": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "mantenimientoDolar": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "inscripcionDolar": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "valorAnual": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
+          },
+          "estado": {
+            "type": "boolean",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -3143,9 +3292,29 @@
             "type": "string",
             "nullable": true
           },
-          "empresaCodigo": {
+          "idEmpresa": {
             "type": "integer",
             "format": "int64"
+          },
+          "estado": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TipoLocalizacionRequest": {
+        "type": "object",
+        "properties": {
+          "id_tipo_cliente": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "descripcion": {
+            "type": "string",
+            "nullable": true
+          },
+          "estado": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false

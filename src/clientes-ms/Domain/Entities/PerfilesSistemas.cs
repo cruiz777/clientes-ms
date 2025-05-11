@@ -13,6 +13,8 @@ public partial class PerfilesSistemas
 
     public DateTime FechaCreacion { get; set; }
 
+    public bool Status { get; set; }
+
     public virtual Perfiles IdPerfilNavigation { get; set; } = null!;
 
     public virtual Sistemas IdSistemaNavigation { get; set; } = null!;

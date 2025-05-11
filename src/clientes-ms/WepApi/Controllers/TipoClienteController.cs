@@ -28,6 +28,13 @@ namespace clientes_ms.WebApi.Controllers
             var result = await _mediator.Send(new GetAllTipoClienteQuery()); // Envía la query a su handler correspondiente
             return Ok(result); // Devuelve la respuesta con estado 200
         }
+        [HttpGet]
+        [Route("/api/listado")]
+        public async Task<IActionResult> GetTipoClienteResumen()
+        {
+            var result = await _mediator.Send(new GetTipoClienteByResumen()); // Envía la query a su handler correspondiente
+            return Ok(result); // Devuelve la respuesta con estado 200
+        }
 
         // GET api/examples/{id}
         // Obtiene un registro específico por su ID

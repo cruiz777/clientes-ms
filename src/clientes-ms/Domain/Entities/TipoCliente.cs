@@ -11,9 +11,11 @@ public partial class TipoCliente
 
     public string? Cuenta { get; set; }
 
-    public long? EmpresaCodigo { get; set; }
+    public long? IdEmpresa { get; set; }
+
+    public bool? Estado { get; set; }
 
     public virtual ICollection<Clientes> Clientes { get; set; } = new List<Clientes>();
 
-    public virtual Empresas? EmpresaCodigoNavigation { get; set; }
+    public virtual Empresas? IdEmpresaNavigation { get; set; }
 }

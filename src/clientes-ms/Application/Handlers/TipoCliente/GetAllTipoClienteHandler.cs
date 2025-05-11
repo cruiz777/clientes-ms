@@ -21,5 +21,6 @@ public class GetAllTipoClienteHandler : IRequestHandler<GetAllTipoClienteQuery, 
         }
     }
 
-    private static TipoClienteResponse MapToResponse(TipoCliente e) => new(e.IdTipoCliente, e.Descripcion?.Trim() ?? string.Empty,e.Cuenta?? string.Empty,e.EmpresaCodigo??0);
+    private static TipoClienteResponse MapToResponse(TipoCliente e) => new(e.IdTipoCliente, e.Descripcion?.Trim() ?? string.Empty,e.Cuenta?? string.Empty,e.IdEmpresa??0,e.Estado??false, e.IdEmpresaNavigation?.Nombre ?? string.Empty
+);
 }

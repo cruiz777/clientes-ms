@@ -28,11 +28,13 @@ namespace clientes_ms.Application.Records.Response
         public double MantenimientoDolar { get; set; } = 0;
         public double InscripcionDolar { get; set; } = 0;
         public double ValorAnual { get; set; } = 0;
+
+        public bool Estado { get; set; } = false;
         public GrupoEmpresaResponse() { }
         public GrupoEmpresaResponse(
 long IdGrupoEmpresa, string Codigo, string Nombre, double Inscripcion, double Asignacion,
 double Mantenimiento, DateOnly Fecha, string ProductoInscripcion, string ProductoMantenimiento,
-string ProductoAsignacion, double AsignacionDolar, double MantenimientoDolar, double InscripcionDolar, double ValorAnual
+string ProductoAsignacion, double AsignacionDolar, double MantenimientoDolar, double InscripcionDolar, double ValorAnual,bool Estado
 )
         {
             this.IdGrupoEmpresa = IdGrupoEmpresa;
@@ -49,6 +51,7 @@ string ProductoAsignacion, double AsignacionDolar, double MantenimientoDolar, do
             this.MantenimientoDolar = MantenimientoDolar;
             this.InscripcionDolar = InscripcionDolar;
             this.ValorAnual = ValorAnual;
+            this.Estado= Estado;
 
         }
     }

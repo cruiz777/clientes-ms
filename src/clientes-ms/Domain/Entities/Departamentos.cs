@@ -9,7 +9,11 @@ public partial class Departamentos
 
     public string? Nombre { get; set; }
 
+    public long? IdEmpresa { get; set; }
+
     public bool Estado { get; set; }
+
+    public virtual Empresas? IdEmpresaNavigation { get; set; }
 
     public virtual ICollection<Usuarios> Usuarios { get; set; } = new List<Usuarios>();
 }

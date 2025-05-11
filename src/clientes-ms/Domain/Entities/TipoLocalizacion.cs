@@ -9,5 +9,7 @@ public partial class TipoLocalizacion
 
     public string? Descripcion { get; set; }
 
+    public bool? Estado { get; set; }
+
     public virtual ICollection<Gln> Gln { get; set; } = new List<Gln>();
 }

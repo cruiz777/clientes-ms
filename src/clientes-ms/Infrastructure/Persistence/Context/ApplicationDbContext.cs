@@ -12,6 +12,8 @@ public partial class ApplicationDbContext : DbContext
     {
     }
 
+    public virtual DbSet<Apisexternas> Apisexternas { get; set; }
+
     public virtual DbSet<Cantones> Cantones { get; set; }
 
     public virtual DbSet<Ciudades> Ciudades { get; set; }
@@ -59,6 +61,8 @@ public partial class ApplicationDbContext : DbContext
     public virtual DbSet<Opciones> Opciones { get; set; }
 
     public virtual DbSet<Paises> Paises { get; set; }
+
+    public virtual DbSet<Parametros> Parametros { get; set; }
 
     public virtual DbSet<Perfiles> Perfiles { get; set; }
 
@@ -122,6 +126,30 @@ public partial class ApplicationDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Apisexternas>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__apisexte__3213E83F3755BE14");
+
+            entity.ToTable("apisexternas", "seguridades");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.ApiKey)
+                .HasMaxLength(200)
+                .HasColumnName("api_key");
+            entity.Property(e => e.Estado)
+                .HasDefaultValue(true)
+                .HasColumnName("estado");
+            entity.Property(e => e.Nombre)
+                .HasMaxLength(100)
+                .HasColumnName("nombre");
+            entity.Property(e => e.Ruta)
+                .HasMaxLength(500)
+                .HasColumnName("ruta");
+            entity.Property(e => e.Urlbase)
+                .HasMaxLength(500)
+                .HasColumnName("urlbase");
+        });
+
         modelBuilder.Entity<Cantones>(entity =>
         {
             entity.HasKey(e => e.IdCanton).HasName("pk_sic_canton");
@@ -541,10 +569,15 @@ public partial class ApplicationDbContext : DbContext
 
             entity.Property(e => e.IdDepartamento).HasColumnName("id_departamento");
             entity.Property(e => e.Estado).HasColumnName("estado");
+            entity.Property(e => e.IdEmpresa).HasColumnName("id_empresa");
             entity.Property(e => e.Nombre)
                 .HasMaxLength(80)
                 .IsUnicode(false)
                 .HasColumnName("nombre");
+
+            entity.HasOne(d => d.IdEmpresaNavigation).WithMany(p => p.Departamentos)
+                .HasForeignKey(d => d.IdEmpresa)
+                .HasConstraintName("FK_departamentos_empresas");
         });
 
         modelBuilder.Entity<Direcciones>(entity =>
@@ -946,6 +979,7 @@ public partial class ApplicationDbContext : DbContext
                 .HasMaxLength(5)
                 .IsUnicode(false)
                 .HasColumnName("codigo");
+            entity.Property(e => e.Estado).HasColumnName("estado");
             entity.Property(e => e.Fecha).HasColumnName("fecha");
             entity.Property(e => e.Inscripcion).HasColumnName("inscripcion");
             entity.Property(e => e.InscripcionDolar).HasColumnName("inscripcion_dolar");
@@ -1146,6 +1180,33 @@ public partial class ApplicationDbContext : DbContext
                 .HasColumnName("nombre");
         });
 
+        modelBuilder.Entity<Parametros>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__parametr__326FD81AA2AC7927");
+
+            entity.ToTable("parametros", "seguridades");
+
+            entity.HasIndex(e => e.Clave, "UQ__parametr__71DCA3DB71E21189").IsUnique();
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Clave)
+                .HasMaxLength(100)
+                .HasColumnName("clave");
+            entity.Property(e => e.Descripcion)
+                .HasMaxLength(255)
+                .HasColumnName("descripcion");
+            entity.Property(e => e.Estado)
+                .HasDefaultValue(true)
+                .HasColumnName("estado");
+            entity.Property(e => e.FechaCreacion)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime")
+                .HasColumnName("fecha_creacion");
+            entity.Property(e => e.Valor)
+                .HasMaxLength(500)
+                .HasColumnName("valor");
+        });
+
         modelBuilder.Entity<Perfiles>(entity =>
         {
             entity.HasKey(e => e.IdPerfil).HasName("PK__perfiles__1D1C87684BC4CDA1");
@@ -1181,14 +1242,13 @@ public partial class ApplicationDbContext : DbContext
 
             entity.ToTable("perfiles_menus", "seguridades");
 
-            entity.Property(e => e.IdPerfilMenu)
-                .ValueGeneratedNever()
-                .HasColumnName("id_perfil_menu");
+            entity.Property(e => e.IdPerfilMenu).HasColumnName("id_perfil_menu");
             entity.Property(e => e.FechaCreacion)
                 .HasColumnType("datetime")
                 .HasColumnName("fecha_creacion");
             entity.Property(e => e.IdMenu).HasColumnName("id_menu");
             entity.Property(e => e.IdPerfil).HasColumnName("id_perfil");
+            entity.Property(e => e.Status).HasColumnName("status");
 
             entity.HasOne(d => d.IdMenuNavigation).WithMany(p => p.PerfilesMenus)
                 .HasForeignKey(d => d.IdMenu)
@@ -1207,14 +1267,13 @@ public partial class ApplicationDbContext : DbContext
 
             entity.ToTable("perfiles_modulos", "seguridades");
 
-            entity.Property(e => e.IdPerfilModulo)
-                .ValueGeneratedNever()
-                .HasColumnName("id_perfil_modulo");
+            entity.Property(e => e.IdPerfilModulo).HasColumnName("id_perfil_modulo");
             entity.Property(e => e.FechaCreacion)
                 .HasColumnType("datetime")
                 .HasColumnName("fecha_creacion");
             entity.Property(e => e.IdModulo).HasColumnName("id_modulo");
             entity.Property(e => e.IdPerfil).HasColumnName("id_perfil");
+            entity.Property(e => e.Status).HasColumnName("status");
 
             entity.HasOne(d => d.IdModuloNavigation).WithMany(p => p.PerfilesModulos)
                 .HasForeignKey(d => d.IdModulo)
@@ -1233,14 +1292,13 @@ public partial class ApplicationDbContext : DbContext
 
             entity.ToTable("perfiles_opciones", "seguridades");
 
-            entity.Property(e => e.IdPerfilOpcion)
-                .ValueGeneratedNever()
-                .HasColumnName("id_perfil_opcion");
+            entity.Property(e => e.IdPerfilOpcion).HasColumnName("id_perfil_opcion");
             entity.Property(e => e.FechaCreacion)
                 .HasColumnType("datetime")
                 .HasColumnName("fecha_creacion");
             entity.Property(e => e.IdOpcion).HasColumnName("id_opcion");
             entity.Property(e => e.IdPerfil).HasColumnName("id_perfil");
+            entity.Property(e => e.Status).HasColumnName("status");
 
             entity.HasOne(d => d.IdOpcionNavigation).WithMany(p => p.PerfilesOpciones)
                 .HasForeignKey(d => d.IdOpcion)
@@ -1265,6 +1323,7 @@ public partial class ApplicationDbContext : DbContext
                 .HasColumnName("fecha_creacion");
             entity.Property(e => e.IdPerfil).HasColumnName("id_perfil");
             entity.Property(e => e.IdSistema).HasColumnName("id_sistema");
+            entity.Property(e => e.Status).HasColumnName("status");
 
             entity.HasOne(d => d.IdPerfilNavigation).WithMany(p => p.PerfilesSistemas)
                 .HasForeignKey(d => d.IdPerfil)
@@ -1286,11 +1345,11 @@ public partial class ApplicationDbContext : DbContext
 
             entity.Property(e => e.IdPersona).HasColumnName("id_persona");
             entity.Property(e => e.Apellido1)
-                .HasMaxLength(100)
+                .HasMaxLength(200)
                 .IsUnicode(false)
                 .HasColumnName("apellido1");
             entity.Property(e => e.Apellido2)
-                .HasMaxLength(100)
+                .HasMaxLength(200)
                 .IsUnicode(false)
                 .HasColumnName("apellido2");
             entity.Property(e => e.Documento)
@@ -1307,11 +1366,11 @@ public partial class ApplicationDbContext : DbContext
             entity.Property(e => e.IdGenero).HasColumnName("id_genero");
             entity.Property(e => e.IdTipoDocumento).HasColumnName("id_tipo_documento");
             entity.Property(e => e.Nombre1)
-                .HasMaxLength(100)
+                .HasMaxLength(200)
                 .IsUnicode(false)
                 .HasColumnName("nombre1");
             entity.Property(e => e.Nombre2)
-                .HasMaxLength(100)
+                .HasMaxLength(200)
                 .IsUnicode(false)
                 .HasColumnName("nombre2");
             entity.Property(e => e.Status).HasColumnName("status");
@@ -1999,10 +2058,11 @@ public partial class ApplicationDbContext : DbContext
                 .HasMaxLength(150)
                 .IsUnicode(false)
                 .HasColumnName("descripcion");
-            entity.Property(e => e.EmpresaCodigo).HasColumnName("empresa_codigo");
+            entity.Property(e => e.Estado).HasColumnName("estado");
+            entity.Property(e => e.IdEmpresa).HasColumnName("id_empresa");
 
-            entity.HasOne(d => d.EmpresaCodigoNavigation).WithMany(p => p.TipoCliente)
-                .HasForeignKey(d => d.EmpresaCodigo)
+            entity.HasOne(d => d.IdEmpresaNavigation).WithMany(p => p.TipoCliente)
+                .HasForeignKey(d => d.IdEmpresa)
                 .HasConstraintName("FK_sic_tipo_cliente_empresa");
         });
 
@@ -2075,6 +2135,7 @@ public partial class ApplicationDbContext : DbContext
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("descripcion");
+            entity.Property(e => e.Estado).HasColumnName("estado");
         });
 
         modelBuilder.Entity<TipoOrigenIngresos>(entity =>

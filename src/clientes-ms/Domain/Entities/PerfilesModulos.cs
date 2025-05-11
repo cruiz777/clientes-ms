@@ -13,6 +13,8 @@ public partial class PerfilesModulos
 
     public DateTime? FechaCreacion { get; set; }
 
+    public bool Status { get; set; }
+
     public virtual Modulos IdModuloNavigation { get; set; } = null!;
 
     public virtual Perfiles IdPerfilNavigation { get; set; } = null!;

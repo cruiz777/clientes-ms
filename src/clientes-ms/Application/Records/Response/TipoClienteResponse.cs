@@ -8,20 +8,26 @@ namespace clientes_ms.Application.Records.Response
     public record TipoClienteResponse
     {
         [JsonPropertyName("id_tipo_cliente")]
-        public long IdTipoCliente { get; set; }
+        public long IdTipoCliente { get; init; }
         [JsonPropertyName("descripcion")]
-        public string Descripcion { get; set; } = string.Empty;
-
-        public string Cuenta { get; set; } = string.Empty;
-
-        public long EmpresaCodigo { get; set; } = 0;
+        public string Descripcion { get; init; } = string.Empty;
+        [JsonPropertyName("cuenta")]
+        public string Cuenta { get; init; } = string.Empty;
+        [JsonPropertyName("estado")]
+        public bool Estado { get; init; } = false;
+        [JsonPropertyName("id_empresa")]
+        public long IdEmpresa { get; init; } = 0;
+        [JsonPropertyName("empresa")]
+        public string Empresa {  get; init; } = string.Empty;
         public TipoClienteResponse() { }
-        public TipoClienteResponse(long id_tipo_cliente, string descripcion,string cuenta,long empresa_codigo)
+        public TipoClienteResponse(long id_tipo_cliente, string descripcion,string cuenta,long id_empresa,bool estado,string empresa)
         {
             this.IdTipoCliente = id_tipo_cliente;
             this.Descripcion = descripcion.Trim();
             this.Cuenta=cuenta.Trim();
-            this.EmpresaCodigo=empresa_codigo;
+            this.IdEmpresa=id_empresa;
+            this.Estado = estado;
+            this.Empresa = empresa;
           
         }
     }

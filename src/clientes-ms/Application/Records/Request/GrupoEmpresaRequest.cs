@@ -10,26 +10,27 @@ namespace clientes_ms.Application.Records.Request
         [JsonPropertyName("codigo")]
         public string Codigo { get; set; } = string.Empty;
 
-        public string Nombre { get; set; } = string.Empty;
+        public string? Nombre { get; set; } = string.Empty;
 
-        public double Inscripcion { get; set; } = 0;
-        public double Asignacion { get; set; } = 0;
-        public double Mantenimiento { get; set; } = 0;
+        public double? Inscripcion { get; set; } = 0;
+        public double? Asignacion { get; set; } = 0;
+        public double? Mantenimiento { get; set; } = 0;
 
-        public DateOnly Fecha { get; set; }
+        public DateOnly? Fecha { get; set; }
 
-        public string ProductoInscripcion { get; set; } = string.Empty;
-        public string ProductoMantenimiento { get; set; } = string.Empty;
-        public string ProductoAsignacion { get; set; } = string.Empty;
-        public double AsignacionDolar { get; set; } = 0;
-        public double MantenimientoDolar { get; set; } = 0;
-        public double InscripcionDolar { get; set; } = 0;
-        public double ValorAnual { get; set; } = 0;
+        public string? ProductoInscripcion { get; set; } = string.Empty;
+        public string? ProductoMantenimiento { get; set; } = string.Empty;
+        public string? ProductoAsignacion { get; set; } = string.Empty;
+        public double? AsignacionDolar { get; set; } = 0;
+        public double? MantenimientoDolar { get; set; } = 0;
+        public double? InscripcionDolar { get; set; } = 0;
+        public double? ValorAnual { get; set; } = 0;
 
+        public bool? Estado { get; set; } = false;
         public GrupoEmpresaRequest() { }
         public GrupoEmpresaRequest(long IdGrupoEmpresa, string Codigo, string Nombre, double Inscripcion, double Asignacion,
 double Mantenimiento, DateOnly Fecha, string ProductoInscripcion, string ProductoMantenimiento,
-string ProductoAsignacion, double AsignacionDolar, double MantenimientoDolar, double InscripcionDolar, double ValorAnual)
+string ProductoAsignacion, double AsignacionDolar, double MantenimientoDolar, double InscripcionDolar, double ValorAnual,bool Estado)
         {
             this.IdGrupoEmpresa = IdGrupoEmpresa;
             this.Codigo = Codigo.Trim();
@@ -45,7 +46,7 @@ string ProductoAsignacion, double AsignacionDolar, double MantenimientoDolar, do
             this.MantenimientoDolar = MantenimientoDolar;
             this.InscripcionDolar = InscripcionDolar;
             this.ValorAnual = ValorAnual;
-
+            this.Estado = Estado;
 
         }
     }

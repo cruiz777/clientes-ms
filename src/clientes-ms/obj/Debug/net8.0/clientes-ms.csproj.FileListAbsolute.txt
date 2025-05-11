@@ -178,3 +178,4 @@ C:\RepositorioGap\ClientesMs\clientes-ms\src\clientes-ms\obj\Debug\net8.0\refint
 C:\RepositorioGap\ClientesMs\clientes-ms\src\clientes-ms\obj\Debug\net8.0\clientes-ms.pdb
 C:\RepositorioGap\ClientesMs\clientes-ms\src\clientes-ms\obj\Debug\net8.0\clientes-ms.genruntimeconfig.cache
 C:\RepositorioGap\ClientesMs\clientes-ms\src\clientes-ms\obj\Debug\net8.0\ref\clientes-ms.dll
+C:\RepositorioGap\ClientesMs\clientes-ms\src\clientes-ms\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

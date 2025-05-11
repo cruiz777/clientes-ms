@@ -14,7 +14,8 @@ public class GetTipoClienteByIdHandler : IRequestHandler<GetTipoClienteByIdQuery
         {
             var e = await _repository.GetByIdAsync(request.Id);
             if (e == null) return new ApiResponse<TipoClienteResponse>(Guid.NewGuid(), "OBJECT", null, $"TipoCliente with ID {request.Id} not found.");
-            return new ApiResponse<TipoClienteResponse>(Guid.NewGuid(), "OBJECT", new TipoClienteResponse(e.IdTipoCliente, e.Descripcion?.Trim() ??string.Empty,e.Cuenta?.Trim()?? string.Empty,  e.EmpresaCodigo??0), "Success");
+            return new ApiResponse<TipoClienteResponse>(Guid.NewGuid(), "OBJECT", new TipoClienteResponse(e.IdTipoCliente, e.Descripcion?.Trim() ??string.Empty,e.Cuenta?.Trim()?? string.Empty,  e.IdEmpresa??0,e.Estado??false, e.IdEmpresaNavigation?.Nombre ?? string.Empty
+), "Success");
         }
         catch (Exception ex)
         {

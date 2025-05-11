@@ -13,6 +13,8 @@ public partial class PerfilesMenus
 
     public DateTime? FechaCreacion { get; set; }
 
+    public bool Status { get; set; }
+
     public virtual Menus IdMenuNavigation { get; set; } = null!;
 
     public virtual Perfiles IdPerfilNavigation { get; set; } = null!;

@@ -12,7 +12,7 @@ public class CreateTipoClienteHandler : IRequestHandler<CreateTipoClienteCommand
     {
         try
         {
-            var entity = new TipoCliente { Descripcion = request.Request.Descripcion.Trim() };
+            var entity = new TipoCliente { Descripcion = request.Request.Descripcion.Trim(),IdEmpresa=request.Request.IdEmpresa,Cuenta=request.Request.Cuenta,Estado=request.Request.Estado };
             await _repository.AddAsync(entity);
             return new ApiResponse<bool>(Guid.NewGuid(), "BOOLEAN", true, "Created successfully");
         }

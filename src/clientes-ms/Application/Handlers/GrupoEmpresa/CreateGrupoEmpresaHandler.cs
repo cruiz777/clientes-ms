@@ -25,7 +25,8 @@ public class CreateGrupoEmpresaHandler : IRequestHandler<CreateGrupoEmpresaComma
                 AsignacionDolar = request.Request.AsignacionDolar,
                 MantenimientoDolar = request.Request.MantenimientoDolar,
                 InscripcionDolar = request.Request.InscripcionDolar,
-                ValorAnual = request.Request.ValorAnual
+                ValorAnual = request.Request.ValorAnual,
+                Estado=request.Request.Estado
             };
             await _repository.AddAsync(entity);
             return new ApiResponse<bool>(Guid.NewGuid(), "BOOLEAN", true, "Created successfully");

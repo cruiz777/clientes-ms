@@ -49,6 +49,8 @@ public partial class Empresas
 
     public virtual ICollection<Contadores> Contadores { get; set; } = new List<Contadores>();
 
+    public virtual ICollection<Departamentos> Departamentos { get; set; } = new List<Departamentos>();
+
     public virtual ICollection<EstadoEmpresa> EstadoEmpresa { get; set; } = new List<EstadoEmpresa>();
 
     public virtual ICollection<Gerentes> Gerentes { get; set; } = new List<Gerentes>();
