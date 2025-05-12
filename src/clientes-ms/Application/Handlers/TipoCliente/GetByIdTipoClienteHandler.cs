@@ -1,6 +1,7 @@
 ﻿using clientes_ms.Application.Records.Response;
 using clientes_ms.Domain.Entities;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using MicroservicesTemplate.Domain.Repositories;
 
 public class GetTipoClienteByIdHandler : IRequestHandler<GetTipoClienteByIdQuery, ApiResponse<TipoClienteResponse>>
@@ -12,10 +13,24 @@ public class GetTipoClienteByIdHandler : IRequestHandler<GetTipoClienteByIdQuery
     {
         try
         {
-            var e = await _repository.GetByIdAsync(request.Id);
-            if (e == null) return new ApiResponse<TipoClienteResponse>(Guid.NewGuid(), "OBJECT", null, $"TipoCliente with ID {request.Id} not found.");
-            return new ApiResponse<TipoClienteResponse>(Guid.NewGuid(), "OBJECT", new TipoClienteResponse(e.IdTipoCliente, e.Descripcion?.Trim() ??string.Empty,e.Cuenta?.Trim()?? string.Empty,  e.IdEmpresa??0,e.Estado??false, e.IdEmpresaNavigation?.Nombre ?? string.Empty
-), "Success");
+            var e = await _repository
+                .AsQueryable()
+                .Include(tc => tc.IdEmpresaNavigation)
+                .FirstOrDefaultAsync(tc => tc.IdTipoCliente == request.Id, cancellationToken);
+
+            if (e == null)
+                return new ApiResponse<TipoClienteResponse>(Guid.NewGuid(), "OBJECT", null, $"TipoCliente with ID {request.Id} not found.");
+
+            var response = new TipoClienteResponse(
+                id_tipo_cliente: e.IdTipoCliente,
+                descripcion: e.Descripcion?.Trim() ?? string.Empty,
+                cuenta: e.Cuenta?.Trim() ?? string.Empty,
+                id_empresa: e.IdEmpresa ?? 1,
+                estado: e.Estado ?? false,
+                empresa: e.IdEmpresaNavigation?.Nombre?.Trim() ?? string.Empty
+            );
+
+            return new ApiResponse<TipoClienteResponse>(Guid.NewGuid(), "OBJECT", response, "Success");
         }
         catch (Exception ex)
         {

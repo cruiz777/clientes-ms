@@ -37,7 +37,8 @@ public class UpdateGrupoEmpresaHandler : IRequestHandler<UpdateGrupoEmpresaComma
             //existing.MantenimientoDolar = request.Request.MantenimientoDolar;
             //existing.InscripcionDolar = request.Request.InscripcionDolar;
             //existing.ValorAnual = request.Request.ValorAnual;
-            //existing.Estado = request.Request.Estado;
+            if(request.Request.Estado.HasValue)    
+                existing.Estado = request.Request.Estado;
 
             if (request.Request.Asignacion.HasValue)
                 existing.Asignacion = request.Request.Asignacion.Value;
