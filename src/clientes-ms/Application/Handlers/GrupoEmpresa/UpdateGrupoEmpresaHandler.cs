@@ -1,12 +1,20 @@
 ﻿using clientes_ms.Application.Records.Response;
 using clientes_ms.Domain.Entities;
+using clientes_ms.Domain.Interfaces.IDomainServices;
 using MediatR;
 using MicroservicesTemplate.Domain.Repositories;
 
 public class UpdateGrupoEmpresaHandler : IRequestHandler<UpdateGrupoEmpresaCommand, ApiResponse<bool>>
 {
     private readonly IBaseRepository<GrupoEmpresa> _repository;
-    public UpdateGrupoEmpresaHandler(IBaseRepository<GrupoEmpresa> repository) => _repository = repository;
+    private readonly IGrupoEmpresaDomainService _domainService;
+    public UpdateGrupoEmpresaHandler(
+        IBaseRepository<GrupoEmpresa> repository,
+        IGrupoEmpresaDomainService domainService)
+    {
+        _repository = repository;
+        _domainService = domainService;
+    }
 
     public async Task<ApiResponse<bool>> Handle(UpdateGrupoEmpresaCommand request, CancellationToken cancellationToken)
     {
@@ -23,6 +31,19 @@ public class UpdateGrupoEmpresaHandler : IRequestHandler<UpdateGrupoEmpresaComma
                 );
             }
 
+            // Validación: Código duplicado (si cambia)
+            if (!string.Equals(existing.Codigo!.Trim(), request.Request.Codigo.Trim(), StringComparison.OrdinalIgnoreCase) &&
+                await _domainService.CodigoYaExisteAsync(request.Request.Codigo, request.IdGrupoEmpresa))
+            {
+                return new ApiResponse<bool>(Guid.NewGuid(), "VALIDATION", false, "Ya existe un grupo empresa con ese código.");
+            }
+
+            // Validación: Nombre duplicado (si cambia)
+            if (!string.Equals(existing.Nombre!.Trim(), request.Request.Nombre!.Trim(), StringComparison.OrdinalIgnoreCase) &&
+                await _domainService.NombreYaExisteAsync(request.Request.Nombre, request.IdGrupoEmpresa))
+            {
+                return new ApiResponse<bool>(Guid.NewGuid(), "VALIDATION", false, "Ya existe un grupo empresa con ese nombre.");
+            }
             // Solo se actualizan campos permitidos (sin modificar la clave primaria)
             //existing.Codigo = request.Request.Codigo.Trim();
             //existing.Nombre = request.Request.Nombre.Trim();
@@ -37,7 +58,7 @@ public class UpdateGrupoEmpresaHandler : IRequestHandler<UpdateGrupoEmpresaComma
             //existing.MantenimientoDolar = request.Request.MantenimientoDolar;
             //existing.InscripcionDolar = request.Request.InscripcionDolar;
             //existing.ValorAnual = request.Request.ValorAnual;
-            if(request.Request.Estado.HasValue)    
+            if (request.Request.Estado.HasValue)    
                 existing.Estado = request.Request.Estado;
 
             if (request.Request.Asignacion.HasValue)

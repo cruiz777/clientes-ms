@@ -4,6 +4,8 @@ using clientes_ms.libs;
 using clientes_ms.Infrastructure.Persistence.Context;
 using MicroservicesTemplate.Domain.Repositories;
 using MicroservicesTemplate.Infrastructure.Repositories;
+using clientes_ms.Domain.Interfaces.IDomainServices;
+using clientes_ms.Domain.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 //forzar a q salga por ese puerto
@@ -26,6 +28,15 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 // Inyectar repositorios genéricos
 builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+
+// Inyectar Servicios de dominio que contienen la lógica de negocio
+#region Inyección de servicios con DIP
+builder.Services.AddScoped<ITipoClienteDomainService, TipoClienteDomainService>();
+builder.Services.AddScoped<IGrupoEmpresaDomainService, GrupoEmpresaDomainService>();
+builder.Services.AddScoped<ITipoLocalizacionDomainService, TipoLocalizacionDomainService>();
+
+
+#endregion
 
 // Cargar MediatR
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
