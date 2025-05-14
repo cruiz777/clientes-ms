@@ -40,6 +40,9 @@ public class GetPrefijosByCodpreHandler : IRequestHandler<GetPefijosByCodpreQuer
                 {
                     IdPrefijos = p.IdPrefijos,
                     Codpre = p.Codpre ?? string.Empty,
+                    Fecha = p.Fecha ?? DateOnly.MinValue,             // ✅ AQUI
+                    FechaCierre = p.FechaCierre ?? DateTime.MinValue, // ✅ AQUI
+                    Estado = p.Estado ?? false,
                     ClientesCodigo = p.ClientesCodigo ?? 0,
                     Nomcli = p.ClientesCodigoNavigation?.Nomcli ?? string.Empty,
                     Gln = g.Gln1 ?? string.Empty,

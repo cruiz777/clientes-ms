@@ -13,9 +13,9 @@ namespace clientes_ms.Application.Records.Response
         [JsonPropertyName("codpre")]
         public string Codpre { get; set; } = string.Empty;
 
-        public DateOnly Fecha { get; set; } =DateOnly.MinValue;
+        public DateOnly Fecha { get; set; } 
 
-        public DateTime FechaCierre { get; set; } = DateTime.MinValue;
+        public DateTime FechaCierre { get; set; } 
         public string Observacion { get; set; } = string.Empty;
         public string Digitos { get; set; } = string.Empty;
         public bool Estado { get; set; } = false;
