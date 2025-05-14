@@ -46,6 +46,15 @@ namespace clientes_ms.WebApi.Controllers
             return Ok(result);
         }
 
+        [HttpGet]
+        [Route("/api/CodpreCliente")]
+        public async Task<IActionResult> GetPrefijosByCodigoClienteQuery(long ClientesCodigo)
+        {
+            var result = await _mediator.Send(new GetPrefijosByCodigoClienteQuery(ClientesCodigo));
+            return Ok(result);
+        }
+
+
 
 
         // GET api/examples/status/{status}

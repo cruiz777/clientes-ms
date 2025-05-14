@@ -22,7 +22,7 @@ namespace clientes_ms.Application.Records.Response
         public string RazonSocial { get; set; } = string.Empty;
         public string Fax { get; set; } = string.Empty;
         public string Ruc { get; set; } = string.Empty;
-        public DateOnly? Fecing { get; set; }=DateOnly.MinValue;
+        public DateOnly? Fecing { get; set; } = DateOnly.MinValue;
         public DateOnly Fecnac { get; set; } = DateOnly.MinValue;
         public DateOnly Fecfac1 { get; set; } = DateOnly.MinValue;
         public DateOnly Fecfac2 { get; set; } = DateOnly.MinValue;
@@ -38,12 +38,12 @@ namespace clientes_ms.Application.Records.Response
         public string Hello { get; set; } = string.Empty;
         public double Desde { get; set; } = 0;
 
-        public DateTime Fechtre {  get; set; } = DateTime.MinValue;
+        public DateTime Fechtre { get; set; } = DateTime.MinValue;
 
         public string Web { get; set; } = string.Empty;
         public decimal Saldo { get; set; } = 0;
-        public string Fecfac{ get; set; } = string.Empty;
-        public string Ciudad {  get; set; } = string.Empty;
+        public string Fecfac { get; set; } = string.Empty;
+        public string Ciudad { get; set; } = string.Empty;
         public string Obs { get; set; } = string.Empty;
         public short Delestado { get; set; } = 0;
         public string Genero { get; set; } = string.Empty;
@@ -63,14 +63,17 @@ namespace clientes_ms.Application.Records.Response
         public long IdCiudad { get; set; } = 0;
         public long IdZona { get; set; } = 0;
         public long IdGrupoEmpresa { get; set; } = 0;
-        public string Representante{ get; set; } = string.Empty;
-        public string ZonaReferencia {  get; set; } = string.Empty;
+        public string Representante { get; set; } = string.Empty;
+        public string ZonaReferencia { get; set; } = string.Empty;
         public string EstadoNombre { get; set; } = string.Empty;
-        public string Prefijo { get; set; } = string.Empty;
+        public string? Prefijo { get; set; } = string.Empty;
+        
+        public DateOnly? Fecmod {  get; set; } = new DateOnly();
+        public string? Usumod {  get; set; } = string.Empty;
         public ClientesResponse() { }
         public ClientesResponse(
-         long    ClientesCodigo ,
-     
+         long ClientesCodigo,
+
      string Nomcli,
 
      string Dircli,
@@ -169,7 +172,9 @@ namespace clientes_ms.Application.Records.Response
 
      string Representante,
      string ZonaReferencia,
-     string EstadoNombre
+     string EstadoNombre,
+     DateOnly Fecmod,
+     string Usumod
 )
         {
             this.ClientesCodigo = ClientesCodigo;
@@ -224,8 +229,8 @@ namespace clientes_ms.Application.Records.Response
             this.Representante = Representante;
             this.ZonaReferencia = ZonaReferencia;
             this.EstadoNombre = EstadoNombre;
-            this.Prefijo = Prefijo;
-
+            this.Fecmod = Fecmod;
+            this.Usumod = Usumod;
         }
     }
 }

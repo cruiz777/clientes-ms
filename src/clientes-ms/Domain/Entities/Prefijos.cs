@@ -46,4 +46,6 @@ public partial class Prefijos
     public virtual ICollection<AuditoriaTransferencia> AuditoriaTransferencia { get; set; } = new List<AuditoriaTransferencia>();
 
     public virtual Clientes? ClientesCodigoNavigation { get; set; }
+
+    public virtual ICollection<Gln> Gln { get; set; } = new List<Gln>();
 }

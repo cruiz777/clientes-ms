@@ -173,6 +173,14 @@ public class UpdateClientesHandler : IRequestHandler<UpdateClientesCommand, ApiR
             if (!string.IsNullOrWhiteSpace(request.Request.Representante))
                 existing.Representante = request.Request.Representante.Trim();
 
+            if (request.Request.Fecmod.HasValue)
+            {
+                existing.Fecmod = request.Request.Fecmod;
+            }
+
+            if (!string.IsNullOrWhiteSpace(request.Request.Usumod))
+                existing.Usumod = request.Request.Usumod.Trim();
+
             await _repository.UpdateAsync(request.IdClientes, existing);
 
             return new ApiResponse<bool>(

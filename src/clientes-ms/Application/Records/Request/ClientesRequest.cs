@@ -58,6 +58,10 @@ namespace clientes_ms.Application.Records.Request
         public long? IdGrupoEmpresa { get; set; }
         public string? Representante { get; set; } = string.Empty;
 
+        public DateOnly? Fecmod   { get; set; }
+
+        public string? Usumod { get; set; }
+
 
         public ClientesRequest() { }
         public ClientesRequest(long ClientesCodigo ,
@@ -158,7 +162,9 @@ namespace clientes_ms.Application.Records.Request
 
      long IdGrupoEmpresa,
 
-     string Representante)
+     string Representante,
+     DateOnly Fecmod,
+     string Usumod)
         {
             this.ClientesCodigo = ClientesCodigo;
             this.Nomcli = Nomcli;
@@ -210,6 +216,8 @@ namespace clientes_ms.Application.Records.Request
             this.IdZona = IdZona;
             this.IdGrupoEmpresa = IdGrupoEmpresa;
             this.Representante = Representante;
+            this.Fecmod = Fecmod;
+            this.Usumod = Usumod;
 
 
 

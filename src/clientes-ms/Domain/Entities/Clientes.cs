@@ -105,11 +105,19 @@ public partial class Clientes
 
     public string? Representante { get; set; }
 
+    public DateOnly? Fecmod { get; set; }
+
+    public string? Usumod { get; set; }
+
     public virtual ICollection<AuditoriaTransferencia> AuditoriaTransferenciaClientesCodigoDestinoNavigation { get; set; } = new List<AuditoriaTransferencia>();
 
     public virtual ICollection<AuditoriaTransferencia> AuditoriaTransferenciaClientesCodigoOrigenNavigation { get; set; } = new List<AuditoriaTransferencia>();
 
     public virtual Empresas? EmpresaCodigoNavigation { get; set; }
+
+    public virtual ICollection<Gln> Gln { get; set; } = new List<Gln>();
+
+    public virtual ICollection<HistorialCliente> HistorialCliente { get; set; } = new List<HistorialCliente>();
 
     public virtual Ciudades? IdCiudadNavigation { get; set; }
 

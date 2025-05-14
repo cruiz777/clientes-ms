@@ -1470,6 +1470,153 @@
         }
       }
     },
+    "/api/HistorialCliente": {
+      "get": {
+        "tags": [
+          "HistorialCliente"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "HistorialCliente"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HistorialClienteRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HistorialClienteRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/HistorialClienteRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/listadoHistorialcliente": {
+      "get": {
+        "tags": [
+          "HistorialCliente"
+        ],
+        "parameters": [
+          {
+            "name": "clientesCodigo",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/HistorialCliente/{id}": {
+      "get": {
+        "tags": [
+          "HistorialCliente"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "HistorialCliente"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HistorialClienteRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HistorialClienteRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/HistorialClienteRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "HistorialCliente"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/NumeroControl": {
       "get": {
         "tags": [
@@ -1731,6 +1878,28 @@
             "in": "query",
             "schema": {
               "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/CodpreCliente": {
+      "get": {
+        "tags": [
+          "Prefijos"
+        ],
+        "parameters": [
+          {
+            "name": "ClientesCodigo",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
             }
           }
         ],
@@ -2846,6 +3015,15 @@
           "representante": {
             "type": "string",
             "nullable": true
+          },
+          "fecmod": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "usumod": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -3299,6 +3477,36 @@
           "desBricking": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "HistorialClienteRequest": {
+        "type": "object",
+        "properties": {
+          "id_historial_cliente": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "id_usuario": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "nombre_usuario": {
+            "type": "string",
+            "nullable": true
+          },
+          "fecha": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "descripcion": {
+            "type": "string",
+            "nullable": true
+          },
+          "clientes_codigo": {
+            "type": "integer",
+            "format": "int64"
           }
         },
         "additionalProperties": false
