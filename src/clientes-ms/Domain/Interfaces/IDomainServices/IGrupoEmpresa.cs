@@ -16,5 +16,10 @@ namespace clientes_ms.Domain.Interfaces.IDomainServices
         /// Verifica si el nombre ya existe, excluyendo opcionalmente un ID.
         /// </summary>
         Task<bool> NombreYaExisteAsync(string nombre, long? idIgnorar = null);
+       
+        /// <summary>
+        /// Verifica si se puede desactivar un grupo de clientes que este atado a un cliente.
+        /// </summary>
+        Task<bool> PuedeDesactivarseAsync(long idGrupoEmpresa);
     }
 }

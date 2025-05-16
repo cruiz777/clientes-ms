@@ -57,7 +57,15 @@ namespace clientes_ms.Application.Records.Request
         public long? IdZona { get; set; }
         public long? IdGrupoEmpresa { get; set; }
         public string? Representante { get; set; } = string.Empty;
+        [JsonPropertyName("fechaCeseAct")]
+        public string? FechaCeseAct { get; set; }
 
+        [JsonPropertyName("motivoCeseAct")]
+        public string? MotivoCeseAct { get; set; }
+
+        [JsonIgnore]
+        public DateOnly? FechaCeseActParsed =>
+            DateOnly.TryParse(FechaCeseAct, out var date) ? date : null;
 
         public ClientesRequest() { }
         public ClientesRequest(long ClientesCodigo ,
@@ -83,6 +91,7 @@ namespace clientes_ms.Application.Records.Request
      DateOnly Fecing,
 
      DateOnly Fecnac,
+     DateOnly? FechaCeseAct,
 
      DateOnly Fecfac1,
 
@@ -93,7 +102,7 @@ namespace clientes_ms.Application.Records.Request
      DateOnly Fecfac4,
 
      DateOnly Fecfac5,
-
+     string? MotivoCeseAct,
      string Marca1,
 
      string Marca2,
@@ -172,6 +181,8 @@ namespace clientes_ms.Application.Records.Request
             this.Ruc = Ruc;
             this.Fecing = Fecing;
             this.Fecnac = Fecnac;
+            this.FechaCeseAct = FechaCeseAct?.ToString("yyyy-MM-dd");
+            this.MotivoCeseAct = MotivoCeseAct;
             this.Fecfac1 = Fecfac1;
             this.Fecfac2 = Fecfac2;
             this.Fecfac3 = Fecfac3;

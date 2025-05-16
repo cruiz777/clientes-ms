@@ -29,7 +29,7 @@ namespace clientes_ms.Application.Records.Response
         public double InscripcionDolar { get; set; } = 0;
         public double ValorAnual { get; set; } = 0;
 
-        public bool Estado { get; set; } = false;
+        public bool? Estado { get; set; } = false;
         public GrupoEmpresaResponse() { }
         public GrupoEmpresaResponse(
 long IdGrupoEmpresa, string Codigo, string Nombre, double Inscripcion, double Asignacion,

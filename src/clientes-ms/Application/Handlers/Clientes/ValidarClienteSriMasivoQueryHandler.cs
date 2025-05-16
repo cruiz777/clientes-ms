@@ -2,10 +2,10 @@
 using clientes_ms.Application.Queries.Clientes;
 using clientes_ms.Application.Records.Response;
 using clientes_ms.Domain.Entities;
-using clientes_ms.Domain.Interfaces;
 using clientes_ms.Domain.Interfaces.IDomainServices;
 using MediatR;
 using MicroservicesTemplate.Domain.Repositories;
+using System.Text.RegularExpressions;
 
 namespace clientes_ms.Application.Handlers.Cliente
 {
@@ -24,28 +24,38 @@ namespace clientes_ms.Application.Handlers.Cliente
 
         public async Task<ApiResponse<List<ClienteValidadoResultadoDTO>>> Handle(ValidarClientesSriMasivoQuery request, CancellationToken cancellationToken)
         {
-            var resultados = new List<ClienteValidadoResultadoDTO>();
-
             try
             {
-                // Recorremos cada ID recibido
+                // 1. Carga SECUNCIAL de los clientes válidos (solo acceso a DbContext aquí)
+                var clientesValidos = new List<(long Id, string Ruc)>();
+
                 foreach (var id in request.ClienteIds)
                 {
                     var cliente = await _repository.GetByIdAsync(id);
-                    if (cliente == null || string.IsNullOrEmpty(cliente.Ruc))
+                    if (cliente == null || string.IsNullOrWhiteSpace(cliente.Ruc))
                         continue;
 
-                    var validado = await _clienteDomainService.ValidarClienteDesdeSriAsync(cliente.Ruc);
-                    if (validado != null)
+                    var ruc = cliente.Ruc.Trim();
+                    if (Regex.IsMatch(ruc, @"^\d{13}$"))
                     {
-                        resultados.Add(new ClienteValidadoResultadoDTO(id, validado));
+                        clientesValidos.Add((id, ruc));
                     }
                 }
+
+                // 2. Validación en paralelo SOLO al servicio del SRI
+                var tareas = clientesValidos.Select(async c =>
+                {
+                    var validado = await _clienteDomainService.ValidarClienteDesdeSriAsync(c.Ruc);
+                    return validado != null ? new ClienteValidadoResultadoDTO(c.Id, validado) : null;
+                });
+
+                var resultadosParciales = await Task.WhenAll(tareas);
+                var resultados = resultadosParciales.Where(r => r != null).ToList();
 
                 return new ApiResponse<List<ClienteValidadoResultadoDTO>>(
                     Guid.NewGuid(),
                     "SUCCESS",
-                    resultados,
+                    resultados!,
                     "Clientes validados correctamente",
                     resultados.Count);
             }
@@ -55,8 +65,9 @@ namespace clientes_ms.Application.Handlers.Cliente
                     Guid.NewGuid(),
                     "ERROR",
                     null,
-                    $"Ocurrió un error durante el barrido: {ex.Message}");
+                    $"Ocurrió un error durante la validación masiva: {ex.Message}");
             }
         }
+
     }
 }

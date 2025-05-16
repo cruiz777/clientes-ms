@@ -35,6 +35,8 @@ public class GetAllClientesHandler : IRequestHandler<GetAllClientesQuery, ApiRes
         Ruc = e.Ruc ?? string.Empty,
         Fecing = e.Fecing ?? DateOnly.MinValue,
         Fecnac = e.Fecnac ?? DateOnly.MinValue,
+        FecCeseAct = e.FechaCeseAct ?? DateOnly.MinValue,
+        MotivoCeseAct = e.MotivoCeseAct ?? string.Empty,
         Fecfac1 = e.Fecfac1 ?? DateOnly.MinValue,
         Fecfac2 = e.Fecfac2 ?? DateOnly.MinValue,
         Fecfac3 = e.Fecfac3 ?? DateOnly.MinValue,

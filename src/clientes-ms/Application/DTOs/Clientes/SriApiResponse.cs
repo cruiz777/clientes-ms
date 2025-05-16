@@ -19,7 +19,7 @@
         public string agenteRetencion { get; set; } = string.Empty;
         public string contribuyenteEspecial { get; set; } = string.Empty;
 
-        public InformacionFechasContribuyente informacionFechasContribuyente { get; set; } 
+        public InformacionFechasContribuyente? informacionFechasContribuyente { get; set; } 
         public List<RepresentanteLegal>? representantesLegales { get; set; }
         public string? motivoCancelacionSuspension { get; set; }
 

@@ -54,6 +54,8 @@ public partial class ApplicationDbContext : DbContext
 
     public virtual DbSet<GrupoProducto> GrupoProducto { get; set; }
 
+    public virtual DbSet<HistorialCliente> HistorialCliente { get; set; }
+
     public virtual DbSet<Menus> Menus { get; set; }
 
     public virtual DbSet<Modulos> Modulos { get; set; }
@@ -307,11 +309,13 @@ public partial class ApplicationDbContext : DbContext
             entity.Property(e => e.Fecfac3).HasColumnName("fecfac3");
             entity.Property(e => e.Fecfac4).HasColumnName("fecfac4");
             entity.Property(e => e.Fecfac5).HasColumnName("fecfac5");
+            entity.Property(e => e.FechaCeseAct).HasColumnName("fecha_cese_act");
             entity.Property(e => e.Fechaactinact).HasColumnName("fechaactinact");
             entity.Property(e => e.Fechtre)
                 .HasColumnType("datetime")
                 .HasColumnName("fechtre");
             entity.Property(e => e.Fecing).HasColumnName("fecing");
+            entity.Property(e => e.Fecmod).HasColumnName("fecmod");
             entity.Property(e => e.Fecnac).HasColumnName("fecnac");
             entity.Property(e => e.Formatodocumento).HasColumnName("formatodocumento");
             entity.Property(e => e.Genero)
@@ -355,6 +359,10 @@ public partial class ApplicationDbContext : DbContext
                 .HasMaxLength(1)
                 .IsUnicode(false)
                 .HasColumnName("marca5");
+            entity.Property(e => e.MotivoCeseAct)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("motivo_cese_act");
             entity.Property(e => e.Nomcli)
                 .HasMaxLength(200)
                 .IsUnicode(false)
@@ -387,6 +395,10 @@ public partial class ApplicationDbContext : DbContext
                 .HasMaxLength(20)
                 .IsUnicode(false)
                 .HasColumnName("telefono1");
+            entity.Property(e => e.Usumod)
+                .HasMaxLength(150)
+                .IsUnicode(false)
+                .HasColumnName("usumod");
             entity.Property(e => e.Web)
                 .HasMaxLength(300)
                 .IsUnicode(false)
@@ -606,6 +618,10 @@ public partial class ApplicationDbContext : DbContext
             entity.ToTable("departamentos", "seguridades");
 
             entity.Property(e => e.IdDepartamento).HasColumnName("id_departamento");
+            entity.Property(e => e.Cuenta)
+                .HasMaxLength(10)
+                .IsUnicode(false)
+                .HasColumnName("cuenta");
             entity.Property(e => e.Estado).HasColumnName("estado");
             entity.Property(e => e.IdEmpresa).HasColumnName("id_empresa");
             entity.Property(e => e.Nombre)
@@ -987,6 +1003,11 @@ public partial class ApplicationDbContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("web");
 
+            entity.HasOne(d => d.ClientesCodigoNavigation).WithMany(p => p.Gln)
+                .HasForeignKey(d => d.ClientesCodigo)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Gln_Clientes");
+
             entity.HasOne(d => d.IdCiudadNavigation).WithMany(p => p.Gln)
                 .HasForeignKey(d => d.IdCiudad)
                 .HasConstraintName("FK_sic_gln_sic_ciudad");
@@ -994,6 +1015,11 @@ public partial class ApplicationDbContext : DbContext
             entity.HasOne(d => d.IdPaisNavigation).WithMany(p => p.Gln)
                 .HasForeignKey(d => d.IdPais)
                 .HasConstraintName("FK_sic_gln_sic_pais");
+
+            entity.HasOne(d => d.IdPrefijosNavigation).WithMany(p => p.Gln)
+                .HasForeignKey(d => d.IdPrefijos)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Gln_Prefijos");
 
             entity.HasOne(d => d.IdTipoLocalizacionNavigation).WithMany(p => p.Gln)
                 .HasForeignKey(d => d.IdTipoLocalizacion)
@@ -1105,6 +1131,44 @@ public partial class ApplicationDbContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("segmento");
+        });
+
+        modelBuilder.Entity<HistorialCliente>(entity =>
+        {
+            entity.HasKey(e => e.IdHistorialCliente);
+
+            entity.ToTable("historial_cliente", "sic");
+
+            entity.Property(e => e.IdHistorialCliente).HasColumnName("id_historial_cliente");
+            entity.Property(e => e.ClientesCodigo).HasColumnName("clientes_codigo");
+            entity.Property(e => e.Descripcion)
+                .IsUnicode(false)
+                .HasColumnName("descripcion");
+            entity.Property(e => e.Fecha)
+                .HasColumnType("datetime")
+                .HasColumnName("fecha");
+            entity.Property(e => e.IdEmpresa).HasColumnName("id_empresa");
+            entity.Property(e => e.IdUsuario).HasColumnName("id_usuario");
+            entity.Property(e => e.NombreUsuario)
+                .HasMaxLength(150)
+                .IsUnicode(false)
+                .HasColumnName("nombre_usuario");
+            entity.Property(e => e.Tabla)
+                .HasMaxLength(150)
+                .IsUnicode(false)
+                .HasColumnName("tabla");
+            entity.Property(e => e.TipoAccion)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("tipo_accion");
+
+            entity.HasOne(d => d.ClientesCodigoNavigation).WithMany(p => p.HistorialCliente)
+                .HasForeignKey(d => d.ClientesCodigo)
+                .HasConstraintName("FK_Historial_Clientes");
+
+            entity.HasOne(d => d.IdEmpresaNavigation).WithMany(p => p.HistorialCliente)
+                .HasForeignKey(d => d.IdEmpresa)
+                .HasConstraintName("FK_Historial_empresa");
         });
 
         modelBuilder.Entity<Menus>(entity =>
@@ -2101,7 +2165,7 @@ public partial class ApplicationDbContext : DbContext
 
             entity.HasOne(d => d.IdEmpresaNavigation).WithMany(p => p.TipoCliente)
                 .HasForeignKey(d => d.IdEmpresa)
-                .HasConstraintName("FK_sic_tipo_cliente_empresa");
+                .HasConstraintName("FK_tipo_cliente_nueva_empresa");
         });
 
         modelBuilder.Entity<TipoCodigoGs1>(entity =>

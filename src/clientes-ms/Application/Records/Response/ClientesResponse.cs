@@ -24,6 +24,8 @@ namespace clientes_ms.Application.Records.Response
         public string Ruc { get; set; } = string.Empty;
         public DateOnly? Fecing { get; set; }=DateOnly.MinValue;
         public DateOnly Fecnac { get; set; } = DateOnly.MinValue;
+        public DateOnly? FecCeseAct { get; set; } = DateOnly.MinValue;
+        public string? MotivoCeseAct { get; set; } = string.Empty;
         public DateOnly Fecfac1 { get; set; } = DateOnly.MinValue;
         public DateOnly Fecfac2 { get; set; } = DateOnly.MinValue;
         public DateOnly Fecfac3 { get; set; } = DateOnly.MinValue;
@@ -92,6 +94,7 @@ namespace clientes_ms.Application.Records.Response
      DateOnly Fecing,
 
      DateOnly Fecnac,
+     DateOnly? FecCeseAct,
 
      DateOnly Fecfac1,
 
@@ -102,7 +105,7 @@ namespace clientes_ms.Application.Records.Response
      DateOnly Fecfac4,
 
      DateOnly Fecfac5,
-
+     string? MotivoCeseAct,
      string Marca1,
 
      string Marca2,
@@ -184,6 +187,8 @@ namespace clientes_ms.Application.Records.Response
             this.Ruc = Ruc;
             this.Fecing = Fecing;
             this.Fecnac = Fecnac;
+            this.FecCeseAct = FecCeseAct;
+            this.MotivoCeseAct = MotivoCeseAct;
             this.Fecfac1 = Fecfac1;
             this.Fecfac2 = Fecfac2;
             this.Fecfac3 = Fecfac3;

@@ -1,21 +1,20 @@
 ﻿using clientes_ms.Application.DTOs.Clientes;
 using clientes_ms.Application.Queries.Clientes;
 using clientes_ms.Application.Records.Response;
-using clientes_ms.Domain.Entities;
-using clientes_ms.Domain.Interfaces;
 using clientes_ms.Domain.Interfaces.IDomainServices;
 using MediatR;
 using MicroservicesTemplate.Domain.Repositories;
+using System.Text.RegularExpressions;
 
 namespace clientes_ms.Application.Handlers.Cliente
 {
     public class ValidarClienteSriQueryHandler : IRequestHandler<ValidarClienteSriQuery, ApiResponse<ClienteValidadoDTO>>
     {
-        private readonly IBaseRepository<Clientes> _repository;
+        private readonly IBaseRepository<clientes_ms.Domain.Entities.Clientes> _repository;
         private readonly IClienteDomainService _clienteDomainService;
 
         public ValidarClienteSriQueryHandler(
-            IBaseRepository<Clientes> repository,
+            IBaseRepository<clientes_ms.Domain.Entities.Clientes> repository,
             IClienteDomainService clienteDomainService)
         {
             _repository = repository;
@@ -26,7 +25,6 @@ namespace clientes_ms.Application.Handlers.Cliente
         {
             try
             {
-                // Buscar cliente en base por ID
                 var cliente = await _repository.GetByIdAsync(request.ClienteId);
                 if (cliente == null)
                 {
@@ -37,8 +35,16 @@ namespace clientes_ms.Application.Handlers.Cliente
                         "Cliente no encontrado");
                 }
 
-                // Llamar servicio de dominio que consulta el SRI
-                var resultado = await _clienteDomainService.ValidarClienteDesdeSriAsync(cliente.Ruc ?? string.Empty);
+                if (string.IsNullOrWhiteSpace(cliente.Ruc) || !Regex.IsMatch(cliente.Ruc, @"^\d{13}$"))
+                {
+                    return new ApiResponse<ClienteValidadoDTO>(
+                        Guid.NewGuid(),
+                        "INVALID_RUC",
+                        null,
+                        "El RUC no es válido. Debe tener exactamente 13 dígitos numéricos.");
+                }
+
+                var resultado = await _clienteDomainService.ValidarClienteDesdeSriAsync(cliente.Ruc);
                 if (resultado == null)
                 {
                     return new ApiResponse<ClienteValidadoDTO>(
@@ -48,7 +54,6 @@ namespace clientes_ms.Application.Handlers.Cliente
                         "No se pudo validar con el SRI");
                 }
 
-                // Devolver resultado exitoso
                 return new ApiResponse<ClienteValidadoDTO>(
                     Guid.NewGuid(),
                     "SUCCESS",

@@ -2923,6 +2923,14 @@
           "representante": {
             "type": "string",
             "nullable": true
+          },
+          "fechaCeseAct": {
+            "type": "string",
+            "nullable": true
+          },
+          "motivoCeseAct": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -3308,8 +3316,7 @@
             "nullable": true
           },
           "estado": {
-            "type": "boolean",
-            "nullable": true
+            "type": "boolean"
           }
         },
         "additionalProperties": false

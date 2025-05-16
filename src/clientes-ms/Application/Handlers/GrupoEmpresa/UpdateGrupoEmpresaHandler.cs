@@ -44,6 +44,20 @@ public class UpdateGrupoEmpresaHandler : IRequestHandler<UpdateGrupoEmpresaComma
             {
                 return new ApiResponse<bool>(Guid.NewGuid(), "VALIDATION", false, "Ya existe un grupo empresa con ese nombre.");
             }
+            // Validar si puede desactivarse
+            if (!request.Request.Estado)
+            {
+                var puede = await _domainService.PuedeDesactivarseAsync(request.IdGrupoEmpresa);
+                if (!puede)
+                {
+                    return new ApiResponse<bool>(
+                        Guid.NewGuid(),
+                        "BUSINESS_RULE",
+                        false,
+                        "No se puede desactivar el grupo de cliente porque tiene clientes asociados."
+                    );
+                }
+            }
             // Solo se actualizan campos permitidos (sin modificar la clave primaria)
             //existing.Codigo = request.Request.Codigo.Trim();
             //existing.Nombre = request.Request.Nombre.Trim();
@@ -58,7 +72,7 @@ public class UpdateGrupoEmpresaHandler : IRequestHandler<UpdateGrupoEmpresaComma
             //existing.MantenimientoDolar = request.Request.MantenimientoDolar;
             //existing.InscripcionDolar = request.Request.InscripcionDolar;
             //existing.ValorAnual = request.Request.ValorAnual;
-            if (request.Request.Estado.HasValue)    
+            if (request.Request.Estado)    
                 existing.Estado = request.Request.Estado;
 
             if (request.Request.Asignacion.HasValue)

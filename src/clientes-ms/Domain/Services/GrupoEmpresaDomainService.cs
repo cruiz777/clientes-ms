@@ -1,6 +1,7 @@
 ﻿using clientes_ms.Domain.Entities;
 using clientes_ms.Domain.Interfaces.IDomainServices;
 using MicroservicesTemplate.Domain.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace clientes_ms.Domain.Services
 {
@@ -34,6 +35,15 @@ namespace clientes_ms.Domain.Services
                 (!idIgnorar.HasValue || g.IdGrupoEmpresa != idIgnorar.Value));
 
             return existente is not null;
+        }
+        public async Task<bool> PuedeDesactivarseAsync(long idGrupoEmpresa)
+        {
+            var grupoemp = await _repository
+                .AsQueryable()
+                .Include(t => t.Clientes) 
+                .FirstOrDefaultAsync(t => t.IdGrupoEmpresa == idGrupoEmpresa);
+
+            return grupoemp != null && (grupoemp.Clientes == null || !grupoemp.Clientes.Any());
         }
     }
 }

@@ -29,6 +29,10 @@ public partial class Clientes
 
     public DateOnly? Fecnac { get; set; }
 
+    public DateOnly? FechaCeseAct { get; set; }
+
+    public string? MotivoCeseAct { get; set; }
+
     public DateOnly? Fecfac1 { get; set; }
 
     public DateOnly? Fecfac2 { get; set; }
@@ -105,11 +109,19 @@ public partial class Clientes
 
     public string? Representante { get; set; }
 
+    public DateOnly? Fecmod { get; set; }
+
+    public string? Usumod { get; set; }
+
     public virtual ICollection<AuditoriaTransferencia> AuditoriaTransferenciaClientesCodigoDestinoNavigation { get; set; } = new List<AuditoriaTransferencia>();
 
     public virtual ICollection<AuditoriaTransferencia> AuditoriaTransferenciaClientesCodigoOrigenNavigation { get; set; } = new List<AuditoriaTransferencia>();
 
     public virtual Empresas? EmpresaCodigoNavigation { get; set; }
+
+    public virtual ICollection<Gln> Gln { get; set; } = new List<Gln>();
+
+    public virtual ICollection<HistorialCliente> HistorialCliente { get; set; } = new List<HistorialCliente>();
 
     public virtual Ciudades? IdCiudadNavigation { get; set; }
 

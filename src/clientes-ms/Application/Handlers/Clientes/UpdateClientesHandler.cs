@@ -160,18 +160,28 @@ public class UpdateClientesHandler : IRequestHandler<UpdateClientesCommand, ApiR
 
             //if (request.Request.IdVendedor.HasValue)
             //    existing.IdVendedor = request.Request.IdVendedor.Value;
+            // Solo asigna si la fecha no es nula y válida
+            existing.FechaCeseAct = request.Request.FechaCeseActParsed;
+
+
+
+            existing.MotivoCeseAct = string.IsNullOrWhiteSpace(request.Request.MotivoCeseAct)
+                 ? null
+                 : request.Request.MotivoCeseAct.Trim();
 
             if (request.Request.IdCiudad.HasValue)
                 existing.IdCiudad = request.Request.IdCiudad.Value;
-
+            if (request.Request.Fecnac.HasValue)
+                existing.Fecnac = request.Request.Fecnac.Value;
             if (request.Request.IdZona.HasValue)
                 existing.IdZona = request.Request.IdZona.Value;
 
             if (request.Request.IdGrupoEmpresa.HasValue)
                 existing.IdGrupoEmpresa = request.Request.IdGrupoEmpresa.Value;
 
-            if (!string.IsNullOrWhiteSpace(request.Request.Representante))
-                existing.Representante = request.Request.Representante.Trim();
+            existing.Representante = string.IsNullOrWhiteSpace(request.Request.Representante)
+                ? request.Request.RazonSocial?.Trim() ?? existing.Representante
+                : request.Request.Representante.Trim();
 
             await _repository.UpdateAsync(request.IdClientes, existing);
 

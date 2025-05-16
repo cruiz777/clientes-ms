@@ -24,6 +24,8 @@ public class CreateClientesHandler : IRequestHandler<CreateClientesCommand, ApiR
                 Ruc = request.Request.Ruc.Trim(),
                 Fecing = request.Request.Fecing,
                 Fecnac = request.Request.Fecnac,
+                FechaCeseAct = request.Request.FechaCeseActParsed,
+                MotivoCeseAct = request.Request.MotivoCeseAct!.Trim(),
                 Fecfac1 = request.Request.Fecfac1,
                 Fecfac2 = request.Request.Fecfac2,
                 Fecfac3 = request.Request.Fecfac3,

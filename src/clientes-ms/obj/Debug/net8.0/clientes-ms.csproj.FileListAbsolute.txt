@@ -713,7 +713,6 @@ C:\GAPProyectos\Repos\ECOP\clientes-ms\src\clientes-ms\obj\Debug\net8.0\staticwe
 C:\GAPProyectos\Repos\ECOP\clientes-ms\src\clientes-ms\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.clientes-ms.props
 C:\GAPProyectos\Repos\ECOP\clientes-ms\src\clientes-ms\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.clientes-ms.props
 C:\GAPProyectos\Repos\ECOP\clientes-ms\src\clientes-ms\obj\Debug\net8.0\staticwebassets.pack.json
-C:\GAPProyectos\Repos\ECOP\clientes-ms\src\clientes-ms\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\GAPProyectos\Repos\ECOP\clientes-ms\src\clientes-ms\obj\Debug\net8.0\clientes.5221C1DA.Up2Date
 C:\GAPProyectos\Repos\ECOP\clientes-ms\src\clientes-ms\obj\Debug\net8.0\clientes-ms.dll
 C:\GAPProyectos\Repos\ECOP\clientes-ms\src\clientes-ms\obj\Debug\net8.0\refint\clientes-ms.dll
@@ -722,3 +721,4 @@ C:\GAPProyectos\Repos\ECOP\clientes-ms\src\clientes-ms\obj\Debug\net8.0\clientes
 C:\GAPProyectos\Repos\ECOP\clientes-ms\src\clientes-ms\obj\Debug\net8.0\ref\clientes-ms.dll
 C:\GAPProyectos\Repos\ECOP\clientes-ms\src\clientes-ms\bin\Debug\net8.0\.env
 C:\GAPProyectos\Repos\ECOP\clientes-ms\src\clientes-ms\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\GAPProyectos\Repos\ECOP\clientes-ms\src\clientes-ms\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

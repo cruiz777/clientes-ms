@@ -19,9 +19,11 @@ public partial class AuditoriaTransferencia
 
     public long? IdUsuario { get; set; }
 
-    public virtual Clientes? ClientesCodigoOrigenNavigation { get; set; }
     public virtual Clientes? ClientesCodigoDestinoNavigation { get; set; }
-    public virtual Prefijos? IdPrefijosNavigation { get; set; }
-    public virtual Usuarios? IdUsuarioNavigation { get; set; }
 
+    public virtual Clientes? ClientesCodigoOrigenNavigation { get; set; }
+
+    public virtual Prefijos? IdPrefijosNavigation { get; set; }
+
+    public virtual Usuarios? IdUsuarioNavigation { get; set; }
 }
