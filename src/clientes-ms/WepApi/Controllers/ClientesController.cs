@@ -2,6 +2,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using clientes_ms.Application.Records.Request;
 using clientes_ms.Application.Records.Response;
+using clientes_ms.Application.Queries.Clientes;
 
 namespace clientes_ms.WebApi.Controllers
 {
@@ -73,6 +74,30 @@ namespace clientes_ms.WebApi.Controllers
         public async Task<IActionResult> Create([FromBody] ClientesRequest request)
         {
             var result = await _mediator.Send(new CreateClientesCommand(request));
+            return Ok(result);
+        }
+
+        // POST api/clientes/validar
+        [HttpPost("validar")]
+        public async Task<IActionResult> ValidarClienteSri([FromBody] long clienteId)
+        {
+            var result = await _mediator.Send(new ValidarClienteSriQuery(clienteId));
+
+            if (result.Data == null)
+                return NotFound(new { message = result.Message });
+
+            return Ok(result);
+        }
+
+        // POST api/clientes/validar-masivo
+        [HttpPost("validar-masivo")]
+        public async Task<IActionResult> ValidarClientesSriMasivo([FromBody] List<long> clienteIds)
+        {
+            var result = await _mediator.Send(new ValidarClientesSriMasivoQuery(clienteIds));
+
+            if (result.Data == null || result.Data.Count == 0)
+                return NotFound(new { message = "No se pudo validar ningún cliente" });
+
             return Ok(result);
         }
 

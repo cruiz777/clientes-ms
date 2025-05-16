@@ -395,6 +395,38 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "clientes_ms.WebApi.Controllers.ClientesController",
+    "Method": "ValidarClienteSri",
+    "RelativePath": "api/Clientes/validar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "clienteId",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "clientes_ms.WebApi.Controllers.ClientesController",
+    "Method": "ValidarClientesSriMasivo",
+    "RelativePath": "api/Clientes/validar-masivo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "clienteIds",
+        "Type": "System.Collections.Generic.List\u00601[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "clientes_ms.WebApi.Controllers.PrefijosController",
     "Method": "GetByCodpre",
     "RelativePath": "api/Codpre",

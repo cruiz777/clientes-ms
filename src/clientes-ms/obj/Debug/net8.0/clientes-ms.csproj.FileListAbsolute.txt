@@ -721,3 +721,4 @@ C:\GAPProyectos\Repos\ECOP\clientes-ms\src\clientes-ms\obj\Debug\net8.0\clientes
 C:\GAPProyectos\Repos\ECOP\clientes-ms\src\clientes-ms\obj\Debug\net8.0\clientes-ms.genruntimeconfig.cache
 C:\GAPProyectos\Repos\ECOP\clientes-ms\src\clientes-ms\obj\Debug\net8.0\ref\clientes-ms.dll
 C:\GAPProyectos\Repos\ECOP\clientes-ms\src\clientes-ms\bin\Debug\net8.0\.env
+C:\GAPProyectos\Repos\ECOP\clientes-ms\src\clientes-ms\bin\Debug\net8.0\Newtonsoft.Json.dll
