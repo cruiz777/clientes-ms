@@ -36,6 +36,6 @@ public class GetAllHistorialClienteHandler : IRequestHandler<GetAllHistorialClie
 
     private static HistorialClienteResponse MapToResponse(HistorialCliente e) => new(
         id_historial_cliente: e.IdHistorialCliente, id_usuario: e.IdUsuario ?? 0, nombre_usuario: e.NombreUsuario, fecha: e.Fecha ?? DateTime.Now, descripcion: e.Descripcion?.Trim() ?? string.Empty,
-        clientes_codigo: e.ClientesCodigo ?? 0, cliente: e.ClientesCodigoNavigation?.Nomcli?.Trim() ?? string.Empty
+        clientes_codigo: e.ClientesCodigo ?? 0, cliente: e.ClientesCodigoNavigation?.Nomcli?.Trim() ?? string.Empty,e.Tabla?.Trim()?? string.Empty,e.TipoAccion?.Trim()?? string.Empty,e.IdEmpresa??0
     );
 }

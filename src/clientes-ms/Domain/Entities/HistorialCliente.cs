@@ -17,5 +17,13 @@ public partial class HistorialCliente
 
     public long? ClientesCodigo { get; set; }
 
+    public string? Tabla { get; set; }
+
+    public string? TipoAccion { get; set; }
+
+    public long? IdEmpresa { get; set; }
+
     public virtual Clientes? ClientesCodigoNavigation { get; set; }
+
+    public virtual Empresas? IdEmpresaNavigation { get; set; }
 }

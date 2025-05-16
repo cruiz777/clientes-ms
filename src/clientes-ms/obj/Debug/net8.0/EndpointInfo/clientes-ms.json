@@ -1524,6 +1524,27 @@
               "type": "integer",
               "format": "int64"
             }
+          },
+          {
+            "name": "tipoAccion",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tabla",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "idempresa",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -3505,6 +3526,18 @@
             "nullable": true
           },
           "clientes_codigo": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "tabla": {
+            "type": "string",
+            "nullable": true
+          },
+          "tipo_accion": {
+            "type": "string",
+            "nullable": true
+          },
+          "id_empresa": {
             "type": "integer",
             "format": "int64"
           }

@@ -29,6 +29,9 @@ public class UpdateHistorialClienteHandler : IRequestHandler<UpdateHistorialClie
             existing.Fecha=request.Request.Fecha;
             existing.ClientesCodigo=request.Request.ClientesCodigo;
             existing.Descripcion = request.Request.Descripcion.Trim();
+            existing.Tabla = request.Request.Tabla;
+            existing.TipoAccion=request.Request.TipoAccion;
+            existing.IdEmpresa=request.Request.IdEmpresa;
       
             await _repository.UpdateAsync(request.IdHistorialCliente, existing);
 

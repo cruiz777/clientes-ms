@@ -15,7 +15,10 @@ public class CreateHistorialClienteHandler : IRequestHandler<CreateHistorialClie
             var entity = new HistorialCliente { 
 
                 IdUsuario=request.Request.IdUsuario,NombreUsuario=request.Request.NombreUsuario,
-                Fecha=request.Request.Fecha,Descripcion = request.Request.Descripcion.Trim(),ClientesCodigo=request.Request.ClientesCodigo 
+                Fecha=request.Request.Fecha,Descripcion = request.Request.Descripcion.Trim(),ClientesCodigo=request.Request.ClientesCodigo ,
+                Tabla=request.Request.Tabla,
+                TipoAccion=request.Request.TipoAccion,
+                IdEmpresa=request.Request.IdEmpresa
             };
             await _repository.AddAsync(entity);
             return new ApiResponse<bool>(Guid.NewGuid(), "BOOLEAN", true, "Created successfully");

@@ -1142,15 +1142,28 @@ public partial class ApplicationDbContext : DbContext
             entity.Property(e => e.Fecha)
                 .HasColumnType("datetime")
                 .HasColumnName("fecha");
+            entity.Property(e => e.IdEmpresa).HasColumnName("id_empresa");
             entity.Property(e => e.IdUsuario).HasColumnName("id_usuario");
             entity.Property(e => e.NombreUsuario)
                 .HasMaxLength(150)
                 .IsUnicode(false)
                 .HasColumnName("nombre_usuario");
+            entity.Property(e => e.Tabla)
+                .HasMaxLength(150)
+                .IsUnicode(false)
+                .HasColumnName("tabla");
+            entity.Property(e => e.TipoAccion)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("tipo_accion");
 
             entity.HasOne(d => d.ClientesCodigoNavigation).WithMany(p => p.HistorialCliente)
                 .HasForeignKey(d => d.ClientesCodigo)
                 .HasConstraintName("FK_Historial_Clientes");
+
+            entity.HasOne(d => d.IdEmpresaNavigation).WithMany(p => p.HistorialCliente)
+                .HasForeignKey(d => d.IdEmpresa)
+                .HasConstraintName("FK_Historial_empresa");
         });
 
         modelBuilder.Entity<Menus>(entity =>

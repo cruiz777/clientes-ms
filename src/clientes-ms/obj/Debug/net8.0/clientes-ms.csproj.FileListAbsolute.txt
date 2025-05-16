@@ -714,10 +714,10 @@ C:\RepositorioGap\ClientesMs\clientes-ms\src\clientes-ms\obj\Debug\net8.0\static
 C:\RepositorioGap\ClientesMs\clientes-ms\src\clientes-ms\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.clientes-ms.props
 C:\RepositorioGap\ClientesMs\clientes-ms\src\clientes-ms\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.clientes-ms.props
 C:\RepositorioGap\ClientesMs\clientes-ms\src\clientes-ms\obj\Debug\net8.0\staticwebassets.pack.json
-C:\RepositorioGap\ClientesMs\clientes-ms\src\clientes-ms\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\RepositorioGap\ClientesMs\clientes-ms\src\clientes-ms\obj\Debug\net8.0\clientes.5221C1DA.Up2Date
 C:\RepositorioGap\ClientesMs\clientes-ms\src\clientes-ms\obj\Debug\net8.0\clientes-ms.dll
 C:\RepositorioGap\ClientesMs\clientes-ms\src\clientes-ms\obj\Debug\net8.0\refint\clientes-ms.dll
 C:\RepositorioGap\ClientesMs\clientes-ms\src\clientes-ms\obj\Debug\net8.0\clientes-ms.pdb
 C:\RepositorioGap\ClientesMs\clientes-ms\src\clientes-ms\obj\Debug\net8.0\clientes-ms.genruntimeconfig.cache
 C:\RepositorioGap\ClientesMs\clientes-ms\src\clientes-ms\obj\Debug\net8.0\ref\clientes-ms.dll
+C:\RepositorioGap\ClientesMs\clientes-ms\src\clientes-ms\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

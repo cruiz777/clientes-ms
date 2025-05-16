@@ -45,6 +45,9 @@ public class GetPrefijosByCodigoClienteHandler : IRequestHandler<GetPrefijosByCo
                     Codpre = p.Codpre ?? string.Empty,
                     Fecha = p.Fecha ?? DateOnly.MinValue,             // ✅ AQUI
                     FechaCierre = p.FechaCierre ?? DateTime.MinValue, // ✅ AQUI
+                    Observacion=p.Observacion ?? string.Empty,
+                    Prefijosgs1 = p.Prefijosgs1 ?? string.Empty,
+                    OrigenPrefijo = p.OrigenPrefijo ?? string.Empty,
                     Estado = p.Estado??false,
                     ClientesCodigo = p.ClientesCodigo ?? 0,
                     Nomcli = p.ClientesCodigoNavigation?.Nomcli ?? string.Empty,

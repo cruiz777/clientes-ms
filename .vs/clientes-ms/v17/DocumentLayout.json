@@ -3,32 +3,16 @@
   "WorkspaceRootPath": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\handlers\\prefijos\\getprefjiosbycodprehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\handlers\\prefijos\\getprefjiosbycodprehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\handlers\\prefijos\\getprefijosbycodigoclientehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\handlers\\prefijos\\getprefijosbycodigoclientehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\handlers\\prefijos\\getbyidprefijoshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\handlers\\prefijos\\getbyidprefijoshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\handlers\\historialcliente\\gethistorialclientebycodigoclientehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\handlers\\historialcliente\\gethistorialclientebycodigoclientehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\handlers\\prefijos\\getallprefijoshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\handlers\\prefijos\\getallprefijoshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\queries\\prefijos\\getallprefijosquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\queries\\prefijos\\getallprefijosquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\queries\\prefijos\\getprefijosbycodigoclientequery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\queries\\prefijos\\getprefijosbycodigoclientequery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\records\\response\\prefijosresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\records\\response\\prefijosresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\repositoriogap\\clientesms\\clientes-ms\\src\\clientes-ms\\application\\queries\\historialcliente\\gethistorialclientebycodigoclientequery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\queries\\historialcliente\\gethistorialclientebycodigoclientequery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,97 +22,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "GetPrefijosByCodigoClienteHandler.cs",
               "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\Prefijos\\GetPrefijosByCodigoClienteHandler.cs",
               "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Handlers\\Prefijos\\GetPrefijosByCodigoClienteHandler.cs",
               "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\Prefijos\\GetPrefijosByCodigoClienteHandler.cs",
               "RelativeToolTip": "src\\clientes-ms\\Application\\Handlers\\Prefijos\\GetPrefijosByCodigoClienteHandler.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAAAC0AAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAACEAAAAAAAAAAAAowDEAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T21:54:34.73Z",
+              "WhenOpened": "2025-05-16T19:15:39.819Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GetHistorialClienteByCodigoClienteHandler.cs",
+              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\HistorialCliente\\GetHistorialClienteByCodigoClienteHandler.cs",
+              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Handlers\\HistorialCliente\\GetHistorialClienteByCodigoClienteHandler.cs",
+              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\HistorialCliente\\GetHistorialClienteByCodigoClienteHandler.cs",
+              "RelativeToolTip": "src\\clientes-ms\\Application\\Handlers\\HistorialCliente\\GetHistorialClienteByCodigoClienteHandler.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAowCgAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-16T16:24:44.411Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "GetByIdPrefijosHandler.cs",
-              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\Prefijos\\GetByIdPrefijosHandler.cs",
-              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Handlers\\Prefijos\\GetByIdPrefijosHandler.cs",
-              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\Prefijos\\GetByIdPrefijosHandler.cs",
-              "RelativeToolTip": "src\\clientes-ms\\Application\\Handlers\\Prefijos\\GetByIdPrefijosHandler.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Title": "GetHistorialClienteByCodigoClienteQuery.cs",
+              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Queries\\HistorialCliente\\GetHistorialClienteByCodigoClienteQuery.cs",
+              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Queries\\HistorialCliente\\GetHistorialClienteByCodigoClienteQuery.cs",
+              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Queries\\HistorialCliente\\GetHistorialClienteByCodigoClienteQuery.cs",
+              "RelativeToolTip": "src\\clientes-ms\\Application\\Queries\\HistorialCliente\\GetHistorialClienteByCodigoClienteQuery.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T21:54:28.813Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "GetAllPrefijosHandler.cs",
-              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\Prefijos\\GetAllPrefijosHandler.cs",
-              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Handlers\\Prefijos\\GetAllPrefijosHandler.cs",
-              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\Prefijos\\GetAllPrefijosHandler.cs",
-              "RelativeToolTip": "src\\clientes-ms\\Application\\Handlers\\Prefijos\\GetAllPrefijosHandler.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T21:54:23.482Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "GetAllPrefijosQuery.cs",
-              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Queries\\Prefijos\\GetAllPrefijosQuery.cs",
-              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Queries\\Prefijos\\GetAllPrefijosQuery.cs",
-              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Queries\\Prefijos\\GetAllPrefijosQuery.cs",
-              "RelativeToolTip": "src\\clientes-ms\\Application\\Queries\\Prefijos\\GetAllPrefijosQuery.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T21:54:07.332Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "PrefijosResponse.cs",
-              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Records\\Response\\PrefijosResponse.cs",
-              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Records\\Response\\PrefijosResponse.cs",
-              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Records\\Response\\PrefijosResponse.cs",
-              "RelativeToolTip": "src\\clientes-ms\\Application\\Records\\Response\\PrefijosResponse.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAUwCgAAABBAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T21:30:09.221Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "GetPrefijosByCodigoClienteQuery.cs",
-              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Queries\\Prefijos\\GetPrefijosByCodigoClienteQuery.cs",
-              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Queries\\Prefijos\\GetPrefijosByCodigoClienteQuery.cs",
-              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Queries\\Prefijos\\GetPrefijosByCodigoClienteQuery.cs",
-              "RelativeToolTip": "src\\clientes-ms\\Application\\Queries\\Prefijos\\GetPrefijosByCodigoClienteQuery.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAABxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T21:29:47.722Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "GetPrefjiosByCodpreHandler.cs",
-              "DocumentMoniker": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\Prefijos\\GetPrefjiosByCodpreHandler.cs",
-              "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Handlers\\Prefijos\\GetPrefjiosByCodpreHandler.cs",
-              "ToolTip": "C:\\RepositorioGap\\ClientesMs\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\Prefijos\\GetPrefjiosByCodpreHandler.cs",
-              "RelativeToolTip": "src\\clientes-ms\\Application\\Handlers\\Prefijos\\GetPrefjiosByCodpreHandler.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAAADQAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T17:50:17.538Z",
+              "WhenOpened": "2025-05-16T16:24:32.114Z",
               "EditorCaption": ""
             }
           ]

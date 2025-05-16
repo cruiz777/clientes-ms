@@ -24,6 +24,14 @@ namespace clientes_ms.Application.Records.Response
         [JsonPropertyName("cliente")]
         public string Cliente { get; init; } = string.Empty;
 
+        [JsonPropertyName("tabla")]
+        public string Tabla { get; init; } = string.Empty;
+
+        [JsonPropertyName("tipo_accion")]
+        public string TipoAccion { get; init; } = string.Empty;
+
+        [JsonPropertyName("id_empresa")]
+        public long IdEmpresa { get; init; } = 0;
 
 
         public HistorialClienteResponse() { }
@@ -34,7 +42,12 @@ namespace clientes_ms.Application.Records.Response
      DateTime fecha,
      string descripcion,
      long clientes_codigo,
-     string cliente)
+     string cliente,
+     string tabla,
+     string tipo_accion,
+     long id_empresa
+            
+            )
         {
             this.IdHistorialCliente = id_historial_cliente;
             this.IdUsuario = id_usuario;
@@ -43,6 +56,9 @@ namespace clientes_ms.Application.Records.Response
             this.Descripcion = descripcion?.Trim() ?? string.Empty;
             this.ClientesCodigo = clientes_codigo;
             this.Cliente = cliente;
+            this.Tabla = tabla;
+            this.TipoAccion = tipo_accion;
+            this.IdEmpresa = id_empresa;
         }
 
     }

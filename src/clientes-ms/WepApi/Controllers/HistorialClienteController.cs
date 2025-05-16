@@ -30,12 +30,24 @@ namespace clientes_ms.WebApi.Controllers
         }
         [HttpGet]
         [Route("/api/listadoHistorialcliente")]
-        public async Task<IActionResult> GetHistorialClienteByCodigoClienteQuery(long clientesCodigo)
+        public async Task<IActionResult> GetHistorialClienteByCodigoClienteQuery(
+    [FromQuery] long clientesCodigo,
+    [FromQuery] string? tipoAccion,
+    [FromQuery] string? tabla,
+    [FromQuery] string? idempresa
+            )
         {
-            var query = new GetHistorialClienteByCodigoClienteQuery(clientesCodigo);
+            var query = new GetHistorialClienteByCodigoClienteQuery
+            {
+                ClientesCodigo = clientesCodigo,
+                TipoAccion = tipoAccion,
+                Tabla = tabla
+            };
+
             var result = await _mediator.Send(query);
             return Ok(result);
         }
+
 
         // GET api/examples/{id}
         // Obtiene un registro específico por su ID

@@ -1033,6 +1033,21 @@
         "Name": "clientesCodigo",
         "Type": "System.Int64",
         "IsRequired": false
+      },
+      {
+        "Name": "tipoAccion",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "tabla",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "idempresa",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
