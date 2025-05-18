@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "C:\\GAPProyectos\\Repos\\ECOP\\clientes-ms\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\gapproyectos\\repos\\ecop\\clientes-ms\\src\\clientes-ms\\application\\handlers\\clientes\\updateclienteshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\handlers\\clientes\\updateclienteshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\gapproyectos\\repos\\ecop\\clientes-ms\\src\\clientes-ms\\application\\handlers\\clientes\\createclienteshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\handlers\\clientes\\createclienteshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\gapproyectos\\repos\\ecop\\clientes-ms\\src\\clientes-ms\\application\\records\\response\\clientesresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\records\\response\\clientesresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\gapproyectos\\repos\\ecop\\clientes-ms\\src\\clientes-ms\\application\\records\\request\\clientesrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\records\\request\\clientesrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\gapproyectos\\repos\\ecop\\clientes-ms\\src\\clientes-ms\\application\\records\\response\\clientesresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\records\\response\\clientesresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\gapproyectos\\repos\\ecop\\clientes-ms\\src\\clientes-ms\\application\\handlers\\clientes\\updateclienteshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\handlers\\clientes\\updateclienteshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\gapproyectos\\repos\\ecop\\clientes-ms\\src\\clientes-ms\\application\\handlers\\clientes\\createclienteshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|solutionrelative:src\\clientes-ms\\application\\handlers\\clientes\\createclienteshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C87A9533-FAAE-464B-9CED-3A5698081F40}|src\\clientes-ms\\clientes-ms.csproj|c:\\gapproyectos\\repos\\ecop\\clientes-ms\\src\\clientes-ms\\application\\handlers\\clientes\\getbyidclienteshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -198,25 +198,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "UpdateClientesHandler.cs",
               "DocumentMoniker": "C:\\GAPProyectos\\Repos\\ECOP\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\Clientes\\UpdateClientesHandler.cs",
               "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Handlers\\Clientes\\UpdateClientesHandler.cs",
               "ToolTip": "C:\\GAPProyectos\\Repos\\ECOP\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\Clientes\\UpdateClientesHandler.cs",
               "RelativeToolTip": "src\\clientes-ms\\Application\\Handlers\\Clientes\\UpdateClientesHandler.cs",
-              "ViewState": "AgIAAJUAAAAAAAAAAAAvwKoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAJkAAAAAAAAAAAAcwKMAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-16T17:57:53.639Z",
               "EditorCaption": ""
@@ -231,12 +227,11 @@
               "RelativeToolTip": "src\\clientes-ms\\Application\\Handlers\\Clientes\\GetByIdClientesHandler.cs",
               "ViewState": "AgIAABIAAAAAAAAAAAAYwCAAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-16T17:56:57.814Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-16T17:56:57.814Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "CreateClientesHandler.cs",
               "DocumentMoniker": "C:\\GAPProyectos\\Repos\\ECOP\\clientes-ms\\src\\clientes-ms\\Application\\Handlers\\Clientes\\CreateClientesHandler.cs",
               "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Handlers\\Clientes\\CreateClientesHandler.cs",
@@ -244,31 +239,30 @@
               "RelativeToolTip": "src\\clientes-ms\\Application\\Handlers\\Clientes\\CreateClientesHandler.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAvwB8AAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-16T17:56:03.968Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-16T17:56:03.968Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "ClientesRequest.cs",
               "DocumentMoniker": "C:\\GAPProyectos\\Repos\\ECOP\\clientes-ms\\src\\clientes-ms\\Application\\Records\\Request\\ClientesRequest.cs",
               "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Records\\Request\\ClientesRequest.cs",
               "ToolTip": "C:\\GAPProyectos\\Repos\\ECOP\\clientes-ms\\src\\clientes-ms\\Application\\Records\\Request\\ClientesRequest.cs",
               "RelativeToolTip": "src\\clientes-ms\\Application\\Records\\Request\\ClientesRequest.cs",
-              "ViewState": "AgIAAD8AAAAAAAAAAIAwwEQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADYAAAAAAAAAAAA4wEQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-16T17:52:48.33Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "ClientesResponse.cs",
               "DocumentMoniker": "C:\\GAPProyectos\\Repos\\ECOP\\clientes-ms\\src\\clientes-ms\\Application\\Records\\Response\\ClientesResponse.cs",
               "RelativeDocumentMoniker": "src\\clientes-ms\\Application\\Records\\Response\\ClientesResponse.cs",
               "ToolTip": "C:\\GAPProyectos\\Repos\\ECOP\\clientes-ms\\src\\clientes-ms\\Application\\Records\\Response\\ClientesResponse.cs",
               "RelativeToolTip": "src\\clientes-ms\\Application\\Records\\Response\\ClientesResponse.cs",
-              "ViewState": "AgIAAFEAAAAAAAAAAAAcwLwAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAJgAAAAAAAAAAAAAAJMAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-16T17:49:41.014Z",
               "EditorCaption": ""
@@ -283,8 +277,7 @@
               "RelativeToolTip": "src\\clientes-ms\\Application\\Records\\Response\\GrupoEmpresaResponse.cs",
               "ViewState": "AgIAABsAAAAAAAAAAAA4wAgAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-16T17:45:35.437Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-16T17:45:35.437Z"
             },
             {
               "$type": "Document",
@@ -296,8 +289,7 @@
               "RelativeToolTip": "src\\clientes-ms\\Application\\Handlers\\GrupoEmpresa\\GetByIdGrupoEmpresaHandler.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAIA8wBcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-16T17:44:21.948Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-16T17:44:21.948Z"
             },
             {
               "$type": "Document",
@@ -309,8 +301,7 @@
               "RelativeToolTip": "src\\clientes-ms\\Application\\Handlers\\GrupoEmpresa\\GetAllGrupoEmpresaHandler.cs",
               "ViewState": "AgIAABQAAAAAAAAAAAAvwBgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-16T17:41:02.343Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-16T17:41:02.343Z"
             },
             {
               "$type": "Document",
@@ -322,8 +313,7 @@
               "RelativeToolTip": "src\\clientes-ms\\Application\\Handlers\\Clientes\\GetAllClientesHandler.cs",
               "ViewState": "AgIAABgAAAAAAAAAAADgvy0AAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-16T17:39:37.729Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-16T17:39:37.729Z"
             },
             {
               "$type": "Document",
@@ -335,8 +325,7 @@
               "RelativeToolTip": "src\\clientes-ms\\Infrastructure\\Persistence\\Context\\ApplicationDbContext.cs",
               "ViewState": "AgIAAC4BAAAAAAAAAADgv0ABAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-16T15:27:14.398Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-16T15:27:14.398Z"
             },
             {
               "$type": "Document",
@@ -348,8 +337,7 @@
               "RelativeToolTip": "src\\clientes-ms\\Application\\Records\\Request\\GrupoEmpresaRequest.cs",
               "ViewState": "AgIAABMAAAAAAAAAAAAwwBwAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-16T15:10:55.762Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-16T15:10:55.762Z"
             },
             {
               "$type": "Document",
@@ -361,8 +349,7 @@
               "RelativeToolTip": "src\\clientes-ms\\WepApi\\Controllers\\ClientesController.cs",
               "ViewState": "AgIAAFUAAAAAAAAAAAAgwF4AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T16:39:16.927Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-14T16:39:16.927Z"
             },
             {
               "$type": "Document",
@@ -374,8 +361,7 @@
               "RelativeToolTip": "src\\clientes-ms\\Application\\DTOs\\Clientes\\ClienteValidadoResultadoDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T16:26:03.675Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-14T16:26:03.675Z"
             },
             {
               "$type": "Document",
@@ -387,8 +373,7 @@
               "RelativeToolTip": "src\\clientes-ms\\Application\\Queries\\Clientes\\ValidarClienteSriMasivoQuery.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAYAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T16:25:35.352Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-14T16:25:35.352Z"
             },
             {
               "$type": "Document",
@@ -400,8 +385,7 @@
               "RelativeToolTip": "src\\clientes-ms\\Application\\Handlers\\Clientes\\ValidarClienteSriMasivoQueryHandler.cs",
               "ViewState": "AgIAACEAAAAAAAAAAAAcwC0AAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T16:24:10.881Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-14T16:24:10.881Z"
             },
             {
               "$type": "Document",
@@ -413,8 +397,7 @@
               "RelativeToolTip": "src\\clientes-ms\\Application\\Handlers\\Clientes\\ValidarClienteSriQueryHandler.cs",
               "ViewState": "AgIAABgAAAAAAAAAAAAYwEkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T16:17:39.818Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-14T16:17:39.818Z"
             },
             {
               "$type": "Document",
@@ -426,8 +409,7 @@
               "RelativeToolTip": "src\\clientes-ms\\Application\\DTOs\\Clientes\\SriApiResponse.cs",
               "ViewState": "AgIAABcAAAAAAAAAAAA8wCEAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T16:08:00.255Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-14T16:08:00.255Z"
             },
             {
               "$type": "Document",
@@ -475,8 +457,7 @@
               "RelativeToolTip": "src\\clientes-ms\\Domain\\Services\\ClienteDomainService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T15:55:14.112Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-14T15:55:14.112Z"
             },
             {
               "$type": "Document",
@@ -488,8 +469,7 @@
               "RelativeToolTip": "src\\clientes-ms\\Application\\DTOs\\Clientes\\ClienteValidadoDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T15:54:39.678Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-14T15:54:39.678Z"
             },
             {
               "$type": "Document",
@@ -501,8 +481,7 @@
               "RelativeToolTip": "src\\clientes-ms\\Application\\Queries\\Clientes\\ValidarClientesQuery.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAABiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T15:49:36.257Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-14T15:49:36.257Z"
             },
             {
               "$type": "Document",
@@ -526,8 +505,7 @@
               "RelativeToolTip": "src\\clientes-ms\\Application\\Handlers\\TipoLocalizacion\\UpdateTipoLocalizacionHandler.cs",
               "ViewState": "AgIAABoAAAAAAAAAAAAAwBcAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-13T20:42:11.606Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-13T20:42:11.606Z"
             },
             {
               "$type": "Document",
@@ -551,8 +529,7 @@
               "RelativeToolTip": "src\\clientes-ms\\Domain\\Services\\TipoLocalizacionDomainService.cs",
               "ViewState": "AgIAABIAAAAAAAAAAAAYwB4AAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-13T20:12:18.039Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-13T20:12:18.039Z"
             },
             {
               "$type": "Document",
@@ -564,8 +541,7 @@
               "RelativeToolTip": "src\\clientes-ms\\Domain\\Interfaces\\IDomainServices\\ITipoLocalizacionDomainService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-13T20:11:41.159Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-13T20:11:41.159Z"
             },
             {
               "$type": "Document",
@@ -589,8 +565,7 @@
               "RelativeToolTip": "src\\clientes-ms\\Domain\\Services\\GrupoEmpresaDomainService.cs",
               "ViewState": "AgIAAB4AAAAAAAAAAAAvwC0AAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-13T19:48:02.752Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-13T19:48:02.752Z"
             },
             {
               "$type": "Document",
@@ -602,8 +577,7 @@
               "RelativeToolTip": "src\\clientes-ms\\Domain\\Interfaces\\IDomainServices\\IGrupoEmpresa.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAABYAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-13T19:44:21.952Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-13T19:44:21.952Z"
             },
             {
               "$type": "Document",
@@ -639,8 +613,7 @@
               "RelativeToolTip": "src\\clientes-ms\\Application\\Handlers\\TipoCliente\\UpdateTipoClienteHandler.cs",
               "ViewState": "AgIAACMAAAAAAAAAAAAmwDQAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-13T17:52:27.242Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-13T17:52:27.242Z"
             },
             {
               "$type": "Document",
@@ -712,8 +685,7 @@
               "RelativeToolTip": "src\\clientes-ms\\Application\\Handlers\\GrupoEmpresa\\UpdateGrupoEmpresaHandler.cs",
               "ViewState": "AgIAACYAAAAAAAAAAADgvzUAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T15:38:28.104Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-12T15:38:28.104Z"
             },
             {
               "$type": "Document",
@@ -737,8 +709,7 @@
               "RelativeToolTip": "src\\clientes-ms\\Application\\Handlers\\TipoCliente\\GetAllTipoClienteHandler.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAvwBUAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T15:14:37.298Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-12T15:14:37.298Z"
             },
             {
               "$type": "Document",
@@ -762,8 +733,7 @@
               "RelativeToolTip": "src\\clientes-ms\\Application\\Handlers\\AuditoriaTransferencia\\GetAllAuditoriaTransferenciaHandler.cs",
               "ViewState": "AgIAABEAAAAAAAAAAAAvwCAAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-11T07:09:50.078Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-11T07:09:50.078Z"
             },
             {
               "$type": "Document",
@@ -787,8 +757,7 @@
               "RelativeToolTip": "src\\clientes-ms\\Domain\\Entities\\AuditoriaTransferencia.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAA8wAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-11T07:08:49.046Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-11T07:08:49.046Z"
             },
             {
               "$type": "Document",
@@ -800,8 +769,7 @@
               "RelativeToolTip": "src\\clientes-ms\\Application\\Handlers\\AuditoriaTransferencia\\GetResumenAuditoriaTransferencia.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAnwDQAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-11T07:02:21.675Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-11T07:02:21.675Z"
             }
           ]
         },

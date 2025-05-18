@@ -57,7 +57,7 @@ namespace clientes_ms.Application.Records.Request
         public long? IdZona { get; set; }
         public long? IdGrupoEmpresa { get; set; }
         public string? Representante { get; set; } = string.Empty;
-        [JsonPropertyName("fechaCeseAct")]
+        [JsonPropertyName("fecCeseAct")]
         public string? FechaCeseAct { get; set; }
 
         [JsonPropertyName("motivoCeseAct")]
