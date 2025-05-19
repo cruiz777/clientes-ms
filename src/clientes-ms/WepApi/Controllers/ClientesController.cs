@@ -37,6 +37,14 @@ namespace clientes_ms.WebApi.Controllers
             var result = await _mediator.Send(new GetClientesByResumen()); // Envía la query a su handler correspondiente
             return Ok(result); // Devuelve la respuesta con estado 200
         }
+        // busca por nombre
+        [HttpGet("buscar-por-nombre")]
+        public async Task<IActionResult> BuscarPorNombre([FromQuery] string nombre)
+        {
+            var resultado = await _mediator.Send(new GetClientesByNombreLikeQuery(nombre));
+            return Ok(resultado);
+        }
+
 
         // GET api/examples/{id}
         [HttpGet("{id}")]
