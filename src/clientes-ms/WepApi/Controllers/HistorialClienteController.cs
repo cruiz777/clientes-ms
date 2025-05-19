@@ -10,12 +10,12 @@ namespace clientes_ms.WebApi.Controllers
 
     // Define la ruta base para este controlador
     [Route("api/[Controller]")]
-    public class PrefijosController : ControllerBase
+    public class HistorialClienteController : ControllerBase
     {
         private readonly IMediator _mediator;
 
         // Constructor con inyección de dependencia del Mediator
-        public PrefijosController(IMediator mediator)
+        public HistorialClienteController(IMediator mediator)
         {
             _mediator = mediator;
         }
@@ -25,37 +25,38 @@ namespace clientes_ms.WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var result = await _mediator.Send(new GetAllPrefijosQuery()); // Envía la query a su handler correspondiente
+            var result = await _mediator.Send(new GetAllHistorialClienteQuery()); // Envía la query a su handler correspondiente
             return Ok(result); // Devuelve la respuesta con estado 200
         }
+        [HttpGet]
+        [Route("/api/listadoHistorialcliente")]
+        public async Task<IActionResult> GetHistorialClienteByCodigoClienteQuery(
+    [FromQuery] long clientesCodigo,
+    [FromQuery] string? tipoAccion,
+    [FromQuery] string? tabla,
+    [FromQuery] string? idempresa
+            )
+        {
+            var query = new GetHistorialClienteByCodigoClienteQuery
+            {
+                ClientesCodigo = clientesCodigo,
+                TipoAccion = tipoAccion,
+                Tabla = tabla
+            };
+
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+
 
         // GET api/examples/{id}
         // Obtiene un registro específico por su ID
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(long id)
         {
-            var result = await _mediator.Send(new GetPrefijosByIdQuery(id));
+            var result = await _mediator.Send(new GetHistorialClienteByIdQuery(id));
             return Ok(result);
         }
-
-        [HttpGet]
-        [Route("/api/Codpre")]
-        public async Task<IActionResult> GetByCodpre(string Codpre)
-        {
-            var result = await _mediator.Send(new GetPefijosByCodpreQuery(Codpre));
-            return Ok(result);
-        }
-
-        [HttpGet]
-        [Route("/api/CodpreCliente")]
-        public async Task<IActionResult> GetPrefijosByCodigoClienteQuery(long ClientesCodigo)
-        {
-            var result = await _mediator.Send(new GetPrefijosByCodigoClienteQuery(ClientesCodigo));
-            return Ok(result);
-        }
-
-
-
 
         // GET api/examples/status/{status}
         // Obtiene todos los registros activos o inactivos según el parámetro
@@ -69,18 +70,18 @@ namespace clientes_ms.WebApi.Controllers
         // POST api/examples
         // Crea un nuevo registro de Example
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] PrefijosRequest request)
+        public async Task<IActionResult> Create([FromBody] HistorialClienteRequest request)
         {
-            var result = await _mediator.Send(new CreatePrefijosCommand(request));
+            var result = await _mediator.Send(new CreateHistorialClienteCommand(request));
             return Ok(result);
         }
 
         // PUT api/examples/{id}
         // Actualiza un registro existente de Example
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(long id, [FromBody] PrefijosRequest request)
+        public async Task<IActionResult> Update(long id, [FromBody] HistorialClienteRequest request)
         {
-            var result = await _mediator.Send(new UpdatePrefijosCommand(id, request));
+            var result = await _mediator.Send(new UpdateHistorialClienteCommand(id, request));
             return Ok(result);
         }
 
@@ -89,7 +90,7 @@ namespace clientes_ms.WebApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(long id)
         {
-            var result = await _mediator.Send(new DeletePrefijosCommand(id));
+            var result = await _mediator.Send(new DeleteHistorialClienteCommand(id));
             return Ok(result);
         }
 

@@ -4,13 +4,16 @@ using MediatR;
 using MicroservicesTemplate.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 
-public class GetPrefijosByCodpreHandler : IRequestHandler<GetPefijosByCodpreQuery, ApiResponse<IEnumerable<PrefijosResponse>>>
+public class GetPrefijosByCodigoClienteHandler : IRequestHandler<GetPrefijosByCodigoClienteQuery, ApiResponse<IEnumerable<PrefijosResponse>>>
 {
     private readonly IBaseRepository<Prefijos> _repository;
 
-    public GetPrefijosByCodpreHandler(IBaseRepository<Prefijos> repository) => _repository = repository;
+    public GetPrefijosByCodigoClienteHandler(IBaseRepository<Prefijos> repository)
+    {
+        _repository = repository;
+    }
 
-    public async Task<ApiResponse<IEnumerable<PrefijosResponse>>> Handle(GetPefijosByCodpreQuery request, CancellationToken cancellationToken)
+    public async Task<ApiResponse<IEnumerable<PrefijosResponse>>> Handle(GetPrefijosByCodigoClienteQuery request, CancellationToken cancellationToken)
     {
         try
         {
@@ -32,28 +35,24 @@ public class GetPrefijosByCodpreHandler : IRequestHandler<GetPefijosByCodpreQuer
                             .ThenInclude(can => can.IdProvinciaNavigation)
                 .Include(p => p.Gln)
                     .ThenInclude(g => g.IdTipoLocalizacionNavigation)
-                .Where(e => e.Codpre != null && e.Codpre.ToLower().Contains(request.Codpre.ToLower()))
+                .Where(p => p.ClientesCodigo == request.ClientesCodigo)
                 .ToListAsync(cancellationToken);
 
-            var result = prefijos.Select(p =>
-            {
-                var gln = p.Gln.FirstOrDefault(); // puede ser null
-
-                return new PrefijosResponse
+            var result = prefijos.SelectMany(p =>
+                p.Gln.Select(g => new PrefijosResponse
                 {
                     IdPrefijos = p.IdPrefijos,
                     Codpre = p.Codpre ?? string.Empty,
-                    Fecha = p.Fecha ?? DateOnly.MinValue,
-                    FechaCierre = p.FechaCierre ?? DateTime.MinValue,
-                    Estado = p.Estado ?? false,
-                    Observacion = p.Observacion ?? string.Empty,
+                    Fecha = p.Fecha ?? DateOnly.MinValue,             // ✅ AQUI
+                    FechaCierre = p.FechaCierre ?? DateTime.MinValue, // ✅ AQUI
+                    Observacion=p.Observacion ?? string.Empty,
                     Prefijosgs1 = p.Prefijosgs1 ?? string.Empty,
                     OrigenPrefijo = p.OrigenPrefijo ?? string.Empty,
-
+                    Estado = p.Estado??false,
                     ClientesCodigo = p.ClientesCodigo ?? 0,
                     Nomcli = p.ClientesCodigoNavigation?.Nomcli ?? string.Empty,
-                    Gln = gln?.Gln1 ?? string.Empty,
-                    TipoLocalizacion = gln?.IdTipoLocalizacionNavigation?.Descripcion ?? string.Empty,
+                    Gln = g.Gln1 ?? string.Empty,
+                    TipoLocalizacion = g.IdTipoLocalizacionNavigation?.Descripcion ?? string.Empty,
 
                     EstadoEmpresa = p.ClientesCodigoNavigation?.IdEstadoEmpresaNavigation?.Nombre ?? string.Empty,
                     Ruccli = p.ClientesCodigoNavigation?.Ruc ?? string.Empty,
@@ -64,6 +63,7 @@ public class GetPrefijosByCodpreHandler : IRequestHandler<GetPefijosByCodpreQuer
                     Representante = p.ClientesCodigoNavigation?.Representante ?? string.Empty,
                     GrupoEmpresa = p.ClientesCodigoNavigation?.IdGrupoEmpresaNavigation?.Nombre ?? string.Empty,
 
+                    // Nuevos campos agregados
                     Direccion = p.ClientesCodigoNavigation?.Dircli ?? string.Empty,
                     Telefono = p.ClientesCodigoNavigation?.Telefono1 ?? string.Empty,
                     Web = p.ClientesCodigoNavigation?.Web ?? string.Empty,
@@ -71,14 +71,14 @@ public class GetPrefijosByCodpreHandler : IRequestHandler<GetPefijosByCodpreQuer
                     Ciudad = p.ClientesCodigoNavigation?.IdCiudadNavigation?.Nombre ?? string.Empty,
                     Canton = p.ClientesCodigoNavigation?.IdCiudadNavigation?.IdCantonNavigation?.Nombre ?? string.Empty,
                     Provincia = p.ClientesCodigoNavigation?.IdCiudadNavigation?.IdCantonNavigation?.IdProvinciaNavigation?.Nombre ?? string.Empty
-                };
-            }).ToList();
+                })
+            ).ToList();
 
             return new ApiResponse<IEnumerable<PrefijosResponse>>(
                 Guid.NewGuid(),
                 "LIST",
                 result,
-                $"Se encontraron {result.Count} prefijo(s) con coincidencia.",
+                $"Se encontraron {result.Count} GLNs para el cliente {request.ClientesCodigo}.",
                 result.Count);
         }
         catch (Exception ex)
@@ -87,7 +87,7 @@ public class GetPrefijosByCodpreHandler : IRequestHandler<GetPefijosByCodpreQuer
                 Guid.NewGuid(),
                 "ERROR",
                 null,
-                $"Error al buscar prefijos por Codpre: {ex.Message}");
+                $"Error al buscar GLNs por ClientesCodigo: {ex.Message}");
         }
     }
 }

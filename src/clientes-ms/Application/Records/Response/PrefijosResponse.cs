@@ -13,9 +13,9 @@ namespace clientes_ms.Application.Records.Response
         [JsonPropertyName("codpre")]
         public string Codpre { get; set; } = string.Empty;
 
-        public DateOnly Fecha { get; set; } =DateOnly.MinValue;
+        public DateOnly Fecha { get; set; } 
 
-        public DateTime FechaCierre { get; set; } = DateTime.MinValue;
+        public DateTime FechaCierre { get; set; } 
         public string Observacion { get; set; } = string.Empty;
         public string Digitos { get; set; } = string.Empty;
         public bool Estado { get; set; } = false;
@@ -33,6 +33,31 @@ namespace clientes_ms.Application.Records.Response
         public int Orden { get; set; } = 0;
 
         public long ClientesCodigo { get; set; } = 0;
+
+        public string Nomcli { get; set; } = string.Empty;
+        public string Gln { get; set; } = string.Empty;
+        public string TipoLocalizacion { get; set; } = string.Empty;
+
+        public string EstadoEmpresa { get; set; } = string.Empty;
+        public string Ruccli { get; set; } = string.Empty;
+        public DateOnly Fecing { get; set; } = DateOnly.MinValue;
+        public string Zona { get; set; } = string.Empty;
+
+        public string TipoCliente {  get; set; } = string.Empty;
+        public string GrupoEmpresa { get; set; } = string.Empty;
+        public string GrupoProducto { get; set; } = string.Empty;
+        public string Representante { get; set; } = string.Empty;
+
+        public string Direccion { get; set; } = string.Empty;
+        public string Telefono { get; set; } = string.Empty;
+        public string Web { get; set; } = string.Empty;
+        public string Postal { get; set; } = string.Empty;  
+        public string Provincia { get; set; } = string.Empty;
+        public string Canton { get; set; } = string.Empty;
+        public string Ciudad { get; set; } = string.Empty;
+
+
+
         public PrefijosResponse() { }
         public PrefijosResponse(
  long IdPrefijos, string Codpre,  DateOnly Fecha,
@@ -62,6 +87,15 @@ namespace clientes_ms.Application.Records.Response
             this.OrigenPrefijo = Prefijosgs1.Trim();
             this.Orden = Orden;
             this.ClientesCodigo = ClientesCodigo;
+            this.Nomcli=Nomcli;
+            this.Gln = Gln;
+            this.TipoLocalizacion=TipoLocalizacion;
+            this.Fecing=Fecing;
+            this.Representante = Representante;
+            this.Ruccli=Ruccli;
+            this.Zona = Zona;
+            this.GrupoProducto = GrupoProducto;
+            this.GrupoProducto = GrupoEmpresa;
 
         }
     }

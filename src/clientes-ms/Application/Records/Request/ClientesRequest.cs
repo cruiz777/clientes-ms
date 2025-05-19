@@ -59,13 +59,15 @@ namespace clientes_ms.Application.Records.Request
         public string? Representante { get; set; } = string.Empty;
         [JsonPropertyName("fecCeseAct")]
         public string? FechaCeseAct { get; set; }
-
         [JsonPropertyName("motivoCeseAct")]
         public string? MotivoCeseAct { get; set; }
 
         [JsonIgnore]
         public DateOnly? FechaCeseActParsed =>
             DateOnly.TryParse(FechaCeseAct, out var date) ? date : null;
+        public DateOnly? Fecmod   { get; set; }
+
+        public string? Usumod { get; set; }
 
         public ClientesRequest() { }
         public ClientesRequest(long ClientesCodigo ,
@@ -167,7 +169,9 @@ namespace clientes_ms.Application.Records.Request
 
      long IdGrupoEmpresa,
 
-     string Representante)
+     string Representante,
+     DateOnly Fecmod,
+     string Usumod)
         {
             this.ClientesCodigo = ClientesCodigo;
             this.Nomcli = Nomcli;
@@ -221,6 +225,8 @@ namespace clientes_ms.Application.Records.Request
             this.IdZona = IdZona;
             this.IdGrupoEmpresa = IdGrupoEmpresa;
             this.Representante = Representante;
+            this.Fecmod = Fecmod;
+            this.Usumod = Usumod;
 
 
 

@@ -1,52 +1,71 @@
-# Archivos de sistema
+# Archivos del sistema
 .DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Archivos de edición
 *.swp
 *.*~
+*.tmp
+*.bak
 *.pyc
- 
-# Archivos de usuario específicos
+
+# Archivos de configuración del entorno
+*.env
+*.local
+
+# Configuración de usuario de Visual Studio
 *.suo
 *.user
 *.userosscache
 *.sln.docstates
-project.lock.json
- 
-# Resultados de compilación
-[Bb]in/
-[Oo]bj/
-[Dd]ebug/
-[Dd]ebugPublic/
-[Rr]elease/
-[Rr]eleases/
-x64/
-x86/
-build/
-bld/
-msbuild.log
-msbuild.err
-msbuild.wrn
-publish/
-out/
 
-# Ignorar carpeta Context del DbContext
-src/seguridades-ms/Infrastructure/Persistence/Context/
-
-# Ignorar carpeta Entities del dominio
-# Domain/Entities/
-
- 
-# Archivos temporales de Visual Studio y JetBrains
-.vs/
+# Archivos de VS Code
 .vscode/
-*.vsidx
-*.vshx
+
+# Archivos temporales y binarios de Visual Studio
+.vs/
+.vs/**/*
+*.sdf
+*.cache
 *.db
 *.db-shm
 *.db-wal
- 
-# Archivos de configuración sensibles
-.env
+*.vsidx
+*.vshx
 
-# Ignorar carpeta Context del DbContext
+# Carpetas y archivos de compilación
+[Bb]in/
+[Oo]bj/
+[Dd]ebug*/
+[Rr]elease*/
+build/
+bld/
+out/
+publish/
+x64/
+x86/
+msbuild.*
+*.dll
+*.exe
+*.pdb
+*.log
+
+# NuGet
+*.nupkg
+.project.json
+project.lock.json
+project.assets.json
+*.nuget.props
+*.nuget.targets
+
+# Archivos de configuración del sistema operativo
+*.orig
+
+# Archivos de respaldo
+*.bak
+*.old
+
+# Ignorar carpetas específicas de tu solución
 src/seguridades-ms/Infrastructure/Persistence/Context/
- 

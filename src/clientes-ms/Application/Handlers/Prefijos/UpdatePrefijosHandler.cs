@@ -30,10 +30,10 @@ public class UpdatePrefijosHandler : IRequestHandler<UpdatePrefijosCommand, ApiR
             //if (request.Request.Fecha != null)
             //    existing.Fecha = request.Request.Fecha;
 
-            if (request.Request.FechaCierre != null)
+            
                 existing.FechaCierre = request.Request.FechaCierre;
 
-            if (!string.IsNullOrWhiteSpace(request.Request.Observacion))
+            
                 existing.Observacion = request.Request.Observacion.Trim();
 
             //if (!string.IsNullOrWhiteSpace(request.Request.Digitos))

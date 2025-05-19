@@ -76,7 +76,9 @@ public class GetAllClientesHandler : IRequestHandler<GetAllClientesQuery, ApiRes
         IdGrupoEmpresa = e.IdGrupoEmpresa ?? 0,
         Representante = e.Representante ?? string.Empty,
         ZonaReferencia = e.IdZonaNavigation?.Referencia ?? string.Empty,
-        EstadoNombre = e.IdEstadoEmpresaNavigation?.Nombre ?? string.Empty
+        EstadoNombre = e.IdEstadoEmpresaNavigation?.Nombre ?? string.Empty,
+        Fecmod=e.Fecmod??DateOnly.MinValue,
+        Usumod=e.Usumod?? string.Empty
     };
 
 }
