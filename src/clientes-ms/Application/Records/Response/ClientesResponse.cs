@@ -46,6 +46,8 @@ namespace clientes_ms.Application.Records.Response
 
         // Motivo del cese (puede estar vacío)
         public string? MotivoCeseAct { get; set; } = string.Empty;
+        public DateOnly? Fecmod { get; set; } = DateOnly.MinValue;
+        public string? Usumod { get; set; } = string.Empty;
 
         // Fechas de facturación
         public DateOnly Fecfac1 { get; set; } = DateOnly.MinValue;
@@ -158,7 +160,9 @@ namespace clientes_ms.Application.Records.Response
             long IdGrupoEmpresa,
             string Representante,
             string ZonaReferencia,
-            string EstadoNombre
+            string EstadoNombre,
+            DateOnly? Fecmod,
+            string? Usumod
         )
         {
             this.ClientesCodigo = ClientesCodigo;
@@ -216,6 +220,8 @@ namespace clientes_ms.Application.Records.Response
             this.ZonaReferencia = ZonaReferencia;
             this.EstadoNombre = EstadoNombre;
             this.Prefijo = Prefijo;
+            this.Fecmod = Fecmod;
+            this.Usumod = Usumod;
         }
     }
 }
