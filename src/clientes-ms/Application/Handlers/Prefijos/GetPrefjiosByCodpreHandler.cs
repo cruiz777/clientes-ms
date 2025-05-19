@@ -35,18 +35,25 @@ public class GetPrefijosByCodpreHandler : IRequestHandler<GetPefijosByCodpreQuer
                 .Where(e => e.Codpre != null && e.Codpre.ToLower().Contains(request.Codpre.ToLower()))
                 .ToListAsync(cancellationToken);
 
-            var result = prefijos.SelectMany(p =>
-                p.Gln.Select(g => new PrefijosResponse
+            var result = prefijos.Select(p =>
+            {
+                var gln = p.Gln.FirstOrDefault(); // puede ser null
+
+                return new PrefijosResponse
                 {
                     IdPrefijos = p.IdPrefijos,
                     Codpre = p.Codpre ?? string.Empty,
-                    Fecha = p.Fecha ?? DateOnly.MinValue,             // ✅ AQUI
-                    FechaCierre = p.FechaCierre ?? DateTime.MinValue, // ✅ AQUI
+                    Fecha = p.Fecha ?? DateOnly.MinValue,
+                    FechaCierre = p.FechaCierre ?? DateTime.MinValue,
                     Estado = p.Estado ?? false,
+                    Observacion = p.Observacion ?? string.Empty,
+                    Prefijosgs1 = p.Prefijosgs1 ?? string.Empty,
+                    OrigenPrefijo = p.OrigenPrefijo ?? string.Empty,
+
                     ClientesCodigo = p.ClientesCodigo ?? 0,
                     Nomcli = p.ClientesCodigoNavigation?.Nomcli ?? string.Empty,
-                    Gln = g.Gln1 ?? string.Empty,
-                    TipoLocalizacion = g.IdTipoLocalizacionNavigation?.Descripcion ?? string.Empty,
+                    Gln = gln?.Gln1 ?? string.Empty,
+                    TipoLocalizacion = gln?.IdTipoLocalizacionNavigation?.Descripcion ?? string.Empty,
 
                     EstadoEmpresa = p.ClientesCodigoNavigation?.IdEstadoEmpresaNavigation?.Nombre ?? string.Empty,
                     Ruccli = p.ClientesCodigoNavigation?.Ruc ?? string.Empty,
@@ -64,8 +71,8 @@ public class GetPrefijosByCodpreHandler : IRequestHandler<GetPefijosByCodpreQuer
                     Ciudad = p.ClientesCodigoNavigation?.IdCiudadNavigation?.Nombre ?? string.Empty,
                     Canton = p.ClientesCodigoNavigation?.IdCiudadNavigation?.IdCantonNavigation?.Nombre ?? string.Empty,
                     Provincia = p.ClientesCodigoNavigation?.IdCiudadNavigation?.IdCantonNavigation?.IdProvinciaNavigation?.Nombre ?? string.Empty
-                })
-            ).ToList();
+                };
+            }).ToList();
 
             return new ApiResponse<IEnumerable<PrefijosResponse>>(
                 Guid.NewGuid(),

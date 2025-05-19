@@ -33,7 +33,7 @@ public class UpdatePrefijosHandler : IRequestHandler<UpdatePrefijosCommand, ApiR
             
                 existing.FechaCierre = request.Request.FechaCierre;
 
-            if (!string.IsNullOrWhiteSpace(request.Request.Observacion))
+            
                 existing.Observacion = request.Request.Observacion.Trim();
 
             //if (!string.IsNullOrWhiteSpace(request.Request.Digitos))
