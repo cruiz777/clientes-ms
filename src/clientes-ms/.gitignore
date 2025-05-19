@@ -21,7 +21,7 @@ Desktop.ini
 *.userosscache
 *.sln.docstates
 
-# Archivos de VS Code
+# VS Code
 .vscode/
 
 # Archivos temporales y binarios de Visual Studio
@@ -67,5 +67,10 @@ project.assets.json
 *.bak
 *.old
 
-# Ignorar carpetas específicas de tu solución
+# Ignorar Copilot y sus índices
+.vs/**/CopilotIndices/
+.vs/**/SemanticSymbols*
+.vs/**/CodeChunks*
+
+# Ignorar carpetas específicas del proyecto
 src/seguridades-ms/Infrastructure/Persistence/Context/
