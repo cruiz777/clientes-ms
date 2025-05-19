@@ -67,10 +67,10 @@ e.IdCiudad ?? 0,
 e.IdZona ?? 0,
 e.IdGrupoEmpresa ?? 0,
 e.Representante?.Trim() ?? string.Empty,
-e.Fecmod ?? DateOnly.MinValue,
-e.Usumod ?? string.Empty,
 e.IdZonaNavigation?.Referencia ?? string.Empty,
-e.IdEstadoEmpresaNavigation?.Nombre ?? string.Empty
+e.IdEstadoEmpresaNavigation?.Nombre ?? string.Empty,
+e.Fecmod ?? DateOnly.MinValue,
+e.Usumod ?? string.Empty
 
 
                 ), "Success");
