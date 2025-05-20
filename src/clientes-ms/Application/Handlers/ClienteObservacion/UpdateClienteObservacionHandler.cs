@@ -27,7 +27,9 @@ public class UpdateClienteObservacionHandler : IRequestHandler<UpdateClienteObse
             existing.Detalle = request.Request.Detalle?.Trim();
             existing.Fecha = request.Request.Fecha;
             existing.IdUsuario = request.Request.IdUsuario;
-            existing.ClientesCodigo = request.Request.ClientesCodigo;
+            //existing.ClientesCodigo = request.Request.ClientesCodigo;
+            existing.NombreUsuario = request.Request.NombreUsuario;
+            
             await _repository.UpdateAsync(request.Id, existing);
 
             return new ApiResponse<bool>(

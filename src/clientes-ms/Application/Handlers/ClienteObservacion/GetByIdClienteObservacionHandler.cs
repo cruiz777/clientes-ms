@@ -14,7 +14,7 @@ public class GetClienteObservacionByIdHandler : IRequestHandler<GetClienteObserv
         {
             var e = await _repository.GetByIdAsync(request.Id);
             if (e == null) return new ApiResponse<ClienteObservacionResponse>(Guid.NewGuid(), "OBJECT", null, $"ClienteObservacion with ID {request.Id} not found.");
-            return new ApiResponse<ClienteObservacionResponse>(Guid.NewGuid(), "OBJECT", new ClienteObservacionResponse(e.IdClienteObservacion, e.Detalle?.Trim() ?? string.Empty, e.Fecha ?? DateTime.MinValue, e.IdUsuario , e.ClientesCodigo), "Success");
+            return new ApiResponse<ClienteObservacionResponse>(Guid.NewGuid(), "OBJECT", new ClienteObservacionResponse(e.IdClienteObservacion, e.Detalle?.Trim() ?? string.Empty, e.Fecha ?? DateTime.MinValue, e.IdUsuario , e.ClientesCodigo,e.NombreUsuario,e.Linea??0), "Success");
         }
         catch (Exception ex)
         {

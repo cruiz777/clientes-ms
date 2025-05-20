@@ -256,6 +256,21 @@ public partial class ApplicationDbContext : DbContext
                 .HasColumnType("datetime")
                 .HasColumnName("fecha");
             entity.Property(e => e.IdUsuario).HasColumnName("id_usuario");
+            entity.Property(e => e.Linea).HasColumnName("linea");
+            entity.Property(e => e.NombreUsuario)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("nombre_usuario");
+
+            entity.HasOne(d => d.ClientesCodigoNavigation).WithMany(p => p.ClienteObservacion)
+                .HasForeignKey(d => d.ClientesCodigo)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_clienteobservcli");
+
+            entity.HasOne(d => d.IdUsuarioNavigation).WithMany(p => p.ClienteObservacion)
+                .HasForeignKey(d => d.IdUsuario)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_clienteobservacionclientes");
         });
 
         modelBuilder.Entity<Clientes>(entity =>

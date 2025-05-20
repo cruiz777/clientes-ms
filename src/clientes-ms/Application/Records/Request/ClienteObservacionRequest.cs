@@ -13,14 +13,19 @@ namespace clientes_ms.Application.Records.Request
       
         public long IdUsuario { get; set; } = 0;
         public long ClientesCodigo { get; set; } = 0;
+        public string NombreUsuario { get; set; }=string.Empty;
+
+        public int Linea { get; set; } = 0;
         public ClienteObservacionRequest() { }
-        public ClienteObservacionRequest(long IdClienteObservacion, string Detalle,DateTime Fecha,long IdUsuario,long ClientesCodigo)
+        public ClienteObservacionRequest(long IdClienteObservacion, string Detalle,DateTime Fecha,long IdUsuario,long ClientesCodigo,string NombreUsuario,int Linea)
         {
             this.IdClienteObservacion = IdClienteObservacion;
             this.Detalle = Detalle.Trim();
             this.Fecha = Fecha; 
             this.IdUsuario= IdUsuario;
             this.ClientesCodigo = ClientesCodigo;
+            this.NombreUsuario = NombreUsuario;
+            this.Linea = Linea;
 
         }
     }
