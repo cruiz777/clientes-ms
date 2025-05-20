@@ -55,6 +55,14 @@ namespace clientes_ms.WebApi.Controllers
             var result = await _mediator.Send(new CreateClienteObservacionCommand(request));
             return Ok(result);
         }
+        /// buscar por cliente
+        [HttpGet("por-cliente/{clientesCodigo}")]
+        public async Task<IActionResult> ObtenerPorCodigoCliente(long clientesCodigo)
+        {
+            var resultado = await _mediator.Send(new GetClienteObservacionesByClienteCodigoQuery(clientesCodigo));
+            return Ok(resultado);
+        }
+
 
         // PUT api/examples/{id}
         // Actualiza un registro existente de Example
