@@ -117,6 +117,8 @@ public partial class Clientes
 
     public virtual ICollection<AuditoriaTransferencia> AuditoriaTransferenciaClientesCodigoOrigenNavigation { get; set; } = new List<AuditoriaTransferencia>();
 
+    public virtual ICollection<ClienteDatosAdicionales> ClienteDatosAdicionales { get; set; } = new List<ClienteDatosAdicionales>();
+
     public virtual ICollection<ClienteObservacion> ClienteObservacion { get; set; } = new List<ClienteObservacion>();
 
     public virtual Empresas? EmpresaCodigoNavigation { get; set; }

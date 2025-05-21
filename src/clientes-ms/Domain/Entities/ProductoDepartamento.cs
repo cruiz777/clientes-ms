@@ -5,15 +5,13 @@ namespace clientes_ms.Domain.Entities;
 
 public partial class ProductoDepartamento
 {
-    public long IdProductoDepartamento { get; set; }
+    public double Coddep { get; set; }
 
-    public double? Coddep { get; set; }
+    public string IdEmpresa { get; set; } = null!;
 
     public string? Desdep { get; set; }
 
-    public long? IdProductoDivision { get; set; }
+    public double? Codsub { get; set; }
 
-    public virtual ProductoDivision? IdProductoDivisionNavigation { get; set; }
-
-    public virtual ICollection<Seccion> Seccion { get; set; } = new List<Seccion>();
+    public bool? Estado { get; set; }
 }
