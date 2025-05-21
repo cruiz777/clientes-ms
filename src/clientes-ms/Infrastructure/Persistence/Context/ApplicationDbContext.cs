@@ -16,9 +16,13 @@ public partial class ApplicationDbContext : DbContext
 
     public virtual DbSet<AuditoriaTransferencia> AuditoriaTransferencia { get; set; }
 
+    public virtual DbSet<Autorizacion> Autorizacion { get; set; }
+
     public virtual DbSet<Cantones> Cantones { get; set; }
 
     public virtual DbSet<Ciudades> Ciudades { get; set; }
+
+    public virtual DbSet<ClienteDatosAdicionales> ClienteDatosAdicionales { get; set; }
 
     public virtual DbSet<ClienteObservacion> ClienteObservacion { get; set; }
 
@@ -32,8 +36,6 @@ public partial class ApplicationDbContext : DbContext
 
     public virtual DbSet<Correos> Correos { get; set; }
 
-    public virtual DbSet<DatosAdicionales> DatosAdicionales { get; set; }
-
     public virtual DbSet<Departamentos> Departamentos { get; set; }
 
     public virtual DbSet<Direcciones> Direcciones { get; set; }
@@ -43,6 +45,8 @@ public partial class ApplicationDbContext : DbContext
     public virtual DbSet<EstadoCivil> EstadoCivil { get; set; }
 
     public virtual DbSet<EstadoEmpresa> EstadoEmpresa { get; set; }
+
+    public virtual DbSet<EstructuraComercial> EstructuraComercial { get; set; }
 
     public virtual DbSet<Genero> Genero { get; set; }
 
@@ -92,17 +96,19 @@ public partial class ApplicationDbContext : DbContext
 
     public virtual DbSet<ProductoGrupo> ProductoGrupo { get; set; }
 
+    public virtual DbSet<ProductoSeccion> ProductoSeccion { get; set; }
+
     public virtual DbSet<ProductoSubDivision> ProductoSubDivision { get; set; }
 
     public virtual DbSet<Provincia> Provincia { get; set; }
 
     public virtual DbSet<Roles> Roles { get; set; }
 
-    public virtual DbSet<Seccion> Seccion { get; set; }
-
     public virtual DbSet<Sector> Sector { get; set; }
 
     public virtual DbSet<Sistemas> Sistemas { get; set; }
+
+    public virtual DbSet<TablaPrueba> TablaPrueba { get; set; }
 
     public virtual DbSet<Telefonos> Telefonos { get; set; }
 
@@ -117,6 +123,8 @@ public partial class ApplicationDbContext : DbContext
     public virtual DbSet<TipoLocalizacion> TipoLocalizacion { get; set; }
 
     public virtual DbSet<TipoOrigenIngresos> TipoOrigenIngresos { get; set; }
+
+    public virtual DbSet<Unidadmedida> Unidadmedida { get; set; }
 
     public virtual DbSet<Usuarios> Usuarios { get; set; }
 
@@ -190,6 +198,32 @@ public partial class ApplicationDbContext : DbContext
                 .HasConstraintName("FK_AuditoriaTransferencia_Usuario");
         });
 
+        modelBuilder.Entity<Autorizacion>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToTable("autorizacion", "sic");
+
+            entity.Property(e => e.Caja)
+                .HasMaxLength(10)
+                .HasColumnName("caja");
+            entity.Property(e => e.Codaut).HasColumnName("codaut");
+            entity.Property(e => e.Docfin).HasColumnName("docfin");
+            entity.Property(e => e.Docini).HasColumnName("docini");
+            entity.Property(e => e.Docsri).HasColumnName("docsri");
+            entity.Property(e => e.Fecfin)
+                .HasColumnType("datetime")
+                .HasColumnName("fecfin");
+            entity.Property(e => e.Fecini)
+                .HasColumnType("datetime")
+                .HasColumnName("fecini");
+            entity.Property(e => e.Numaut)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("numaut");
+            entity.Property(e => e.Tipdoc).HasColumnName("tipdoc");
+        });
+
         modelBuilder.Entity<Cantones>(entity =>
         {
             entity.HasKey(e => e.IdCanton).HasName("pk_sic_canton");
@@ -238,6 +272,30 @@ public partial class ApplicationDbContext : DbContext
                 .HasForeignKey(d => d.IdCanton)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_ciudad_canton");
+        });
+
+        modelBuilder.Entity<ClienteDatosAdicionales>(entity =>
+        {
+            entity.HasKey(e => e.IdDatosAdicionales).HasName("pk_sic_datos_adicionales");
+
+            entity.ToTable("cliente_datos_adicionales", "sic");
+
+            entity.Property(e => e.IdDatosAdicionales).HasColumnName("id_datos_adicionales");
+            entity.Property(e => e.ClientesCodigo).HasColumnName("clientes_codigo");
+            entity.Property(e => e.Estado).HasColumnName("estado");
+            entity.Property(e => e.Expprod).HasColumnName("expprod");
+            entity.Property(e => e.Facebook).HasColumnName("facebook");
+            entity.Property(e => e.Gs1ec).HasColumnName("gs1ec");
+            entity.Property(e => e.Guia).HasColumnName("guia");
+            entity.Property(e => e.Instagram).HasColumnName("instagram");
+            entity.Property(e => e.Medico).HasColumnName("medico");
+            entity.Property(e => e.Prefijo).HasColumnName("prefijo");
+            entity.Property(e => e.Vendeus).HasColumnName("vendeus");
+            entity.Property(e => e.Web).HasColumnName("web");
+
+            entity.HasOne(d => d.ClientesCodigoNavigation).WithMany(p => p.ClienteDatosAdicionales)
+                .HasForeignKey(d => d.ClientesCodigo)
+                .HasConstraintName("FK_cliente_datos_adicionales");
         });
 
         modelBuilder.Entity<ClienteObservacion>(entity =>
@@ -606,26 +664,6 @@ public partial class ApplicationDbContext : DbContext
                 .HasConstraintName("FK__correos__id_pers__44952D46");
         });
 
-        modelBuilder.Entity<DatosAdicionales>(entity =>
-        {
-            entity.HasKey(e => e.IdDatosAdicionales).HasName("pk_sic_datos_adicionales");
-
-            entity.ToTable("datos_adicionales", "sic");
-
-            entity.Property(e => e.IdDatosAdicionales).HasColumnName("id_datos_adicionales");
-            entity.Property(e => e.ClientesCodigo).HasColumnName("clientes_codigo");
-            entity.Property(e => e.Expprod).HasColumnName("expprod");
-            entity.Property(e => e.Facebook).HasColumnName("facebook");
-            entity.Property(e => e.Gs1ec).HasColumnName("gs1ec");
-            entity.Property(e => e.Instagram).HasColumnName("instagram");
-            entity.Property(e => e.Medico).HasColumnName("medico");
-            entity.Property(e => e.Vendeus).HasColumnName("vendeus");
-            entity.Property(e => e.Web)
-                .HasMaxLength(200)
-                .IsUnicode(false)
-                .HasColumnName("web");
-        });
-
         modelBuilder.Entity<Departamentos>(entity =>
         {
             entity.HasKey(e => e.IdDepartamento);
@@ -805,6 +843,23 @@ public partial class ApplicationDbContext : DbContext
             entity.HasOne(d => d.EmpresaCodigoNavigation).WithMany(p => p.EstadoEmpresa)
                 .HasForeignKey(d => d.EmpresaCodigo)
                 .HasConstraintName("FK_estado_empresa_empresa");
+        });
+
+        modelBuilder.Entity<EstructuraComercial>(entity =>
+        {
+            entity.HasKey(e => new { e.Codest, e.IdEmpresa });
+
+            entity.ToTable("estructura_comercial", "sic");
+
+            entity.Property(e => e.Codest)
+                .HasMaxLength(10)
+                .HasColumnName("codest");
+            entity.Property(e => e.IdEmpresa).HasColumnName("id_empresa");
+            entity.Property(e => e.Descri)
+                .HasMaxLength(50)
+                .HasColumnName("descri");
+            entity.Property(e => e.Estado).HasColumnName("estado");
+            entity.Property(e => e.Numnodos).HasColumnName("numnodos");
         });
 
         modelBuilder.Entity<Genero>(entity =>
@@ -1813,22 +1868,6 @@ public partial class ApplicationDbContext : DbContext
             entity.HasOne(d => d.EmpresaCodigoNavigation).WithMany(p => p.Producto)
                 .HasForeignKey(d => d.EmpresaCodigo)
                 .HasConstraintName("FK_sic_producto_empresa");
-
-            entity.HasOne(d => d.GrupoCodigoNavigation).WithMany(p => p.Producto)
-                .HasForeignKey(d => d.GrupoCodigo)
-                .HasConstraintName("FK_sic_producto_sic_producto_grupo");
-
-            entity.HasOne(d => d.IdDivisionNavigation).WithMany(p => p.Producto)
-                .HasForeignKey(d => d.IdDivision)
-                .HasConstraintName("FK_sic_producto_sic_producto_division");
-
-            entity.HasOne(d => d.IdSeccionNavigation).WithMany(p => p.Producto)
-                .HasForeignKey(d => d.IdSeccion)
-                .HasConstraintName("FK_sic_producto_sic_seccion");
-
-            entity.HasOne(d => d.IdSubDivisionNavigation).WithMany(p => p.Producto)
-                .HasForeignKey(d => d.IdSubDivision)
-                .HasConstraintName("FK_sic_producto_sic_producto_sub_division");
         });
 
         modelBuilder.Entity<ProductoDatosAdicionales>(entity =>
@@ -1972,72 +2011,87 @@ public partial class ApplicationDbContext : DbContext
 
         modelBuilder.Entity<ProductoDepartamento>(entity =>
         {
-            entity.HasKey(e => e.IdProductoDepartamento).HasName("PK_sic_producto_departamento");
+            entity.HasKey(e => new { e.Coddep, e.IdEmpresa });
 
             entity.ToTable("producto_departamento", "sic");
 
-            entity.Property(e => e.IdProductoDepartamento).HasColumnName("id_producto_departamento");
             entity.Property(e => e.Coddep).HasColumnName("coddep");
+            entity.Property(e => e.IdEmpresa)
+                .HasMaxLength(10)
+                .IsFixedLength()
+                .HasColumnName("id_empresa");
+            entity.Property(e => e.Codsub).HasColumnName("codsub");
             entity.Property(e => e.Desdep)
                 .HasMaxLength(80)
                 .IsUnicode(false)
                 .HasColumnName("desdep");
-            entity.Property(e => e.IdProductoDivision).HasColumnName("id_producto_division");
-
-            entity.HasOne(d => d.IdProductoDivisionNavigation).WithMany(p => p.ProductoDepartamento)
-                .HasForeignKey(d => d.IdProductoDivision)
-                .HasConstraintName("FK_sic_producto_departamento_sic_producto_division");
+            entity.Property(e => e.Estado).HasColumnName("estado");
         });
 
         modelBuilder.Entity<ProductoDivision>(entity =>
         {
-            entity.HasKey(e => e.IdProductoDivision).HasName("PK_sic_producto_division");
+            entity.HasKey(e => new { e.Coddiv, e.IdEmpresa });
 
             entity.ToTable("producto_division", "sic");
 
-            entity.Property(e => e.IdProductoDivision).HasColumnName("id_producto_division");
             entity.Property(e => e.Coddiv).HasColumnName("coddiv");
+            entity.Property(e => e.IdEmpresa).HasColumnName("id_empresa");
             entity.Property(e => e.Desdiv)
                 .HasMaxLength(80)
                 .IsUnicode(false)
                 .HasColumnName("desdiv");
+            entity.Property(e => e.Estado).HasColumnName("estado");
         });
 
         modelBuilder.Entity<ProductoGrupo>(entity =>
         {
-            entity.HasKey(e => e.IdProductoGrupo).HasName("PK_sic_producto_grupo");
+            entity.HasKey(e => new { e.Codgru, e.IdEmpresa }).HasName("PK_sic_producto_grupo");
 
             entity.ToTable("producto_grupo", "sic");
 
-            entity.Property(e => e.IdProductoGrupo).HasColumnName("id_producto_grupo");
             entity.Property(e => e.Codgru).HasColumnName("codgru");
+            entity.Property(e => e.IdEmpresa).HasColumnName("id_empresa");
             entity.Property(e => e.Desgru)
                 .HasMaxLength(80)
                 .IsUnicode(false)
                 .HasColumnName("desgru");
+            entity.Property(e => e.Estado).HasColumnName("estado");
             entity.Property(e => e.Sec)
                 .HasMaxLength(10)
                 .IsUnicode(false)
                 .HasColumnName("sec");
         });
 
+        modelBuilder.Entity<ProductoSeccion>(entity =>
+        {
+            entity.HasKey(e => new { e.Codsec, e.IdEmpresa }).HasName("PK_seccion");
+
+            entity.ToTable("producto_seccion", "sic");
+
+            entity.Property(e => e.Codsec).HasColumnName("codsec");
+            entity.Property(e => e.IdEmpresa).HasColumnName("id_empresa");
+            entity.Property(e => e.Coddep).HasColumnName("coddep");
+            entity.Property(e => e.Estado).HasColumnName("estado");
+        });
+
         modelBuilder.Entity<ProductoSubDivision>(entity =>
         {
-            entity.HasKey(e => e.IdProductoSubDivision).HasName("PK_sic_producto_sub_division");
+            entity.HasKey(e => new { e.Codsub, e.IdEmpresa });
 
             entity.ToTable("producto_sub_division", "sic");
 
-            entity.Property(e => e.IdProductoSubDivision).HasColumnName("id_producto_sub_division");
+            entity.Property(e => e.Codsub).HasColumnName("codsub");
+            entity.Property(e => e.IdEmpresa)
+                .HasMaxLength(10)
+                .IsFixedLength()
+                .HasColumnName("id_empresa");
+            entity.Property(e => e.Coddiv).HasColumnName("coddiv");
             entity.Property(e => e.Dessub)
                 .HasMaxLength(80)
                 .IsUnicode(false)
                 .HasColumnName("dessub");
-            entity.Property(e => e.IdProductoDivision).HasColumnName("id_producto_division");
+            entity.Property(e => e.Estado).HasColumnName("estado");
             entity.Property(e => e.PeaCodigoHis).HasColumnName("pea_codigo_his");
-
-            entity.HasOne(d => d.IdProductoDivisionNavigation).WithMany(p => p.ProductoSubDivision)
-                .HasForeignKey(d => d.IdProductoDivision)
-                .HasConstraintName("FK_sic_producto_sub_division_sic_producto_division");
         });
 
         modelBuilder.Entity<Provincia>(entity =>
@@ -2086,21 +2140,6 @@ public partial class ApplicationDbContext : DbContext
                 .HasColumnName("nombre_rol");
         });
 
-        modelBuilder.Entity<Seccion>(entity =>
-        {
-            entity.HasKey(e => e.IdProductoSeccion).HasName("PK_sic_seccion");
-
-            entity.ToTable("seccion", "sic");
-
-            entity.Property(e => e.IdProductoSeccion).HasColumnName("id_producto_seccion");
-            entity.Property(e => e.Codsec).HasColumnName("codsec");
-            entity.Property(e => e.IdProductoDepartamento).HasColumnName("id_producto_departamento");
-
-            entity.HasOne(d => d.IdProductoDepartamentoNavigation).WithMany(p => p.Seccion)
-                .HasForeignKey(d => d.IdProductoDepartamento)
-                .HasConstraintName("FK_sic_seccion_sic_producto_departamento");
-        });
-
         modelBuilder.Entity<Sector>(entity =>
         {
             entity.HasKey(e => e.IdSector).HasName("PK_sic_sector");
@@ -2112,6 +2151,7 @@ public partial class ApplicationDbContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("descripcion");
+            entity.Property(e => e.Estado).HasColumnName("estado");
         });
 
         modelBuilder.Entity<Sistemas>(entity =>
@@ -2136,6 +2176,19 @@ public partial class ApplicationDbContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("nombre");
             entity.Property(e => e.Status).HasColumnName("status");
+        });
+
+        modelBuilder.Entity<TablaPrueba>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToTable("tabla_prueba", "seguridades");
+
+            entity.Property(e => e.IdPrueba).HasColumnName("id_prueba");
+            entity.Property(e => e.Prueba)
+                .HasMaxLength(10)
+                .IsUnicode(false)
+                .HasColumnName("prueba");
         });
 
         modelBuilder.Entity<Telefonos>(entity =>
@@ -2266,6 +2319,27 @@ public partial class ApplicationDbContext : DbContext
                 .HasMaxLength(70)
                 .IsUnicode(false)
                 .HasColumnName("sic_tipo_origen_ingresos_nombre");
+        });
+
+        modelBuilder.Entity<Unidadmedida>(entity =>
+        {
+            entity.HasKey(e => e.Codigo);
+
+            entity.ToTable("unidadmedida", "sic");
+
+            entity.Property(e => e.Codigo).HasColumnName("codigo");
+            entity.Property(e => e.Descripcion)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("descripcion");
+            entity.Property(e => e.Estado).HasColumnName("estado");
+            entity.Property(e => e.NetContentUom)
+                .HasMaxLength(5)
+                .HasColumnName("netContentUOM");
+            entity.Property(e => e.Unidad)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("unidad");
         });
 
         modelBuilder.Entity<Usuarios>(entity =>

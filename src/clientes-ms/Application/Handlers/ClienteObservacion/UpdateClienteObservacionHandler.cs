@@ -2,41 +2,50 @@
 using clientes_ms.Domain.Entities;
 using MediatR;
 using MicroservicesTemplate.Domain.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 public class UpdateClienteObservacionHandler : IRequestHandler<UpdateClienteObservacionCommand, ApiResponse<bool>>
 {
     private readonly IBaseRepository<ClienteObservacion> _repository;
-    public UpdateClienteObservacionHandler(IBaseRepository<ClienteObservacion> repository) => _repository = repository;
+
+    public UpdateClienteObservacionHandler(IBaseRepository<ClienteObservacion> repository)
+    {
+        _repository = repository;
+    }
 
     public async Task<ApiResponse<bool>> Handle(UpdateClienteObservacionCommand request, CancellationToken cancellationToken)
     {
         try
         {
-            var existing = await _repository.GetByIdAsync(request.Id);
+            var existing = await _repository
+                .AsQueryable()
+                .FirstOrDefaultAsync(o =>
+                    o.ClientesCodigo == request.ClientesCodigo &&
+                    o.Linea == request.Linea, cancellationToken);
+
             if (existing == null)
             {
                 return new ApiResponse<bool>(
                     Guid.NewGuid(),
                     "OBJECT",
                     false,
-                    $"ClienteObservacion with ID {request.Id} not found."
+                    $"No se encontró observación con cliente {request.ClientesCodigo} y línea {request.Linea}"
                 );
             }
 
-            // Solo se actualizan campos permitidos (sin modificar la clave primaria)
+            // ✅ Actualiza solo los campos permitidos
             existing.Detalle = request.Request.Detalle?.Trim();
             existing.Fecha = request.Request.Fecha;
             existing.IdUsuario = request.Request.IdUsuario;
-            //existing.ClientesCodigo = request.Request.ClientesCodigo;
             existing.NombreUsuario = request.Request.NombreUsuario;
-            
-            await _repository.UpdateAsync(request.Id, existing);
+
+            await _repository.UpdateAsync(existing.IdClienteObservacion, existing);
 
             return new ApiResponse<bool>(
                 Guid.NewGuid(),
                 "BOOLEAN",
                 true,
-                "Updated successfully"
+                "Actualización exitosa"
             );
         }
         catch (Exception ex)

@@ -2,4 +2,9 @@
 using clientes_ms.Application.Records.Response;
 using MediatR;
 
-public record UpdateClienteObservacionCommand(long Id, ClienteObservacionRequest Request) : IRequest<ApiResponse<bool>>;
+public class UpdateClienteObservacionCommand : IRequest<ApiResponse<bool>>
+{
+    public int ClientesCodigo { get; set; }
+    public int Linea { get; set; }
+    public ClienteObservacionRequest Request { get; set; }
+}

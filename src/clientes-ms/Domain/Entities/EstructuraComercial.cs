@@ -3,15 +3,15 @@ using System.Collections.Generic;
 
 namespace clientes_ms.Domain.Entities;
 
-public partial class ProductoGrupo
+public partial class EstructuraComercial
 {
-    public double Codgru { get; set; }
+    public string Codest { get; set; } = null!;
 
     public long IdEmpresa { get; set; }
 
-    public string? Desgru { get; set; }
+    public string? Descri { get; set; }
 
-    public string? Sec { get; set; }
+    public double? Numnodos { get; set; }
 
     public bool? Estado { get; set; }
 }
