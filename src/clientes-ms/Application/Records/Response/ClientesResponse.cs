@@ -97,8 +97,8 @@ namespace clientes_ms.Application.Records.Response
         // Representante legal y referencias geográficas
         public string Representante { get; set; } = string.Empty;
 
-        public DateOnly Fecmod { get; set; } = DateOnly.MinValue;
-        public string Usumod {  get; set; } = string.Empty;
+        public DateOnly? Fecmod { get; set; } = DateOnly.MinValue;
+        public string? Usumod {  get; set; } = string.Empty;
         public string ZonaReferencia { get; set; } = string.Empty;
         public string EstadoNombre { get; set; } = string.Empty;
         public string Prefijo { get; set; } = string.Empty;
@@ -160,10 +160,10 @@ namespace clientes_ms.Application.Records.Response
             long IdZona,
             long IdGrupoEmpresa,
             string Representante,
-            DateOnly Fecmod,
-            string Usumod,
             string ZonaReferencia,
-            string EstadoNombre
+            string EstadoNombre,
+            DateOnly? Fecmod,
+            string? Usumod
         )
         {
             this.ClientesCodigo = ClientesCodigo;
@@ -218,11 +218,11 @@ namespace clientes_ms.Application.Records.Response
             this.IdZona = IdZona;
             this.IdGrupoEmpresa = IdGrupoEmpresa;
             this.Representante = Representante;
-            this.Fecmod=Fecmod;
-            this.Usumod = Usumod;
             this.ZonaReferencia = ZonaReferencia;
             this.EstadoNombre = EstadoNombre;
             this.Prefijo = Prefijo;
+            this.Fecmod = Fecmod;
+            this.Usumod = Usumod!;
         }
     }
 }
