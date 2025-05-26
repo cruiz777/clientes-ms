@@ -11,9 +11,9 @@ public partial class ProductoDatosAdicionales
 
     public long? IdPrefijos { get; set; }
 
-    public long? TipoCodigoGs1Codigo { get; set; }
+    public long? IdTipoCodigoGs1 { get; set; }
 
-    public string? IdProductoGrupo { get; set; }
+    public long? IdGrupoProducto { get; set; }
 
     public double? Peso1 { get; set; }
 
@@ -81,11 +81,19 @@ public partial class ProductoDatosAdicionales
 
     public string? SolOtros { get; set; }
 
-    public virtual Producto ClientesCodigoNavigation { get; set; } = null!;
+    public long? IdProducto { get; set; }
+
+    public virtual Clientes ClientesCodigoNavigation { get; set; } = null!;
+
+    public virtual GrupoProducto? IdGrupoProductoNavigation { get; set; }
+
+    public virtual Prefijos? IdPrefijosNavigation { get; set; }
+
+    public virtual Producto? IdProductoNavigation { get; set; }
 
     public virtual Sector? IdSectorNavigation { get; set; }
 
-    public virtual Usuarios? IdUsuarioNavigation { get; set; }
+    public virtual TipoCodigoGs1? IdTipoCodigoGs1Navigation { get; set; }
 
-    public virtual TipoCodigoGs1? TipoCodigoGs1CodigoNavigation { get; set; }
+    public virtual Usuarios? IdUsuarioNavigation { get; set; }
 }

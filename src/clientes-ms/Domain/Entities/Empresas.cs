@@ -53,6 +53,8 @@ public partial class Empresas
 
     public virtual ICollection<EstadoEmpresa> EstadoEmpresa { get; set; } = new List<EstadoEmpresa>();
 
+    public virtual ICollection<EstructuraComercial> EstructuraComercial { get; set; } = new List<EstructuraComercial>();
+
     public virtual ICollection<Gerentes> Gerentes { get; set; } = new List<Gerentes>();
 
     public virtual ICollection<HistorialCliente> HistorialCliente { get; set; } = new List<HistorialCliente>();
@@ -62,6 +64,16 @@ public partial class Empresas
     public virtual ICollection<Perfiles> Perfiles { get; set; } = new List<Perfiles>();
 
     public virtual ICollection<Producto> Producto { get; set; } = new List<Producto>();
+
+    public virtual ICollection<ProductoDepartamento> ProductoDepartamento { get; set; } = new List<ProductoDepartamento>();
+
+    public virtual ICollection<ProductoDivision> ProductoDivision { get; set; } = new List<ProductoDivision>();
+
+    public virtual ICollection<ProductoGrupo> ProductoGrupo { get; set; } = new List<ProductoGrupo>();
+
+    public virtual ICollection<ProductoSeccion> ProductoSeccion { get; set; } = new List<ProductoSeccion>();
+
+    public virtual ICollection<ProductoSubDivision> ProductoSubDivision { get; set; } = new List<ProductoSubDivision>();
 
     public virtual ICollection<TipoCliente> TipoCliente { get; set; } = new List<TipoCliente>();
 

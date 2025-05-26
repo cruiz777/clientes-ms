@@ -121,6 +121,8 @@ public partial class Clientes
 
     public virtual ICollection<ClienteObservacion> ClienteObservacion { get; set; } = new List<ClienteObservacion>();
 
+    public virtual ICollection<ContactosClientes> ContactosClientes { get; set; } = new List<ContactosClientes>();
+
     public virtual Empresas? EmpresaCodigoNavigation { get; set; }
 
     public virtual ICollection<Gln> Gln { get; set; } = new List<Gln>();
@@ -142,6 +144,8 @@ public partial class Clientes
     public virtual Zona? IdZonaNavigation { get; set; }
 
     public virtual ICollection<Prefijos> Prefijos { get; set; } = new List<Prefijos>();
+
+    public virtual ICollection<ProductoDatosAdicionales> ProductoDatosAdicionales { get; set; } = new List<ProductoDatosAdicionales>();
 
     public virtual ICollection<TipoEmpresaLocalizacion> TipoEmpresaLocalizacion { get; set; } = new List<TipoEmpresaLocalizacion>();
 }

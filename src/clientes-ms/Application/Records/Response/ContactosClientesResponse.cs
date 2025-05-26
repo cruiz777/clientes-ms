@@ -15,8 +15,10 @@ namespace clientes_ms.Application.Records.Response
         public string Email { get; set; } = string.Empty;
         public string Cargo { get; set; } = string.Empty;
         public long ClientesCodigo { get; set; } = 0;
+
+        public int Linea { get; set; } = 0;
         public ContactosClientesResponse() { }
-        public ContactosClientesResponse(long id_ContactosClientes, string Nombre,string Telefono,string Email,string Cargo,long ClientesCodigo)
+        public ContactosClientesResponse(long id_ContactosClientes, string Nombre,string Telefono,string Email,string Cargo,long ClientesCodigo,int Linea)
         {
             this.IdContactosClientes = id_ContactosClientes;
             this.Nombre = Nombre.Trim();
@@ -24,7 +26,7 @@ namespace clientes_ms.Application.Records.Response
             this.Cargo = Cargo.Trim();
             this.Email = Email.Trim();
             this.ClientesCodigo= ClientesCodigo;
-
+            this.Linea = Linea;
         }
     }
 }

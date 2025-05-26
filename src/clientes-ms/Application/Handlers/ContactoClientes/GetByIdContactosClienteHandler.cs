@@ -2,23 +2,40 @@
 using clientes_ms.Domain.Entities;
 using MediatR;
 using MicroservicesTemplate.Domain.Repositories;
+using Microsoft.EntityFrameworkCore;
 
-public class GetContactosClientesByIdHandler : IRequestHandler<GetContactosClientesByIdQuery, ApiResponse<ContactosClientesResponse>>
+public class GetContactosClientesByClientesCodigoHandler : IRequestHandler<GetContactosClientesByClientesCodigoQuery, ApiResponse<List<ContactosClientesResponse>>>
 {
     private readonly IBaseRepository<ContactosClientes> _repository;
-    public GetContactosClientesByIdHandler(IBaseRepository<ContactosClientes> repository) => _repository = repository;
 
-    public async Task<ApiResponse<ContactosClientesResponse>> Handle(GetContactosClientesByIdQuery request, CancellationToken cancellationToken)
+    public GetContactosClientesByClientesCodigoHandler(IBaseRepository<ContactosClientes> repository)
+    {
+        _repository = repository;
+    }
+
+    public async Task<ApiResponse<List<ContactosClientesResponse>>> Handle(GetContactosClientesByClientesCodigoQuery request, CancellationToken cancellationToken)
     {
         try
         {
-            var e = await _repository.GetByIdAsync(request.Id);
-            if (e == null) return new ApiResponse<ContactosClientesResponse>(Guid.NewGuid(), "OBJECT", null, $"ContactoClientes with ID {request.Id} not found.");
-            return new ApiResponse<ContactosClientesResponse>(Guid.NewGuid(), "OBJECT", new ContactosClientesResponse(e.IdContactosClientes, e.Nombre?.Trim() ?? string.Empty, e.Telefono?.Trim() ?? string.Empty, e.Email?.Trim() ?? string.Empty, e.Cargo?.Trim() ?? string.Empty, e.ClientesCodigo??0), "Success");
+            var contactos = await _repository.AsQueryable()
+                .Where(c => c.ClientesCodigo == request.ClientesCodigo)
+                .ToListAsync(cancellationToken);
+
+            var result = contactos.Select(e => new ContactosClientesResponse(
+                e.IdContactosClientes,
+                e.Nombre?.Trim() ?? string.Empty,
+                e.Telefono?.Trim() ?? string.Empty,
+                e.Email?.Trim() ?? string.Empty,
+                e.Cargo?.Trim() ?? string.Empty,
+                e.ClientesCodigo ?? 0,
+                e.Linea ?? 0
+            )).ToList();
+
+            return new ApiResponse<List<ContactosClientesResponse>>(Guid.NewGuid(), "LIST", result, "Success");
         }
         catch (Exception ex)
         {
-            return new ApiResponse<ContactosClientesResponse>(Guid.NewGuid(), "ERROR", null, ex.Message);
+            return new ApiResponse<List<ContactosClientesResponse>>(Guid.NewGuid(), "ERROR", null, ex.Message);
         }
     }
 }
