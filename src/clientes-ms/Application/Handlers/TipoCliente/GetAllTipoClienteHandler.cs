@@ -19,7 +19,7 @@ public class GetAllTipoClienteHandler : IRequestHandler<GetAllTipoClienteQuery, 
         {
             var tipoClientes = await _repository
                 .AsQueryable()
-                .Include(tc => tc.IdEmpresaNavigation)
+                .Include(tc => tc.IdEmpresa)
                 .ToListAsync(cancellationToken); // Aplica ToListAsync sobre la entidad primero
 
             var result = tipoClientes.Select(MapToResponse); // Luego haces el Select a tu DTO

@@ -24,6 +24,8 @@ public class CreateClientesHandler : IRequestHandler<CreateClientesCommand, ApiR
                 Ruc = request.Request.Ruc.Trim(),
                 Fecing = request.Request.Fecing,
                 Fecnac = request.Request.Fecnac,
+                FechaCeseAct = request.Request.FechaCeseActParsed,
+                MotivoCeseAct = request.Request.MotivoCeseAct!,
                 Fecfac1 = request.Request.Fecfac1,
                 Fecfac2 = request.Request.Fecfac2,
                 Fecfac3 = request.Request.Fecfac3,
@@ -62,6 +64,9 @@ public class CreateClientesHandler : IRequestHandler<CreateClientesCommand, ApiR
                 IdZona = request.Request.IdZona,
                 IdGrupoEmpresa = request.Request.IdGrupoEmpresa,
                 Representante = request.Request.Representante.Trim(),
+                Fecmod=request.Request.Fecmod,
+                Usumod=request.Request.Usumod
+                
 
             };
             await _repository.AddAsync(entity);

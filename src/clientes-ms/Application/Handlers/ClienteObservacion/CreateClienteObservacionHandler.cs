@@ -12,7 +12,7 @@ public class CreateClienteObservacionHandler : IRequestHandler<CreateClienteObse
     {
         try
         {
-            var entity = new ClienteObservacion { Detalle = request.Request.Detalle?.Trim(), Fecha = request.Request.Fecha, IdUsuario = request.Request.IdUsuario, ClientesCodigo = request.Request.ClientesCodigo };
+            var entity = new ClienteObservacion { Detalle = request.Request.Detalle?.Trim(), Fecha = request.Request.Fecha, IdUsuario = request.Request.IdUsuario, ClientesCodigo = request.Request.ClientesCodigo,NombreUsuario=request.Request.NombreUsuario,Linea=request.Request.Linea };
             await _repository.AddAsync(entity);
             return new ApiResponse<bool>(Guid.NewGuid(), "BOOLEAN", true, "Created successfully");
         }

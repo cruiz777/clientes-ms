@@ -26,7 +26,7 @@ namespace clientes_ms.Application.Records.Request
         public double? InscripcionDolar { get; set; } = 0;
         public double? ValorAnual { get; set; } = 0;
 
-        public bool? Estado { get; set; } = false;
+        public bool Estado { get; set; } = false;
         public GrupoEmpresaRequest() { }
         public GrupoEmpresaRequest(long IdGrupoEmpresa, string Codigo, string Nombre, double Inscripcion, double Asignacion,
 double Mantenimiento, DateOnly Fecha, string ProductoInscripcion, string ProductoMantenimiento,

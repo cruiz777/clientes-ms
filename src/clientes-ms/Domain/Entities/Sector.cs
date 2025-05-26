@@ -9,5 +9,7 @@ public partial class Sector
 
     public string? Descripcion { get; set; }
 
+    public bool Estado { get; set; }
+
     public virtual ICollection<ProductoDatosAdicionales> ProductoDatosAdicionales { get; set; } = new List<ProductoDatosAdicionales>();
 }

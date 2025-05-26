@@ -201,13 +201,5 @@ public partial class Producto
 
     public virtual Empresas? EmpresaCodigoNavigation { get; set; }
 
-    public virtual ProductoGrupo? GrupoCodigoNavigation { get; set; }
-
-    public virtual ProductoDivision? IdDivisionNavigation { get; set; }
-
-    public virtual Seccion? IdSeccionNavigation { get; set; }
-
-    public virtual ProductoSubDivision? IdSubDivisionNavigation { get; set; }
-
     public virtual ProductoDatosAdicionales? ProductoDatosAdicionales { get; set; }
 }

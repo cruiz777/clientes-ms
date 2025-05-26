@@ -35,6 +35,8 @@ public class GetAllClientesHandler : IRequestHandler<GetAllClientesQuery, ApiRes
         Ruc = e.Ruc ?? string.Empty,
         Fecing = e.Fecing ?? DateOnly.MinValue,
         Fecnac = e.Fecnac ?? DateOnly.MinValue,
+        FecCeseAct = e.FechaCeseAct ?? DateOnly.MinValue,
+        MotivoCeseAct = e.MotivoCeseAct ?? string.Empty,
         Fecfac1 = e.Fecfac1 ?? DateOnly.MinValue,
         Fecfac2 = e.Fecfac2 ?? DateOnly.MinValue,
         Fecfac3 = e.Fecfac3 ?? DateOnly.MinValue,
@@ -74,7 +76,9 @@ public class GetAllClientesHandler : IRequestHandler<GetAllClientesQuery, ApiRes
         IdGrupoEmpresa = e.IdGrupoEmpresa ?? 0,
         Representante = e.Representante ?? string.Empty,
         ZonaReferencia = e.IdZonaNavigation?.Referencia ?? string.Empty,
-        EstadoNombre = e.IdEstadoEmpresaNavigation?.Nombre ?? string.Empty
+        EstadoNombre = e.IdEstadoEmpresaNavigation?.Nombre ?? string.Empty,
+        Fecmod=e.Fecmod??DateOnly.MinValue,
+        Usumod=e.Usumod?? string.Empty
     };
 
 }

@@ -21,5 +21,5 @@ public class GetAllGrupoEmpresaHandler : IRequestHandler<GetAllGrupoEmpresaQuery
         }
     }
 
-    private static GrupoEmpresaResponse MapToResponse(GrupoEmpresa e) => new(e.IdGrupoEmpresa, e.Codigo?.Trim() ?? string.Empty,e.Nombre?? string.Empty,e.Inscripcion ?? 0.0,e.Asignacion ?? 0.0,e.Mantenimiento ??0.0,e.Fecha ?? DateOnly.MinValue, e.ProductoInscripcion?? string.Empty, e.ProductoMantenimiento?? string.Empty, e.ProductoAsignacion?? string.Empty, e.AsignacionDolar ?? 0.0,e.MantenimientoDolar ?? 0.0,e.InscripcionDolar ?? 0.0,e.ValorAnual ?? 0.0,e.Estado??false);
+    private static GrupoEmpresaResponse MapToResponse(GrupoEmpresa e) => new(e.IdGrupoEmpresa, e.Codigo?.Trim() ?? string.Empty,e.Nombre?? string.Empty,e.Inscripcion ?? 0.0,e.Asignacion ?? 0.0,e.Mantenimiento ??0.0,e.Fecha ?? DateOnly.MinValue, e.ProductoInscripcion?? string.Empty, e.ProductoMantenimiento?? string.Empty, e.ProductoAsignacion?? string.Empty, e.AsignacionDolar ?? 0.0,e.MantenimientoDolar ?? 0.0,e.InscripcionDolar ?? 0.0,e.ValorAnual ?? 0.0,e.Estado);
 }

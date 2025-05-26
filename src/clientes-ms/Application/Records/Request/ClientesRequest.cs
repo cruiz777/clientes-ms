@@ -57,7 +57,17 @@ namespace clientes_ms.Application.Records.Request
         public long? IdZona { get; set; }
         public long? IdGrupoEmpresa { get; set; }
         public string? Representante { get; set; } = string.Empty;
+        [JsonPropertyName("fecCeseAct")]
+        public string? FechaCeseAct { get; set; }
+        [JsonPropertyName("motivoCeseAct")]
+        public string? MotivoCeseAct { get; set; }
 
+        [JsonIgnore]
+        public DateOnly? FechaCeseActParsed =>
+            DateOnly.TryParse(FechaCeseAct, out var date) ? date : null;
+        public DateOnly? Fecmod   { get; set; }
+
+        public string? Usumod { get; set; }
 
         public ClientesRequest() { }
         public ClientesRequest(long ClientesCodigo ,
@@ -83,6 +93,7 @@ namespace clientes_ms.Application.Records.Request
      DateOnly Fecing,
 
      DateOnly Fecnac,
+     DateOnly? FechaCeseAct,
 
      DateOnly Fecfac1,
 
@@ -93,7 +104,7 @@ namespace clientes_ms.Application.Records.Request
      DateOnly Fecfac4,
 
      DateOnly Fecfac5,
-
+     string? MotivoCeseAct,
      string Marca1,
 
      string Marca2,
@@ -158,7 +169,9 @@ namespace clientes_ms.Application.Records.Request
 
      long IdGrupoEmpresa,
 
-     string Representante)
+     string Representante,
+     DateOnly Fecmod,
+     string Usumod)
         {
             this.ClientesCodigo = ClientesCodigo;
             this.Nomcli = Nomcli;
@@ -172,6 +185,8 @@ namespace clientes_ms.Application.Records.Request
             this.Ruc = Ruc;
             this.Fecing = Fecing;
             this.Fecnac = Fecnac;
+            this.FechaCeseAct = FechaCeseAct?.ToString("yyyy-MM-dd");
+            this.MotivoCeseAct = MotivoCeseAct;
             this.Fecfac1 = Fecfac1;
             this.Fecfac2 = Fecfac2;
             this.Fecfac3 = Fecfac3;
@@ -210,6 +225,8 @@ namespace clientes_ms.Application.Records.Request
             this.IdZona = IdZona;
             this.IdGrupoEmpresa = IdGrupoEmpresa;
             this.Representante = Representante;
+            this.Fecmod = Fecmod;
+            this.Usumod = Usumod;
 
 
 

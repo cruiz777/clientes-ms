@@ -1,2 +1,76 @@
-#ENv
-.env
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Archivos de edición
+*.swp
+*.*~
+*.tmp
+*.bak
+*.pyc
+
+# Archivos de configuración del entorno
+*.env
+*.local
+
+# Configuración de usuario de Visual Studio
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# VS Code
+.vscode/
+
+# Archivos temporales y binarios de Visual Studio
+.vs/
+.vs/**/*
+*.sdf
+*.cache
+*.db
+*.db-shm
+*.db-wal
+*.vsidx
+*.vshx
+
+# Carpetas y archivos de compilación
+[Bb]in/
+[Oo]bj/
+[Dd]ebug*/
+[Rr]elease*/
+build/
+bld/
+out/
+publish/
+x64/
+x86/
+msbuild.*
+*.dll
+*.exe
+*.pdb
+*.log
+
+# NuGet
+*.nupkg
+.project.json
+project.lock.json
+project.assets.json
+*.nuget.props
+*.nuget.targets
+
+# Archivos de configuración del sistema operativo
+*.orig
+
+# Archivos de respaldo
+*.bak
+*.old
+
+# Ignorar Copilot y sus índices
+.vs/**/CopilotIndices/
+.vs/**/SemanticSymbols*
+.vs/**/CodeChunks*
+
+# Ignorar carpetas específicas del proyecto
+src/seguridades-ms/Infrastructure/Persistence/Context/

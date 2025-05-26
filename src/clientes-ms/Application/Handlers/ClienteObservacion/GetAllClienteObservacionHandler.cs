@@ -21,5 +21,5 @@ public class GetAllClienteObservacionHandler : IRequestHandler<GetAllClienteObse
         }
     }
 
-    private static ClienteObservacionResponse MapToResponse(ClienteObservacion e) => new(e.IdClienteObservacion, e.Detalle?.Trim() ?? string.Empty, e.Fecha ?? DateTime.MinValue, e.IdUsuario , e.ClientesCodigo );
+    private static ClienteObservacionResponse MapToResponse(ClienteObservacion e) => new(e.IdClienteObservacion, e.Detalle?.Trim() ?? string.Empty, e.Fecha ?? DateTime.MinValue, e.IdUsuario , e.ClientesCodigo,e.NombreUsuario,e.Linea??0 );
 }

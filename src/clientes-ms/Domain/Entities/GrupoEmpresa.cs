@@ -33,7 +33,7 @@ public partial class GrupoEmpresa
 
     public double? ValorAnual { get; set; }
 
-    public bool? Estado { get; set; }
+    public bool Estado { get; set; }
 
     public virtual ICollection<Clientes> Clientes { get; set; } = new List<Clientes>();
 }

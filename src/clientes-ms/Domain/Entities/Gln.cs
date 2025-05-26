@@ -117,9 +117,13 @@ public partial class Gln
 
     public long? IdUsuario { get; set; }
 
+    public virtual Clientes ClientesCodigoNavigation { get; set; } = null!;
+
     public virtual Ciudades? IdCiudadNavigation { get; set; }
 
     public virtual Paises? IdPaisNavigation { get; set; }
+
+    public virtual Prefijos IdPrefijosNavigation { get; set; } = null!;
 
     public virtual TipoLocalizacion? IdTipoLocalizacionNavigation { get; set; }
 

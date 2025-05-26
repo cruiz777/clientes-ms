@@ -2,6 +2,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using clientes_ms.Application.Records.Request;
 using clientes_ms.Application.Records.Response;
+using clientes_ms.Application.Queries.Clientes;
 
 namespace clientes_ms.WebApi.Controllers
 {
@@ -14,7 +15,7 @@ namespace clientes_ms.WebApi.Controllers
     {
         private readonly IMediator _mediator;
 
-        // Constructor con inyección de dependencia del Mediator
+        // Constructor con inyecciï¿½n de dependencia del Mediator
         public ClientesController(IMediator mediator)
         {
             _mediator = mediator;
@@ -25,7 +26,7 @@ namespace clientes_ms.WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var result = await _mediator.Send(new GetAllClientesQuery()); // Envía la query a su handler correspondiente
+            var result = await _mediator.Send(new GetAllClientesQuery()); // Envï¿½a la query a su handler correspondiente
             return Ok(result); // Devuelve la respuesta con estado 200
         }
 
@@ -33,9 +34,17 @@ namespace clientes_ms.WebApi.Controllers
         [Route("/api/resumen")]
         public async Task<IActionResult> GetClientesResumen()
         {
-            var result = await _mediator.Send(new GetClientesByResumen()); // Envía la query a su handler correspondiente
+            var result = await _mediator.Send(new GetClientesByResumen()); // Envï¿½a la query a su handler correspondiente
             return Ok(result); // Devuelve la respuesta con estado 200
         }
+        // busca por nombre
+        [HttpGet("buscar-por-nombre")]
+        public async Task<IActionResult> BuscarPorNombre([FromQuery] string nombre)
+        {
+            var resultado = await _mediator.Send(new GetClientesByNombreLikeQuery(nombre));
+            return Ok(resultado);
+        }
+
 
         // GET api/examples/{id}
         [HttpGet("{id}")]
@@ -59,7 +68,7 @@ namespace clientes_ms.WebApi.Controllers
         }
 
         // GET api/examples/status/{status}
-        // Obtiene todos los registros activos o inactivos según el parámetro
+        // Obtiene todos los registros activos o inactivos segï¿½n el parï¿½metro
         //[HttpGet("status/{status}")]
         //public async Task<IActionResult> GetByStatus(bool status)
         //{
@@ -76,6 +85,30 @@ namespace clientes_ms.WebApi.Controllers
             return Ok(result);
         }
 
+        // POST api/clientes/validar
+        [HttpPost("validar")]
+        public async Task<IActionResult> ValidarClienteSri([FromBody] long clienteId)
+        {
+            var result = await _mediator.Send(new ValidarClienteSriQuery(clienteId));
+
+            if (result.Data == null)
+                return NotFound(new { message = result.Message });
+
+            return Ok(result);
+        }
+
+        // POST api/clientes/validar-masivo
+        [HttpPost("validar-masivo")]
+        public async Task<IActionResult> ValidarClientesSriMasivo([FromBody] List<long> clienteIds)
+        {
+            var result = await _mediator.Send(new ValidarClientesSriMasivoQuery(clienteIds));
+
+            if (result.Data == null || result.Data.Count == 0)
+                return NotFound(new { message = "No se pudo validar ningï¿½n cliente" });
+
+            return Ok(result);
+        }
+
         // PUT api/examples/{id}
         // Actualiza un registro existente de Example
         [HttpPut("{id}")]
@@ -86,7 +119,7 @@ namespace clientes_ms.WebApi.Controllers
         }
 
         // DELETE api/examples/{id}
-        // Elimina físicamente un registro
+        // Elimina fï¿½sicamente un registro
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(long id)
         {
@@ -95,12 +128,23 @@ namespace clientes_ms.WebApi.Controllers
         }
 
         // PUT api/examples/{id}/soft-delete
-        // Elimina lógicamente un registro (cambia su status a false)
+        // Elimina lï¿½gicamente un registro (cambia su status a false)
         //[HttpPatch("{id}/soft-delete")]
         //public async Task<IActionResult> SoftDelete(long id)
         //{
         //    var result = await _mediator.Send(new SoftDeleteExampleCommand(id));
         //    return Ok(result);
         //}
+
+        [HttpGet("buscar")]
+        public async Task<ActionResult<ApiResponse<List<ClienteSummaryResponse>>>> BuscarClientes([FromQuery] string filtro)
+        {
+            if (string.IsNullOrWhiteSpace(filtro))
+                return BadRequest("Debe proporcionar un nombre o RUC como filtro.");
+
+            var query = new GetClientesByNomcliAsyncQuery(filtro);
+            var resultado = await _mediator.Send(query);
+            return Ok(resultado);
+        }
     }
 }

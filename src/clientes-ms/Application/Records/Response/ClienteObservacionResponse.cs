@@ -16,15 +16,18 @@ namespace clientes_ms.Application.Records.Response
         
         public long IdUsuario { get; set; } = 0;
         public long ClientesCodigo { get; set; } = 0;
+        public string NombreUsuario { get; set; }=string.Empty;
+        public int Linea { get; set; } = 0;
         public ClienteObservacionResponse() { }
-        public ClienteObservacionResponse(long id_ClienteObservacion, string Detalle, DateTime Fecha, long IdUsuario,long ClientesCodigo)
+        public ClienteObservacionResponse(long id_ClienteObservacion, string Detalle, DateTime Fecha, long IdUsuario,long ClientesCodigo,string NombreUsuario,int Linea)
         {
             this.IdClienteObservacion = id_ClienteObservacion;
             this.Detalle = Detalle.Trim();
             this.Fecha = Fecha; 
             this.IdUsuario = IdUsuario;
             this.ClientesCodigo = ClientesCodigo;
-            
+            this.NombreUsuario = NombreUsuario;
+            this.Linea = Linea;
 
         }
     }

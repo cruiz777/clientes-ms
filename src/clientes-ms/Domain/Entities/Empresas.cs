@@ -55,6 +55,8 @@ public partial class Empresas
 
     public virtual ICollection<Gerentes> Gerentes { get; set; } = new List<Gerentes>();
 
+    public virtual ICollection<HistorialCliente> HistorialCliente { get; set; } = new List<HistorialCliente>();
+
     public virtual Ciudades IdCiudadNavigation { get; set; } = null!;
 
     public virtual ICollection<Perfiles> Perfiles { get; set; } = new List<Perfiles>();

@@ -55,15 +55,31 @@ namespace clientes_ms.WebApi.Controllers
             var result = await _mediator.Send(new CreateClienteObservacionCommand(request));
             return Ok(result);
         }
+        /// buscar por cliente
+        [HttpGet("por-cliente/{clientesCodigo}")]
+        public async Task<IActionResult> ObtenerPorCodigoCliente(long clientesCodigo)
+        {
+            var resultado = await _mediator.Send(new GetClienteObservacionesByClienteCodigoQuery(clientesCodigo));
+            return Ok(resultado);
+        }
+
 
         // PUT api/examples/{id}
         // Actualiza un registro existente de Example
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Update(long id, [FromBody] ClienteObservacionRequest request)
+        [HttpPut("{clientesCodigo}/{linea}")]
+        public async Task<IActionResult> Update(int clientesCodigo, int linea, [FromBody] ClienteObservacionRequest request)
         {
-            var result = await _mediator.Send(new UpdateClienteObservacionCommand(id, request));
+            var command = new UpdateClienteObservacionCommand
+            {
+                ClientesCodigo = clientesCodigo,
+                Linea = linea,
+                Request = request
+            };
+
+            var result = await _mediator.Send(command);
             return Ok(result);
         }
+
 
         // DELETE api/examples/{id}
         // Elimina físicamente un registro
