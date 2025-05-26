@@ -1,18 +1,23 @@
 ﻿using clientes_ms.Application.DTOs.Clientes;
 using clientes_ms.Application.Options;
+using clientes_ms.Application.Records.Response;
 using clientes_ms.Domain.Interfaces.IDomainServices;
+using clientes_ms.Infrastructure.Persistence.Context;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
+using Microsoft.EntityFrameworkCore;
 
 public class ClienteDomainService : IClienteDomainService
 {
     private readonly HttpClient _http;
     private readonly ApisExternasOptions _options;
+    private readonly ApplicationDbContext _context;
 
-    public ClienteDomainService(HttpClient http, IOptions<ApisExternasOptions> options)
+    public ClienteDomainService(HttpClient http, IOptions<ApisExternasOptions> options, ApplicationDbContext context)
     {
         _http = http;
         _options = options.Value;
+        _context = context;
     }
 
     public async Task<ClienteValidadoDTO?> ValidarClienteDesdeSriAsync(string ruc)
@@ -38,4 +43,28 @@ public class ClienteDomainService : IClienteDomainService
             data.motivoCancelacionSuspension
         );
     }
+
+    public async Task<List<ClienteSummaryResponse>> GetClientesByNomcliAsync(string filtro)
+    {
+       if (string.IsNullOrWhiteSpace(filtro))
+            throw new ArgumentException("Debe proporcionar un filtro válido (nombre o RUC).", nameof(filtro));
+
+        var clientes = await _context.Clientes
+            .Where(c =>
+                (!string.IsNullOrEmpty(c.Nomcli) && c.Nomcli.ToLower().Contains(filtro.ToLower())) ||
+                (!string.IsNullOrEmpty(c.Ruc) && c.Ruc.Contains(filtro)))
+            .OrderBy(c => c.Nomcli)
+            .ToListAsync();
+
+        var resultado = clientes.Select(cliente => new ClienteSummaryResponse
+        {
+            ClientesCodigo = cliente.ClientesCodigo,
+            Nomcli = cliente.Nomcli ?? string.Empty,
+            Ruc = cliente.Ruc ?? string.Empty
+        }).ToList();
+
+        return resultado;
+    }
+
+
 }
