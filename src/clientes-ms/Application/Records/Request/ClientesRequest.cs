@@ -49,11 +49,11 @@ namespace clientes_ms.Application.Records.Request
         public int? Imprimeobstramite { get; set; }
         public long? IdTipoCliente { get; set; }
         public long? IdGrupoProducto { get; set; }
-        public long? IdPersona { get; set; }
+        public long IdPersona { get; set; }
         public string? CodigoPostal { get; set; } = string.Empty;
         public string? CodigoPostal2 { get; set; } = string.Empty;
         public long? IdVendedor { get; set; }
-        public long? IdCiudad { get; set; }
+        public long IdCiudad { get; set; }
         public long? IdZona { get; set; }
         public long? IdGrupoEmpresa { get; set; }
         public string? Representante { get; set; } = string.Empty;
