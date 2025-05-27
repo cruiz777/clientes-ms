@@ -3,6 +3,7 @@ using clientes_ms.Domain.Entities;
 using MediatR;
 using MicroservicesTemplate.Domain.Repositories;
 
+namespace clientes_ms.Application.Handlers.Cliente;
 public class GetClientesByIdHandler : IRequestHandler<GetClientesByIdQuery, ApiResponse<ClientesResponse>>
 {
     private readonly IBaseRepository<Clientes> _repository;
