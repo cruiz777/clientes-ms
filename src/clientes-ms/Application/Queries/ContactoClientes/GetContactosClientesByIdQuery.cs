@@ -1,4 +1,12 @@
 ﻿using clientes_ms.Application.Records.Response;
 using MediatR;
 
-public record GetContactosClientesByIdQuery(long Id) : IRequest<ApiResponse<ContactosClientesResponse>>;
+public class GetContactosClientesByClientesCodigoQuery : IRequest<ApiResponse<List<ContactosClientesResponse>>>
+{
+    public int ClientesCodigo { get; set; }
+
+    public GetContactosClientesByClientesCodigoQuery(int clientesCodigo)
+    {
+        ClientesCodigo = clientesCodigo;
+    }
+}

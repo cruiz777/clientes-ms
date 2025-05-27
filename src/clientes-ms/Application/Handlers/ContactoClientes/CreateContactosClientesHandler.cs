@@ -12,7 +12,7 @@ public class CreateContactosClientesHandler : IRequestHandler<CreateContactosCli
     {
         try
         {
-            var entity = new ContactosClientes { Nombre = request.Request.Nombre.Trim(), Telefono = request.Request.Telefono.Trim(), Email = request.Request.Email.Trim(), Cargo = request.Request.Cargo.Trim(), ClientesCodigo=request.Request.ClientesCodigo };
+            var entity = new ContactosClientes { Nombre = request.Request.Nombre.Trim(), Telefono = request.Request.Telefono.Trim(), Email = request.Request.Email.Trim(), Cargo = request.Request.Cargo.Trim(), ClientesCodigo=request.Request.ClientesCodigo,Linea=request.Request.Linea };
             await _repository.AddAsync(entity);
             return new ApiResponse<bool>(Guid.NewGuid(), "BOOLEAN", true, "Created successfully");
         }

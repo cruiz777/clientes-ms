@@ -5,7 +5,7 @@ namespace clientes_ms.Domain.Entities;
 
 public partial class EstructuraComercial
 {
-    public string Codest { get; set; } = null!;
+    public long IdEstructuraComercial { get; set; }
 
     public long IdEmpresa { get; set; }
 
@@ -13,5 +13,9 @@ public partial class EstructuraComercial
 
     public double? Numnodos { get; set; }
 
-    public bool? Estado { get; set; }
+    public bool Estado { get; set; }
+
+    public virtual Empresas IdEmpresaNavigation { get; set; } = null!;
+
+    public virtual ICollection<ProductoDivision> ProductoDivision { get; set; } = new List<ProductoDivision>();
 }

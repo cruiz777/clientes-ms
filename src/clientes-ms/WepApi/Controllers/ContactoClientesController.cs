@@ -29,14 +29,15 @@ namespace clientes_ms.WebApi.Controllers
             return Ok(result); // Devuelve la respuesta con estado 200
         }
 
-        // GET api/examples/{id}
-        // Obtiene un registro específico por su ID
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(long id)
+        // GET api/contactos/clientes/{clientesCodigo}
+        // Obtiene todos los contactos de un cliente específico
+        [HttpGet("clientescontacto/{clientesCodigo}")]
+        public async Task<IActionResult> GetByClientesCodigo(int clientesCodigo)
         {
-            var result = await _mediator.Send(new GetContactosClientesByIdQuery(id));
+            var result = await _mediator.Send(new GetContactosClientesByClientesCodigoQuery(clientesCodigo));
             return Ok(result);
         }
+
 
         // GET api/examples/status/{status}
         // Obtiene todos los registros activos o inactivos según el parámetro
@@ -56,12 +57,16 @@ namespace clientes_ms.WebApi.Controllers
             return Ok(result);
         }
 
-        // PUT api/examples/{id}
-        // Actualiza un registro existente de Example
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Update(long id, [FromBody] ContactosClientesRequest request)
+        // PUT api/contactos/clientes/{clientesCodigo}/linea/{linea}
+        // Actualiza un contacto por código de cliente y número de línea
+        [HttpPut("clientes/{clientesCodigo}/linea/{linea}")]
+        public async Task<IActionResult> UpdateByClienteCodigoAndLinea(int clientesCodigo, int linea, [FromBody] ContactosClientesRequest request)
         {
-            var result = await _mediator.Send(new UpdateContactosClientesCommand(id, request));
+            // Asegurar que los datos estén en el request para el handler
+            request.ClientesCodigo = clientesCodigo;
+            request.Linea = linea;
+
+            var result = await _mediator.Send(new UpdateContactosClientesCommand(request));
             return Ok(result);
         }
 
