@@ -207,6 +207,8 @@ public partial class Producto
 
     public long? IdEmpresa { get; set; }
 
+    public string? Codbar { get; set; }
+
     public virtual ICollection<Codigos14> Codigos14 { get; set; } = new List<Codigos14>();
 
     public virtual Empresas? IdEmpresaNavigation { get; set; }

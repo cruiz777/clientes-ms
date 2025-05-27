@@ -102,6 +102,8 @@ public partial class ApplicationDbContext : DbContext
 
     public virtual DbSet<Provincia> Provincia { get; set; }
 
+    public virtual DbSet<Proyectos> Proyectos { get; set; }
+
     public virtual DbSet<Roles> Roles { get; set; }
 
     public virtual DbSet<Sector> Sector { get; set; }
@@ -1682,6 +1684,10 @@ public partial class ApplicationDbContext : DbContext
                 .HasMaxLength(10)
                 .IsUnicode(false)
                 .HasColumnName("cod_niv");
+            entity.Property(e => e.Codbar)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("codbar");
             entity.Property(e => e.Codcol).HasColumnName("codcol");
             entity.Property(e => e.Codcuedeb)
                 .HasMaxLength(15)
@@ -2187,6 +2193,25 @@ public partial class ApplicationDbContext : DbContext
                 .HasForeignKey(d => d.IdPais)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_provincia_pais");
+        });
+
+        modelBuilder.Entity<Proyectos>(entity =>
+        {
+            entity.HasKey(e => e.IdProyecto).HasName("PK__proyecto__F38AD81D35FB7106");
+
+            entity.ToTable("proyectos", "seguridades");
+
+            entity.Property(e => e.IdProyecto).HasColumnName("id_proyecto");
+            entity.Property(e => e.Descripcion)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("descripcion");
+            entity.Property(e => e.Estado).HasColumnName("estado");
+            entity.Property(e => e.IdEmpresa).HasColumnName("id_empresa");
+
+            entity.HasOne(d => d.IdEmpresaNavigation).WithMany(p => p.Proyectos)
+                .HasForeignKey(d => d.IdEmpresa)
+                .HasConstraintName("FK_proyectos_empresas");
         });
 
         modelBuilder.Entity<Roles>(entity =>

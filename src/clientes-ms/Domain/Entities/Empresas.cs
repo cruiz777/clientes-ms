@@ -75,6 +75,8 @@ public partial class Empresas
 
     public virtual ICollection<ProductoSubDivision> ProductoSubDivision { get; set; } = new List<ProductoSubDivision>();
 
+    public virtual ICollection<Proyectos> Proyectos { get; set; } = new List<Proyectos>();
+
     public virtual ICollection<TipoCliente> TipoCliente { get; set; } = new List<TipoCliente>();
 
     public virtual ICollection<Usuarios> Usuarios { get; set; } = new List<Usuarios>();
