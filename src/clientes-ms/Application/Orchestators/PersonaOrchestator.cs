@@ -95,17 +95,20 @@ public class PersonaOrquestadorService
         }
         else if (tipoDoc == 3)
         {
-            var sri = await _http.GetFromJsonAsync<SriResponse>(
+            var wrapper = await _http.GetFromJsonAsync<SriWrapperResponse>(
                 $"http://localhost:5001/api/apis-externas/ruc/consultar?parametro={numeroDoc}");
 
+            var sri = wrapper?.Consulta?.FirstOrDefault();
+
             personaReq.Nombre1 ??= cliente.RazonSocial ?? sri?.RazonSocial;
-            personaReq.Apellido2 ??= cliente.Representante;
+            personaReq.Apellido1 ??= cliente.Representante;
             personaReq.IdGenero = 3;
             personaReq.IdEstadoCivil = 5; // NO APLICA
 
-            if (sri?.FechaInicioActividades != null)
-                personaReq.FechaNacimiento = sri.FechaInicioActividades;
+            if (DateTime.TryParse(sri?.InformacionFechasContribuyente?.FechaInicioActividades, out var fechaInicio))
+                personaReq.FechaNacimiento = DateOnly.FromDateTime(fechaInicio);
         }
+
 
         var persona = _mapper.Map<Personas>(personaReq);
         persona.FechaRegistro = DateTime.Now;
@@ -165,8 +168,29 @@ public class PersonaOrquestadorService
         string? Profesion
     );
 
-    public record SriResponse(
-        string RazonSocial,
-        DateOnly FechaInicioActividades
-    );
+    public class SriWrapperResponse
+    {
+        public bool Ok { get; set; }
+        public List<SriConsulta> Consulta { get; set; } = [];
+    }
+
+    public class SriConsulta
+    {
+        public string RazonSocial { get; set; } = string.Empty;
+        public string? EstadoContribuyenteRuc { get; set; }
+        public string? TipoContribuyente { get; set; }
+        public InformacionFechasContribuyente InformacionFechasContribuyente { get; set; } = new();
+        public List<RepresentanteLegal>? RepresentantesLegales { get; set; }
+    }
+
+    public class InformacionFechasContribuyente
+    {
+        public string? FechaInicioActividades { get; set; }
+    }
+
+    public class RepresentanteLegal
+    {
+        public string? NombreRepresentante { get; set; }
+    }
+
 }
