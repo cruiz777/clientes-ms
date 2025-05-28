@@ -5,6 +5,7 @@ using clientes_ms.Domain.Entities;
 using MicroservicesTemplate.Domain.Repositories;
 using System.Linq;
 
+namespace clientes_ms.Application.Handlers.Cliente;
 public class GetResumenClientesHandler : IRequestHandler<GetClientesByResumen, ApiResponse<IEnumerable<ClientesResponse>>>
 {
     private readonly IBaseRepository<Clientes> _repository;

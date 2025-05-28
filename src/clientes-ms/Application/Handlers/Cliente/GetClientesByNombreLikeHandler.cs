@@ -4,6 +4,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using MicroservicesTemplate.Domain.Repositories;
 
+namespace clientes_ms.Application.Handlers.Cliente;
 public class GetClientesByNombreLikeHandler : IRequestHandler<GetClientesByNombreLikeQuery, ApiResponse<IEnumerable<ClientesResponse>>>
 {
     private readonly IBaseRepository<Clientes> _repository;

@@ -4,6 +4,7 @@ using MediatR;
 using MicroservicesTemplate.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 
+namespace clientes_ms.Application.Handlers.Cliente;
 public class GetClientesByRucHandler : IRequestHandler<GetClientesByRucQuery, ApiResponse<IEnumerable<ClientesResponse>>>
 {
     private readonly IBaseRepository<Clientes> _repository;

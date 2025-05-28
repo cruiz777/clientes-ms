@@ -47,5 +47,9 @@ public partial class Prefijos
 
     public virtual Clientes? ClientesCodigoNavigation { get; set; }
 
+    public virtual ICollection<Codigos14> Codigos14 { get; set; } = new List<Codigos14>();
+
     public virtual ICollection<Gln> Gln { get; set; } = new List<Gln>();
+
+    public virtual ICollection<ProductoDatosAdicionales> ProductoDatosAdicionales { get; set; } = new List<ProductoDatosAdicionales>();
 }

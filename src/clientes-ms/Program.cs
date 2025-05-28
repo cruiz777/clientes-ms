@@ -7,6 +7,7 @@ using MicroservicesTemplate.Infrastructure.Repositories;
 using clientes_ms.Domain.Interfaces.IDomainServices;
 using clientes_ms.Domain.Services;
 using clientes_ms.Application.Options;
+using clientes_ms.Application.Orchestators;
 
 var builder = WebApplication.CreateBuilder(args);
 //forzar a q salga por ese puerto
@@ -47,6 +48,10 @@ builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Progr
 builder.Services.Configure<ApisExternasOptions>(
     builder.Configuration.GetSection(ApisExternasOptions.SectionName));
 #endregion
+
+builder.Services.AddScoped<PersonaOrquestadorService>();
+builder.Services.AddAutoMapper(typeof(Program));
+
 
 // 🔥 Configuración de CORS para permitir cualquier origen
 builder.Services.AddCors(options =>

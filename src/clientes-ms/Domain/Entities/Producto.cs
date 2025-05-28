@@ -13,17 +13,17 @@ public partial class Producto
 
     public string? Tippro { get; set; }
 
-    public long? GrupoCodigo { get; set; }
+    public double? Codgru { get; set; }
 
-    public long? IdSeccion { get; set; }
+    public double? Codsec { get; set; }
 
-    public long? IdDepartamento { get; set; }
+    public double? Coddep { get; set; }
 
-    public long? IdSubDivision { get; set; }
+    public double? Codsub { get; set; }
 
-    public long? IdDivision { get; set; }
+    public double? Coddiv { get; set; }
 
-    public double? Marca { get; set; }
+    public double? Codmar { get; set; }
 
     public string? Despro2 { get; set; }
 
@@ -64,6 +64,18 @@ public partial class Producto
     public string? Codcuedev { get; set; }
 
     public string? Iva { get; set; }
+
+    public string? Tipo { get; set; }
+
+    public string? Preuni { get; set; }
+
+    public string? Regalia { get; set; }
+
+    public bool? Inv { get; set; }
+
+    public double? PrevenSinIva { get; set; }
+
+    public bool? PagaIva { get; set; }
 
     public bool? PagaRegalia { get; set; }
 
@@ -125,7 +137,7 @@ public partial class Producto
 
     public double? DescCosto4 { get; set; }
 
-    public double? Descuentos { get; set; }
+    public double? Descuento { get; set; }
 
     public double? PreRebaja { get; set; }
 
@@ -142,8 +154,6 @@ public partial class Producto
     public DateTime? FecFinPro1 { get; set; }
 
     public DateTime? FecPreAct { get; set; }
-
-    public DateTime? FecPreAnt { get; set; }
 
     public DateTime? FecPreMod { get; set; }
 
@@ -195,11 +205,13 @@ public partial class Producto
 
     public string? RegSanitario { get; set; }
 
-    public long? EmpresaCodigo { get; set; }
+    public long? IdEmpresa { get; set; }
 
-    public long? IdDatosAdicionales { get; set; }
+    public string? Codbar { get; set; }
 
-    public virtual Empresas? EmpresaCodigoNavigation { get; set; }
+    public virtual ICollection<Codigos14> Codigos14 { get; set; } = new List<Codigos14>();
+
+    public virtual Empresas? IdEmpresaNavigation { get; set; }
 
     public virtual ProductoDatosAdicionales? ProductoDatosAdicionales { get; set; }
 }

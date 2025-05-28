@@ -3,6 +3,7 @@ using clientes_ms.Domain.Entities;
 using MediatR;
 using MicroservicesTemplate.Domain.Repositories;
 
+namespace clientes_ms.Application.Handlers.Cliente;
 public class UpdateClientesHandler : IRequestHandler<UpdateClientesCommand, ApiResponse<bool>>
 {
     private readonly IBaseRepository<Clientes> _repository;
@@ -169,8 +170,8 @@ public class UpdateClientesHandler : IRequestHandler<UpdateClientesCommand, ApiR
                  ? null
                  : request.Request.MotivoCeseAct.Trim();
 
-            if (request.Request.IdCiudad.HasValue)
-                existing.IdCiudad = request.Request.IdCiudad.Value;
+            
+                existing.IdCiudad = request.Request.IdCiudad;
             if (request.Request.Fecnac.HasValue)
                 existing.Fecnac = request.Request.Fecnac.Value;
             if (request.Request.IdZona.HasValue)

@@ -16,4 +16,8 @@ public partial class ContactosClientes
     public string? Cargo { get; set; }
 
     public long? ClientesCodigo { get; set; }
+
+    public int? Linea { get; set; }
+
+    public virtual Clientes? ClientesCodigoNavigation { get; set; }
 }

@@ -2,4 +2,12 @@
 using clientes_ms.Application.Records.Response;
 using MediatR;
 
-public record UpdateContactosClientesCommand(long Id, ContactosClientesRequest Request) : IRequest<ApiResponse<bool>>;
+public class UpdateContactosClientesCommand : IRequest<ApiResponse<bool>>
+{
+    public ContactosClientesRequest Request { get; set; }
+
+    public UpdateContactosClientesCommand(ContactosClientesRequest request)
+    {
+        Request = request;
+    }
+}
