@@ -10,12 +10,12 @@ namespace clientes_ms.WebApi.Controllers
 
     // Define la ruta base para este controlador
     [Route("api/[Controller]")]
-    public class ClienteObservacionController : ControllerBase
+    public class ClienteDatosAdicionalesController : ControllerBase
     {
         private readonly IMediator _mediator;
 
         // Constructor con inyección de dependencia del Mediator
-        public ClienteObservacionController(IMediator mediator)
+        public ClienteDatosAdicionalesController(IMediator mediator)
         {
             _mediator = mediator;
         }
@@ -25,18 +25,24 @@ namespace clientes_ms.WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var result = await _mediator.Send(new GetAllClienteObservacionQuery()); // Envía la query a su handler correspondiente
+            var result = await _mediator.Send(new GetAllClienteDatosAdicionalesQuery()); // Envía la query a su handler correspondiente
+            return Ok(result); // Devuelve la respuesta con estado 200
+        }
+        [HttpGet]
+        [Route("/api/listadoClienteDatosAdicionales")]
+        public async Task<IActionResult> GetClienteDatosAdicionalesResumen()
+        {
+            var result = await _mediator.Send(new GetClienteDatosAdicionalesByResumen()); // Envía la query a su handler correspondiente
             return Ok(result); // Devuelve la respuesta con estado 200
         }
 
-        // GET api/examples/{id}
-        // Obtiene un registro específico por su ID
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(long id)
+        [HttpGet("por-clientecodigo/{clientesCodigo}")]
+        public async Task<IActionResult> GetPorClienteCodigo(long clientesCodigo)
         {
-            var result = await _mediator.Send(new GetClienteObservacionByIdQuery(id));
+            var result = await _mediator.Send(new GetClienteDatosAdicionalesByClienteCodigoQuery(clientesCodigo));
             return Ok(result);
         }
+
 
         // GET api/examples/status/{status}
         // Obtiene todos los registros activos o inactivos según el parámetro
@@ -50,33 +56,23 @@ namespace clientes_ms.WebApi.Controllers
         // POST api/examples
         // Crea un nuevo registro de Example
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] ClienteObservacionRequest request)
+        public async Task<IActionResult> Create([FromBody] ClienteDatosAdicionalesRequest request)
         {
-            var result = await _mediator.Send(new CreateClienteObservacionCommand(request));
+            var result = await _mediator.Send(new CreateClienteDatosAdicionalesCommand(request));
             return Ok(result);
         }
-        /// buscar por cliente
-        [HttpGet("por-cliente/{clientesCodigo}")]
-        public async Task<IActionResult> ObtenerPorCodigoCliente(long clientesCodigo)
-        {
-            var resultado = await _mediator.Send(new GetClienteObservacionesByClienteCodigoQuery(clientesCodigo));
-            return Ok(resultado);
-        }
 
-
-        // PUT api/examples/{id}
-        // Actualiza un registro existente de Example
-        [HttpPut("{clientesCodigo}/{linea}")]
-        public async Task<IActionResult> Update(int clientesCodigo, int linea, [FromBody] ClienteObservacionRequest request)
+        // PUT api/cliente-datos-adicionales/por-cliente/{clientesCodigo}
+        // Actualiza un registro existente de ClienteDatosAdicionales por ClientesCodigo
+        [HttpPut("por-cliente/{clientesCodigo}")]
+        public async Task<IActionResult> UpdatePorCliente(long clientesCodigo, [FromBody] ClienteDatosAdicionalesRequest request)
         {
-            var command = new UpdateClienteObservacionCommand
+            var result = await _mediator.Send(new UpdateClienteDatosAdicionalesCommand
             {
                 ClientesCodigo = clientesCodigo,
-                Linea = linea,
                 Request = request
-            };
+            });
 
-            var result = await _mediator.Send(command);
             return Ok(result);
         }
 
@@ -86,7 +82,7 @@ namespace clientes_ms.WebApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(long id)
         {
-            var result = await _mediator.Send(new DeleteClienteObservacionCommand(id));
+            var result = await _mediator.Send(new DeleteClienteDatosAdicionalesCommand(id));
             return Ok(result);
         }
 

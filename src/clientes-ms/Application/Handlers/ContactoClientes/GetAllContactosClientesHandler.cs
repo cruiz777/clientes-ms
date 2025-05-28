@@ -21,5 +21,5 @@ public class GetAllContactosClientesHandler : IRequestHandler<GetAllContactosCli
         }
     }
 
-    private static ContactosClientesResponse MapToResponse(ContactosClientes e) => new(e.IdContactosClientes, e.Nombre?.Trim() ?? string.Empty, e.Telefono?.Trim() ?? string.Empty, e.Email?.Trim() ?? string.Empty, e.Cargo?.Trim() ?? string.Empty, e.ClientesCodigo??0);
+    private static ContactosClientesResponse MapToResponse(ContactosClientes e) => new(e.IdContactosClientes, e.Nombre?.Trim() ?? string.Empty, e.Telefono?.Trim() ?? string.Empty, e.Email?.Trim() ?? string.Empty, e.Cargo?.Trim() ?? string.Empty, e.ClientesCodigo??0,e.Linea??0);
 }

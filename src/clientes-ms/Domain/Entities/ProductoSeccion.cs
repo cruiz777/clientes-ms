@@ -5,11 +5,19 @@ namespace clientes_ms.Domain.Entities;
 
 public partial class ProductoSeccion
 {
-    public double Codsec { get; set; }
+    public long IdProdSeccion { get; set; }
 
     public long IdEmpresa { get; set; }
 
-    public double? Coddep { get; set; }
+    public string? DescripcionSeccion { get; set; }
+
+    public long? IdProdDepartamento { get; set; }
 
     public bool? Estado { get; set; }
+
+    public virtual Empresas IdEmpresaNavigation { get; set; } = null!;
+
+    public virtual ProductoDepartamento? IdProdDepartamentoNavigation { get; set; }
+
+    public virtual ICollection<ProductoGrupo> ProductoGrupo { get; set; } = new List<ProductoGrupo>();
 }

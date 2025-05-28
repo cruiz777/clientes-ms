@@ -11,7 +11,7 @@ public partial class Codigos14
 
     public long? IdPrefijos { get; set; }
 
-    public long? IdCliente { get; set; }
+    public long? ClientesCodigo { get; set; }
 
     public int? Presentacion { get; set; }
 
@@ -54,6 +54,12 @@ public partial class Codigos14
     public string? Referencia { get; set; }
 
     public string? Abrevia { get; set; }
+
+    public long IdProducto { get; set; }
+
+    public virtual Prefijos? IdPrefijosNavigation { get; set; }
+
+    public virtual Producto IdProductoNavigation { get; set; } = null!;
 
     public virtual Usuarios? IdUsuarioNavigation { get; set; }
 }
