@@ -2,6 +2,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using clientes_ms.Application.Records.Request;
 using clientes_ms.Application.Records.Response;
+using clientes_ms.Application.Queries.Gln;
 
 namespace clientes_ms.WebApi.Controllers
 {
@@ -38,6 +39,21 @@ namespace clientes_ms.WebApi.Controllers
             return Ok(result);
         }
 
+        // GET api/examples/{id}
+        // Obtiene un registro específico por su ID
+        [HttpGet("cliente/{clienteCodigo:long}")]
+        public async Task<IActionResult> GetGlnByClienteCodigo(long clienteCodigo)
+        {
+            var result = await _mediator.Send(new GetGlnByClienteCodigoQuery(clienteCodigo));
+
+            if (result.Type == "NOT_FOUND")
+                return NotFound(result);
+
+            if (result.Type == "ERROR")
+                return StatusCode(500, result);
+
+            return Ok(result);
+        }
         // GET api/examples/status/{status}
         // Obtiene todos los registros activos o inactivos según el parámetro
         //[HttpGet("status/{status}")]

@@ -57,7 +57,9 @@ namespace clientes_ms.Application.Mappings
                 .ForMember(dest => dest.Estado, opt => opt.MapFrom(src => src.Estado != null ? src.Estado.Trim() : null))
                 .ForMember(dest => dest.CodigoPostal, opt => opt.MapFrom(src => src.CodigoPostal != null ? src.CodigoPostal.Trim() : null))
                 .ForMember(dest => dest.Pais, opt => opt.MapFrom(src => src.Pais != null ? src.Pais.Trim() : null));
-
+            
+            CreateMap<Gln, GlnResponse>();
+            CreateMap<GlnRequest, Gln>();
 
         }
     }
