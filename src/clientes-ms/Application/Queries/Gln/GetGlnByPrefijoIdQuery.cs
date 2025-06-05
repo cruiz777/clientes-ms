@@ -3,5 +3,4 @@ using MediatR;
 
 namespace clientes_ms.Application.Queries.Gln
 {
-    public record GetGlnByPrefijoIdQuery(long IdPrefijos) : IRequest<ApiResponse<GlnResponse>>;
-}
+    public record GetGlnByPrefijoIdQuery(long IdPrefijos) : IRequest<ApiResponse<List<GlnResponse>>>;}
