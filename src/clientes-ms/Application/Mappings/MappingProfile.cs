@@ -58,8 +58,28 @@ namespace clientes_ms.Application.Mappings
                 .ForMember(dest => dest.CodigoPostal, opt => opt.MapFrom(src => src.CodigoPostal != null ? src.CodigoPostal.Trim() : null))
                 .ForMember(dest => dest.Pais, opt => opt.MapFrom(src => src.Pais != null ? src.Pais.Trim() : null));
             
-            CreateMap<Gln, GlnResponse>();
+            CreateMap<Gln, GlnResponse>()
+                .ForMember(dest => dest.NombreLocalizacion, opt => opt.MapFrom(src => src.IdTipoLocalizacionNavigation.Descripcion));
             CreateMap<GlnRequest, Gln>();
+
+            CreateMap<Prefijos, PrefijosResponse>()
+                .ForMember(dest => dest.Nomcli, opt => opt.MapFrom(src => src.ClientesCodigoNavigation.Nomcli))
+                .ForMember(dest => dest.EstadoEmpresa, opt => opt.MapFrom(src => src.ClientesCodigoNavigation.IdEstadoEmpresaNavigation.Nombre))
+                .ForMember(dest => dest.Ruccli, opt => opt.MapFrom(src => src.ClientesCodigoNavigation.Ruc))
+                .ForMember(dest => dest.Fecing, opt => opt.MapFrom(src => src.ClientesCodigoNavigation.Fecing))
+                .ForMember(dest => dest.Zona, opt => opt.MapFrom(src => src.ClientesCodigoNavigation.IdZonaNavigation.Referencia))
+                .ForMember(dest => dest.TipoCliente, opt => opt.MapFrom(src => src.ClientesCodigoNavigation.IdTipoClienteNavigation.Descripcion))
+                .ForMember(dest => dest.GrupoProducto, opt => opt.MapFrom(src => src.ClientesCodigoNavigation.IdGrupoProductoNavigation.Descripcion))
+                .ForMember(dest => dest.GrupoEmpresa, opt => opt.MapFrom(src => src.ClientesCodigoNavigation.IdGrupoEmpresaNavigation.Nombre))
+                .ForMember(dest => dest.Representante, opt => opt.MapFrom(src => src.ClientesCodigoNavigation.Representante))
+                .ForMember(dest => dest.Direccion, opt => opt.MapFrom(src => src.ClientesCodigoNavigation.Dircli))
+                .ForMember(dest => dest.Telefono, opt => opt.MapFrom(src => src.ClientesCodigoNavigation.Telefono1))
+                .ForMember(dest => dest.Web, opt => opt.MapFrom(src => src.ClientesCodigoNavigation.Web))
+                .ForMember(dest => dest.Postal, opt => opt.MapFrom(src => src.ClientesCodigoNavigation.CodigoPostal))
+                .ForMember(dest => dest.Ciudad, opt => opt.MapFrom(src => src.ClientesCodigoNavigation.IdCiudadNavigation.Nombre))
+                .ForMember(dest => dest.Canton, opt => opt.MapFrom(src => src.ClientesCodigoNavigation.IdCiudadNavigation.IdCantonNavigation.Nombre))
+                .ForMember(dest => dest.Provincia, opt => opt.MapFrom(src => src.ClientesCodigoNavigation.IdCiudadNavigation.IdCantonNavigation.IdProvinciaNavigation.Nombre))
+                .ForMember(dest => dest.Glns, opt => opt.MapFrom(src => src.Gln));
 
         }
     }

@@ -131,7 +131,7 @@ namespace clientes_ms.Application.Records.Response
  long? IdTipoLocalizacion,
  string? GlnLatitud,
  string? GlnLongitud,
- long? PaisCodigo,
+ long? IdPais,
  string? Direccion,
  string? Telefono,
  string? Fax,
