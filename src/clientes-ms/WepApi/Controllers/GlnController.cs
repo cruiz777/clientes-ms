@@ -89,6 +89,13 @@ namespace clientes_ms.WebApi.Controllers
             var result = await _mediator.Send(new DeleteGlnCommand(id));
             return Ok(result);
         }
+        [HttpGet("ultima-secuencia")]
+        public async Task<IActionResult> GetUltimaSecuencia([FromQuery] string codigoPais, [FromQuery] string prefijo)
+        {
+            var query = new GetUltimaSecuenciaGlnQuery(codigoPais, prefijo);
+            var result = await _mediator.Send(query);
+            return Ok(result); // Devuelve solo el número como int
+        }
 
         //Obtiene los glns por Prefijo de cliente
         [HttpGet("prefijo/{idPrefijos:long}")]
