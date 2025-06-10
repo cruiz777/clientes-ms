@@ -49,7 +49,7 @@ public class GetPrefijosByCodpreHandler : IRequestHandler<GetPefijosByCodpreQuer
                     Observacion = p.Observacion ?? string.Empty,
                     Prefijosgs1 = p.Prefijosgs1 ?? string.Empty,
                     OrigenPrefijo = p.OrigenPrefijo ?? string.Empty,
-
+                    Bandera=p.Bandera??0,
                     ClientesCodigo = p.ClientesCodigo ?? 0,
                     Nomcli = p.ClientesCodigoNavigation?.Nomcli ?? string.Empty,
                     Gln = gln?.Gln1 ?? string.Empty,
