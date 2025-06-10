@@ -16,7 +16,9 @@ namespace clientes_ms.Application.Handlers.Glns
 
         public async Task<int> Handle(GetUltimaSecuenciaGlnQuery request, CancellationToken cancellationToken)
         {
-            var prefijoCompleto = request.CodigoPais + request.Prefijo;
+            var codigoPais = request.CodigoPais;
+            var prefijo = request.Prefijo;
+            var prefijoCompleto = codigoPais + prefijo;
 
             var glns = await _glnRepository.GetListByConditionAsync(
                 g => g.Gln1 != null && g.Gln1.StartsWith(prefijoCompleto)
@@ -27,12 +29,14 @@ namespace clientes_ms.Application.Handlers.Glns
             if (ultimo == null || string.IsNullOrWhiteSpace(ultimo.Gln1))
                 return 0;
 
-            // Extraer los 4 dígitos de secuencia que van justo después del prefijo
             var cuerpo = ultimo.Gln1;
-            if (cuerpo.Length < prefijoCompleto.Length + 4)
+            var longitudSecuencia = 12 - prefijoCompleto.Length; // 12 dígitos antes del verificador
+
+            if (cuerpo.Length < prefijoCompleto.Length + longitudSecuencia)
                 return 0;
 
-            var secuenciaStr = cuerpo.Substring(prefijoCompleto.Length, 4);
+            var secuenciaStr = cuerpo.Substring(prefijoCompleto.Length, longitudSecuencia);
+
             return int.TryParse(secuenciaStr, out int secuencia) ? secuencia : 0;
         }
     }
