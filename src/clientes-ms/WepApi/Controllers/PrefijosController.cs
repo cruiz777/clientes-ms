@@ -2,6 +2,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using clientes_ms.Application.Records.Request;
 using clientes_ms.Application.Records.Response;
+using clientes_ms.Application.Queries.Prefijos;
 
 namespace clientes_ms.WebApi.Controllers
 {
@@ -54,7 +55,12 @@ namespace clientes_ms.WebApi.Controllers
             return Ok(result);
         }
 
-
+        [HttpGet("/api/prefijo-gln/CodpreCliente")]        
+        public async Task<IActionResult> GetPrefijoGlnByClienteCodigoQuery(long ClientesCodigo)
+        {
+            var result = await _mediator.Send(new GetPrefijoGlnByClienteCodigoQuery(ClientesCodigo));
+            return Ok(result);
+        }
 
 
         // GET api/examples/status/{status}

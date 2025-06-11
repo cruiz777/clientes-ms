@@ -83,7 +83,7 @@ public class GetPrefijosByCodigoClienteHandler : IRequestHandler<GetPrefijosByCo
                 "LIST",
                 result,
                 $"Se encontraron {result.Count} prefijos y sus GLNs para el cliente {request.ClientesCodigo}.",
-                result.Count);
+                result.Count());
         }
         catch (Exception ex)
         {

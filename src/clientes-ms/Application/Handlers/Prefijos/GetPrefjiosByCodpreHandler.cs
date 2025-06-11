@@ -85,9 +85,9 @@ public class GetPrefijosByCodpreHandler : IRequestHandler<GetPefijosByCodpreQuer
             return new ApiResponse<IEnumerable<PrefijosResponse>>(
                 Guid.NewGuid(),
                 "LIST",
-                mappedResult,
-                $"Se encontraron {mappedResult.Count} prefijo(s) con coincidencia.",
-                mappedResult.Count);
+                result,
+                $"Se encontraron {result.Count} prefijo(s) con coincidencia.",
+                result.Count());
         }
         catch (Exception ex)
         {
