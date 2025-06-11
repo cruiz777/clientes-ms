@@ -41,7 +41,46 @@ public class GetPrefijosByCodpreHandler : IRequestHandler<GetPefijosByCodpreQuer
                 .Where(p => p.Codpre != null && p.Codpre.ToLower().Contains(request.Codpre.ToLower()))
                 .ToListAsync(cancellationToken);
 
-            var mappedResult = _mapper.Map<List<PrefijosResponse>>(prefijos);
+            // var mappedResult = _mapper.Map<List<PrefijosResponse>>(prefijos); CAMBIO ACABRERA
+
+            var result = prefijos.Select(p =>
+            {
+                var gln = p.Gln.FirstOrDefault(); // puede ser null
+
+                return new PrefijosResponse
+                {
+                    IdPrefijos = p.IdPrefijos,
+                    Codpre = p.Codpre ?? string.Empty,
+                    Fecha = p.Fecha ?? DateOnly.MinValue,
+                    FechaCierre = p.FechaCierre ?? DateTime.MinValue,
+                    Estado = p.Estado ?? false,
+                    Observacion = p.Observacion ?? string.Empty,
+                    Prefijosgs1 = p.Prefijosgs1 ?? string.Empty,
+                    OrigenPrefijo = p.OrigenPrefijo ?? string.Empty,
+                    Bandera=p.Bandera??0,
+                    ClientesCodigo = p.ClientesCodigo ?? 0,
+                    Nomcli = p.ClientesCodigoNavigation?.Nomcli ?? string.Empty,
+                    Gln = gln?.Gln1 ?? string.Empty,
+                    TipoLocalizacion = gln?.IdTipoLocalizacionNavigation?.Descripcion ?? string.Empty,
+
+                    EstadoEmpresa = p.ClientesCodigoNavigation?.IdEstadoEmpresaNavigation?.Nombre ?? string.Empty,
+                    Ruccli = p.ClientesCodigoNavigation?.Ruc ?? string.Empty,
+                    Fecing = p.ClientesCodigoNavigation?.Fecing ?? DateOnly.MinValue,
+                    Zona = p.ClientesCodigoNavigation?.IdZonaNavigation?.Referencia ?? string.Empty,
+                    TipoCliente = p.ClientesCodigoNavigation?.IdTipoClienteNavigation?.Descripcion ?? string.Empty,
+                    GrupoProducto = p.ClientesCodigoNavigation?.IdGrupoProductoNavigation?.Descripcion ?? string.Empty,
+                    Representante = p.ClientesCodigoNavigation?.Representante ?? string.Empty,
+                    GrupoEmpresa = p.ClientesCodigoNavigation?.IdGrupoEmpresaNavigation?.Nombre ?? string.Empty,
+
+                    Direccion = p.ClientesCodigoNavigation?.Dircli ?? string.Empty,
+                    Telefono = p.ClientesCodigoNavigation?.Telefono1 ?? string.Empty,
+                    Web = p.ClientesCodigoNavigation?.Web ?? string.Empty,
+                    Postal = p.ClientesCodigoNavigation?.CodigoPostal ?? string.Empty,
+                    Ciudad = p.ClientesCodigoNavigation?.IdCiudadNavigation?.Nombre ?? string.Empty,
+                    Canton = p.ClientesCodigoNavigation?.IdCiudadNavigation?.IdCantonNavigation?.Nombre ?? string.Empty,
+                    Provincia = p.ClientesCodigoNavigation?.IdCiudadNavigation?.IdCantonNavigation?.IdProvinciaNavigation?.Nombre ?? string.Empty
+                };
+            }).ToList();
 
             return new ApiResponse<IEnumerable<PrefijosResponse>>(
                 Guid.NewGuid(),
