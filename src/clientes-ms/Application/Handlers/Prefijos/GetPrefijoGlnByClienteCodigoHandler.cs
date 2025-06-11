@@ -4,23 +4,24 @@ using MediatR;
 using MicroservicesTemplate.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
+using clientes_ms.Application.Queries.Prefijos;
 
-public class GetPrefijosByIdHandler : IRequestHandler<GetPrefijosByIdQuery, ApiResponse<PrefijosResponse>>
+public class GetPrefijoGlnByClienteCodigoHandler : IRequestHandler<GetPrefijoGlnByClienteCodigoQuery, ApiResponse<IEnumerable<PrefijosResponse>>>
 {
     private readonly IBaseRepository<Prefijos> _repository;
     private readonly IMapper _mapper;
 
-    public GetPrefijosByIdHandler(IBaseRepository<Prefijos> repository, IMapper mapper)
+    public GetPrefijoGlnByClienteCodigoHandler(IBaseRepository<Prefijos> repository, IMapper mapper)
     {
         _repository = repository;
         _mapper = mapper;
     }
 
-    public async Task<ApiResponse<PrefijosResponse>> Handle(GetPrefijosByIdQuery request, CancellationToken cancellationToken)
+    public async Task<ApiResponse<IEnumerable<PrefijosResponse>>> Handle(GetPrefijoGlnByClienteCodigoQuery request, CancellationToken cancellationToken)
     {
         try
         {
-            var prefijo = await _repository
+            var prefijos = await _repository
                 .AsQueryable()
                 .Include(p => p.ClientesCodigoNavigation)
                     .ThenInclude(c => c.IdEstadoEmpresaNavigation)
@@ -38,18 +39,25 @@ public class GetPrefijosByIdHandler : IRequestHandler<GetPrefijosByIdQuery, ApiR
                             .ThenInclude(can => can.IdProvinciaNavigation)
                 .Include(p => p.Gln)
                     .ThenInclude(g => g.IdTipoLocalizacionNavigation)
-                .FirstOrDefaultAsync(p => p.IdPrefijos == request.Id, cancellationToken);
+                .Where(p => p.ClientesCodigo == request.ClientesCodigo)
+                .ToListAsync(cancellationToken);
 
-            if (prefijo == null)
-                return new ApiResponse<PrefijosResponse>(Guid.NewGuid(), "OBJECT", null, $"Prefijo con ID {request.Id} no encontrado.");
+            var mappedResult = _mapper.Map<List<PrefijosResponse>>(prefijos);
 
-            var mapped = _mapper.Map<PrefijosResponse>(prefijo);
-
-            return new ApiResponse<PrefijosResponse>(Guid.NewGuid(), "OBJECT", mapped, "Success");
+            return new ApiResponse<IEnumerable<PrefijosResponse>>(
+                Guid.NewGuid(),
+                "LIST",
+                mappedResult,
+                $"Se encontraron {mappedResult.Count} prefijos y sus GLNs para el cliente {request.ClientesCodigo}.",
+                mappedResult.Count());
         }
         catch (Exception ex)
         {
-            return new ApiResponse<PrefijosResponse>(Guid.NewGuid(), "ERROR", null, ex.Message);
+            return new ApiResponse<IEnumerable<PrefijosResponse>>(
+                Guid.NewGuid(),
+                "ERROR",
+                null,
+                $"Error al buscar prefijos por ClientesCodigo: {ex.Message}");
         }
     }
 }

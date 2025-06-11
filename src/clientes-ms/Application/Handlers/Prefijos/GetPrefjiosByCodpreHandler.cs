@@ -3,12 +3,18 @@ using clientes_ms.Domain.Entities;
 using MediatR;
 using MicroservicesTemplate.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
+using AutoMapper;
 
 public class GetPrefijosByCodpreHandler : IRequestHandler<GetPefijosByCodpreQuery, ApiResponse<IEnumerable<PrefijosResponse>>>
 {
     private readonly IBaseRepository<Prefijos> _repository;
+    private readonly IMapper _mapper;
 
-    public GetPrefijosByCodpreHandler(IBaseRepository<Prefijos> repository) => _repository = repository;
+    public GetPrefijosByCodpreHandler(IBaseRepository<Prefijos> repository, IMapper mapper)
+    {
+        _repository = repository;
+        _mapper = mapper;
+    }
 
     public async Task<ApiResponse<IEnumerable<PrefijosResponse>>> Handle(GetPefijosByCodpreQuery request, CancellationToken cancellationToken)
     {
@@ -32,8 +38,10 @@ public class GetPrefijosByCodpreHandler : IRequestHandler<GetPefijosByCodpreQuer
                             .ThenInclude(can => can.IdProvinciaNavigation)
                 .Include(p => p.Gln)
                     .ThenInclude(g => g.IdTipoLocalizacionNavigation)
-                .Where(e => e.Codpre != null && e.Codpre.ToLower().Contains(request.Codpre.ToLower()))
+                .Where(p => p.Codpre != null && p.Codpre.ToLower().Contains(request.Codpre.ToLower()))
                 .ToListAsync(cancellationToken);
+
+            // var mappedResult = _mapper.Map<List<PrefijosResponse>>(prefijos); CAMBIO ACABRERA
 
             var result = prefijos.Select(p =>
             {
@@ -49,7 +57,7 @@ public class GetPrefijosByCodpreHandler : IRequestHandler<GetPefijosByCodpreQuer
                     Observacion = p.Observacion ?? string.Empty,
                     Prefijosgs1 = p.Prefijosgs1 ?? string.Empty,
                     OrigenPrefijo = p.OrigenPrefijo ?? string.Empty,
-
+                    Bandera=p.Bandera??0,
                     ClientesCodigo = p.ClientesCodigo ?? 0,
                     Nomcli = p.ClientesCodigoNavigation?.Nomcli ?? string.Empty,
                     Gln = gln?.Gln1 ?? string.Empty,
@@ -79,7 +87,7 @@ public class GetPrefijosByCodpreHandler : IRequestHandler<GetPefijosByCodpreQuer
                 "LIST",
                 result,
                 $"Se encontraron {result.Count} prefijo(s) con coincidencia.",
-                result.Count);
+                result.Count());
         }
         catch (Exception ex)
         {

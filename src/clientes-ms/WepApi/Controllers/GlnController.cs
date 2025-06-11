@@ -2,6 +2,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using clientes_ms.Application.Records.Request;
 using clientes_ms.Application.Records.Response;
+using clientes_ms.Application.Queries.Gln;
 
 namespace clientes_ms.WebApi.Controllers
 {
@@ -14,7 +15,7 @@ namespace clientes_ms.WebApi.Controllers
     {
         private readonly IMediator _mediator;
 
-        // Constructor con inyección de dependencia del Mediator
+        // Constructor con inyecciï¿½n de dependencia del Mediator
         public GlnController(IMediator mediator)
         {
             _mediator = mediator;
@@ -25,12 +26,12 @@ namespace clientes_ms.WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var result = await _mediator.Send(new GetAllGlnQuery()); // Envía la query a su handler correspondiente
+            var result = await _mediator.Send(new GetAllGlnQuery()); // Envï¿½a la query a su handler correspondiente
             return Ok(result); // Devuelve la respuesta con estado 200
         }
 
         // GET api/examples/{id}
-        // Obtiene un registro específico por su ID
+        // Obtiene un registro especï¿½fico por su ID
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(long id)
         {
@@ -38,8 +39,23 @@ namespace clientes_ms.WebApi.Controllers
             return Ok(result);
         }
 
+        // GET api/examples/{id}
+        // Obtiene un registro especï¿½fico por su ID
+        [HttpGet("cliente/{clienteCodigo:long}")]
+        public async Task<IActionResult> GetGlnByClienteCodigo(long clienteCodigo)
+        {
+            var result = await _mediator.Send(new GetGlnByClienteCodigoQuery(clienteCodigo));
+
+            if (result.Type == "NOT_FOUND")
+                return NotFound(result);
+
+            if (result.Type == "ERROR")
+                return StatusCode(500, result);
+
+            return Ok(result);
+        }
         // GET api/examples/status/{status}
-        // Obtiene todos los registros activos o inactivos según el parámetro
+        // Obtiene todos los registros activos o inactivos segï¿½n el parï¿½metro
         //[HttpGet("status/{status}")]
         //public async Task<IActionResult> GetByStatus(bool status)
         //{
@@ -66,16 +82,37 @@ namespace clientes_ms.WebApi.Controllers
         }
 
         // DELETE api/examples/{id}
-        // Elimina físicamente un registro
+        // Elimina fï¿½sicamente un registro
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(long id)
         {
             var result = await _mediator.Send(new DeleteGlnCommand(id));
             return Ok(result);
         }
+        [HttpGet("ultima-secuencia")]
+        public async Task<IActionResult> GetUltimaSecuencia([FromQuery] string codigoPais, [FromQuery] string prefijo)
+        {
+            var query = new GetUltimaSecuenciaGlnQuery(codigoPais, prefijo);
+            var result = await _mediator.Send(query);
+            return Ok(result); // Devuelve solo el nÃºmero como int
+        }
+
+        //Obtiene los glns por Prefijo de cliente
+        [HttpGet("prefijo/{idPrefijos:long}")]
+        public async Task<IActionResult> GetGlnByPrefijoId(long idPrefijos)
+        {
+            var result = await _mediator.Send(new GetGlnByPrefijoIdQuery(idPrefijos));
+
+            return result.Type switch
+            {
+                "NOT_FOUND" => NotFound(result),
+                "ERROR" => StatusCode(500, result),
+                _ => Ok(result)
+            };
+        }
 
         // PUT api/examples/{id}/soft-delete
-        // Elimina lógicamente un registro (cambia su status a false)
+        // Elimina lï¿½gicamente un registro (cambia su status a false)
         //[HttpPatch("{id}/soft-delete")]
         //public async Task<IActionResult> SoftDelete(long id)
         //{
