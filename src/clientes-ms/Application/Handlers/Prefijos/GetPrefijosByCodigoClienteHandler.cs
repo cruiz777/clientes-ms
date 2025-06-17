@@ -42,22 +42,24 @@ public class GetPrefijosByCodigoClienteHandler : IRequestHandler<GetPrefijosByCo
                 .ToListAsync(cancellationToken);
 
             // var result = _mapper.Map<List<PrefijosResponse>>(prefijos); CAMBIOS ACABRERA
-            var result = prefijos.SelectMany(p =>
-                p.Gln.Select(g => new PrefijosResponse
+            var result = prefijos.Select(p =>
+            {
+                var g = p.Gln.FirstOrDefault(); // obtener solo el primer GLN si existe
+                return new PrefijosResponse
                 {
                     IdPrefijos = p.IdPrefijos,
                     Codpre = p.Codpre ?? string.Empty,
-                    Fecha = p.Fecha ?? DateOnly.MinValue,             // ✅ AQUI
-                    FechaCierre = p.FechaCierre ?? DateTime.MinValue, // ✅ AQUI
+                    Fecha = p.Fecha ?? DateOnly.MinValue,
+                    FechaCierre = p.FechaCierre ?? DateTime.MinValue,
                     Bandera = p.Bandera ?? 0,
-                    Observacion =p.Observacion ?? string.Empty,
+                    Observacion = p.Observacion ?? string.Empty,
                     Prefijosgs1 = p.Prefijosgs1 ?? string.Empty,
                     OrigenPrefijo = p.OrigenPrefijo ?? string.Empty,
-                    Estado = p.Estado??false,
+                    Estado = p.Estado ?? false,
                     ClientesCodigo = p.ClientesCodigo ?? 0,
                     Nomcli = p.ClientesCodigoNavigation?.Nomcli ?? string.Empty,
-                    Gln = g.Gln1 ?? string.Empty,
-                    TipoLocalizacion = g.IdTipoLocalizacionNavigation?.Descripcion ?? string.Empty,
+                    Gln = g?.Gln1 ?? string.Empty, // solo el primero
+                    TipoLocalizacion = g?.IdTipoLocalizacionNavigation?.Descripcion ?? string.Empty,
 
                     EstadoEmpresa = p.ClientesCodigoNavigation?.IdEstadoEmpresaNavigation?.Nombre ?? string.Empty,
                     Ruccli = p.ClientesCodigoNavigation?.Ruc ?? string.Empty,
@@ -68,7 +70,6 @@ public class GetPrefijosByCodigoClienteHandler : IRequestHandler<GetPrefijosByCo
                     Representante = p.ClientesCodigoNavigation?.Representante ?? string.Empty,
                     GrupoEmpresa = p.ClientesCodigoNavigation?.IdGrupoEmpresaNavigation?.Nombre ?? string.Empty,
 
-                    // Nuevos campos agregados
                     Direccion = p.ClientesCodigoNavigation?.Dircli ?? string.Empty,
                     Telefono = p.ClientesCodigoNavigation?.Telefono1 ?? string.Empty,
                     Web = p.ClientesCodigoNavigation?.Web ?? string.Empty,
@@ -76,8 +77,10 @@ public class GetPrefijosByCodigoClienteHandler : IRequestHandler<GetPrefijosByCo
                     Ciudad = p.ClientesCodigoNavigation?.IdCiudadNavigation?.Nombre ?? string.Empty,
                     Canton = p.ClientesCodigoNavigation?.IdCiudadNavigation?.IdCantonNavigation?.Nombre ?? string.Empty,
                     Provincia = p.ClientesCodigoNavigation?.IdCiudadNavigation?.IdCantonNavigation?.IdProvinciaNavigation?.Nombre ?? string.Empty
-                })
-            ).ToList();
+                };
+            }).ToList();
+
+
             return new ApiResponse<IEnumerable<PrefijosResponse>>(
                 Guid.NewGuid(),
                 "LIST",
