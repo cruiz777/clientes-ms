@@ -147,5 +147,7 @@ public partial class Clientes
 
     public virtual ICollection<ProductoDatosAdicionales> ProductoDatosAdicionales { get; set; } = new List<ProductoDatosAdicionales>();
 
+    public virtual ICollection<Sscc> Sscc { get; set; } = new List<Sscc>();
+
     public virtual ICollection<TipoEmpresaLocalizacion> TipoEmpresaLocalizacion { get; set; } = new List<TipoEmpresaLocalizacion>();
 }

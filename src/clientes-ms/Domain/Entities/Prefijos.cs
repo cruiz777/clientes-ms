@@ -52,4 +52,6 @@ public partial class Prefijos
     public virtual ICollection<Gln> Gln { get; set; } = new List<Gln>();
 
     public virtual ICollection<ProductoDatosAdicionales> ProductoDatosAdicionales { get; set; } = new List<ProductoDatosAdicionales>();
+
+    public virtual ICollection<Sscc> Sscc { get; set; } = new List<Sscc>();
 }

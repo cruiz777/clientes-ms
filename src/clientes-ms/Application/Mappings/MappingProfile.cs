@@ -80,7 +80,28 @@ namespace clientes_ms.Application.Mappings
                 .ForMember(dest => dest.Canton, opt => opt.MapFrom(src => src.ClientesCodigoNavigation.IdCiudadNavigation.IdCantonNavigation.Nombre))
                 .ForMember(dest => dest.Provincia, opt => opt.MapFrom(src => src.ClientesCodigoNavigation.IdCiudadNavigation.IdCantonNavigation.IdProvinciaNavigation.Nombre))
                 .ForMember(dest => dest.Glns, opt => opt.MapFrom(src => src.Gln));
+            
+            CreateMap<SsccRequest, Sscc>()
+                .ForMember(dest => dest.Serial, opt => opt.MapFrom(src => src.Serial.Trim()))
+                .ForMember(dest => dest.ProductoCodificado, opt => opt.MapFrom(src => src.ProductoCodificado != null ? src.ProductoCodificado.Trim() : null))
+                .ForMember(dest => dest.Usuario, opt => opt.MapFrom(src => src.Usuario != null ? src.Usuario.Trim() : null))
+                .ForMember(dest => dest.FechaCreacion, opt => opt.Ignore())
+                .ForMember(dest => dest.IdClienteNavigation, opt => opt.Ignore())
+                .ForMember(dest => dest.IdPrefijoNavigation, opt => opt.Ignore());
+            
+            CreateMap<Sscc, SsccResponse>();
 
+            // Mapear para guardado (cuando quieras persistir después de generar)
+            CreateMap<GenerateSsccRequest, Sscc>()
+                .ForMember(dest => dest.ProductoCodificado, opt => opt.MapFrom(src => src.ProductoCodificado.Trim()))
+                .ForMember(dest => dest.Serie, opt => opt.MapFrom(src => src.Serie))
+                .ForMember(dest => dest.Usuario, opt => opt.MapFrom(src => src.Usuario.Trim()))
+                .ForMember(dest => dest.IdPrefijo, opt => opt.MapFrom(src => src.IdPrefijo))
+                .ForMember(dest => dest.IdCliente, opt => opt.MapFrom(src => src.IdCliente))
+                .ForMember(dest => dest.SecuenciaInicio, opt => opt.MapFrom(src => src.SecuenciaInicio))
+                .ForMember(dest => dest.SecuenciaFin, opt => opt.MapFrom(src => src.SecuenciaInicio + src.CantidadCodigos - 1))
+
+                .ForAllMembers(opt => opt.Ignore()); // Solo si no usas todo
         }
     }
 }

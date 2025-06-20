@@ -37,8 +37,8 @@ builder.Services.AddScoped<ITipoClienteDomainService, TipoClienteDomainService>(
 builder.Services.AddScoped<IGrupoEmpresaDomainService, GrupoEmpresaDomainService>();
 builder.Services.AddScoped<ITipoLocalizacionDomainService, TipoLocalizacionDomainService>();
 builder.Services.AddHttpClient<IClienteDomainService, ClienteDomainService>();
-
-
+builder.Services.AddScoped<IParametroDomainService, ParametroDomainService>();
+builder.Services.AddScoped<ISsccDomainService, SsccDomainService>();
 #endregion
 
 // Cargar MediatR

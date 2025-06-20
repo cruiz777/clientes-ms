@@ -45,6 +45,8 @@ public partial class Empresas
 
     public long IdCiudad { get; set; }
 
+    public virtual ICollection<CentroCostos> CentroCostos { get; set; } = new List<CentroCostos>();
+
     public virtual ICollection<Clientes> Clientes { get; set; } = new List<Clientes>();
 
     public virtual ICollection<Contadores> Contadores { get; set; } = new List<Contadores>();
@@ -60,6 +62,8 @@ public partial class Empresas
     public virtual ICollection<HistorialCliente> HistorialCliente { get; set; } = new List<HistorialCliente>();
 
     public virtual Ciudades IdCiudadNavigation { get; set; } = null!;
+
+    public virtual ICollection<Locales> Locales { get; set; } = new List<Locales>();
 
     public virtual ICollection<Perfiles> Perfiles { get; set; } = new List<Perfiles>();
 
@@ -78,6 +82,8 @@ public partial class Empresas
     public virtual ICollection<Proyectos> Proyectos { get; set; } = new List<Proyectos>();
 
     public virtual ICollection<TipoCliente> TipoCliente { get; set; } = new List<TipoCliente>();
+
+    public virtual ICollection<TipoNegocio> TipoNegocio { get; set; } = new List<TipoNegocio>();
 
     public virtual ICollection<Usuarios> Usuarios { get; set; } = new List<Usuarios>();
 

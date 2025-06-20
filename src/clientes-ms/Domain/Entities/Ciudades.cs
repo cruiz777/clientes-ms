@@ -23,5 +23,7 @@ public partial class Ciudades
 
     public virtual Cantones IdCantonNavigation { get; set; } = null!;
 
+    public virtual ICollection<Locales> Locales { get; set; } = new List<Locales>();
+
     public virtual ICollection<Personas> Personas { get; set; } = new List<Personas>();
 }
