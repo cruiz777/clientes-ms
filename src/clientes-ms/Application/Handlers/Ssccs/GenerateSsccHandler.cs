@@ -34,24 +34,28 @@ public class GenerateSsccHandler : IRequestHandler<GenerateSsccCommand, ApiRespo
         if (prefijoEntity is null)
             return ApiResponse<List<string>>.Error($"Prefijo con ID {r.IdPrefijo} no encontrado.");
 
-        string prefijoEmpresa = prefijoEntity.Prefijosgs1?.Trim() ?? string.Empty;
-        if (string.IsNullOrWhiteSpace(prefijoEmpresa))
-            return ApiResponse<List<string>>.Error("El prefijo GS1 no está definido correctamente.");
-
         // Obtener la secuencia de inicio si no se proporciona
         int secuenciaInicio = r.SecuenciaInicio ?? await ObtenerSiguienteSecuenciaDisponible(r.IdPrefijo, r.IdCliente);
         int secuenciaFin = secuenciaInicio + r.CantidadCodigos - 1;
 
         if (secuenciaInicio < 1 || secuenciaFin < secuenciaInicio)
             return ApiResponse<List<string>>.Error("El rango de secuencia es inválido.");
+        string codpre = prefijoEntity.Codpre?.Trim() ?? string.Empty;
+        if (string.IsNullOrWhiteSpace(codpre))
+            return ApiResponse<List<string>>.Error("El código de prefijo no está definido correctamente.");
+        var codigoPais = await _ssccDomainService.ObtenerCodigoPaisEcuador(); // puedes exponerlo como método si deseas
+        if (string.IsNullOrWhiteSpace(codigoPais))
+            return ApiResponse<List<string>>.Error("No se pudo obtener el código de país.");
 
         // Generar todos los códigos posibles del rango
         var todosCodigos = _ssccDomainService.ConstruirCodigosSSCC(
-            prefijoEmpresa: prefijoEmpresa,
+            codigoPais: codigoPais,
+            codpre: codpre,
             indicador: r.Indicador,
             secuenciaInicio: secuenciaInicio,
             secuenciaFin: secuenciaFin
         );
+
 
         if (todosCodigos.Type == "ERROR" || todosCodigos.Data is null)
             return todosCodigos;
@@ -66,7 +70,7 @@ public class GenerateSsccHandler : IRequestHandler<GenerateSsccCommand, ApiRespo
         if (filtrados.Data is null || !filtrados.Data.Any())
         {
             return ApiResponse<List<string>>.Error(
-                $"Todos los códigos entre la secuencia {secuenciaInicio} y {secuenciaFin} ya han sido generados previamente para el prefijo {prefijoEmpresa}."
+                $"Todos los códigos entre la secuencia {secuenciaInicio} y {secuenciaFin} ya han sido generados previamente para el prefijo {codpre}."
             );
         }
 
@@ -74,7 +78,8 @@ public class GenerateSsccHandler : IRequestHandler<GenerateSsccCommand, ApiRespo
             Guid.NewGuid(),
             "SUCCESS",
             filtrados.Data,
-            $"Se generaron {filtrados.Data.Count} códigos SSCC con el prefijo {prefijoEmpresa} (vista previa sin guardar).",
+            $"Se generaron {filtrados.Data.Count} códigos SSCC con prefijo compuesto {codigoPais}{codpre}{r.Indicador} (vista previa sin guardar).",
+
             filtrados.Data.Count
         );
     }

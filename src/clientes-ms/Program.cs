@@ -32,13 +32,14 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 
 // Inyectar Servicios de dominio que contienen la lógica de negocio
-#region Inyección de servicios con DIP
+#region Inyección de servicios para DIP
 builder.Services.AddScoped<ITipoClienteDomainService, TipoClienteDomainService>();
 builder.Services.AddScoped<IGrupoEmpresaDomainService, GrupoEmpresaDomainService>();
 builder.Services.AddScoped<ITipoLocalizacionDomainService, TipoLocalizacionDomainService>();
 builder.Services.AddHttpClient<IClienteDomainService, ClienteDomainService>();
 builder.Services.AddScoped<IParametroDomainService, ParametroDomainService>();
 builder.Services.AddScoped<ISsccDomainService, SsccDomainService>();
+builder.Services.AddScoped<IAuditoriaDomainService, AuditoriaDomainService>();
 #endregion
 
 // Cargar MediatR

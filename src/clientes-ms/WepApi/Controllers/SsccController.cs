@@ -109,4 +109,17 @@ public class SsccController : ControllerBase
             ? BadRequest(result)
             : Ok(result);
     }
+    /// <summary>
+    /// Eliminar múltiples SSCC con auditoría (requiere observación).
+    /// </summary>
+    [HttpDelete("eliminar")]
+    public async Task<ActionResult<ApiResponse<bool>>> DeleteConAuditoria([FromBody] DeleteSsccRequest request)
+    {
+        var command = new DeleteSsccCommand(request.Ids, request.Observacion, request.Usuario);
+        var result = await _mediator.Send(command);
+
+        return result.Type == "ERROR"
+            ? BadRequest(result)
+            : Ok(result);
+    }
 }

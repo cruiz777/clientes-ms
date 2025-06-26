@@ -20,7 +20,7 @@ public class SsccDomainService : ISsccDomainService
     public async Task<ApiResponse<List<string>>> GenerarCodigosSSCCAsync(
     long idPrefijo,
     long idCliente,
-    string prefijoEmpresa,
+    string codpre,
     byte indicador,
     int secuenciaInicio,
     int secuenciaFin,
@@ -36,13 +36,12 @@ public class SsccDomainService : ISsccDomainService
         if (string.IsNullOrWhiteSpace(codigoPais))
             return Error("No se pudo obtener el código de país desde parámetros.");
 
-        string prefijoBase = $"{indicador}{prefijoEmpresa}";
+        string prefijoBase = $"{indicador}{codigoPais}{codpre}";
         int longitudSerial = 17 - prefijoBase.Length;
 
         if (longitudSerial < 1 || longitudSerial > 8)
-            return Error("Prefijo demasiado largo. Solo se permiten seriales entre 1 y 8 dígitos.");
+            return Error("Prefijo compuesto demasiado largo. Solo se permiten seriales entre 1 y 8 dígitos.");
 
-        // Construcción previa de todos los códigos
         var todosCodigos = Enumerable.Range(secuenciaInicio, secuenciaFin - secuenciaInicio + 1)
             .Select(i =>
             {
@@ -52,7 +51,6 @@ public class SsccDomainService : ISsccDomainService
                 return sscc;
             }).ToList();
 
-        // Revisión masiva de duplicados
         var existentes = await _repository.GetListByConditionAsync(x =>
             x.IdCliente == idCliente &&
             x.IdPrefijo == idPrefijo &&
@@ -61,7 +59,7 @@ public class SsccDomainService : ISsccDomainService
 
         if (existentes.Any())
         {
-            return Error($"Todos o algunos de los códigos SSCC entre la secuencia {secuenciaInicio} y {secuenciaFin} ya existen para el prefijo {prefijoEmpresa}.");
+            return Error($"Todos o algunos de los códigos SSCC entre la secuencia {secuenciaInicio} y {secuenciaFin} ya existen para el prefijo {codpre}.");
         }
 
         if (todosCodigos.Count != cantidad)
@@ -74,19 +72,20 @@ public class SsccDomainService : ISsccDomainService
 
 
     public ApiResponse<List<string>> ConstruirCodigosSSCC(
-        string prefijoEmpresa,
-        byte indicador,
-        int secuenciaInicio,
-        int secuenciaFin)
+    string codigoPais,
+    string codpre,
+    byte indicador,
+    int secuenciaInicio,
+    int secuenciaFin)
     {
         if (indicador > 9)
             return Error("El indicador debe estar entre 0 y 9.");
 
-        string prefijoBase = $"{indicador}{prefijoEmpresa}";
+        string prefijoBase = $"{indicador}{codigoPais}{codpre}";
         int longitudSerial = 17 - prefijoBase.Length;
 
         if (longitudSerial < 1 || longitudSerial > 8)
-            return Error("Prefijo demasiado largo. Solo se permiten seriales entre 1 y 8 dígitos.");
+            return Error("Prefijo compuesto demasiado largo. Solo se permiten seriales entre 1 y 8 dígitos.");
 
         var resultado = Enumerable.Range(secuenciaInicio, secuenciaFin - secuenciaInicio + 1)
             .Select(i =>
@@ -134,6 +133,10 @@ public class SsccDomainService : ISsccDomainService
         int resultado = modulo == 0 ? 0 : 10 - modulo;
 
         return resultado.ToString()[0];
+    }
+    public Task<string?> ObtenerCodigoPaisEcuador()
+    {
+        return _parametroDomainService.ObtenerValorParametroAsync("CODIGO_ECUADOR", "dev");
     }
 
     private static ApiResponse<List<string>> Error(string mensaje) =>

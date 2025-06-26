@@ -2500,6 +2500,9 @@ public partial class ApplicationDbContext : DbContext
             entity.Property(e => e.IdCliente).HasColumnName("id_cliente");
             entity.Property(e => e.IdPrefijo).HasColumnName("id_prefijo");
             entity.Property(e => e.Indicador).HasColumnName("indicador");
+            entity.Property(e => e.ObservacionEliminacion)
+                .HasMaxLength(250)
+                .HasColumnName("observacion_eliminacion");
             entity.Property(e => e.ProductoCodificado)
                 .HasMaxLength(100)
                 .HasColumnName("producto_codificado");

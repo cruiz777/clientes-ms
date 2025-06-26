@@ -4,7 +4,8 @@ public interface ISsccDomainService
 {
     // Construye todos los SSCC sin validarlos aún
     ApiResponse<List<string>> ConstruirCodigosSSCC(
-        string prefijoEmpresa,
+        string codigoPais,
+        string codpre,
         byte indicador,
         int secuenciaInicio,
         int secuenciaFin);
@@ -19,10 +20,12 @@ public interface ISsccDomainService
     Task<ApiResponse<List<string>>> GenerarCodigosSSCCAsync(
         long idPrefijo,
         long idCliente,
-        string prefijoEmpresa,
+        string codpre,
         byte indicador,
         int secuenciaInicio,
         int secuenciaFin,
         int cantidad
         );
+    Task<string?> ObtenerCodigoPaisEcuador();
+
 }

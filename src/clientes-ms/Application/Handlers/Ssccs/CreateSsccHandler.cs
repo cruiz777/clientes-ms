@@ -14,17 +14,20 @@ public class CreateSsccHandler : IRequestHandler<CreateSsccCommand, ApiResponse<
     private readonly IBaseRepository<Sscc> _repository;
     private readonly IBaseRepository<Prefijos> _prefijoRepository;
     private readonly ISsccDomainService _ssccDomainService;
+    private readonly IAuditoriaDomainService _auditoriaDomainService;
     private readonly IMapper _mapper;
 
     public CreateSsccHandler(
         IBaseRepository<Sscc> repository,
         IBaseRepository<Prefijos> prefijoRepository,
         ISsccDomainService ssccDomainService,
+        IAuditoriaDomainService auditoriaDomainService,
         IMapper mapper)
     {
         _repository = repository;
         _prefijoRepository = prefijoRepository;
         _ssccDomainService = ssccDomainService;
+        _auditoriaDomainService = auditoriaDomainService;
         _mapper = mapper;
     }
 
@@ -42,9 +45,13 @@ public class CreateSsccHandler : IRequestHandler<CreateSsccCommand, ApiResponse<
             if (prefijoEntity is null)
                 return ApiResponse<List<string>>.Error("El prefijo indicado no existe.");
 
-            string prefijoEmpresa = prefijoEntity.Prefijosgs1?.Trim() ?? string.Empty;
-            if (string.IsNullOrWhiteSpace(prefijoEmpresa))
-                return ApiResponse<List<string>>.Error("El prefijo GS1 no está definido correctamente.");
+            string codpre = prefijoEntity.Codpre?.Trim() ?? string.Empty;
+            if (string.IsNullOrWhiteSpace(codpre))
+                return ApiResponse<List<string>>.Error("El código de prefijo no está definido correctamente.");
+
+            var codigoPais = await _ssccDomainService.ObtenerCodigoPaisEcuador();
+            if (string.IsNullOrWhiteSpace(codigoPais))
+                return ApiResponse<List<string>>.Error("No se pudo obtener el código de país.");
 
             // Calcular secuencia de inicio si no se envía
             int secuenciaInicio = r.SecuenciaInicio ?? await ObtenerSiguienteSecuenciaDisponible(r.IdPrefijo, r.IdCliente);
@@ -57,7 +64,7 @@ public class CreateSsccHandler : IRequestHandler<CreateSsccCommand, ApiResponse<
             var codigosGenerados = await _ssccDomainService.GenerarCodigosSSCCAsync(
                 idPrefijo: r.IdPrefijo,
                 idCliente: r.IdCliente,
-                prefijoEmpresa: prefijoEmpresa,
+                codpre: codpre,
                 indicador: r.Indicador,
                 secuenciaInicio: secuenciaInicio,
                 secuenciaFin: secuenciaFin,
@@ -71,11 +78,12 @@ public class CreateSsccHandler : IRequestHandler<CreateSsccCommand, ApiResponse<
                 return ApiResponse<List<string>>.Error("No se generaron nuevos códigos SSCC.");
 
             // Mapear y guardar entidades
+            var prefijoCompuesto = $"{r.Indicador}{codigoPais}{codpre}";
             var entidades = codigosGenerados.Data.Select(ssccCompleto =>
             {
                 var base17 = ssccCompleto[..17];
                 var digito = ssccCompleto[^1];
-                var serial = base17.Substring(prefijoEmpresa.Length + 4);
+                var serial = base17.Substring(prefijoCompuesto.Length); // esto evita errores de posición
 
                 var entity = _mapper.Map<Sscc>(r);
                 entity.Serial = serial;
@@ -87,10 +95,20 @@ public class CreateSsccHandler : IRequestHandler<CreateSsccCommand, ApiResponse<
                 return entity;
             }).ToList();
 
-            await _repository.AddRangeAsync(entidades); //Guarda en el rango de los codigos que vengan
+            await _repository.AddRangeAsync(entidades);
+
+            //Auditoria de creación
+            foreach (var entidad in entidades)
+            {
+                await _auditoriaDomainService.AuditarSsccCreateOrUpdateAsync(
+                    accion: "CREATE",
+                    idSscc: entidad.IdSscc, // este valor debe estar disponible tras persistir (usualmente con SaveChanges si hay Identity insert)
+                    usuario: r.Usuario!
+                );
+            }
             var listaSscc = entidades.Select(e => e.SsccCompleto!).ToList();
 
-            return new(Guid.NewGuid(), "SUCCESS", listaSscc, $"Se generaron y guardaron {listaSscc.Count} códigos SSCC.");
+            return new(Guid.NewGuid(), "SUCCESS", listaSscc, $"Se generaron y guardaron {listaSscc.Count} códigos SSCC para el prefijo {codpre}.");
         }
         catch (Exception ex)
         {

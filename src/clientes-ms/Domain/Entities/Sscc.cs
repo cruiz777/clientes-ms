@@ -35,6 +35,8 @@ public partial class Sscc
 
     public DateTime? FechaCreacion { get; set; }
 
+    public string? ObservacionEliminacion { get; set; }
+
     public virtual Clientes IdClienteNavigation { get; set; } = null!;
 
     public virtual Prefijos IdPrefijoNavigation { get; set; } = null!;

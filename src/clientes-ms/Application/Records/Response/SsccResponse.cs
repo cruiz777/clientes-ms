@@ -5,49 +5,49 @@ namespace clientes_ms.Application.Records.Response
     public record SsccResponse
     {
         [JsonPropertyName("id_sscc")]
-        public long IdSscc { get; set; }
+        public long IdSscc { get; init; }
 
         [JsonPropertyName("id_prefijo")]
-        public long IdPrefijo { get; set; }
+        public long IdPrefijo { get; init; }
 
         [JsonPropertyName("id_cliente")]
-        public long IdCliente { get; set; }
+        public long IdCliente { get; init; }
 
         [JsonPropertyName("indicador")]
-        public byte Indicador { get; set; }
+        public byte Indicador { get; init; }
 
         [JsonPropertyName("serial")]
-        public string Serial { get; set; } = string.Empty;
+        public string Serial { get; init; } = string.Empty;
 
         [JsonPropertyName("digito_control")]
-        public string DigitoControl { get; set; } = string.Empty;
+        public string DigitoControl { get; init; } = string.Empty;
 
         [JsonPropertyName("sscc_completo")]
-        public string SsccCompleto { get; set; } = string.Empty;
+        public string SsccCompleto { get; init; } = string.Empty;
 
         [JsonPropertyName("serie")]
-        public bool? Serie { get; set; }
+        public bool? Serie { get; init; }
 
         [JsonPropertyName("secuencia_inicio")]
-        public int? SecuenciaInicio { get; set; }
+        public int? SecuenciaInicio { get; init; }
 
         [JsonPropertyName("secuencia_fin")]
-        public int? SecuenciaFin { get; set; }
+        public int? SecuenciaFin { get; init; }
 
         [JsonPropertyName("total_generado")]
-        public int? TotalGenerado { get; set; }
+        public int? TotalGenerado { get; init; }
 
         [JsonPropertyName("producto_codificado")]
-        public string? ProductoCodificado { get; set; }
+        public string? ProductoCodificado { get; init; }
 
         [JsonPropertyName("estado")]
-        public bool? Estado { get; set; }
+        public bool? Estado { get; init; }
 
         [JsonPropertyName("usuario")]
-        public string? Usuario { get; set; }
+        public string? Usuario { get; init; }
 
         [JsonPropertyName("fecha_creacion")]
-        public DateTime? FechaCreacion { get; set; }
+        public DateTime? FechaCreacion { get; init; }
 
         public SsccResponse() { }
 
