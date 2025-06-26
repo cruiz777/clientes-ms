@@ -27,6 +27,18 @@ public class SsccController : ControllerBase
         var result = await _mediator.Send(new GetAllSsccQuery());
         return Ok(result);
     }
+    /// <summary>
+    /// Obtener un SSCC por su número completo (SSCC).
+    /// </summary>
+    [HttpGet("por-numero")]
+    public async Task<ActionResult<ApiResponse<SsccResponse>>> GetByNumeroSscc([FromQuery] string numeroSscc)
+    {
+        var result = await _mediator.Send(new GetSsccByNumeroQuery(numeroSscc));
+
+        return result.Type == "ERROR"
+            ? NotFound(result)
+            : Ok(result);
+    }
 
     /// <summary>
     /// Obtener un SSCC por ID.
@@ -109,6 +121,24 @@ public class SsccController : ControllerBase
             ? BadRequest(result)
             : Ok(result);
     }
+
+    /// <summary>
+    /// Obtener reporte de SSCC filtrado (sin paginación).
+    /// </summary>
+    [HttpGet("reporte")]
+    public async Task<ActionResult<ApiResponse<List<SsccResponse>>>> GetReporte(
+        [FromQuery] long? idPrefijo,
+        [FromQuery] bool? estado,
+        [FromQuery] DateTime? fechaDesde,
+        [FromQuery] DateTime? fechaHasta,
+        [FromQuery] string? operadorFecha // "=", "<", ">", "<=", ">=", "entre"
+    )
+    {
+        var query = new GetSsccReportQuery(idPrefijo, estado, fechaDesde, fechaHasta, operadorFecha);
+        var result = await _mediator.Send(query);
+        return Ok(result);
+    }
+
     /// <summary>
     /// Eliminar múltiples SSCC con auditoría (requiere observación).
     /// </summary>

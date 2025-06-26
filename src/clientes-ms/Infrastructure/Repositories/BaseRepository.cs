@@ -114,6 +114,9 @@ public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : 
         await _context.Set<TEntity>().AddRangeAsync(entities);
         await _context.SaveChangesAsync();
     }
-
+    public IQueryable<TEntity> AsQueryableNoTracking()
+    {
+        return _context.Set<TEntity>().AsNoTracking();
+    }
 
 }

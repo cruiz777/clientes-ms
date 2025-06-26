@@ -16,6 +16,8 @@ namespace MicroservicesTemplate.Domain.Repositories
 
         //Queryable para aplicar filtros personalizados
         IQueryable<TEntity> AsQueryable();
+        //Aplica queries especificos
+        IQueryable<TEntity> AsQueryableNoTracking();
         // Método para buscar por expresión
         Task<TEntity?> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate);
 
