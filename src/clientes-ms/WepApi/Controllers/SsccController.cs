@@ -138,6 +138,44 @@ public class SsccController : ControllerBase
         var result = await _mediator.Send(query);
         return Ok(result);
     }
+    /// <summary>
+    /// Obtener SSCC filtrados y paginados para separarlo de la logica de filtrado del frontend
+    /// </summary>
+    [HttpGet("cliente/{idCliente}/filtros")]
+    public async Task<ActionResult<ApiResponse<PaginationResponse<SsccResponse>>>> GetByClienteConFiltros(
+    int idCliente,
+    [FromQuery] int page = 1,
+    [FromQuery] int pageSize = 50,
+    [FromQuery] int? idPrefijo = null,
+    [FromQuery] string? busqueda = null,
+    [FromQuery] string? empaque = null,
+    [FromQuery] string? serialDesde = null,
+    [FromQuery] string? serialHasta = null,
+    [FromQuery] bool? estado = null,
+    [FromQuery] DateTime? fechaDesde = null,
+    [FromQuery] DateTime? fechaHasta = null)
+    {
+        var query = new GetSsccByClienteConFiltrosQuery(
+            IdCliente: idCliente,
+            Page: page,
+            PageSize: pageSize,
+            IdPrefijo: idPrefijo,
+            Busqueda: busqueda,
+            Empaque: empaque,
+            SerialDesde: serialDesde,
+            SerialHasta: serialHasta,
+            Estado: estado,
+            FechaDesde: fechaDesde,
+            FechaHasta: fechaHasta
+        );
+
+        var result = await _mediator.Send(query);
+
+        if (result.Type == "ERROR")
+            return BadRequest(result);
+
+        return Ok(result);
+    }
 
     /// <summary>
     /// Eliminar múltiples SSCC con auditoría (requiere observación).

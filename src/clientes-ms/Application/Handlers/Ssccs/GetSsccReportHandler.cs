@@ -20,45 +20,54 @@ public class GetSsccReportHandler : IRequestHandler<GetSsccReportQuery, ApiRespo
         {
             var query = _repository.AsQueryableNoTracking();
 
-            // Filtros
+            // Filtros básicos
             if (request.IdPrefijo.HasValue)
                 query = query.Where(s => s.IdPrefijo == request.IdPrefijo.Value);
 
             if (request.Estado.HasValue)
                 query = query.Where(s => s.Estado == request.Estado.Value);
 
+            // Filtro por fechas
             if (!string.IsNullOrEmpty(request.OperadorFecha))
             {
-                switch (request.OperadorFecha.ToLower())
+                // Ayuda a robustecer las validaciones de los operadores en caso de un error inesperado
+                var operador = request.OperadorFecha.ToLower();
+                var operadoresValidos = new[] { "=", ">", "<", ">=", "<=", "entre" };
+
+                if (!operadoresValidos.Contains(operador))
+                {
+                    return ApiResponse<List<SsccResponse>>.Error($"Operador de fecha inválido: '{request.OperadorFecha}'. Operadores válidos: {string.Join(", ", operadoresValidos)}");
+                }
+                // Si la fecha desde la peticion es nula o no se encuentra usa la fecha actual para poder hacer la consulta
+                var fechaDesde = request.FechaDesde ?? DateTime.Now.Date;
+                var fechaHasta = request.FechaHasta ?? DateTime.Now.Date;
+
+                switch (operador)
                 {
                     case "=":
-                        if (request.FechaDesde.HasValue)
-                            query = query.Where(s => s.FechaCreacion!.Value.Date == request.FechaDesde.Value.Date);
+                        query = query.Where(s => s.FechaCreacion!.Value.Date == fechaDesde);
                         break;
                     case ">":
-                        if (request.FechaDesde.HasValue)
-                            query = query.Where(s => s.FechaCreacion > request.FechaDesde.Value);
+                        query = query.Where(s => s.FechaCreacion > fechaDesde);
                         break;
                     case "<":
-                        if (request.FechaDesde.HasValue)
-                            query = query.Where(s => s.FechaCreacion < request.FechaDesde.Value);
+                        query = query.Where(s => s.FechaCreacion < fechaDesde);
                         break;
                     case ">=":
-                        if (request.FechaDesde.HasValue)
-                            query = query.Where(s => s.FechaCreacion >= request.FechaDesde.Value);
+                        query = query.Where(s => s.FechaCreacion >= fechaDesde);
                         break;
                     case "<=":
-                        if (request.FechaDesde.HasValue)
-                            query = query.Where(s => s.FechaCreacion <= request.FechaDesde.Value);
+                        query = query.Where(s => s.FechaCreacion <= fechaDesde);
                         break;
                     case "entre":
-                        if (request.FechaDesde.HasValue && request.FechaHasta.HasValue)
-                            query = query.Where(s => s.FechaCreacion >= request.FechaDesde && s.FechaCreacion <= request.FechaHasta);
+                        query = query.Where(s =>
+                            s.FechaCreacion >= fechaDesde &&
+                            s.FechaCreacion <= fechaHasta);
                         break;
                 }
             }
 
-            // Proyección directa (optimizada)
+            // Proyección directa
             var items = await query
                 .OrderByDescending(s => s.IdSscc)
                 .Select(s => new SsccResponse
@@ -94,4 +103,5 @@ public class GetSsccReportHandler : IRequestHandler<GetSsccReportQuery, ApiRespo
             return ApiResponse<List<SsccResponse>>.Error($"Error al generar el reporte: {ex.Message}");
         }
     }
+
 }
