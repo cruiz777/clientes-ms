@@ -3,17 +3,17 @@ using System.Collections.Generic;
 
 namespace clientes_ms.Domain.Entities;
 
-public partial class Proyectos
+public partial class TipoNegocio
 {
-    public long IdProyecto { get; set; }
+    public long IdTipoNegocio { get; set; }
 
     public string? Descripcion { get; set; }
 
-    public bool? Estado { get; set; }
+    public bool Estado { get; set; }
 
     public long? IdEmpresa { get; set; }
 
-    public DateOnly? FechaIngreso { get; set; }
-
     public virtual Empresas? IdEmpresaNavigation { get; set; }
+
+    public virtual ICollection<Locales> Locales { get; set; } = new List<Locales>();
 }

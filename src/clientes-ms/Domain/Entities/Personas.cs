@@ -51,5 +51,5 @@ public partial class Personas
 
     public virtual ICollection<Telefonos> Telefonos { get; set; } = new List<Telefonos>();
 
-    public virtual Usuarios? Usuarios { get; set; }
+    public virtual ICollection<Usuarios> Usuarios { get; set; } = new List<Usuarios>();
 }
