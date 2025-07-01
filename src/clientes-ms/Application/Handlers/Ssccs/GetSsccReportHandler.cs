@@ -69,7 +69,7 @@ public class GetSsccReportHandler : IRequestHandler<GetSsccReportQuery, ApiRespo
 
             // Proyección directa
             var items = await query
-                .OrderByDescending(s => s.IdSscc)
+                .OrderBy(s => s.IdSscc)
                 .Select(s => new SsccResponse
                 {
                     IdSscc = s.IdSscc,

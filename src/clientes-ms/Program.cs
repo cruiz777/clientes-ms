@@ -8,6 +8,7 @@ using clientes_ms.Domain.Interfaces.IDomainServices;
 using clientes_ms.Domain.Services;
 using clientes_ms.Application.Options;
 using clientes_ms.Application.Orchestators;
+using clientes_ms.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 //forzar a q salga por ese puerto
@@ -40,6 +41,7 @@ builder.Services.AddHttpClient<IClienteDomainService, ClienteDomainService>();
 builder.Services.AddScoped<IParametroDomainService, ParametroDomainService>();
 builder.Services.AddScoped<ISsccDomainService, SsccDomainService>();
 builder.Services.AddScoped<IAuditoriaDomainService, AuditoriaDomainService>();
+builder.Services.AddScoped<ICuponDomainService, CuponDomainService>();
 #endregion
 
 // Cargar MediatR

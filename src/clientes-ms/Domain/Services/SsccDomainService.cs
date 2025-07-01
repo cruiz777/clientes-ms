@@ -1,4 +1,5 @@
 using clientes_ms.Application.Records.Response;
+using clientes_ms.Domain.Common;
 using clientes_ms.Domain.Entities;
 using MicroservicesTemplate.Domain.Repositories;
 
@@ -47,7 +48,7 @@ public class SsccDomainService : ISsccDomainService
             {
                 string serial = i.ToString().PadLeft(longitudSerial, '0');
                 string baseCode = prefijoBase + serial;
-                string sscc = baseCode + CalcularDigitoVerificadorMod10(baseCode);
+                string sscc = baseCode + DigitoVerificadorHelper.CalcularModulo10(baseCode);
                 return sscc;
             }).ToList();
 
@@ -92,7 +93,7 @@ public class SsccDomainService : ISsccDomainService
             {
                 string serial = i.ToString().PadLeft(longitudSerial, '0');
                 string baseCode = prefijoBase + serial;
-                string sscc = baseCode + CalcularDigitoVerificadorMod10(baseCode);
+                string sscc = baseCode + DigitoVerificadorHelper.CalcularModulo10(baseCode);
                 return sscc;
             })
             .ToList();
@@ -117,23 +118,6 @@ public class SsccDomainService : ISsccDomainService
         return new(Guid.NewGuid(), "SUCCESS", disponibles, "Códigos no registrados", disponibles.Count);
     }
 
-    private static char CalcularDigitoVerificadorMod10(string base17)
-    {
-        int suma = 0;
-        bool multiplicarPorTres = true;
-
-        for (int i = base17.Length - 1; i >= 0; i--)
-        {
-            int digito = base17[i] - '0';
-            suma += multiplicarPorTres ? digito * 3 : digito;
-            multiplicarPorTres = !multiplicarPorTres;
-        }
-
-        int modulo = suma % 10;
-        int resultado = modulo == 0 ? 0 : 10 - modulo;
-
-        return resultado.ToString()[0];
-    }
     public Task<string?> ObtenerCodigoPaisEcuador()
     {
         return _parametroDomainService.ObtenerValorParametroAsync("CODIGO_ECUADOR", "dev");

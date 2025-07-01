@@ -123,6 +123,8 @@ public partial class Clientes
 
     public virtual ICollection<ContactosClientes> ContactosClientes { get; set; } = new List<ContactosClientes>();
 
+    public virtual ICollection<Cupones> Cupones { get; set; } = new List<Cupones>();
+
     public virtual Empresas? EmpresaCodigoNavigation { get; set; }
 
     public virtual ICollection<Gln> Gln { get; set; } = new List<Gln>();

@@ -38,6 +38,8 @@ public partial class ApplicationDbContext : DbContext
 
     public virtual DbSet<Correos> Correos { get; set; }
 
+    public virtual DbSet<Cupones> Cupones { get; set; }
+
     public virtual DbSet<Departamentos> Departamentos { get; set; }
 
     public virtual DbSet<Direcciones> Direcciones { get; set; }
@@ -79,6 +81,8 @@ public partial class ApplicationDbContext : DbContext
     public virtual DbSet<Parametros> Parametros { get; set; }
 
     public virtual DbSet<ParametrosDetalle> ParametrosDetalle { get; set; }
+
+    public virtual DbSet<ParametrosFactura> ParametrosFactura { get; set; }
 
     public virtual DbSet<Perfiles> Perfiles { get; set; }
 
@@ -298,6 +302,7 @@ public partial class ApplicationDbContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("area");
             entity.Property(e => e.IdCanton).HasColumnName("id_canton");
+            entity.Property(e => e.IdZona).HasColumnName("id_zona");
             entity.Property(e => e.Nombre)
                 .HasMaxLength(100)
                 .IsUnicode(false)
@@ -716,6 +721,43 @@ public partial class ApplicationDbContext : DbContext
             entity.HasOne(d => d.IdPersonaNavigation).WithMany(p => p.Correos)
                 .HasForeignKey(d => d.IdPersona)
                 .HasConstraintName("FK__correos__id_pers__44952D46");
+        });
+
+        modelBuilder.Entity<Cupones>(entity =>
+        {
+            entity.HasKey(e => e.IdCupon).HasName("PK__cupones__5EA30214EF45EE56");
+
+            entity.ToTable("cupones", "sic");
+
+            entity.HasIndex(e => e.CodigoCupon, "UQ__cupones__96C7773BBA3E5922").IsUnique();
+
+            entity.Property(e => e.IdCupon).HasColumnName("id_cupon");
+            entity.Property(e => e.CodigoCupon)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("codigo_cupon");
+            entity.Property(e => e.Estado)
+                .HasDefaultValue(true)
+                .HasColumnName("estado");
+            entity.Property(e => e.FechaCaducidad).HasColumnName("fecha_caducidad");
+            entity.Property(e => e.FechaCreacion)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime")
+                .HasColumnName("fecha_creacion");
+            entity.Property(e => e.FechaInicio).HasColumnName("fecha_inicio");
+            entity.Property(e => e.IdCliente).HasColumnName("id_cliente");
+            entity.Property(e => e.IdPrefijo).HasColumnName("id_prefijo");
+            entity.Property(e => e.Serial).HasColumnName("serial");
+
+            entity.HasOne(d => d.IdClienteNavigation).WithMany(p => p.Cupones)
+                .HasForeignKey(d => d.IdCliente)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__cupones__id_clie__58BC2184");
+
+            entity.HasOne(d => d.IdPrefijoNavigation).WithMany(p => p.Cupones)
+                .HasForeignKey(d => d.IdPrefijo)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__cupones__id_pref__59B045BD");
         });
 
         modelBuilder.Entity<Departamentos>(entity =>
@@ -1573,6 +1615,32 @@ public partial class ApplicationDbContext : DbContext
                 .HasForeignKey(d => d.IdParametro)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__parametro__id_pa__3B2BBE9D");
+        });
+
+        modelBuilder.Entity<ParametrosFactura>(entity =>
+        {
+            entity.HasKey(e => e.IdParametrosFactura);
+
+            entity.ToTable("parametros_factura", "sic");
+
+            entity.Property(e => e.IdParametrosFactura).HasColumnName("id_parametros_factura");
+            entity.Property(e => e.Activado).HasColumnName("activado");
+            entity.Property(e => e.Codpar)
+                .HasMaxLength(10)
+                .HasColumnName("codpar");
+            entity.Property(e => e.Descripcion)
+                .HasMaxLength(50)
+                .HasColumnName("descripcion");
+            entity.Property(e => e.Fecmod)
+                .HasColumnType("datetime")
+                .HasColumnName("fecmod");
+            entity.Property(e => e.Obs)
+                .HasMaxLength(255)
+                .HasColumnName("obs");
+            entity.Property(e => e.Texto)
+                .HasMaxLength(255)
+                .HasColumnName("texto");
+            entity.Property(e => e.Valor).HasColumnName("valor");
         });
 
         modelBuilder.Entity<Perfiles>(entity =>

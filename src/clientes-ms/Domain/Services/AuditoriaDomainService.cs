@@ -33,4 +33,24 @@ public class AuditoriaDomainService : IAuditoriaDomainService
             parameters,
             commandType: CommandType.StoredProcedure);
     }
+
+    //Metodo centralizado para auditar el cupon eliminado
+    public async Task AuditarCuponDeleteAsync(IEnumerable<long> idsCupon, long usuario, string? observacion = null)
+    {
+        var idsCsv = string.Join(",", idsCupon);
+        var connection = _dbContext.Database.GetDbConnection();
+
+        if (connection.State == ConnectionState.Closed)
+            await connection.OpenAsync();
+
+        var parameters = new DynamicParameters();
+        parameters.Add("@ids_cupon", idsCsv);
+        parameters.Add("@usuario", usuario);
+        parameters.Add("@observacion", observacion ?? string.Empty);
+
+        await connection.ExecuteAsync(
+            "[sic].[sp_EliminarCuponLoteConObservacion]",
+            parameters,
+            commandType: CommandType.StoredProcedure);
+    }
 }

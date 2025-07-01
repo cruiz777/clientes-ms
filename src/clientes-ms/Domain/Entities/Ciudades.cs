@@ -15,6 +15,8 @@ public partial class Ciudades
 
     public string? Area { get; set; }
 
+    public long? IdZona { get; set; }
+
     public virtual ICollection<Clientes> Clientes { get; set; } = new List<Clientes>();
 
     public virtual ICollection<Empresas> Empresas { get; set; } = new List<Empresas>();
