@@ -44,5 +44,7 @@ namespace clientes_ms.Application.Records.Response
 
         [JsonPropertyName("provincia")]
         public string Provincia { get; init; } = string.Empty;
+        [JsonPropertyName("idzona")]
+        public long idZona { get; init; }
     }
 }

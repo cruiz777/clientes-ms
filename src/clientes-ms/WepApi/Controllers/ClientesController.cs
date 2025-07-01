@@ -146,5 +146,16 @@ namespace clientes_ms.WebApi.Controllers
             var resultado = await _mediator.Send(query);
             return Ok(resultado);
         }
+        [HttpGet("buscar-por-nomcli")]
+        public async Task<ActionResult<ApiResponse<List<ClienteSummaryResponse>>>> BuscarClientesPorNombre([FromQuery] string nomcli)
+        {
+            if (string.IsNullOrWhiteSpace(nomcli))
+                return BadRequest("Debe proporcionar un nombre para buscar.");
+
+            var query = new GetClientesByNomcliAsyncQuery(nomcli);
+            var resultado = await _mediator.Send(query);
+            return Ok(resultado);
+        }
+
     }
 }

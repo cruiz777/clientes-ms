@@ -12,7 +12,7 @@ public class DeleteGlnHandler : IRequestHandler<DeleteGlnCommand, ApiResponse<bo
     {
         try
         {
-            await _repository.DeleteAsync(request.IdCiudad);
+            await _repository.DeleteAsync(request.IdPrefijos);
             return new ApiResponse<bool>(Guid.NewGuid(), "BOOLEAN", true, "Deleted successfully");
         }
         catch (Exception ex)
