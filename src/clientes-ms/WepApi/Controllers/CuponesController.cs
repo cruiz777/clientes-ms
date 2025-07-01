@@ -1,5 +1,6 @@
 ﻿using clientes_ms.Application.Commands.Cupon;
 using clientes_ms.Application.Queries.Cupon;
+using clientes_ms.Application.Queries.Cupones;
 using clientes_ms.Application.Records.Request;
 using clientes_ms.Application.Records.Response;
 using MediatR;
@@ -118,5 +119,28 @@ public class CuponesController : ControllerBase
         return result.Type == "ERROR"
             ? BadRequest(result)
             : Ok(result);
+    }
+    /// <summary>
+    /// Generar reporte de cupones con filtros avanzados.
+    /// </summary>
+    [HttpGet("reporte")]
+    public async Task<ActionResult<ApiResponse<List<CuponResponse>>>> GetReporteCupones(
+        [FromQuery] long? idPrefijo,
+        [FromQuery] bool? estado,
+        [FromQuery] DateTime? fechaDesde,
+        [FromQuery] DateTime? fechaHasta,
+        [FromQuery] string? operadorFecha
+    )
+    {
+        var query = new GetCuponReportQuery(
+            IdPrefijo: idPrefijo,
+            Estado: estado,
+            FechaDesde: fechaDesde,
+            FechaHasta: fechaHasta,
+            OperadorFecha: operadorFecha
+        );
+
+        var result = await _mediator.Send(query);
+        return Ok(result);
     }
 }

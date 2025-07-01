@@ -35,6 +35,8 @@ public partial class Usuarios
 
     public virtual ICollection<Codigos14> Codigos14 { get; set; } = new List<Codigos14>();
 
+    public virtual ICollection<Cupones> Cupones { get; set; } = new List<Cupones>();
+
     public virtual ICollection<Gln> Gln { get; set; } = new List<Gln>();
 
     public virtual ICollection<HistorialContrasenias> HistorialContrasenias { get; set; } = new List<HistorialContrasenias>();

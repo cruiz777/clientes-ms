@@ -100,7 +100,7 @@ public class CreateCuponHandler : IRequestHandler<CreateCuponCommand, ApiRespons
                     cupon.Serial = serial;
                     cupon.CodigoCupon = codigo;
                     cupon.Estado = true;
-                    cupon.FechaCreacion = DateTime.UtcNow;
+                    cupon.FechaCreacion = DateTime.Now;
                     entidades.Add(cupon);
                 }
             }
