@@ -14,6 +14,8 @@ public partial class ApplicationDbContext : DbContext
 
     public virtual DbSet<Apisexternas> Apisexternas { get; set; }
 
+    public virtual DbSet<AuditoriaPrefijos> AuditoriaPrefijos { get; set; }
+
     public virtual DbSet<AuditoriaTransferencia> AuditoriaTransferencia { get; set; }
 
     public virtual DbSet<Autorizacion> Autorizacion { get; set; }
@@ -180,6 +182,33 @@ public partial class ApplicationDbContext : DbContext
             entity.Property(e => e.Urlbase)
                 .HasMaxLength(500)
                 .HasColumnName("urlbase");
+        });
+
+        modelBuilder.Entity<AuditoriaPrefijos>(entity =>
+        {
+            entity.ToTable("auditoria_prefijos", "sic");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Codpre)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("codpre");
+            entity.Property(e => e.Empresa)
+                .HasMaxLength(500)
+                .IsUnicode(false)
+                .HasColumnName("empresa");
+            entity.Property(e => e.Fecha)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("fecha");
+            entity.Property(e => e.Ruc)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("ruc");
+            entity.Property(e => e.Usuario)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("usuario");
         });
 
         modelBuilder.Entity<AuditoriaTransferencia>(entity =>
@@ -736,6 +765,10 @@ public partial class ApplicationDbContext : DbContext
                 .HasMaxLength(20)
                 .IsUnicode(false)
                 .HasColumnName("codigo_cupon");
+            entity.Property(e => e.Descripcion)
+                .HasMaxLength(200)
+                .IsUnicode(false)
+                .HasColumnName("descripcion");
             entity.Property(e => e.Estado)
                 .HasDefaultValue(true)
                 .HasColumnName("estado");
@@ -746,6 +779,7 @@ public partial class ApplicationDbContext : DbContext
                 .HasColumnName("fecha_creacion");
             entity.Property(e => e.FechaInicio).HasColumnName("fecha_inicio");
             entity.Property(e => e.IdCliente).HasColumnName("id_cliente");
+            entity.Property(e => e.IdGrupoProducto).HasColumnName("id_grupo_producto");
             entity.Property(e => e.IdPrefijo).HasColumnName("id_prefijo");
             entity.Property(e => e.Serial).HasColumnName("serial");
 
@@ -753,6 +787,10 @@ public partial class ApplicationDbContext : DbContext
                 .HasForeignKey(d => d.IdCliente)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__cupones__id_clie__58BC2184");
+
+            entity.HasOne(d => d.IdGrupoProductoNavigation).WithMany(p => p.Cupones)
+                .HasForeignKey(d => d.IdGrupoProducto)
+                .HasConstraintName("fk_cupones_grupo_producto");
 
             entity.HasOne(d => d.IdPrefijoNavigation).WithMany(p => p.Cupones)
                 .HasForeignKey(d => d.IdPrefijo)

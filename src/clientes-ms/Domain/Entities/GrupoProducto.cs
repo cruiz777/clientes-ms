@@ -37,5 +37,7 @@ public partial class GrupoProducto
 
     public virtual ICollection<Clientes> Clientes { get; set; } = new List<Clientes>();
 
+    public virtual ICollection<Cupones> Cupones { get; set; } = new List<Cupones>();
+
     public virtual ICollection<ProductoDatosAdicionales> ProductoDatosAdicionales { get; set; } = new List<ProductoDatosAdicionales>();
 }
