@@ -102,4 +102,10 @@ namespace clientes_ms.Application.Records.Response
             Glns = glns;
         }
     }
+
+    public record PrefijoSimpleResponse
+    {
+        public long IdPrefijos { get; init; }
+        public string Codpre { get; init; } = string.Empty;
+    }
 }

@@ -111,13 +111,12 @@ namespace clientes_ms.WebApi.Controllers
             };
         }
 
-        // PUT api/examples/{id}/soft-delete
-        // Elimina l�gicamente un registro (cambia su status a false)
-        //[HttpPatch("{id}/soft-delete")]
-        //public async Task<IActionResult> SoftDelete(long id)
-        //{
-        //    var result = await _mediator.Send(new SoftDeleteExampleCommand(id));
-        //    return Ok(result);
-        //}
+        [HttpDelete("por-idprefijos/{idPrefijos}")]
+        public async Task<IActionResult> DeleteGlnPorIdPrefijos(long idPrefijos)
+        {
+            var result = await _mediator.Send(new DeleteGlnByIdPrefijosCommand(idPrefijos));
+            return Ok(result);
+        }
+
     }
 }

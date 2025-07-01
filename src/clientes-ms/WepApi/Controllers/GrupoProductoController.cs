@@ -82,5 +82,18 @@ namespace clientes_ms.WebApi.Controllers
         //    var result = await _mediator.Send(new SoftDeleteExampleCommand(id));
         //    return Ok(result);
         //}
+        // GET api/grupoproducto/codigo/{codigo}
+        // Consulta GrupoProducto por código (campo 'Codigo')
+        [HttpGet("codigo/{codigo}")]
+        public async Task<IActionResult> GetByCodigo(string codigo)
+        {
+            var result = await _mediator.Send(new GetGrupoProductoByCodigoQuery(codigo));
+            if (result.Data == null)
+                return NotFound(result);
+
+            return Ok(result);
+        }
+
     }
+
 }

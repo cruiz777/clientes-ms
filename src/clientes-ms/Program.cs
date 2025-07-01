@@ -8,6 +8,7 @@ using clientes_ms.Domain.Interfaces.IDomainServices;
 using clientes_ms.Domain.Services;
 using clientes_ms.Application.Options;
 using clientes_ms.Application.Orchestators;
+using clientes_ms.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 //forzar a q salga por ese puerto
@@ -32,13 +33,15 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 
 // Inyectar Servicios de dominio que contienen la lógica de negocio
-#region Inyección de servicios con DIP
+#region Inyección de servicios para DIP
 builder.Services.AddScoped<ITipoClienteDomainService, TipoClienteDomainService>();
 builder.Services.AddScoped<IGrupoEmpresaDomainService, GrupoEmpresaDomainService>();
 builder.Services.AddScoped<ITipoLocalizacionDomainService, TipoLocalizacionDomainService>();
 builder.Services.AddHttpClient<IClienteDomainService, ClienteDomainService>();
-
-
+builder.Services.AddScoped<IParametroDomainService, ParametroDomainService>();
+builder.Services.AddScoped<ISsccDomainService, SsccDomainService>();
+builder.Services.AddScoped<IAuditoriaDomainService, AuditoriaDomainService>();
+builder.Services.AddScoped<ICuponDomainService, CuponDomainService>();
 #endregion
 
 // Cargar MediatR

@@ -9,11 +9,17 @@ public partial class Parametros
 
     public string Clave { get; set; } = null!;
 
-    public string Valor { get; set; } = null!;
-
     public string? Descripcion { get; set; }
 
-    public bool Estado { get; set; }
+    public string Tipo { get; set; } = null!;
 
-    public DateTime FechaCreacion { get; set; }
+    public bool? Requerido { get; set; }
+
+    public bool? Multiple { get; set; }
+
+    public bool? Activo { get; set; }
+
+    public DateTime? FechaCreacion { get; set; }
+
+    public virtual ICollection<ParametrosDetalle> ParametrosDetalle { get; set; } = new List<ParametrosDetalle>();
 }

@@ -23,13 +23,23 @@ public partial class Usuarios
 
     public long IdDepartamento { get; set; }
 
+    public int IntentosFallidos { get; set; }
+
+    public bool EstaBloqueado { get; set; }
+
+    public DateTime? FechaBloqueo { get; set; }
+
     public virtual ICollection<AuditoriaTransferencia> AuditoriaTransferencia { get; set; } = new List<AuditoriaTransferencia>();
 
     public virtual ICollection<ClienteObservacion> ClienteObservacion { get; set; } = new List<ClienteObservacion>();
 
     public virtual ICollection<Codigos14> Codigos14 { get; set; } = new List<Codigos14>();
 
+    public virtual ICollection<Cupones> Cupones { get; set; } = new List<Cupones>();
+
     public virtual ICollection<Gln> Gln { get; set; } = new List<Gln>();
+
+    public virtual ICollection<HistorialContrasenias> HistorialContrasenias { get; set; } = new List<HistorialContrasenias>();
 
     public virtual Departamentos IdDepartamentoNavigation { get; set; } = null!;
 
@@ -38,6 +48,8 @@ public partial class Usuarios
     public virtual Personas IdPersonaNavigation { get; set; } = null!;
 
     public virtual ICollection<ProductoDatosAdicionales> ProductoDatosAdicionales { get; set; } = new List<ProductoDatosAdicionales>();
+
+    public virtual ICollection<RecuperacionClave> RecuperacionClave { get; set; } = new List<RecuperacionClave>();
 
     public virtual ICollection<UsuariosPerfiles> UsuariosPerfiles { get; set; } = new List<UsuariosPerfiles>();
 
