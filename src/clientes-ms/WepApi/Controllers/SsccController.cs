@@ -99,13 +99,14 @@ public class SsccController : ControllerBase
         return Ok(result);
     }
 
+    // OPCIÓN 1: Recibir directamente el bool (más simple y directo)
     /// <summary>
-    /// Actualizar un SSCC existente.
+    /// Actualizar el estado de un SSCC existente.
     /// </summary>
-    [HttpPut("{id}")]
-    public async Task<IActionResult> Update(long id, [FromBody] SsccRequest request)
+    [HttpPut("{id}/status")]
+    public async Task<IActionResult> UpdateStatus(long id, [FromBody] bool estado)
     {
-        var result = await _mediator.Send(new UpdateSsccCommand(id, request));
+        var result = await _mediator.Send(new UpdateSsccStatusCommand(id, estado));
         return Ok(result);
     }
 
