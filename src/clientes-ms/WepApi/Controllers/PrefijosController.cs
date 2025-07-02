@@ -105,13 +105,16 @@ namespace clientes_ms.WebApi.Controllers
             return Ok(result);
         }
 
-        // PUT api/examples/{id}/soft-delete
-        // Elimina l�gicamente un registro (cambia su status a false)
-        //[HttpPatch("{id}/soft-delete")]
-        //public async Task<IActionResult> SoftDelete(long id)
-        //{
-        //    var result = await _mediator.Send(new SoftDeleteExampleCommand(id));
-        //    return Ok(result);
-        //}
+        // PATCH api/prefijos/{id}/cliente/{clientesCodigo}
+        // Actualiza solo el campo ClientesCodigo de un prefijo
+        [HttpPatch("{id}/cliente/{clientesCodigo}")]
+        public async Task<IActionResult> ActualizarClientesCodigo(long id, int clientesCodigo)
+        {
+            var result = await _mediator.Send(new UpdatePrefijoClientesCodigoPrefijoCommand(id, clientesCodigo));
+            return Ok(result);
+        }
+
+
+
     }
 }

@@ -118,5 +118,20 @@ namespace clientes_ms.WebApi.Controllers
             return Ok(result);
         }
 
+        // PUT api/gln/actualizar-clientecodigo-por-idprefijo
+        [HttpPut("actualizar-clientecodigo-por-idprefijo")]
+        public async Task<IActionResult> UpdateClientesCodigoPorIdPrefijo([FromBody] UpdateGlnClientesCodigoByIdPrefijoCommand command)
+        {
+            var result = await _mediator.Send(command);
+
+            return result.Type switch
+            {
+                "NOT_FOUND" => NotFound(result),
+                "ERROR" => StatusCode(500, result),
+                _ => Ok(result)
+            };
+        }
+
+
     }
 }
