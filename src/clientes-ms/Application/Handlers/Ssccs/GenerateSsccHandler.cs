@@ -38,7 +38,7 @@ public class GenerateSsccHandler : IRequestHandler<GenerateSsccCommand, ApiRespo
         int secuenciaInicio = r.SecuenciaInicio ?? await ObtenerSiguienteSecuenciaDisponible(r.IdPrefijo, r.IdCliente);
         int secuenciaFin = secuenciaInicio + r.CantidadCodigos - 1;
 
-        if (secuenciaInicio < 1 || secuenciaFin < secuenciaInicio)
+        if (secuenciaInicio < 0 || secuenciaFin < secuenciaInicio)
             return ApiResponse<List<string>>.Error("El rango de secuencia es inválido.");
         string codpre = prefijoEntity.Codpre?.Trim() ?? string.Empty;
         if (string.IsNullOrWhiteSpace(codpre))
@@ -91,6 +91,6 @@ public class GenerateSsccHandler : IRequestHandler<GenerateSsccCommand, ApiRespo
             .OrderByDescending(x => x.SecuenciaFin)
             .FirstOrDefaultAsync();
 
-        return (ultimoSscc?.SecuenciaFin ?? 0) + 1;
+        return (ultimoSscc?.SecuenciaFin ?? -1) + 1;
     }
 }

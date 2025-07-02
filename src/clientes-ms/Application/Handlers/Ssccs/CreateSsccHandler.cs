@@ -123,6 +123,6 @@ public class CreateSsccHandler : IRequestHandler<CreateSsccCommand, ApiResponse<
             .OrderByDescending(x => x.SecuenciaFin)
             .FirstOrDefaultAsync();
 
-        return (ultimoSscc?.SecuenciaFin ?? 0) + 1;
+        return (ultimoSscc?.SecuenciaFin ?? -1) + 1;
     }
 }

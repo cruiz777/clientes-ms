@@ -1,4 +1,3 @@
-using AutoMapper;
 using clientes_ms.Application.Commands.Ssccs;
 using clientes_ms.Application.Records.Response;
 using clientes_ms.Domain.Entities;
@@ -7,18 +6,16 @@ using MicroservicesTemplate.Domain.Repositories;
 
 namespace clientes_ms.Application.Handlers.Ssccs;
 
-public class UpdateSsccHandler : IRequestHandler<UpdateSsccCommand, ApiResponse<bool>>
+public class UpdateSsccStatusHandler : IRequestHandler<UpdateSsccStatusCommand, ApiResponse<bool>>
 {
     private readonly IBaseRepository<Sscc> _repository;
-    private readonly IMapper _mapper;
 
-    public UpdateSsccHandler(IBaseRepository<Sscc> repository, IMapper mapper)
+    public UpdateSsccStatusHandler(IBaseRepository<Sscc> repository)
     {
         _repository = repository;
-        _mapper = mapper;
     }
 
-    public async Task<ApiResponse<bool>> Handle(UpdateSsccCommand request, CancellationToken cancellationToken)
+    public async Task<ApiResponse<bool>> Handle(UpdateSsccStatusCommand request, CancellationToken cancellationToken)
     {
         try
         {
@@ -26,10 +23,12 @@ public class UpdateSsccHandler : IRequestHandler<UpdateSsccCommand, ApiResponse<
             if (entity == null)
                 return new ApiResponse<bool>(Guid.NewGuid(), "NOT_FOUND", false, "No se encontró el SSCC.");
 
-            _mapper.Map(request.Request, entity);
+            // Solo actualiza el estado del sscc
+            entity.Estado = request.Estado;
+
             await _repository.UpdateAsync(request.Id, entity);
 
-            return new ApiResponse<bool>(Guid.NewGuid(), "SUCCESS", true, "SSCC actualizado correctamente");
+            return new ApiResponse<bool>(Guid.NewGuid(), "SUCCESS", true, "Estado del SSCC actualizado correctamente");
         }
         catch (Exception ex)
         {

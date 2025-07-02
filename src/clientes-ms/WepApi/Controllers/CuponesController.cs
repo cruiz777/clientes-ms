@@ -1,4 +1,5 @@
-﻿using clientes_ms.Application.Commands.Cupon;
+﻿using clientes_ms.Application.Commands;
+using clientes_ms.Application.Commands.Cupon;
 using clientes_ms.Application.Queries.Cupon;
 using clientes_ms.Application.Queries.Cupones;
 using clientes_ms.Application.Records.Request;
@@ -108,6 +109,20 @@ public class CuponesController : ControllerBase
     }
 
     /// <summary>
+    /// Actualizar el estado de un cupón específico.
+    /// </summary>
+    [HttpPatch("{id}/estado")]
+    public async Task<ActionResult<ApiResponse<bool>>> UpdateEstado(long id, [FromBody] UpdateEstadoRequest request)
+    {
+        var command = new UpdateCuponEstadoCommand(id, request.Estado);
+        var result = await _mediator.Send(command);
+
+        return result.Type == "ERROR"
+            ? BadRequest(result)
+            : Ok(result);
+    }
+
+    /// <summary>
     /// Eliminar cupones con auditoría (requiere observación).
     /// </summary>
     [HttpDelete("eliminar")]
@@ -127,16 +142,41 @@ public class CuponesController : ControllerBase
     public async Task<ActionResult<ApiResponse<List<CuponResponse>>>> GetReporteCupones(
         [FromQuery] long? idPrefijo,
         [FromQuery] bool? estado,
-        [FromQuery] DateTime? fechaDesde,
-        [FromQuery] DateTime? fechaHasta,
+        [FromQuery] string? fechaDesde,  // Cambiar a string para manejo manual
+        [FromQuery] string? fechaHasta,  // Cambiar a string para manejo manual
         [FromQuery] string? operadorFecha
     )
     {
+        // Convertir fechas manualmente
+        DateTime? fechaDesdeDateTime = null;
+        DateTime? fechaHastaDateTime = null;
+
+        // Solo convertir si la fecha no está vacía
+        if (!string.IsNullOrWhiteSpace(fechaDesde) &&
+            fechaDesde != "fechaDesde" &&
+            fechaDesde.Trim() != "")
+        {
+            if (DateTime.TryParse(fechaDesde, out var parsedFechaDesde))
+                fechaDesdeDateTime = parsedFechaDesde;
+        }
+
+        if (!string.IsNullOrWhiteSpace(fechaHasta) &&
+            fechaHasta != "fechaHasta" &&
+            fechaHasta.Trim() != "")
+        {
+            if (DateTime.TryParse(fechaHasta, out var parsedFechaHasta))
+                fechaHastaDateTime = parsedFechaHasta;
+        }
+        Console.WriteLine($"fechaDesde recibida: '{fechaDesde}'");
+        Console.WriteLine($"fechaHasta recibida: '{fechaHasta}'");
+        Console.WriteLine($"fechaDesdeDateTime convertida: {fechaDesdeDateTime}");
+        Console.WriteLine($"fechaHastaDateTime convertida: {fechaHastaDateTime}");
+        Console.WriteLine($"operadorFecha: '{operadorFecha}'");
         var query = new GetCuponReportQuery(
             IdPrefijo: idPrefijo,
             Estado: estado,
-            FechaDesde: fechaDesde,
-            FechaHasta: fechaHasta,
+            FechaDesde: fechaDesdeDateTime,
+            FechaHasta: fechaHastaDateTime,
             OperadorFecha: operadorFecha
         );
 

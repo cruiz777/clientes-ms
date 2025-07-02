@@ -30,7 +30,7 @@ public class SsccDomainService : ISsccDomainService
         if (indicador > 9)
             return Error("El indicador debe estar entre 0 y 9.");
 
-        if (secuenciaInicio < 1 || secuenciaFin < secuenciaInicio)
+        if (secuenciaInicio < 0 || secuenciaFin < secuenciaInicio)
             return Error("El rango de secuencia es inválido.");
 
         var codigoPais = await _parametroDomainService.ObtenerValorParametroAsync("CODIGO_ECUADOR", "dev");
