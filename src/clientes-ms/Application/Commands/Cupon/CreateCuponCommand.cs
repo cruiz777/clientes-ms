@@ -4,4 +4,4 @@ using MediatR;
 
 namespace clientes_ms.Application.Commands.Cupon;
 
-public record CreateCuponCommand(CuponRequest Request) : IRequest<ApiResponse<List<string>>>;
+public record CreateCuponCommand(CuponRequest Request) : IRequest<ApiResponse<CreateCuponResponse>>;

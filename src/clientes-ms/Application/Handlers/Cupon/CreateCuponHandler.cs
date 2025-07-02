@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace clientes_ms.Application.Handlers.Cupon;
 
-public class CreateCuponHandler : IRequestHandler<CreateCuponCommand, ApiResponse<List<string>>>
+public class CreateCuponHandler : IRequestHandler<CreateCuponCommand, ApiResponse<CreateCuponResponse>>
 {
     private readonly IBaseRepository<Cupones> _repository;
     private readonly IBaseRepository<Prefijos> _prefijoRepository;
@@ -28,26 +28,24 @@ public class CreateCuponHandler : IRequestHandler<CreateCuponCommand, ApiRespons
         _mapper = mapper;
     }
 
-    public async Task<ApiResponse<List<string>>> Handle(CreateCuponCommand request, CancellationToken cancellationToken)
+    public async Task<ApiResponse<CreateCuponResponse>> Handle(CreateCuponCommand request, CancellationToken cancellationToken)
     {
         try
         {
             var r = request.Request;
 
             if (r.Cantidad <= 0)
-                return ApiResponse<List<string>>.Error("La cantidad debe ser mayor a 0.");
+                return ApiResponse<CreateCuponResponse>.Error("La cantidad debe ser mayor a 0.");
 
             _cuponDomainService.ValidarFechas(r.FechaInicio, r.FechaCaducidad);
 
             var prefijoEntity = await _prefijoRepository.GetByIdAsync(r.IdPrefijo);
             if (prefijoEntity == null || string.IsNullOrWhiteSpace(prefijoEntity.Codpre))
-                return ApiResponse<List<string>>.Error("El prefijo indicado no es válido.");
+                return ApiResponse<CreateCuponResponse>.Error("El prefijo indicado no es válido.");
 
             string prefijo = prefijoEntity.Codpre.Trim();
 
-            // Obtener serialInicio (desde request o calcular automáticamente)
             int serialInicio;
-
             if (r.SerialInicio.HasValue && r.SerialInicio > 0)
             {
                 serialInicio = r.SerialInicio.Value;
@@ -62,36 +60,31 @@ public class CreateCuponHandler : IRequestHandler<CreateCuponCommand, ApiRespons
                 serialInicio = maxSerial + 1;
             }
 
-
-            var codigosGenerados = new List<string>();
-            var entidades = new List<Cupones>();
-            var codigosAVerificar = new List<string>();
-
+            var codigosAVerificar = new List<(string Codigo, int Serial)>();
             for (int i = 0; i < r.Cantidad; i++)
             {
                 int serial = serialInicio + i;
                 string codigo = _cuponDomainService.GenerarCodigoCupon(prefijo, serial);
-                codigosAVerificar.Add(codigo);
+                codigosAVerificar.Add((codigo, serial));
             }
 
-            // Verificar duplicados en la base de datos
+            var codigosGenerados = new List<string>();
+            var entidades = new List<Cupones>();
+
+            var codigosStr = codigosAVerificar.Select(c => c.Codigo).ToList();
+
             var codigosExistentes = await _repository
                 .AsQueryableNoTracking()
-                .Where(c => codigosAVerificar.Contains(c.CodigoCupon))
+                .Where(c => codigosStr.Contains(c.CodigoCupon))
                 .Select(c => c.CodigoCupon)
                 .ToListAsync(cancellationToken);
 
-            if (codigosExistentes.Any())
-            {
-                return ApiResponse<List<string>>.Error(
-                    $"Ya existen cupones con los siguientes códigos: {string.Join(", ", codigosExistentes)}");
-            }
+            var codigosNoExistentes = codigosAVerificar
+                .Where(c => !codigosExistentes.Contains(c.Codigo))
+                .ToList();
 
-            // Crear cupones si no es previsualización
-            for (int i = 0; i < r.Cantidad; i++)
+            foreach (var (codigo, serial) in codigosNoExistentes)
             {
-                int serial = serialInicio + i;
-                string codigo = codigosAVerificar[i];
                 codigosGenerados.Add(codigo);
 
                 if (!r.Previsualizar)
@@ -105,17 +98,34 @@ public class CreateCuponHandler : IRequestHandler<CreateCuponCommand, ApiRespons
                 }
             }
 
+            if (!codigosGenerados.Any())
+            {
+                return ApiResponse<CreateCuponResponse>.Error("Todos los códigos generados ya existen. No se creó ningún cupón.");
+            }
+
+            var response = new CreateCuponResponse
+            {
+                CuponesGenerados = codigosGenerados,
+                CuponesDuplicados = codigosExistentes
+            };
+
             if (!r.Previsualizar)
             {
                 await _repository.AddRangeAsync(entidades);
-                return new(Guid.NewGuid(), "SUCCESS", codigosGenerados, $"Se generaron y guardaron {codigosGenerados.Count} cupones.");
+                return new(Guid.NewGuid(), "PARTIAL_SUCCESS", response,
+                    codigosExistentes.Any()
+                        ? $"Se guardaron {codigosGenerados.Count} cupones. {codigosExistentes.Count} ya existían."
+                        : $"Se generaron y guardaron {codigosGenerados.Count} cupones.");
             }
 
-            return new(Guid.NewGuid(), "PREVIEW", codigosGenerados, "Previsualización de cupones generada correctamente.");
+            return new(Guid.NewGuid(), "PREVIEW", response,
+                codigosExistentes.Any()
+                    ? $"Previsualización generada. Se omitieron {codigosExistentes.Count} códigos ya existentes."
+                    : "Previsualización de cupones generada correctamente.");
         }
         catch (Exception ex)
         {
-            return ApiResponse<List<string>>.Error($"Error al generar cupones: {ex.Message}");
+            return ApiResponse<CreateCuponResponse>.Error($"Error al generar cupones: {ex.Message}");
         }
     }
 }
