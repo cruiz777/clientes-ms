@@ -183,4 +183,26 @@ public class CuponesController : ControllerBase
         var result = await _mediator.Send(query);
         return Ok(result);
     }
+    /// <summary>
+    /// Obtener todos los cupones por ID de prefijo.
+    /// </summary>
+    [HttpGet("por-prefijo")]
+    public async Task<ActionResult<ApiResponse<List<CuponResponse>>>> GetByPrefijo([FromQuery] long idPrefijo)
+    {
+        var query = new GetCuponesByIdPrefijoQuery(idPrefijo);
+        var result = await _mediator.Send(query);
+
+        return result.Type == "ERROR"
+            ? BadRequest(result)
+            : Ok(result);
+    }
+
+    [HttpPut("actualizar-idcliente-por-idprefijo")]
+    public async Task<IActionResult> ActualizarClientePorPrefijo([FromBody] UpdateCuponesClientePorPrefijoCommand command)
+    {
+        var result = await _mediator.Send(command);
+        return result.Type == "ERROR" ? BadRequest(result) : Ok(result);
+    }
+
+
 }

@@ -1,4 +1,5 @@
 ﻿using clientes_ms.Application.Commands.Ssccs;
+using clientes_ms.Application.Queries.Sscc;
 using clientes_ms.Application.Queries.Ssccs;
 using clientes_ms.Application.Records.Request;
 using clientes_ms.Application.Records.Response;
@@ -191,4 +192,21 @@ public class SsccController : ControllerBase
             ? BadRequest(result)
             : Ok(result);
     }
+    [HttpGet("id-prefijo")]
+    public async Task<ActionResult<ApiResponse<List<SsccResponse>>>> GetByPrefijo([FromQuery] long idPrefijo)
+    {
+        var query = new GetSsccByIdPrefijoNQuery(idPrefijo);
+        var result = await _mediator.Send(query);
+
+        return result.Type == "ERROR"
+            ? BadRequest(result)
+            : Ok(result);
+    }
+    [HttpPut("actualizar-idcliente-por-idprefijo")]
+    public async Task<IActionResult> ActualizarClientePorPrefijo([FromBody] UpdateSsccClientePorPrefijoCommand command)
+    {
+        var result = await _mediator.Send(command);
+        return result.Type == "ERROR" ? BadRequest(result) : Ok(result);
+    }
+
 }
