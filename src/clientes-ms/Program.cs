@@ -42,6 +42,8 @@ builder.Services.AddScoped<IParametroDomainService, ParametroDomainService>();
 builder.Services.AddScoped<ISsccDomainService, SsccDomainService>();
 builder.Services.AddScoped<IAuditoriaDomainService, AuditoriaDomainService>();
 builder.Services.AddScoped<ICuponDomainService, CuponDomainService>();
+builder.Services.AddScoped<IPaginationService, PaginationService>();
+
 #endregion
 
 // Cargar MediatR
