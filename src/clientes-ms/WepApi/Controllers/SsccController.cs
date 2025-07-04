@@ -202,7 +202,7 @@ public class SsccController : ControllerBase
             ? BadRequest(result)
             : Ok(result);
     }
-    [HttpPut("actualizar-idcliente-por-idprefijo")]
+    [HttpPut("actualizar-idprefijo")]
     public async Task<IActionResult> ActualizarClientePorPrefijo([FromBody] UpdateSsccClientePorPrefijoCommand command)
     {
         var result = await _mediator.Send(command);

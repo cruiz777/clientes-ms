@@ -115,6 +115,18 @@ namespace clientes_ms.WebApi.Controllers
         }
 
 
+        [HttpPut("actualizar-orden-prefijo")]
+        public async Task<IActionResult> ActualizarOrden([FromBody] UpdateOrdenPrefijoCommand command)
+        {
+            var result = await _mediator.Send(command);
+
+            return result.Type switch
+            {
+                "NOT_FOUND" => NotFound(result),
+                "ERROR" => StatusCode(500, result),
+                _ => Ok(result)
+            };
+        }
 
     }
 }

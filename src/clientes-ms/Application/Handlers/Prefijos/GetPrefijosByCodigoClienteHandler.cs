@@ -60,7 +60,7 @@ public class GetPrefijosByCodigoClienteHandler : IRequestHandler<GetPrefijosByCo
                     Nomcli = p.ClientesCodigoNavigation?.Nomcli ?? string.Empty,
                     Gln = g?.Gln1 ?? string.Empty, // solo el primero
                     TipoLocalizacion = g?.IdTipoLocalizacionNavigation?.Descripcion ?? string.Empty,
-
+                    Orden=p.Orden??0,
                     EstadoEmpresa = p.ClientesCodigoNavigation?.IdEstadoEmpresaNavigation?.Nombre ?? string.Empty,
                     Ruccli = p.ClientesCodigoNavigation?.Ruc ?? string.Empty,
                     Fecing = p.ClientesCodigoNavigation?.Fecing ?? DateOnly.MinValue,
