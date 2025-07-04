@@ -1,50 +1,56 @@
-﻿using clientes_ms.Domain.Entities;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace clientes_ms.Application.Records.Response
 {
-
-    //Igual que en el apartado de Request, pero ahora con la respuesta que necesitas obtener
     public record AuditoriaTransferenciaResponse
     {
         [JsonPropertyName("id_traferencia_prefijo")]
         public long IdTraferenciaPrefijo { get; set; }
 
         public long? ClientesCodigoOrigen { get; set; }
-
         public long? ClientesCodigoDestino { get; set; }
-
         public DateTime? Fecha { get; set; }
-
         public long? IdPrefijos { get; set; }
-
         public string? Tipo { get; set; }
-
         public long? IdUsuario { get; set; }
 
-        public string? Origen { get; set; }
-
-        public string? Destino { get; set; }
+        public string? Origen { get; set; }          // Empresa anterior
+        public string? RucOrigen { get; set; }       // RUC anterior
+        public string? Destino { get; set; }         // Empresa actual
+        public string? RucDestino { get; set; }      // RUC actual
         public string? Usuario { get; set; }
         public string? Prefijo { get; set; }
 
         public AuditoriaTransferenciaResponse() { }
-        public AuditoriaTransferenciaResponse(long IdTraferenciaPrefijo, long ClientesCodigoOrigen, long ClientesCodigoDestino, DateTime Fecha, long IdPrefijos, string Tipo, long IdUsuario, string origen, string destino, string usuario, string prefijo)
+
+        public AuditoriaTransferenciaResponse(
+            long idTraferenciaPrefijo,
+            long clientesCodigoOrigen,
+            long clientesCodigoDestino,
+            DateTime fecha,
+            long idPrefijos,
+            string tipo,
+            long idUsuario,
+            string origen,
+            string destino,
+            string usuario,
+            string prefijo,
+            string rucOrigen,
+            string rucDestino)
         {
-            this.IdTraferenciaPrefijo = IdTraferenciaPrefijo;
-            this.ClientesCodigoOrigen = ClientesCodigoOrigen;
-            this.ClientesCodigoDestino = ClientesCodigoDestino;
-            this.Fecha = Fecha;
-            this.IdPrefijos = IdPrefijos;
-            this.IdUsuario = IdUsuario;
-            this.Tipo = Tipo;
-            this.Origen = origen;
-            this.Destino = destino;
-            this.Usuario = usuario;
-            this.Prefijo = prefijo;
-
-
-
+            IdTraferenciaPrefijo = idTraferenciaPrefijo;
+            ClientesCodigoOrigen = clientesCodigoOrigen;
+            ClientesCodigoDestino = clientesCodigoDestino;
+            Fecha = fecha;
+            IdPrefijos = idPrefijos;
+            Tipo = tipo;
+            IdUsuario = idUsuario;
+            Origen = origen;
+            RucOrigen = rucOrigen;
+            Destino = destino;
+            RucDestino = rucDestino;
+            Usuario = usuario;
+            Prefijo = prefijo;
         }
     }
 }

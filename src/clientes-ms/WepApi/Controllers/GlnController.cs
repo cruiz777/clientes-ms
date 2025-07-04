@@ -119,7 +119,7 @@ namespace clientes_ms.WebApi.Controllers
         }
 
         // PUT api/gln/actualizar-clientecodigo-por-idprefijo
-        [HttpPut("actualizar-clientecodigo-por-idprefijo")]
+        [HttpPut("actualizar-idprefijo")]
         public async Task<IActionResult> UpdateClientesCodigoPorIdPrefijo([FromBody] UpdateGlnClientesCodigoByIdPrefijoCommand command)
         {
             var result = await _mediator.Send(command);
