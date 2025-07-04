@@ -74,11 +74,37 @@ namespace clientes_ms.Application.Handlers.Cupon
 
             if (!string.IsNullOrWhiteSpace(request.Busqueda))
             {
-                var busqueda = request.Busqueda.Trim().ToLower();
+                var busqueda = request.Busqueda.Trim();
+
+                // Búsqueda simple con Contains (recomendada)
                 query = query.Where(c =>
-                    c.Serial.ToString().Contains(busqueda) ||
-                    c.CodigoCupon.ToLower().Contains(busqueda) || // agregado como alternativa útil
-                    c.IdPrefijoNavigation.Codpre!.ToLower().Contains(busqueda)); // 
+                    c.CodigoCupon.Contains(busqueda) ||
+                    (c.IdPrefijoNavigation != null && c.IdPrefijoNavigation.Codpre != null && c.IdPrefijoNavigation.Codpre.Contains(busqueda)) ||
+                    EF.Functions.Like(c.Serial.ToString(), $"%{busqueda}%"));
+                /*
+                // Intenta convertir la búsqueda a número para Serial
+                if (long.TryParse(busqueda, out var serialBuscado))
+                {
+                    query = query.Where(c =>
+                        c.Serial == serialBuscado ||
+                        c.CodigoCupon.Contains(busqueda) ||
+                        (c.IdPrefijoNavigation != null && c.IdPrefijoNavigation.Codpre != null && c.IdPrefijoNavigation.Codpre.Contains(busqueda)));
+                }
+                else
+                {
+                    query = query.Where(c =>
+                        c.CodigoCupon.Contains(busqueda) ||
+                        (c.IdPrefijoNavigation != null && c.IdPrefijoNavigation.Codpre != null && c.IdPrefijoNavigation.Codpre.Contains(busqueda)));
+                }
+                */
+
+                //Búsqueda más robusta con SqlServer
+                /*
+                query = query.Where(c =>
+                    EF.Functions.Like(c.CodigoCupon, $"%{busqueda}%") ||
+                    (c.IdPrefijoNavigation != null && c.IdPrefijoNavigation.Codpre != null && EF.Functions.Like(c.IdPrefijoNavigation.Codpre, $"%{busqueda}%")) ||
+                    EF.Functions.Like(EF.Functions.Collate(c.Serial.ToString(), "SQL_Latin1_General_CP1_CI_AS"), $"%{busqueda}%"));
+                */
             }
 
             if (request.SerialDesde.HasValue)
@@ -105,5 +131,4 @@ namespace clientes_ms.Application.Handlers.Cupon
             return query;
         }
     }
-
 }

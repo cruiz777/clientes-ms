@@ -1,7 +1,11 @@
+using clientes_ms.Application.Queries.Ssccs;
 using clientes_ms.Application.Records.Response;
 using clientes_ms.Domain.Common;
 using clientes_ms.Domain.Entities;
+using clientes_ms.Domain.Specifications;
 using MicroservicesTemplate.Domain.Repositories;
+using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace clientes_ms.Domain.Services;
 
@@ -125,4 +129,88 @@ public class SsccDomainService : ISsccDomainService
 
     private static ApiResponse<List<string>> Error(string mensaje) =>
         new(Guid.NewGuid(), "ERROR", null, mensaje);
+
+    public Expression<Func<Sscc, bool>> BuildFilterCriteria(GetSsccByClienteConFiltrosQuery request)
+    {
+        var specification = new SsccFilterSpecification(request);
+        return specification.Criteria;
+    }
+
+    public bool HasSerialFilters(GetSsccByClienteConFiltrosQuery request)
+    {
+        return !string.IsNullOrWhiteSpace(request.SerialDesde) ||
+               !string.IsNullOrWhiteSpace(request.SerialHasta);
+    }
+
+    public IEnumerable<Sscc> ApplySerialFilters(IEnumerable<Sscc> ssccList, GetSsccByClienteConFiltrosQuery request)
+    {
+        var result = ssccList.AsEnumerable();
+
+        if (!string.IsNullOrWhiteSpace(request.SerialDesde) &&
+            int.TryParse(request.SerialDesde, out var serialDesdeInt))
+        {
+            result = result.Where(s => ExtractSerialFromSscc(s) >= serialDesdeInt);
+        }
+
+        if (!string.IsNullOrWhiteSpace(request.SerialHasta) &&
+            int.TryParse(request.SerialHasta, out var serialHastaInt))
+        {
+            result = result.Where(s => ExtractSerialFromSscc(s) <= serialHastaInt);
+        }
+
+        return result;
+    }
+
+    public int ExtractSerialFromSscc(Sscc sscc)
+    {
+        if (string.IsNullOrWhiteSpace(sscc.SsccCompleto) ||
+            sscc.SsccCompleto.Length != 18 ||
+            sscc.IdPrefijoNavigation?.Codpre == null)
+            return 0;
+
+        var prefixCode = sscc.IdPrefijoNavigation.Codpre;
+        var prefixLength = prefixCode.Length;
+
+        try
+        {
+            return prefixLength switch
+            {
+                5 => int.Parse(sscc.SsccCompleto.Substring(9, 8)),   // 9 dígitos de serial
+                6 => int.Parse(sscc.SsccCompleto.Substring(10, 7)),  // 8 dígitos de serial
+                7 => int.Parse(sscc.SsccCompleto.Substring(11, 6)),  // 7 dígitos de serial
+                8 => int.Parse(sscc.SsccCompleto.Substring(12, 5)),  // 6 dígitos de serial
+                _ => 0
+            };
+        }
+        catch
+        {
+            return 0;
+        }
+    }
+
+    public async Task<(IEnumerable<Sscc> items, int totalCount)> GetFilteredSsccsAsync(
+        GetSsccByClienteConFiltrosQuery request,
+        IQueryable<Sscc> baseQuery,
+        CancellationToken cancellationToken)
+    {
+        var filterCriteria = BuildFilterCriteria(request);
+        var filteredQuery = baseQuery.Where(filterCriteria);
+
+        if (HasSerialFilters(request))
+        {
+            // Para filtros de serial, necesitamos procesar en memoria
+            var candidatos = await filteredQuery.ToListAsync(cancellationToken);
+            var filteredCandidatos = ApplySerialFilters(candidatos, request).ToList();
+
+            return (filteredCandidatos, filteredCandidatos.Count);
+        }
+        else
+        {
+            // Sin filtros de serial, podemos usar la base de datos directamente
+            var totalCount = await filteredQuery.CountAsync(cancellationToken);
+            var items = await filteredQuery.ToListAsync(cancellationToken);
+
+            return (items, totalCount);
+        }
+    }
 }

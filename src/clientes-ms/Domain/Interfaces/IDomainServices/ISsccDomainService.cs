@@ -1,4 +1,7 @@
+using clientes_ms.Application.Queries.Ssccs;
 using clientes_ms.Application.Records.Response;
+using clientes_ms.Domain.Entities;
+using System.Linq.Expressions;
 
 public interface ISsccDomainService
 {
@@ -27,5 +30,12 @@ public interface ISsccDomainService
         int cantidad
         );
     Task<string?> ObtenerCodigoPaisEcuador();
-
+    Expression<Func<Sscc, bool>> BuildFilterCriteria(GetSsccByClienteConFiltrosQuery request);
+    bool HasSerialFilters(GetSsccByClienteConFiltrosQuery request);
+    IEnumerable<Sscc> ApplySerialFilters(IEnumerable<Sscc> ssccList, GetSsccByClienteConFiltrosQuery request);
+    int ExtractSerialFromSscc(Sscc sscc);
+    Task<(IEnumerable<Sscc> items, int totalCount)> GetFilteredSsccsAsync(
+        GetSsccByClienteConFiltrosQuery request,
+        IQueryable<Sscc> baseQuery,
+        CancellationToken cancellationToken);
 }
