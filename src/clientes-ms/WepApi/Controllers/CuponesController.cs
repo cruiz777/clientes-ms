@@ -197,7 +197,7 @@ public class CuponesController : ControllerBase
             : Ok(result);
     }
 
-    [HttpPut("actualizar-idcliente-por-idprefijo")]
+    [HttpPut("actualizar-idprefijo")]
     public async Task<IActionResult> ActualizarClientePorPrefijo([FromBody] UpdateCuponesClientePorPrefijoCommand command)
     {
         var result = await _mediator.Send(command);
