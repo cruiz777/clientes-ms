@@ -6,20 +6,55 @@ using MicroservicesTemplate.Domain.Repositories;
 public class GetAllGrupoProductoHandler : IRequestHandler<GetAllGrupoProductoQuery, ApiResponse<IEnumerable<GrupoProductoResponse>>>
 {
     private readonly IBaseRepository<GrupoProducto> _repository;
-    public GetAllGrupoProductoHandler(IBaseRepository<GrupoProducto> repository) => _repository = repository;
+
+    public GetAllGrupoProductoHandler(IBaseRepository<GrupoProducto> repository)
+    {
+        _repository = repository;
+    }
 
     public async Task<ApiResponse<IEnumerable<GrupoProductoResponse>>> Handle(GetAllGrupoProductoQuery request, CancellationToken cancellationToken)
     {
         try
         {
-            var result = (await _repository.GetAllAsync()).Select(MapToResponse);
-            return new ApiResponse<IEnumerable<GrupoProductoResponse>>(Guid.NewGuid(), "LIST", result, "Retrieved successfully");
+            var result = (await _repository.GetAllAsync())
+                .Select(MapToResponse);
+
+            return new ApiResponse<IEnumerable<GrupoProductoResponse>>(
+                Guid.NewGuid(),
+                "LIST",
+                result,
+                "Retrieved successfully"
+            );
         }
         catch (Exception ex)
         {
-            return new ApiResponse<IEnumerable<GrupoProductoResponse>>(Guid.NewGuid(), "ERROR", null, ex.Message);
+            return new ApiResponse<IEnumerable<GrupoProductoResponse>>(
+                Guid.NewGuid(),
+                "ERROR",
+                null,
+                ex.Message
+            );
         }
     }
 
-    private static GrupoProductoResponse MapToResponse(GrupoProducto e) => new(e.IdGrupoProducto, e.Codigo?.Trim() ?? string.Empty, e.Descripcion?.Trim() ?? string.Empty, e.Segmento?.Trim() ?? string.Empty, e.DesSegmento?.Trim() ?? string.Empty, e.Familia?.Trim() ?? string.Empty, e.DesFamilia?.Trim() ?? string.Empty, e.Clase?.Trim() ?? string.Empty, e.DesClase?.Trim() ?? string.Empty, e.Brick?.Trim() ?? string.Empty, e.DesBrick?.Trim() ?? string.Empty, e.DesSegmentoing?.Trim() ?? string.Empty, e.DesFamiliaing?.Trim() ?? string.Empty, e.DesClaseing?.Trim() ?? string.Empty, e.DesBricking?.Trim() ?? string.Empty);
+    private static GrupoProductoResponse MapToResponse(GrupoProducto e) => new(
+        idGrupoProducto: e.IdGrupoProducto,
+        codigo: e.Codigo?.Trim() ?? string.Empty,
+        descripcion: e.Descripcion?.Trim() ?? string.Empty,
+        segmento: e.Segmento?.Trim() ?? string.Empty,
+        desSegmento: e.DesSegmento?.Trim() ?? string.Empty,
+        familia: e.Familia?.Trim() ?? string.Empty,
+        desFamilia: e.DesFamilia?.Trim() ?? string.Empty,
+        clase: e.Clase?.Trim() ?? string.Empty,
+        desClase: e.DesClase?.Trim() ?? string.Empty,
+        brick: e.Brick?.Trim() ?? string.Empty,
+        desBrick: e.DesBrick?.Trim() ?? string.Empty,
+        desSegmentoing: e.DesSegmentoing?.Trim() ?? string.Empty,
+        desFamiliaing: e.DesFamiliaing?.Trim() ?? string.Empty,
+        desClaseing: e.DesClaseing?.Trim() ?? string.Empty,
+        desBricking: e.DesBricking?.Trim() ?? string.Empty,
+        brickIncludes: e.BrickIncludes?.Trim() ?? string.Empty,
+        brickExcludes: e.BrickExcludes?.Trim() ?? string.Empty,
+        estado: e.Estado ?? true
+    );
 }

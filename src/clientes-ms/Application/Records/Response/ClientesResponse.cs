@@ -1,4 +1,5 @@
 ﻿using clientes_ms.Domain.Entities;
+using System.Net.Http.Headers;
 using System.Text.Json.Serialization;
 
 namespace clientes_ms.Application.Records.Response
@@ -102,6 +103,10 @@ namespace clientes_ms.Application.Records.Response
         public string ZonaReferencia { get; set; } = string.Empty;
         public string EstadoNombre { get; set; } = string.Empty;
         public string Prefijo { get; set; } = string.Empty;
+
+        public string TipoCliente { get; set; } = string.Empty;
+
+        public string GrupoEmpresa { get; set; } = string.Empty;
 
         // Constructor por defecto
         public ClientesResponse() { }
@@ -223,6 +228,8 @@ namespace clientes_ms.Application.Records.Response
             this.Prefijo = Prefijo;
             this.Fecmod = Fecmod;
             this.Usumod = Usumod!;
+            this.TipoCliente=TipoCliente;
+            this.GrupoEmpresa=GrupoEmpresa;
         }
     }
 }

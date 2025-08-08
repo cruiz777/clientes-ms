@@ -25,6 +25,8 @@ public partial class Empresas
 
     public string? Logo { get; set; }
 
+    public string? Firma { get; set; }
+
     public string? Moneda { get; set; }
 
     public string? TipoCambio { get; set; }

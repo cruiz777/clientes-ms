@@ -64,6 +64,8 @@ public partial class ApplicationDbContext : DbContext
 
     public virtual DbSet<GrupoProducto> GrupoProducto { get; set; }
 
+    public virtual DbSet<GrupoProductox> GrupoProductox { get; set; }
+
     public virtual DbSet<HistorialCliente> HistorialCliente { get; set; }
 
     public virtual DbSet<HistorialContrasenias> HistorialContrasenias { get; set; }
@@ -526,7 +528,7 @@ public partial class ApplicationDbContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("representante");
             entity.Property(e => e.Ruc)
-                .HasMaxLength(13)
+                .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("ruc");
             entity.Property(e => e.Saldo)
@@ -588,6 +590,8 @@ public partial class ApplicationDbContext : DbContext
             entity.HasKey(e => e.IdCodigos14).HasName("PK_sic_codigos14");
 
             entity.ToTable("codigos14", "sic");
+
+            entity.HasIndex(e => e.IdProducto, "IX_codigos14_idproducto");
 
             entity.Property(e => e.IdCodigos14).HasColumnName("id_codigos14");
             entity.Property(e => e.Abrevia)
@@ -733,8 +737,6 @@ public partial class ApplicationDbContext : DbContext
             entity.HasKey(e => e.IdCorreo).HasName("PK__correos__D5CABEB30471CA5E");
 
             entity.ToTable("correos", "seguridades");
-
-            entity.HasIndex(e => e.Email, "UQ__correos__AB6E616414E86034").IsUnique();
 
             entity.Property(e => e.IdCorreo).HasColumnName("id_correo");
             entity.Property(e => e.Email)
@@ -899,6 +901,10 @@ public partial class ApplicationDbContext : DbContext
                 .HasMaxLength(20)
                 .IsUnicode(false)
                 .HasColumnName("fax");
+            entity.Property(e => e.Firma)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("firma");
             entity.Property(e => e.IdCiudad).HasColumnName("id_ciudad");
             entity.Property(e => e.Logo)
                 .HasMaxLength(250)
@@ -1286,11 +1292,90 @@ public partial class ApplicationDbContext : DbContext
 
             entity.ToTable("grupo_producto", "sic");
 
+            entity.HasIndex(e => e.Codigo, "IX_grupo_producto_codigo");
+
             entity.Property(e => e.IdGrupoProducto).HasColumnName("id_grupo_producto");
             entity.Property(e => e.Brick)
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("brick");
+            entity.Property(e => e.BrickExcludes)
+                .IsUnicode(false)
+                .HasColumnName("brick_excludes");
+            entity.Property(e => e.BrickIncludes)
+                .IsUnicode(false)
+                .HasColumnName("brick_includes");
+            entity.Property(e => e.Clase)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("clase");
+            entity.Property(e => e.Codigo)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("codigo");
+            entity.Property(e => e.DesBrick)
+                .HasMaxLength(200)
+                .IsUnicode(false)
+                .HasColumnName("des_brick");
+            entity.Property(e => e.DesBricking)
+                .HasMaxLength(200)
+                .IsUnicode(false)
+                .HasColumnName("des_bricking");
+            entity.Property(e => e.DesClase)
+                .HasMaxLength(200)
+                .IsUnicode(false)
+                .HasColumnName("des_clase");
+            entity.Property(e => e.DesClaseing)
+                .HasMaxLength(200)
+                .IsUnicode(false)
+                .HasColumnName("des_claseing");
+            entity.Property(e => e.DesFamilia)
+                .HasMaxLength(200)
+                .IsUnicode(false)
+                .HasColumnName("des_familia");
+            entity.Property(e => e.DesFamiliaing)
+                .HasMaxLength(200)
+                .IsUnicode(false)
+                .HasColumnName("des_familiaing");
+            entity.Property(e => e.DesSegmento)
+                .HasMaxLength(200)
+                .IsUnicode(false)
+                .HasColumnName("des_segmento");
+            entity.Property(e => e.DesSegmentoing)
+                .HasMaxLength(200)
+                .IsUnicode(false)
+                .HasColumnName("des_segmentoing");
+            entity.Property(e => e.Descripcion)
+                .HasMaxLength(200)
+                .IsUnicode(false)
+                .HasColumnName("descripcion");
+            entity.Property(e => e.Estado).HasColumnName("estado");
+            entity.Property(e => e.Familia)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("familia");
+            entity.Property(e => e.Segmento)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("segmento");
+        });
+
+        modelBuilder.Entity<GrupoProductox>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToTable("grupo_productox", "sic");
+
+            entity.Property(e => e.Brick)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("brick");
+            entity.Property(e => e.BrickExcludes)
+                .IsUnicode(false)
+                .HasColumnName("brick_excludes");
+            entity.Property(e => e.BrickIncludes)
+                .IsUnicode(false)
+                .HasColumnName("brick_includes");
             entity.Property(e => e.Clase)
                 .HasMaxLength(50)
                 .IsUnicode(false)
@@ -1339,6 +1424,7 @@ public partial class ApplicationDbContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("familia");
+            entity.Property(e => e.IdGrupoProducto).HasColumnName("id_grupo_producto");
             entity.Property(e => e.Segmento)
                 .HasMaxLength(50)
                 .IsUnicode(false)
@@ -1874,7 +1960,6 @@ public partial class ApplicationDbContext : DbContext
 
             entity.HasOne(d => d.IdGeneroNavigation).WithMany(p => p.Personas)
                 .HasForeignKey(d => d.IdGenero)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_personas_genero");
 
             entity.HasOne(d => d.IdTipoDocumentoNavigation).WithMany(p => p.Personas)
@@ -1888,6 +1973,8 @@ public partial class ApplicationDbContext : DbContext
             entity.HasKey(e => e.IdPrefijos).HasName("pk_sic_prefijos");
 
             entity.ToTable("prefijos", "sic");
+
+            entity.HasIndex(e => e.Codpre, "IX_prefijos_codpre");
 
             entity.Property(e => e.IdPrefijos).HasColumnName("id_prefijos");
             entity.Property(e => e.Bandera).HasColumnName("bandera");
@@ -1951,6 +2038,8 @@ public partial class ApplicationDbContext : DbContext
             entity.HasKey(e => e.IdProducto).HasName("PK_sic_producto");
 
             entity.ToTable("producto", "sic");
+
+            entity.HasIndex(e => e.Codpro, "IX_producto_codpro").IsUnique();
 
             entity.Property(e => e.IdProducto).HasColumnName("id_producto");
             entity.Property(e => e.Abrevia)
@@ -2195,6 +2284,10 @@ public partial class ApplicationDbContext : DbContext
             entity.HasKey(e => e.IdProductoDatosAdicionales).HasName("PK_sic_producto_datos_adicionales");
 
             entity.ToTable("producto_datos_adicionales", "sic");
+
+            entity.HasIndex(e => e.ClientesCodigo, "IX_pda_clientes_codigo");
+
+            entity.HasIndex(e => e.IdProducto, "IX_pda_id_producto").IsUnique();
 
             entity.HasIndex(e => e.IdProducto, "UQ_producto_datos_adicionales_idproducto").IsUnique();
 
@@ -2556,6 +2649,8 @@ public partial class ApplicationDbContext : DbContext
             entity.HasKey(e => e.IdSector).HasName("PK_sic_sector");
 
             entity.ToTable("sector", "sic");
+
+            entity.HasIndex(e => e.Descripcion, "IX_sector_descripcion");
 
             entity.Property(e => e.IdSector).HasColumnName("id_sector");
             entity.Property(e => e.Descripcion)
