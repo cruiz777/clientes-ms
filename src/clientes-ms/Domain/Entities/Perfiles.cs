@@ -15,6 +15,8 @@ public partial class Perfiles
 
     public DateTime FechaCreacion { get; set; }
 
+    public bool Estado { get; set; }
+
     public virtual Empresas IdEmpresaNavigation { get; set; } = null!;
 
     public virtual ICollection<PerfilesMenus> PerfilesMenus { get; set; } = new List<PerfilesMenus>();

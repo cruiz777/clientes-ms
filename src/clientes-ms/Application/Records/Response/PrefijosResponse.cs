@@ -28,6 +28,7 @@ namespace clientes_ms.Application.Records.Response
         public int Orden { get; set; } = 0;
         public long ClientesCodigo { get; set; } = 0;
         public string Nomcli { get; set; } = string.Empty;
+        public string Gln { get; set; } = string.Empty;
         public string TipoLocalizacion { get; set; } = string.Empty;
         public string EstadoEmpresa { get; set; } = string.Empty;
         public string Ruccli { get; set; } = string.Empty;
@@ -56,7 +57,7 @@ namespace clientes_ms.Application.Records.Response
             string observacion, string digitos, bool estado, int control, int ngln, int bandera,
             string facturar, string codpro, string nombre, string fecfac, string referenciaInterna,
             string prefijosgs1, string origenPrefijo, int orden, long clientesCodigo,
-            string nomcli, string tipoLocalizacion, string estadoEmpresa, string ruccli,
+            string nomcli, string gln,string tipoLocalizacion, string estadoEmpresa, string ruccli,
             DateOnly fecing, string zona, string tipoCliente, string grupoEmpresa, string grupoProducto,
             string representante, string direccion, string telefono, string web, string postal,
             string provincia, string canton, string ciudad, List<GlnResponse> glns)
@@ -81,6 +82,7 @@ namespace clientes_ms.Application.Records.Response
             Orden = orden;
             ClientesCodigo = clientesCodigo;
             Nomcli = nomcli;
+            Gln = gln;
             TipoLocalizacion = tipoLocalizacion;
             EstadoEmpresa = estadoEmpresa;
             Ruccli = ruccli;
@@ -99,5 +101,11 @@ namespace clientes_ms.Application.Records.Response
             Ciudad = ciudad;
             Glns = glns;
         }
+    }
+
+    public record PrefijoSimpleResponse
+    {
+        public long IdPrefijos { get; init; }
+        public string Codpre { get; init; } = string.Empty;
     }
 }

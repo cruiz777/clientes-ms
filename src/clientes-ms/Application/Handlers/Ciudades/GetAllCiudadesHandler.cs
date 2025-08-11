@@ -32,7 +32,10 @@ public class GetAllCiudadesHandler : IRequestHandler<GetAllCiudadesQuery, ApiRes
                     Codigo = ci.Referencia,
                     Ciudad = ci.Nombre,
                     Canton = ci.IdCantonNavigation.Nombre,
-                    Provincia = ci.IdCantonNavigation.IdProvinciaNavigation.Nombre
+                    Provincia = ci.IdCantonNavigation.IdProvinciaNavigation.Nombre,
+                    idZona=ci.IdZona??0,
+                    
+                    
                 })
                 .ToListAsync(cancellationToken);
 

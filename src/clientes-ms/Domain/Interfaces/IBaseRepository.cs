@@ -7,6 +7,8 @@ namespace MicroservicesTemplate.Domain.Repositories
         Task<TEntity?> GetByIdAsync(long id);
         Task<IEnumerable<TEntity>> GetAllAsync();
         Task AddAsync(TEntity entity);
+        Task AddRangeAsync(IEnumerable<TEntity> entities); //Guardado por rango o lotes
+
         Task UpdateAsync<TKey>(TKey id, TEntity entity);
         Task DeleteAsync(long id);
         Task<IEnumerable<TEntity>> GetByStatusAsync(bool status);
@@ -14,12 +16,16 @@ namespace MicroservicesTemplate.Domain.Repositories
 
         //Queryable para aplicar filtros personalizados
         IQueryable<TEntity> AsQueryable();
+        //Aplica queries especificos
+        IQueryable<TEntity> AsQueryableNoTracking();
         // Método para buscar por expresión
         Task<TEntity?> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate);
 
         Task<TEntity?> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate, params Expression<Func<TEntity, object>>[] includes);
 
         Task<List<TEntity>> GetListByConditionAsync(Expression<Func<TEntity, bool>> predicate);
+
+        Task<bool> ExistsAsync(Expression<Func<TEntity, bool>> predicate);
 
     }
 }

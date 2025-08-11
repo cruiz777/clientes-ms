@@ -108,7 +108,13 @@ public class PersonaOrquestadorService
             if (DateTime.TryParse(sri?.InformacionFechasContribuyente?.FechaInicioActividades, out var fechaInicio))
                 personaReq.FechaNacimiento = DateOnly.FromDateTime(fechaInicio);
         }
-
+        else // Pasaporte u otro documento
+        {
+            personaReq.IdGenero = 3; // Sin especificar
+            personaReq.IdEstadoCivil = 5; // NO APLICA
+            personaReq.TipoPersona = "NATURAL"; // Asumiendo que es persona natural
+            personaReq.Nombre1 ??= cliente.RazonSocial; 
+        }
 
         var persona = _mapper.Map<Personas>(personaReq);
         persona.FechaRegistro = DateTime.Now;

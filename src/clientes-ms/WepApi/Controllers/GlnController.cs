@@ -89,6 +89,13 @@ namespace clientes_ms.WebApi.Controllers
             var result = await _mediator.Send(new DeleteGlnCommand(id));
             return Ok(result);
         }
+        [HttpGet("ultima-secuencia")]
+        public async Task<IActionResult> GetUltimaSecuencia([FromQuery] string codigoPais, [FromQuery] string prefijo)
+        {
+            var query = new GetUltimaSecuenciaGlnQuery(codigoPais, prefijo);
+            var result = await _mediator.Send(query);
+            return Ok(result); // Devuelve solo el número como int
+        }
 
         //Obtiene los glns por Prefijo de cliente
         [HttpGet("prefijo/{idPrefijos:long}")]
@@ -104,13 +111,27 @@ namespace clientes_ms.WebApi.Controllers
             };
         }
 
-        // PUT api/examples/{id}/soft-delete
-        // Elimina l�gicamente un registro (cambia su status a false)
-        //[HttpPatch("{id}/soft-delete")]
-        //public async Task<IActionResult> SoftDelete(long id)
-        //{
-        //    var result = await _mediator.Send(new SoftDeleteExampleCommand(id));
-        //    return Ok(result);
-        //}
+        [HttpDelete("por-idprefijos/{idPrefijos}")]
+        public async Task<IActionResult> DeleteGlnPorIdPrefijos(long idPrefijos)
+        {
+            var result = await _mediator.Send(new DeleteGlnByIdPrefijosCommand(idPrefijos));
+            return Ok(result);
+        }
+
+        // PUT api/gln/actualizar-clientecodigo-por-idprefijo
+        [HttpPut("actualizar-idprefijo")]
+        public async Task<IActionResult> UpdateClientesCodigoPorIdPrefijo([FromBody] UpdateGlnClientesCodigoByIdPrefijoCommand command)
+        {
+            var result = await _mediator.Send(command);
+
+            return result.Type switch
+            {
+                "NOT_FOUND" => NotFound(result),
+                "ERROR" => StatusCode(500, result),
+                _ => Ok(result)
+            };
+        }
+
+
     }
 }

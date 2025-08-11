@@ -5,5 +5,5 @@ using MediatR;
 public class UpdateClienteDatosAdicionalesCommand : IRequest<ApiResponse<bool>>
 {
     public long ClientesCodigo { get; set; }
-    public ClienteDatosAdicionalesRequest Request { get; set; }
+    public ClienteDatosAdicionalesRequest Request { get; set; } 
 }

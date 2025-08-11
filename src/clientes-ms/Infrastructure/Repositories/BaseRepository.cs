@@ -103,4 +103,20 @@ public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : 
     {
         return await _context.Set<TEntity>().Where(predicate).ToListAsync();
     }
+
+    public async Task<bool> ExistsAsync(Expression<Func<TEntity, bool>> predicate)
+    {
+        return await _context.Set<TEntity>().AnyAsync(predicate);
+    }
+
+    public async Task AddRangeAsync(IEnumerable<TEntity> entities)
+    {
+        await _context.Set<TEntity>().AddRangeAsync(entities);
+        await _context.SaveChangesAsync();
+    }
+    public IQueryable<TEntity> AsQueryableNoTracking()
+    {
+        return _context.Set<TEntity>().AsNoTracking();
+    }
+
 }

@@ -13,5 +13,7 @@ public partial class Proyectos
 
     public long? IdEmpresa { get; set; }
 
+    public DateOnly? FechaIngreso { get; set; }
+
     public virtual Empresas? IdEmpresaNavigation { get; set; }
 }
