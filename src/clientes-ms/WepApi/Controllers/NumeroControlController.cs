@@ -70,5 +70,13 @@ namespace clientes_ms.WebApi.Controllers
         //    var result = await _mediator.Send(new SoftDeleteNumeroControlCommand(id));
         //    return Ok(result);
         //}
+        // GET: api/NumeroControl/prefijos-gtin
+        [HttpGet("prefijos-gtin")]
+        public async Task<IActionResult> GetPrefijosYGtin()
+        {
+            var result = await _mediator.Send(new GetNumeroControlPrefijosYGtinQuery());
+            return Ok(result);
+        }
+
     }
 }

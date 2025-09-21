@@ -155,6 +155,8 @@ public class UpdateClientesHandler : IRequestHandler<UpdateClientesCommand, ApiR
 
             if (!string.IsNullOrWhiteSpace(request.Request.CodigoPostal))
                 existing.CodigoPostal = request.Request.CodigoPostal.Trim();
+            if (!string.IsNullOrWhiteSpace(request.Request.Hello))
+                existing.Hello = request.Request.Hello.Trim();
 
             //if (!string.IsNullOrWhiteSpace(request.Request.CodigoPostal2))
             //    existing.CodigoPostal2 = request.Request.CodigoPostal2.Trim();
@@ -188,6 +190,7 @@ public class UpdateClientesHandler : IRequestHandler<UpdateClientesCommand, ApiR
             {
                 existing.Fecmod = request.Request.Fecmod;
             }
+            
 
             if (!string.IsNullOrWhiteSpace(request.Request.Usumod))
                 existing.Usumod = request.Request.Usumod.Trim();

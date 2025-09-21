@@ -39,8 +39,11 @@ public class GetSsccReportHandler : IRequestHandler<GetSsccReportQuery, ApiRespo
                     return ApiResponse<List<SsccResponse>>.Error($"Operador de fecha inválido: '{request.OperadorFecha}'. Operadores válidos: {string.Join(", ", operadoresValidos)}");
                 }
                 // Si la fecha desde la peticion es nula o no se encuentra usa la fecha actual para poder hacer la consulta
-                var fechaDesde = request.FechaDesde ?? DateTime.Now.Date;
-                var fechaHasta = request.FechaHasta ?? DateTime.Now.Date;
+                //var fechaDesde = request.FechaDesde ?? DateTime.Now.Date;
+                //var fechaHasta = request.FechaHasta ?? DateTime.Now.Date;
+                DateTime? fechaDesde = request.FechaDesde?.Date;
+                DateTime? fechaHasta = request.FechaHasta?.Date;
+
 
                 switch (operador)
                 {

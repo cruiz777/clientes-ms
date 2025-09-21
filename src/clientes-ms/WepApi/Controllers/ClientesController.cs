@@ -31,12 +31,45 @@ namespace clientes_ms.WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("/api/resumen")]
-        public async Task<IActionResult> GetClientesResumen()
+        [Route("resumen")]
+        public async Task<IActionResult> GetClientesResumen(
+     [FromQuery] int pageNumber = 1,
+     [FromQuery] int pageSize = 10,
+     [FromQuery] string? busquedaGeneral = null,
+     [FromQuery] string? prefijoBusqueda = null)
         {
-            var result = await _mediator.Send(new GetClientesByResumen()); // Env�a la query a su handler correspondiente
-            return Ok(result); // Devuelve la respuesta con estado 200
+            var result = await _mediator.Send(new GetClientesByResumen(pageNumber, pageSize, busquedaGeneral, prefijoBusqueda));
+            return Ok(result);
         }
+
+        [HttpGet]
+        [Route("resumeng")]
+        public async Task<IActionResult> GetClientesPaged(
+    [FromQuery] int pageNumber = 1,
+    [FromQuery] int pageSize = 10,
+    [FromQuery] string? busquedaGeneral = null,
+    [FromQuery] string? prefijoBusqueda = null)
+        {
+            // Instanciamos la Query con los parámetros recibidos
+            var query = new GetClientesPaged
+            {
+                PageNumber = pageNumber,
+                PageSize = pageSize,
+                BusquedaGeneral = busquedaGeneral,
+                PrefijoBusqueda = prefijoBusqueda
+            };
+
+            var result = await _mediator.Send(query);
+
+            // Si tu ApiResponse ya contiene Data y Count, esto lo devuelve tal cual.
+            // Si quieres devolverlo como objeto simple con { data, count }, puedes ajustarlo aquí.
+            return Ok(new { data = result.Data, count = result.Count });
+        }
+
+
+
+
+
         // busca por nombre
         [HttpGet("buscar-por-nombre")]
         public async Task<IActionResult> BuscarPorNombre([FromQuery] string nombre)

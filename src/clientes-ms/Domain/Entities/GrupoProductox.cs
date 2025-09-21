@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace clientes_ms.Domain.Entities;
 
-public partial class GrupoProducto
+public partial class GrupoProductox
 {
     public long IdGrupoProducto { get; set; }
 
@@ -38,12 +38,4 @@ public partial class GrupoProducto
     public string? BrickIncludes { get; set; }
 
     public string? BrickExcludes { get; set; }
-
-    public bool? Estado { get; set; }
-
-    public virtual ICollection<Clientes> Clientes { get; set; } = new List<Clientes>();
-
-    public virtual ICollection<Cupones> Cupones { get; set; } = new List<Cupones>();
-
-    public virtual ICollection<ProductoDatosAdicionales> ProductoDatosAdicionales { get; set; } = new List<ProductoDatosAdicionales>();
 }
