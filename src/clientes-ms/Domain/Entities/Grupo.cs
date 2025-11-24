@@ -3,19 +3,17 @@ using System.Collections.Generic;
 
 namespace clientes_ms.Domain.Entities;
 
-public partial class Seccion
+public partial class Grupo
 {
-    public long IdSeccion { get; set; }
+    public long IdGrupo { get; set; }
 
-    public long IdDepartamento { get; set; }
+    public long IdSeccion { get; set; }
 
     public string Descripcion { get; set; } = null!;
 
     public bool Estado { get; set; }
 
-    public virtual ICollection<Grupo> Grupo { get; set; } = new List<Grupo>();
-
-    public virtual Departamento IdDepartamentoNavigation { get; set; } = null!;
+    public virtual Seccion IdSeccionNavigation { get; set; } = null!;
 
     public virtual ICollection<ProductoEstructuraComercial> ProductoEstructuraComercial { get; set; } = new List<ProductoEstructuraComercial>();
 }

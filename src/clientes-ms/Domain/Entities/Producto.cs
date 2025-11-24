@@ -83,6 +83,9 @@ public partial class Producto
 
     public string? Codorigen { get; set; }
 
+    /// <summary>
+    /// Color del producto (ID referencia futura tabla colores)
+    /// </summary>
     public double? Codcol { get; set; }
 
     public double? StockMax { get; set; }
@@ -109,6 +112,9 @@ public partial class Producto
 
     public double? ValorUnidad { get; set; }
 
+    /// <summary>
+    /// Código sabor (varchar temporal, futuro ID tabla sabores)
+    /// </summary>
     public string? Codsab { get; set; }
 
     public DateTime? Fechamod { get; set; }
@@ -149,6 +155,9 @@ public partial class Producto
 
     public DateTime? FecIniPro1 { get; set; }
 
+    /// <summary>
+    /// Código de ubicación - Pasillo
+    /// </summary>
     public string? Codubi { get; set; }
 
     public DateTime? FecFinPro1 { get; set; }
@@ -161,8 +170,14 @@ public partial class Producto
 
     public DateTime? FecCosMod { get; set; }
 
+    /// <summary>
+    /// Código de nivel
+    /// </summary>
     public string? CodNiv { get; set; }
 
+    /// <summary>
+    /// Código de columna ubicación
+    /// </summary>
     public string? CodColUbi { get; set; }
 
     public double? MargenUtilidad { get; set; }
@@ -185,6 +200,9 @@ public partial class Producto
 
     public double? CostSuminis { get; set; }
 
+    /// <summary>
+    /// Cantidad de conversión entre unidades
+    /// </summary>
     public double? CantConv { get; set; }
 
     public double? CostHelado { get; set; }
@@ -209,9 +227,51 @@ public partial class Producto
 
     public string? Codbar { get; set; }
 
+    public long? IdIva { get; set; }
+
+    public double? Cantidad { get; set; }
+
+    public bool? ProductoEnVenta { get; set; }
+
+    public bool? ConsumoInterno { get; set; }
+
+    public bool? Psicotropico { get; set; }
+
+    public bool? Estupefaciente { get; set; }
+
+    public int? IdPresentacion { get; set; }
+
+    public int? IdColor { get; set; }
+
+    public int? IdSabor { get; set; }
+
+    public int? IdFabricante { get; set; }
+
+    public virtual Bodega? Bodega { get; set; }
+
     public virtual ICollection<Codigos14> Codigos14 { get; set; } = new List<Codigos14>();
+
+    public virtual ICollection<FacturaDetalle> FacturaDetalle { get; set; } = new List<FacturaDetalle>();
+
+    public virtual Colores? IdColorNavigation { get; set; }
 
     public virtual Empresas? IdEmpresaNavigation { get; set; }
 
+    public virtual Fabricantes? IdFabricanteNavigation { get; set; }
+
+    public virtual Iva? IdIvaNavigation { get; set; }
+
+    public virtual Presentacion? IdPresentacionNavigation { get; set; }
+
+    public virtual Sabores? IdSaborNavigation { get; set; }
+
     public virtual ProductoDatosAdicionales? ProductoDatosAdicionales { get; set; }
+
+    public virtual ProductoEstructuraComercial? ProductoEstructuraComercial { get; set; }
+
+    public virtual ICollection<ProductoUbicacionBodega> ProductoUbicacionBodega { get; set; } = new List<ProductoUbicacionBodega>();
+
+    public virtual ProductosProveedores? ProductosProveedores { get; set; }
+
+    public virtual ICollection<Stocks> StocksNavigation { get; set; } = new List<Stocks>();
 }

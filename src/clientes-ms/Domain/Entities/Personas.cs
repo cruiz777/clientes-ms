@@ -27,7 +27,7 @@ public partial class Personas
 
     public long IdTipoDocumento { get; set; }
 
-    public long? IdGenero { get; set; }
+    public long IdGenero { get; set; }
 
     public bool Status { get; set; }
 
@@ -45,9 +45,11 @@ public partial class Personas
 
     public virtual EstadoCivil IdEstadoCivilNavigation { get; set; } = null!;
 
-    public virtual Genero? IdGeneroNavigation { get; set; }
+    public virtual Genero IdGeneroNavigation { get; set; } = null!;
 
     public virtual TipoDocumento IdTipoDocumentoNavigation { get; set; } = null!;
+
+    public virtual ICollection<Proveedores> Proveedores { get; set; } = new List<Proveedores>();
 
     public virtual ICollection<Telefonos> Telefonos { get; set; } = new List<Telefonos>();
 

@@ -145,6 +145,14 @@ public partial class Clientes
 
     public virtual Zona? IdZonaNavigation { get; set; }
 
+    public virtual ICollection<Nota> Nota { get; set; } = new List<Nota>();
+
+    public virtual ICollection<NotaCredito> NotaCredito { get; set; } = new List<NotaCredito>();
+
+    public virtual ICollection<Pagos> Pagos { get; set; } = new List<Pagos>();
+
+    public virtual ICollection<PagosNotaCredito> PagosNotaCredito { get; set; } = new List<PagosNotaCredito>();
+
     public virtual ICollection<Prefijos> Prefijos { get; set; } = new List<Prefijos>();
 
     public virtual ICollection<ProductoDatosAdicionales> ProductoDatosAdicionales { get; set; } = new List<ProductoDatosAdicionales>();

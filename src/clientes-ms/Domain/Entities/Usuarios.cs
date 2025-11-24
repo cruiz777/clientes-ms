@@ -31,6 +31,8 @@ public partial class Usuarios
 
     public virtual ICollection<AuditoriaTransferencia> AuditoriaTransferencia { get; set; } = new List<AuditoriaTransferencia>();
 
+    public virtual ICollection<AutorizacionCajaUsuario> AutorizacionCajaUsuario { get; set; } = new List<AutorizacionCajaUsuario>();
+
     public virtual ICollection<ClienteObservacion> ClienteObservacion { get; set; } = new List<ClienteObservacion>();
 
     public virtual ICollection<Codigos14> Codigos14 { get; set; } = new List<Codigos14>();
