@@ -46,11 +46,15 @@ public class ClienteDomainService : IClienteDomainService
 
     public async Task<List<ClienteSummaryResponse>> GetClientesByNomcliAsync(string filtro)
     {
-       if (string.IsNullOrWhiteSpace(filtro))
-            throw new ArgumentException("Debe proporcionar un filtro válido (nombre o RUC).", nameof(filtro));
+        if (string.IsNullOrWhiteSpace(filtro))
+            throw new ArgumentException("Debe proporcionar un filtro válido (nombre, RUC o código).", nameof(filtro));
+
+        //Intentar parsear el filtro como número para buscar por código
+        bool esNumero = long.TryParse(filtro, out long codigoCliente);
 
         var clientes = await _context.Clientes
             .Where(c =>
+                (esNumero && c.ClientesCodigo == codigoCliente) ||
                 (!string.IsNullOrEmpty(c.Nomcli) && c.Nomcli.ToLower().Contains(filtro.ToLower())) ||
                 (!string.IsNullOrEmpty(c.Ruc) && c.Ruc.Contains(filtro)))
             .OrderBy(c => c.Nomcli)
