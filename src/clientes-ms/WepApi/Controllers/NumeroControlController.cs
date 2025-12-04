@@ -4,6 +4,7 @@ using clientes_ms.Application.Commands.NumeroControl;
 using clientes_ms.Application.DTOs.NumeroControl;
 using clientes_ms.Application.Records.Request;
 using clientes_ms.Application.Records.Response;
+using clientes_ms.Application.Queries.NumeroControl;
 
 namespace clientes_ms.WebApi.Controllers
 {
@@ -77,6 +78,19 @@ namespace clientes_ms.WebApi.Controllers
             var result = await _mediator.Send(new GetNumeroControlPrefijosYGtinQuery());
             return Ok(result);
         }
+        //RESERVA EL SIGUIENTE NUMERO DE CONTROL POR SI SE ESTA USANDO EN LA MISMA TRANSACCION PARA N USUARIOS
+        [HttpGet("reservar/{id}")]
+        public async Task<IActionResult> ObtenerYReservar(long id)
+        {
+            var query = new ObtenerYReservarNumeroControlQuery(id);
+            var result = await _mediator.Send(query);
 
+            if (result.Data == null)
+            {
+                return NotFound(result);
+            }
+
+            return Ok(result);
+        }
     }
 }
