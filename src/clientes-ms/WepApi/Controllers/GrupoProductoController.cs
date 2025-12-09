@@ -2,6 +2,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using clientes_ms.Application.Records.Request;
 using clientes_ms.Application.Records.Response;
+using clientes_ms.Application.Queries.GrupoProducto;
 
 namespace clientes_ms.WebApi.Controllers
 {
@@ -91,6 +92,17 @@ namespace clientes_ms.WebApi.Controllers
             if (result.Data == null)
                 return NotFound(result);
 
+            return Ok(result);
+        }
+
+        // GET api/grupoproducto/search?term=fruta&limit=50
+        // Busca GrupoProducto por término en Codigo, Brick y DesBrick
+        [HttpGet("search")]
+        public async Task<IActionResult> Search(
+            [FromQuery] string term = "",
+            [FromQuery] int limit = 100)
+        {
+            var result = await _mediator.Send(new SearchGrupoProductoQuery(term, limit));
             return Ok(result);
         }
 
