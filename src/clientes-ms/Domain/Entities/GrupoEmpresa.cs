@@ -36,4 +36,6 @@ public partial class GrupoEmpresa
     public bool Estado { get; set; }
 
     public virtual ICollection<Clientes> Clientes { get; set; } = new List<Clientes>();
+
+    public virtual ICollection<Nota> Nota { get; set; } = new List<Nota>();
 }

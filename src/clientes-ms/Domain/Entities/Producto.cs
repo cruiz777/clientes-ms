@@ -209,9 +209,55 @@ public partial class Producto
 
     public string? Codbar { get; set; }
 
+    public long? IdIva { get; set; }
+
+    public double? Cantidad { get; set; }
+
+    public bool? ProductoEnVenta { get; set; }
+
+    public bool? ConsumoInterno { get; set; }
+
+    public bool? Psicotropico { get; set; }
+
+    public bool? Estupefaciente { get; set; }
+
+    public int? IdPresentacion { get; set; }
+
+    public int? IdColor { get; set; }
+
+    public int? IdSabor { get; set; }
+
+    public int? IdFabricante { get; set; }
+
+    public long? IdPlanCuentas { get; set; }
+
+    public virtual ICollection<Bodega> Bodega { get; set; } = new List<Bodega>();
+
     public virtual ICollection<Codigos14> Codigos14 { get; set; } = new List<Codigos14>();
+
+    public virtual ICollection<FacturaDetalle> FacturaDetalle { get; set; } = new List<FacturaDetalle>();
+
+    public virtual Colores? IdColorNavigation { get; set; }
 
     public virtual Empresas? IdEmpresaNavigation { get; set; }
 
+    public virtual Fabricantes? IdFabricanteNavigation { get; set; }
+
+    public virtual Iva? IdIvaNavigation { get; set; }
+
+    public virtual PlanCuentas? IdPlanCuentasNavigation { get; set; }
+
+    public virtual Presentacion? IdPresentacionNavigation { get; set; }
+
+    public virtual Sabores? IdSaborNavigation { get; set; }
+
     public virtual ProductoDatosAdicionales? ProductoDatosAdicionales { get; set; }
+
+    public virtual ProductoEstructuraComercial? ProductoEstructuraComercial { get; set; }
+
+    public virtual ICollection<ProductoUbicacionBodega> ProductoUbicacionBodega { get; set; } = new List<ProductoUbicacionBodega>();
+
+    public virtual ICollection<ProductosProveedores> ProductosProveedores { get; set; } = new List<ProductosProveedores>();
+
+    public virtual ICollection<Stocks> StocksNavigation { get; set; } = new List<Stocks>();
 }

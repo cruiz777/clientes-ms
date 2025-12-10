@@ -15,9 +15,5 @@ public partial class ProductoSeccion
 
     public bool? Estado { get; set; }
 
-    public virtual Empresas IdEmpresaNavigation { get; set; } = null!;
-
-    public virtual ProductoDepartamento? IdProdDepartamentoNavigation { get; set; }
-
     public virtual ICollection<ProductoGrupo> ProductoGrupo { get; set; } = new List<ProductoGrupo>();
 }

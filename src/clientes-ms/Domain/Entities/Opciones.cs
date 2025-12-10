@@ -7,7 +7,7 @@ public partial class Opciones
 {
     public long IdOpcion { get; set; }
 
-    public long IdMenu { get; set; }
+    public long IdSub { get; set; }
 
     public string Nombre { get; set; } = null!;
 
@@ -15,7 +15,7 @@ public partial class Opciones
 
     public bool Status { get; set; }
 
-    public virtual Menus IdMenuNavigation { get; set; } = null!;
+    public virtual SubMenus IdSubNavigation { get; set; } = null!;
 
     public virtual ICollection<PerfilesOpciones> PerfilesOpciones { get; set; } = new List<PerfilesOpciones>();
 }
