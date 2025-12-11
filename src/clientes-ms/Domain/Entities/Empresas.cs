@@ -47,17 +47,27 @@ public partial class Empresas
 
     public long IdCiudad { get; set; }
 
+    public virtual ICollection<CabeceraMaestro> CabeceraMaestro { get; set; } = new List<CabeceraMaestro>();
+
     public virtual ICollection<CentroCostos> CentroCostos { get; set; } = new List<CentroCostos>();
 
     public virtual ICollection<Clientes> Clientes { get; set; } = new List<Clientes>();
 
+    public virtual ICollection<CodigosContables> CodigosContables { get; set; } = new List<CodigosContables>();
+
     public virtual ICollection<Contadores> Contadores { get; set; } = new List<Contadores>();
+
+    public virtual ICollection<CuentasPorPagar> CuentasPorPagar { get; set; } = new List<CuentasPorPagar>();
 
     public virtual ICollection<Departamentos> Departamentos { get; set; } = new List<Departamentos>();
 
     public virtual ICollection<EstadoEmpresa> EstadoEmpresa { get; set; } = new List<EstadoEmpresa>();
 
     public virtual ICollection<EstructuraComercial> EstructuraComercial { get; set; } = new List<EstructuraComercial>();
+
+    public virtual ICollection<FormaPago> FormaPago { get; set; } = new List<FormaPago>();
+
+    public virtual ICollection<FormaPagoCg> FormaPagoCg { get; set; } = new List<FormaPagoCg>();
 
     public virtual ICollection<Gerentes> Gerentes { get; set; } = new List<Gerentes>();
 
@@ -67,21 +77,21 @@ public partial class Empresas
 
     public virtual ICollection<Locales> Locales { get; set; } = new List<Locales>();
 
+    public virtual ICollection<Nota> Nota { get; set; } = new List<Nota>();
+
+    public virtual ICollection<NotaCredito> NotaCredito { get; set; } = new List<NotaCredito>();
+
+    public virtual ICollection<ParametrosSic> ParametrosSic { get; set; } = new List<ParametrosSic>();
+
     public virtual ICollection<Perfiles> Perfiles { get; set; } = new List<Perfiles>();
 
     public virtual ICollection<Producto> Producto { get; set; } = new List<Producto>();
 
-    public virtual ICollection<ProductoDepartamento> ProductoDepartamento { get; set; } = new List<ProductoDepartamento>();
-
-    public virtual ICollection<ProductoDivision> ProductoDivision { get; set; } = new List<ProductoDivision>();
-
     public virtual ICollection<ProductoGrupo> ProductoGrupo { get; set; } = new List<ProductoGrupo>();
 
-    public virtual ICollection<ProductoSeccion> ProductoSeccion { get; set; } = new List<ProductoSeccion>();
-
-    public virtual ICollection<ProductoSubDivision> ProductoSubDivision { get; set; } = new List<ProductoSubDivision>();
-
     public virtual ICollection<Proyectos> Proyectos { get; set; } = new List<Proyectos>();
+
+    public virtual ICollection<Retenciones> Retenciones { get; set; } = new List<Retenciones>();
 
     public virtual ICollection<TipoCliente> TipoCliente { get; set; } = new List<TipoCliente>();
 

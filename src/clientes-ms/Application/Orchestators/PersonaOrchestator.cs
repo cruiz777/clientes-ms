@@ -20,7 +20,23 @@ public class PersonaOrquestadorService
         _mapper = mapper;
     }
 
-    public async Task<long> CrearPersonaDesdeClienteAsync(ClientesRequest cliente)
+    // Record para retornar datos completos
+    public record PersonaConDatos(
+        long IdPersona,
+        string? Nombre1,
+        string? Nombre2,
+        string? Apellido1,
+        string? Apellido2,
+        string? TipoPersona,
+        long IdTipoDocumento,
+        string? ActividadComercial,
+        bool? EstadoRuc,
+        DateOnly? FechaInicioActividades,
+        string? Regimen, 
+        string? ContribuyenteEspecial
+    );
+
+    public async Task<PersonaConDatos> CrearPersonaDesdeClienteAsync(ClientesRequest cliente)
     {
         var numeroDoc = cliente.Ruc?.Trim();
 
@@ -34,12 +50,35 @@ public class PersonaOrquestadorService
             _ => 2   // Pasaporte
         };
 
-        // Verificar si ya existe
+        // CRÍTICO: Verificar si ya existe ANTES de hacer cualquier llamada API
         var existente = await _context.Personas.AsNoTracking()
             .FirstOrDefaultAsync(p => p.Documento == numeroDoc);
 
         if (existente != null)
-            return existente.IdPersona;
+        {
+            // Ya existe, retornar datos sin llamar APIs
+            return new PersonaConDatos(
+                existente.IdPersona,
+                existente.Nombre1,
+                existente.Nombre2,
+                existente.Apellido1,
+                existente.Apellido2,
+                existente.TipoPersona,
+                existente.IdTipoDocumento,
+                null, // No tenemos actividad guardada en Persona
+                null, // No tenemos estado RUC guardado
+                existente.FechaNacimiento,
+                null,
+                null
+            );
+        }
+
+        // Variables para capturar datos de APIs externas
+        string? actividadComercial = null;
+        bool? estadoRuc = null;
+        DateOnly? fechaInicioAct = null;
+        string? regimen = null;              
+        string? contribuyenteEspecial = null;
 
         // Base de persona
         var personaReq = new PersonaRequest
@@ -100,20 +139,31 @@ public class PersonaOrquestadorService
 
             var sri = wrapper?.Consulta?.FirstOrDefault();
 
-            personaReq.Nombre1 ??= cliente.RazonSocial ?? sri?.RazonSocial;
-            personaReq.Apellido1 ??= cliente.Representante;
-            personaReq.IdGenero = 3;
-            personaReq.IdEstadoCivil = 5; // NO APLICA
+            if (sri != null)
+            {
+                personaReq.Nombre1 ??= cliente.RazonSocial ?? sri.RazonSocial;
+                personaReq.Apellido1 ??= cliente.Representante;
+                personaReq.IdGenero = 3;
+                personaReq.IdEstadoCivil = 5; // NO APLICA
 
-            if (DateTime.TryParse(sri?.InformacionFechasContribuyente?.FechaInicioActividades, out var fechaInicio))
-                personaReq.FechaNacimiento = DateOnly.FromDateTime(fechaInicio);
+                // Capturar datos del SRI
+                actividadComercial = sri.ActividadEconomicaPrincipal;
+                estadoRuc = sri.EstadoContribuyenteRuc?.ToUpper() == "ACTIVO";
+                regimen = sri.Regimen;
+                contribuyenteEspecial = sri.ContribuyenteEspecial;
+                if (DateTime.TryParse(sri.InformacionFechasContribuyente?.FechaInicioActividades, out var fechaInicio))
+                {
+                    personaReq.FechaNacimiento = DateOnly.FromDateTime(fechaInicio);
+                    fechaInicioAct = DateOnly.FromDateTime(fechaInicio);
+                }
+            }
         }
         else // Pasaporte u otro documento
         {
-            personaReq.IdGenero = 3; // Sin especificar
-            personaReq.IdEstadoCivil = 5; // NO APLICA
-            personaReq.TipoPersona = "NATURAL"; // Asumiendo que es persona natural
-            personaReq.Nombre1 ??= cliente.RazonSocial; 
+            personaReq.IdGenero = 3;
+            personaReq.IdEstadoCivil = 5;
+            personaReq.TipoPersona = "NATURAL";
+            personaReq.Nombre1 ??= cliente.RazonSocial;
         }
 
         var persona = _mapper.Map<Personas>(personaReq);
@@ -131,7 +181,20 @@ public class PersonaOrquestadorService
         await _context.Personas.AddAsync(persona);
         await _context.SaveChangesAsync();
 
-        return persona.IdPersona;
+        return new PersonaConDatos(
+            persona.IdPersona,
+            persona.Nombre1,
+            persona.Nombre2,
+            persona.Apellido1,
+            persona.Apellido2,
+            persona.TipoPersona,
+            persona.IdTipoDocumento,
+            actividadComercial,
+            estadoRuc,
+            fechaInicioAct,
+            regimen,
+            contribuyenteEspecial 
+        );
     }
 
     // Conversión texto → código
@@ -182,9 +245,15 @@ public class PersonaOrquestadorService
 
     public class SriConsulta
     {
+        public string NumeroRuc { get; set; } = string.Empty;
         public string RazonSocial { get; set; } = string.Empty;
         public string? EstadoContribuyenteRuc { get; set; }
+        public string? ActividadEconomicaPrincipal { get; set; }
         public string? TipoContribuyente { get; set; }
+        public string? Regimen { get; set; }
+        public string? ObligadoLlevarContabilidad { get; set; }
+        public string? AgenteRetencion { get; set; }
+        public string? ContribuyenteEspecial { get; set; }
         public InformacionFechasContribuyente InformacionFechasContribuyente { get; set; } = new();
         public List<RepresentanteLegal>? RepresentantesLegales { get; set; }
     }
@@ -198,5 +267,4 @@ public class PersonaOrquestadorService
     {
         public string? NombreRepresentante { get; set; }
     }
-
 }

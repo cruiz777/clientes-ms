@@ -49,6 +49,26 @@ public partial class Locales
 
     public bool Estado { get; set; }
 
+    public bool? AplicaPedido { get; set; }
+
+    public string? DirIpBodega { get; set; }
+
+    public int? Bstock { get; set; }
+
+    public bool? BodPedidoP { get; set; }
+
+    public bool? BodDespachoP { get; set; }
+
+    public string? BodUbicacion { get; set; }
+
+    public virtual ICollection<Anticipo> Anticipo { get; set; } = new List<Anticipo>();
+
+    public virtual ICollection<AutorizacionCaja> AutorizacionCaja { get; set; } = new List<AutorizacionCaja>();
+
+    public virtual ICollection<Bodega> Bodega { get; set; } = new List<Bodega>();
+
+    public virtual ICollection<DetalleMaestro> DetalleMaestro { get; set; } = new List<DetalleMaestro>();
+
     public virtual CentroCostos IdCentroCostosNavigation { get; set; } = null!;
 
     public virtual Ciudades? IdCiudadNavigation { get; set; }
@@ -56,4 +76,8 @@ public partial class Locales
     public virtual Empresas IdEmpresaNavigation { get; set; } = null!;
 
     public virtual TipoNegocio IdTipoNegocioNavigation { get; set; } = null!;
+
+    public virtual ICollection<ProductoUbicacionBodega> ProductoUbicacionBodega { get; set; } = new List<ProductoUbicacionBodega>();
+
+    public virtual ICollection<Stocks> Stocks { get; set; } = new List<Stocks>();
 }

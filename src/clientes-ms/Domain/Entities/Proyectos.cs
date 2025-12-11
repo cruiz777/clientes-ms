@@ -15,5 +15,9 @@ public partial class Proyectos
 
     public DateOnly? FechaIngreso { get; set; }
 
+    public virtual ICollection<DetalleMaestro> DetalleMaestro { get; set; } = new List<DetalleMaestro>();
+
     public virtual Empresas? IdEmpresaNavigation { get; set; }
+
+    public virtual ICollection<Subproyectos> Subproyectos { get; set; } = new List<Subproyectos>();
 }

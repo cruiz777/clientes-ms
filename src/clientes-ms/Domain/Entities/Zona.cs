@@ -15,6 +15,8 @@ public partial class Zona
 
     public long? EmpresaCodigo { get; set; }
 
+    public virtual ICollection<CabeceraMaestro> CabeceraMaestro { get; set; } = new List<CabeceraMaestro>();
+
     public virtual ICollection<Clientes> Clientes { get; set; } = new List<Clientes>();
 
     public virtual Empresas? EmpresaCodigoNavigation { get; set; }

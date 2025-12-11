@@ -113,6 +113,10 @@ public partial class Clientes
 
     public string? Usumod { get; set; }
 
+    public virtual ICollection<Anticipo> Anticipo { get; set; } = new List<Anticipo>();
+
+    public virtual ICollection<AnticipoLiquida> AnticipoLiquida { get; set; } = new List<AnticipoLiquida>();
+
     public virtual ICollection<AuditoriaTransferencia> AuditoriaTransferenciaClientesCodigoDestinoNavigation { get; set; } = new List<AuditoriaTransferencia>();
 
     public virtual ICollection<AuditoriaTransferencia> AuditoriaTransferenciaClientesCodigoOrigenNavigation { get; set; } = new List<AuditoriaTransferencia>();
@@ -144,6 +148,14 @@ public partial class Clientes
     public virtual Vendedor? IdVendedorNavigation { get; set; }
 
     public virtual Zona? IdZonaNavigation { get; set; }
+
+    public virtual ICollection<Nota> Nota { get; set; } = new List<Nota>();
+
+    public virtual ICollection<NotaCredito> NotaCredito { get; set; } = new List<NotaCredito>();
+
+    public virtual ICollection<Pagos> Pagos { get; set; } = new List<Pagos>();
+
+    public virtual ICollection<PagosNotaCredito> PagosNotaCredito { get; set; } = new List<PagosNotaCredito>();
 
     public virtual ICollection<Prefijos> Prefijos { get; set; } = new List<Prefijos>();
 

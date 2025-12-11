@@ -15,7 +15,7 @@ public partial class EstructuraComercial
 
     public bool Estado { get; set; }
 
-    public virtual Empresas IdEmpresaNavigation { get; set; } = null!;
+    public virtual ICollection<Division> Division { get; set; } = new List<Division>();
 
-    public virtual ICollection<ProductoDivision> ProductoDivision { get; set; } = new List<ProductoDivision>();
+    public virtual Empresas IdEmpresaNavigation { get; set; } = null!;
 }
