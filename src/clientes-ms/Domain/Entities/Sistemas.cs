@@ -20,4 +20,6 @@ public partial class Sistemas
     public virtual ICollection<Modulos> Modulos { get; set; } = new List<Modulos>();
 
     public virtual ICollection<PerfilesSistemas> PerfilesSistemas { get; set; } = new List<PerfilesSistemas>();
+
+    public virtual ICollection<VideosAyuda> VideosAyuda { get; set; } = new List<VideosAyuda>();
 }

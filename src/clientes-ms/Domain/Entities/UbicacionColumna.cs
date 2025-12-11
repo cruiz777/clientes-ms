@@ -3,9 +3,6 @@ using System.Collections.Generic;
 
 namespace clientes_ms.Domain.Entities;
 
-/// <summary>
-/// Columna en el estante
-/// </summary>
 public partial class UbicacionColumna
 {
     public int IdColumna { get; set; }

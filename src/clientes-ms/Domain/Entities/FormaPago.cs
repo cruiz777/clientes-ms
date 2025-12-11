@@ -35,6 +35,12 @@ public partial class FormaPago
 
     public long? IdEmpresa { get; set; }
 
+    public long? IdPlanCuentas { get; set; }
+
+    public virtual ICollection<Anticipo> Anticipo { get; set; } = new List<Anticipo>();
+
+    public virtual ICollection<AnticipoLiquida> AnticipoLiquida { get; set; } = new List<AnticipoLiquida>();
+
     public virtual ICollection<FacturaPago> FacturaPago { get; set; } = new List<FacturaPago>();
 
     public virtual Clasificacion IdClasificacionNavigation { get; set; } = null!;
@@ -42,4 +48,6 @@ public partial class FormaPago
     public virtual Empresas? IdEmpresaNavigation { get; set; }
 
     public virtual FormaPagoSri IdFormaPagoSriNavigation { get; set; } = null!;
+
+    public virtual PlanCuentas? IdPlanCuentasNavigation { get; set; }
 }

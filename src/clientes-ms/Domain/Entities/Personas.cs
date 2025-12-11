@@ -33,6 +33,8 @@ public partial class Personas
 
     public long IdCiudad { get; set; }
 
+    public virtual ICollection<CodigosContables> CodigosContables { get; set; } = new List<CodigosContables>();
+
     public virtual ICollection<Contadores> Contadores { get; set; } = new List<Contadores>();
 
     public virtual ICollection<Correos> Correos { get; set; } = new List<Correos>();

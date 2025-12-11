@@ -122,4 +122,6 @@ public partial class Nota
     public virtual Descuento IdDescuentoNavigation { get; set; } = null!;
 
     public virtual Empresas IdEmpresaNavigation { get; set; } = null!;
+
+    public virtual GrupoEmpresa IdGrupoEmpresaNavigation { get; set; } = null!;
 }

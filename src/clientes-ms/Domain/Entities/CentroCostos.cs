@@ -15,6 +15,8 @@ public partial class CentroCostos
 
     public bool Estado { get; set; }
 
+    public virtual ICollection<DetalleMaestro> DetalleMaestro { get; set; } = new List<DetalleMaestro>();
+
     public virtual Empresas IdEmpresaNavigation { get; set; } = null!;
 
     public virtual ICollection<Locales> Locales { get; set; } = new List<Locales>();

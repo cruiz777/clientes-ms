@@ -3,9 +3,6 @@ using System.Collections.Generic;
 
 namespace clientes_ms.Domain.Entities;
 
-/// <summary>
-/// Nivel o fila en el estante
-/// </summary>
 public partial class UbicacionNivel
 {
     public int IdNivel { get; set; }

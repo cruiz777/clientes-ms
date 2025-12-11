@@ -33,9 +33,15 @@ public partial class Usuarios
 
     public virtual ICollection<AutorizacionCajaUsuario> AutorizacionCajaUsuario { get; set; } = new List<AutorizacionCajaUsuario>();
 
+    public virtual ICollection<CabeceraMaestro> CabeceraMaestro { get; set; } = new List<CabeceraMaestro>();
+
     public virtual ICollection<ClienteObservacion> ClienteObservacion { get; set; } = new List<ClienteObservacion>();
 
     public virtual ICollection<Codigos14> Codigos14 { get; set; } = new List<Codigos14>();
+
+    public virtual ICollection<CodigosContables> CodigosContables { get; set; } = new List<CodigosContables>();
+
+    public virtual ICollection<CuentasPorPagar> CuentasPorPagar { get; set; } = new List<CuentasPorPagar>();
 
     public virtual ICollection<Cupones> Cupones { get; set; } = new List<Cupones>();
 

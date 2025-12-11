@@ -113,6 +113,10 @@ public partial class Clientes
 
     public string? Usumod { get; set; }
 
+    public virtual ICollection<Anticipo> Anticipo { get; set; } = new List<Anticipo>();
+
+    public virtual ICollection<AnticipoLiquida> AnticipoLiquida { get; set; } = new List<AnticipoLiquida>();
+
     public virtual ICollection<AuditoriaTransferencia> AuditoriaTransferenciaClientesCodigoDestinoNavigation { get; set; } = new List<AuditoriaTransferencia>();
 
     public virtual ICollection<AuditoriaTransferencia> AuditoriaTransferenciaClientesCodigoOrigenNavigation { get; set; } = new List<AuditoriaTransferencia>();

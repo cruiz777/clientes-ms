@@ -45,6 +45,12 @@ public partial class AutorizacionCaja
 
     public string? EstadoNcredito { get; set; }
 
+    public string? Sucursal { get; set; }
+
+    public int? ProduccionFactura { get; set; }
+
+    public int? ProduccionNota { get; set; }
+
     public virtual ICollection<AutorizacionCajaUsuario> AutorizacionCajaUsuario { get; set; } = new List<AutorizacionCajaUsuario>();
 
     public virtual Locales IdLocalNavigation { get; set; } = null!;
