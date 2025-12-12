@@ -15,7 +15,11 @@ public partial class Sistemas
 
     public bool Status { get; set; }
 
+    public string? Url { get; set; }
+
     public virtual ICollection<Modulos> Modulos { get; set; } = new List<Modulos>();
 
     public virtual ICollection<PerfilesSistemas> PerfilesSistemas { get; set; } = new List<PerfilesSistemas>();
+
+    public virtual ICollection<VideosAyuda> VideosAyuda { get; set; } = new List<VideosAyuda>();
 }

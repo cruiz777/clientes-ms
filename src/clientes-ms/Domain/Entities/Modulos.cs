@@ -15,6 +15,8 @@ public partial class Modulos
 
     public bool Status { get; set; }
 
+    public string? Url { get; set; }
+
     public virtual Sistemas IdSistemaNavigation { get; set; } = null!;
 
     public virtual ICollection<Menus> Menus { get; set; } = new List<Menus>();

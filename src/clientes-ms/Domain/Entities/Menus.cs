@@ -15,9 +15,11 @@ public partial class Menus
 
     public bool Status { get; set; }
 
+    public string? Url { get; set; }
+
     public virtual Modulos IdModuloNavigation { get; set; } = null!;
 
-    public virtual ICollection<Opciones> Opciones { get; set; } = new List<Opciones>();
-
     public virtual ICollection<PerfilesMenus> PerfilesMenus { get; set; } = new List<PerfilesMenus>();
+
+    public virtual ICollection<SubMenus> SubMenus { get; set; } = new List<SubMenus>();
 }

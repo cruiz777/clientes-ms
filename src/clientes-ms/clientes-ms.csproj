@@ -41,6 +41,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Application\Common\" />
     <Folder Include="libs\" />
     <Folder Include="Querys\" />
   </ItemGroup>

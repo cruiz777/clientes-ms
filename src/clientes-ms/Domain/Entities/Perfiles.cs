@@ -27,5 +27,7 @@ public partial class Perfiles
 
     public virtual ICollection<PerfilesSistemas> PerfilesSistemas { get; set; } = new List<PerfilesSistemas>();
 
+    public virtual ICollection<PerfilesSubMenus> PerfilesSubMenus { get; set; } = new List<PerfilesSubMenus>();
+
     public virtual ICollection<UsuariosPerfiles> UsuariosPerfiles { get; set; } = new List<UsuariosPerfiles>();
 }
