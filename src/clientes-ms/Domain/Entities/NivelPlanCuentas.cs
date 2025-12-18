@@ -10,4 +10,6 @@ public partial class NivelPlanCuentas
     public string? Descripcion { get; set; }
 
     public string? Codigo { get; set; }
+
+    public virtual ICollection<PlanCuentas> PlanCuentas { get; set; } = new List<PlanCuentas>();
 }

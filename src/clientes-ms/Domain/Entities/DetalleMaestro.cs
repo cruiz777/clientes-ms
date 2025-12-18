@@ -87,6 +87,10 @@ public partial class DetalleMaestro
 
     public DateTime? FechaCadRelacionado { get; set; }
 
+    public long? IdPorIva { get; set; }
+
+    public long? Porcentaje { get; set; }
+
     public virtual CabeceraMaestro IdCabMaestroNavigation { get; set; } = null!;
 
     public virtual CentroCostos? IdCentroCostosNavigation { get; set; }
@@ -98,6 +102,8 @@ public partial class DetalleMaestro
     public virtual MovimientoBancario? IdMovBancarioNavigation { get; set; }
 
     public virtual PlanCuentas IdPlanCuentasNavigation { get; set; } = null!;
+
+    public virtual PorcentajeIva? IdPorIvaNavigation { get; set; }
 
     public virtual Proyectos? IdProyectoNavigation { get; set; }
 

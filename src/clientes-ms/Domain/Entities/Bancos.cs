@@ -12,4 +12,8 @@ public partial class Bancos
     public string? CodigoEspecial { get; set; }
 
     public long IdEmpresa { get; set; }
+
+    public virtual ICollection<BancosEmpresa> BancosEmpresa { get; set; } = new List<BancosEmpresa>();
+
+    public virtual Empresas IdEmpresaNavigation { get; set; } = null!;
 }
