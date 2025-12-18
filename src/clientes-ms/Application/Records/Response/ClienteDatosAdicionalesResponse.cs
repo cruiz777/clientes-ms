@@ -37,6 +37,9 @@ namespace clientes_ms.Application.Records.Response
         [JsonPropertyName("guia")]
         public bool? Guia { get; init; }
 
+        [JsonPropertyName("otros")]
+        public bool? Otros { get; init; }
+
         [JsonPropertyName("estado")]
         public bool? Estado { get; init; }
 
@@ -54,6 +57,7 @@ namespace clientes_ms.Application.Records.Response
             long? clientesCodigo,
             bool? prefijo,
             bool? guia,
+            bool? otros,
             bool? estado)
         {
             IdDatosAdicionales = idDatosAdicionales;
@@ -67,6 +71,7 @@ namespace clientes_ms.Application.Records.Response
             ClientesCodigo = clientesCodigo;
             Prefijo = prefijo;
             Guia = guia;
+            Otros = otros;
             Estado = estado;
         }
     }

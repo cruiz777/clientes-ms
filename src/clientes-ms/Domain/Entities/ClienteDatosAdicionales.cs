@@ -29,5 +29,7 @@ public partial class ClienteDatosAdicionales
 
     public bool? Estado { get; set; }
 
+    public bool? Otros { get; set; }
+
     public virtual Clientes? ClientesCodigoNavigation { get; set; }
 }

@@ -172,6 +172,8 @@ public partial class ApplicationDbContext : DbContext
 
     public virtual DbSet<NumeroControl> NumeroControl { get; set; }
 
+    public virtual DbSet<NumeroControlCg> NumeroControlCg { get; set; }
+
     public virtual DbSet<Opciones> Opciones { get; set; }
 
     public virtual DbSet<Pagos> Pagos { get; set; }
@@ -211,6 +213,8 @@ public partial class ApplicationDbContext : DbContext
     public virtual DbSet<PlanificacionPagos> PlanificacionPagos { get; set; }
 
     public virtual DbSet<PlazoTarjeta> PlazoTarjeta { get; set; }
+
+    public virtual DbSet<PorcentajeIva> PorcentajeIva { get; set; }
 
     public virtual DbSet<Prefijos> Prefijos { get; set; }
 
@@ -693,6 +697,11 @@ public partial class ApplicationDbContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("sucursal");
 
+            entity.HasOne(d => d.IdEmpresaNavigation).WithMany(p => p.AutorizacionCaja)
+                .HasForeignKey(d => d.IdEmpresa)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("empresaautorizacion");
+
             entity.HasOne(d => d.IdLocalNavigation).WithMany(p => p.AutorizacionCaja)
                 .HasForeignKey(d => d.IdLocal)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -740,6 +749,11 @@ public partial class ApplicationDbContext : DbContext
                 .HasMaxLength(250)
                 .HasColumnName("descripcion");
             entity.Property(e => e.IdEmpresa).HasColumnName("id_empresa");
+
+            entity.HasOne(d => d.IdEmpresaNavigation).WithMany(p => p.Bancos)
+                .HasForeignKey(d => d.IdEmpresa)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_bancos_id_empresa");
         });
 
         modelBuilder.Entity<BancosEmpresa>(entity =>
@@ -760,6 +774,16 @@ public partial class ApplicationDbContext : DbContext
                 .HasColumnName("descripcio");
             entity.Property(e => e.IdBanco).HasColumnName("id_banco");
             entity.Property(e => e.IdEmpresa).HasColumnName("id_empresa");
+
+            entity.HasOne(d => d.IdBancoNavigation).WithMany(p => p.BancosEmpresa)
+                .HasForeignKey(d => d.IdBanco)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_bancos_empresa_bancos");
+
+            entity.HasOne(d => d.IdEmpresaNavigation).WithMany(p => p.BancosEmpresa)
+                .HasForeignKey(d => d.IdEmpresa)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_bancos_empresa_id_empresa");
         });
 
         modelBuilder.Entity<BancosTerceros>(entity =>
@@ -986,7 +1010,6 @@ public partial class ApplicationDbContext : DbContext
             entity.Property(e => e.Modulo).HasColumnName("modulo");
             entity.Property(e => e.Numdoc).HasColumnName("numdoc");
             entity.Property(e => e.Observacion)
-                .HasMaxLength(500)
                 .IsUnicode(false)
                 .HasColumnName("observacion");
             entity.Property(e => e.Solicitado)
@@ -1174,6 +1197,7 @@ public partial class ApplicationDbContext : DbContext
             entity.Property(e => e.Guia).HasColumnName("guia");
             entity.Property(e => e.Instagram).HasColumnName("instagram");
             entity.Property(e => e.Medico).HasColumnName("medico");
+            entity.Property(e => e.Otros).HasColumnName("otros");
             entity.Property(e => e.Prefijo).HasColumnName("prefijo");
             entity.Property(e => e.Vendeus).HasColumnName("vendeus");
             entity.Property(e => e.Web).HasColumnName("web");
@@ -1525,7 +1549,7 @@ public partial class ApplicationDbContext : DbContext
             entity.Property(e => e.IdTipoContribuyente).HasColumnName("id_tipo_contribuyente");
             entity.Property(e => e.IdUsuario).HasColumnName("id_usuario");
             entity.Property(e => e.Identificacionauxiliar)
-                .HasMaxLength(13)
+                .HasMaxLength(20)
                 .HasColumnName("identificacionauxiliar");
             entity.Property(e => e.Nombre1)
                 .HasMaxLength(200)
@@ -2164,7 +2188,7 @@ public partial class ApplicationDbContext : DbContext
                 .HasColumnName("conciliado");
             entity.Property(e => e.Debe).HasColumnName("debe");
             entity.Property(e => e.Docurelacionado)
-                .HasMaxLength(25)
+                .HasMaxLength(50)
                 .HasColumnName("docurelacionado");
             entity.Property(e => e.EstadoIngreso)
                 .HasDefaultValue(true)
@@ -2204,6 +2228,7 @@ public partial class ApplicationDbContext : DbContext
             entity.Property(e => e.IdLocal).HasColumnName("id_local");
             entity.Property(e => e.IdMovBancario).HasColumnName("id_mov_bancario");
             entity.Property(e => e.IdPlanCuentas).HasColumnName("id_plan_cuentas");
+            entity.Property(e => e.IdPorIva).HasColumnName("id_por_iva");
             entity.Property(e => e.IdProyecto).HasColumnName("id_proyecto");
             entity.Property(e => e.IdSubproyecto).HasColumnName("id_subproyecto");
             entity.Property(e => e.IdSustentoTrib).HasColumnName("id_sustento_trib");
@@ -2217,6 +2242,7 @@ public partial class ApplicationDbContext : DbContext
                 .HasMaxLength(25)
                 .HasColumnName("nocomprobante");
             entity.Property(e => e.Numlinea).HasColumnName("numlinea");
+            entity.Property(e => e.Porcentaje).HasColumnName("porcentaje");
             entity.Property(e => e.Transferido).HasColumnName("transferido");
             entity.Property(e => e.ValorLetras)
                 .HasMaxLength(150)
@@ -2248,6 +2274,10 @@ public partial class ApplicationDbContext : DbContext
                 .HasForeignKey(d => d.IdPlanCuentas)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_detalle_maestro_id_plan_cuentas");
+
+            entity.HasOne(d => d.IdPorIvaNavigation).WithMany(p => p.DetalleMaestro)
+                .HasForeignKey(d => d.IdPorIva)
+                .HasConstraintName("FK_detalle_maestro_id_por_iva");
 
             entity.HasOne(d => d.IdProyectoNavigation).WithMany(p => p.DetalleMaestro)
                 .HasForeignKey(d => d.IdProyecto)
@@ -2872,6 +2902,16 @@ public partial class ApplicationDbContext : DbContext
             entity.Property(e => e.VarVal)
                 .HasMaxLength(1)
                 .HasColumnName("var_val");
+
+            entity.HasOne(d => d.IdEmpresaNavigation).WithMany(p => p.FechasControl)
+                .HasForeignKey(d => d.IdEmpresa)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_fecha_control_id_empresa");
+
+            entity.HasOne(d => d.IdTipoAsientoNavigation).WithMany(p => p.FechasControl)
+                .HasForeignKey(d => d.IdTipoAsiento)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_fechas_control_tipo_asiento");
         });
 
         modelBuilder.Entity<FormaPago>(entity =>
@@ -3815,6 +3855,10 @@ public partial class ApplicationDbContext : DbContext
 
             entity.ToTable("nota_credito", "sic");
 
+            entity.HasIndex(e => e.Numnota, "UQ_nota_credito_numnota")
+                .IsUnique()
+                .HasFilter("([numnota] IS NOT NULL)");
+
             entity.Property(e => e.IdNotaCredito).HasColumnName("idNotaCredito");
             entity.Property(e => e.Asicon)
                 .HasMaxLength(10)
@@ -3928,6 +3972,16 @@ public partial class ApplicationDbContext : DbContext
             entity.Property(e => e.NumTra).HasColumnName("num_tra");
             entity.Property(e => e.NumTragGlobal).HasColumnName("num_trag_global");
             entity.Property(e => e.Ocupado).HasColumnName("ocupado");
+
+            entity.HasOne(d => d.IdEmpresaNavigation).WithMany(p => p.NumeroCheques)
+                .HasForeignKey(d => d.IdEmpresa)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_cheques_id_empresa");
+
+            entity.HasOne(d => d.IdPlanCuentasNavigation).WithMany(p => p.NumeroCheques)
+                .HasForeignKey(d => d.IdPlanCuentas)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_cheques_id_planc");
         });
 
         modelBuilder.Entity<NumeroControl>(entity =>
@@ -3952,6 +4006,41 @@ public partial class ApplicationDbContext : DbContext
                 .HasMaxLength(1)
                 .IsUnicode(false)
                 .HasColumnName("tipcon");
+        });
+
+        modelBuilder.Entity<NumeroControlCg>(entity =>
+        {
+            entity.HasKey(e => e.IdNumeroControl).HasName("PK_numero_control");
+
+            entity.ToTable("numero_control_cg", "cg");
+
+            entity.Property(e => e.IdNumeroControl).HasColumnName("id_numero_control");
+            entity.Property(e => e.Codigo).HasColumnName("codigo");
+            entity.Property(e => e.Descripcion)
+                .HasMaxLength(250)
+                .HasColumnName("descripcion");
+            entity.Property(e => e.IdEmpresa).HasColumnName("id_empresa");
+            entity.Property(e => e.Nestablecimiento)
+                .HasMaxLength(10)
+                .IsFixedLength()
+                .HasColumnName("nestablecimiento");
+            entity.Property(e => e.Ocupado)
+                .HasDefaultValue(false)
+                .HasColumnName("ocupado");
+            entity.Property(e => e.PuntoEmision)
+                .HasMaxLength(10)
+                .IsFixedLength()
+                .HasColumnName("puntoEmision");
+            entity.Property(e => e.Secuencial).HasColumnName("secuencial");
+            entity.Property(e => e.Tipo)
+                .HasMaxLength(1)
+                .IsFixedLength()
+                .HasColumnName("tipo");
+
+            entity.HasOne(d => d.IdEmpresaNavigation).WithMany(p => p.NumeroControlCg)
+                .HasForeignKey(d => d.IdEmpresa)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_numerocontrol_id_empresa");
         });
 
         modelBuilder.Entity<Opciones>(entity =>
@@ -4635,6 +4724,16 @@ public partial class ApplicationDbContext : DbContext
             entity.HasOne(d => d.IdCodigoEspecialNavigation).WithMany(p => p.PlanCuentas)
                 .HasForeignKey(d => d.IdCodigoEspecial)
                 .HasConstraintName("FK_codigo_especialPC");
+
+            entity.HasOne(d => d.IdEmpresaNavigation).WithMany(p => p.PlanCuentas)
+                .HasForeignKey(d => d.IdEmpresa)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_plan_cuentas_id_empresa");
+
+            entity.HasOne(d => d.IdNivelNavigation).WithMany(p => p.PlanCuentas)
+                .HasForeignKey(d => d.IdNivel)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_IdNivel_PC");
         });
 
         modelBuilder.Entity<PlanificacionPagos>(entity =>
@@ -4703,6 +4802,26 @@ public partial class ApplicationDbContext : DbContext
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("descripcion");
+        });
+
+        modelBuilder.Entity<PorcentajeIva>(entity =>
+        {
+            entity.HasKey(e => e.IdPorIva).HasName("PK_cgporcentaje_iva");
+
+            entity.ToTable("porcentaje_iva", "cg");
+
+            entity.Property(e => e.IdPorIva).HasColumnName("id_por_iva");
+            entity.Property(e => e.CodigoIva).HasColumnName("codigoIva");
+            entity.Property(e => e.Descripcion)
+                .HasMaxLength(150)
+                .HasColumnName("descripcion");
+            entity.Property(e => e.Fechafin)
+                .HasColumnType("datetime")
+                .HasColumnName("fechafin");
+            entity.Property(e => e.Fechainicio)
+                .HasColumnType("datetime")
+                .HasColumnName("fechainicio");
+            entity.Property(e => e.Porcentaje).HasColumnName("porcentaje");
         });
 
         modelBuilder.Entity<Prefijos>(entity =>
@@ -4791,6 +4910,8 @@ public partial class ApplicationDbContext : DbContext
             entity.ToTable("producto", "sic");
 
             entity.HasIndex(e => e.Codpro, "IX_producto_codpro").IsUnique();
+
+            entity.HasIndex(e => e.Codbar, "IX_sic_producto_codbar");
 
             entity.Property(e => e.IdProducto).HasColumnName("id_producto");
             entity.Property(e => e.Abrevia)

@@ -29,6 +29,7 @@ public class CreateClienteDatosAdicionalesHandler : IRequestHandler<CreateClient
                 ClientesCodigo = request.Request.ClientesCodigo,
                 Prefijo = request.Request.Prefijo,
                 Guia = request.Request.Guia,
+                Otros=request.Request.Otros,
                 Estado = request.Request.Estado
             };
 

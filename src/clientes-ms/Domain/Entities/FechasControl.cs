@@ -26,4 +26,8 @@ public partial class FechasControl
     public long IdTipoAsiento { get; set; }
 
     public long IdEmpresa { get; set; }
+
+    public virtual Empresas IdEmpresaNavigation { get; set; } = null!;
+
+    public virtual TipoAsiento IdTipoAsientoNavigation { get; set; } = null!;
 }

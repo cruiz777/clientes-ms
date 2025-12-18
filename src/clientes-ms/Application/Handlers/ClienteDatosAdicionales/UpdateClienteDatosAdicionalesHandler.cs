@@ -41,6 +41,7 @@ public class UpdateClienteDatosAdicionalesHandler : IRequestHandler<UpdateClient
             existing.Web = request.Request.Web;
             existing.Prefijo = request.Request.Prefijo;
             existing.Guia = request.Request.Guia;
+            existing.Otros = request.Request.Otros;
             existing.Estado = request.Request.Estado;
 
             await _repository.UpdateAsync(existing.IdDatosAdicionales, existing);

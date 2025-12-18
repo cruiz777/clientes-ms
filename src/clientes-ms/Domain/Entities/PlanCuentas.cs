@@ -69,6 +69,12 @@ public partial class PlanCuentas
 
     public virtual CodigosEspeciales? IdCodigoEspecialNavigation { get; set; }
 
+    public virtual Empresas IdEmpresaNavigation { get; set; } = null!;
+
+    public virtual NivelPlanCuentas IdNivelNavigation { get; set; } = null!;
+
+    public virtual ICollection<NumeroCheques> NumeroCheques { get; set; } = new List<NumeroCheques>();
+
     public virtual ICollection<Producto> Producto { get; set; } = new List<Producto>();
 
     public virtual ICollection<Proveedores> Proveedores { get; set; } = new List<Proveedores>();

@@ -12,4 +12,6 @@ public partial class TipoAsiento
     public string? Descripcion { get; set; }
 
     public virtual ICollection<CabeceraMaestro> CabeceraMaestro { get; set; } = new List<CabeceraMaestro>();
+
+    public virtual ICollection<FechasControl> FechasControl { get; set; } = new List<FechasControl>();
 }

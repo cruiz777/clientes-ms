@@ -47,6 +47,12 @@ public partial class Empresas
 
     public long IdCiudad { get; set; }
 
+    public virtual ICollection<AutorizacionCaja> AutorizacionCaja { get; set; } = new List<AutorizacionCaja>();
+
+    public virtual ICollection<Bancos> Bancos { get; set; } = new List<Bancos>();
+
+    public virtual ICollection<BancosEmpresa> BancosEmpresa { get; set; } = new List<BancosEmpresa>();
+
     public virtual ICollection<CabeceraMaestro> CabeceraMaestro { get; set; } = new List<CabeceraMaestro>();
 
     public virtual ICollection<CentroCostos> CentroCostos { get; set; } = new List<CentroCostos>();
@@ -65,6 +71,8 @@ public partial class Empresas
 
     public virtual ICollection<EstructuraComercial> EstructuraComercial { get; set; } = new List<EstructuraComercial>();
 
+    public virtual ICollection<FechasControl> FechasControl { get; set; } = new List<FechasControl>();
+
     public virtual ICollection<FormaPago> FormaPago { get; set; } = new List<FormaPago>();
 
     public virtual ICollection<FormaPagoCg> FormaPagoCg { get; set; } = new List<FormaPagoCg>();
@@ -81,9 +89,15 @@ public partial class Empresas
 
     public virtual ICollection<NotaCredito> NotaCredito { get; set; } = new List<NotaCredito>();
 
+    public virtual ICollection<NumeroCheques> NumeroCheques { get; set; } = new List<NumeroCheques>();
+
+    public virtual ICollection<NumeroControlCg> NumeroControlCg { get; set; } = new List<NumeroControlCg>();
+
     public virtual ICollection<ParametrosSic> ParametrosSic { get; set; } = new List<ParametrosSic>();
 
     public virtual ICollection<Perfiles> Perfiles { get; set; } = new List<Perfiles>();
+
+    public virtual ICollection<PlanCuentas> PlanCuentas { get; set; } = new List<PlanCuentas>();
 
     public virtual ICollection<Producto> Producto { get; set; } = new List<Producto>();
 

@@ -16,4 +16,8 @@ public partial class BancosEmpresa
     public long IdBanco { get; set; }
 
     public long IdEmpresa { get; set; }
+
+    public virtual Bancos IdBancoNavigation { get; set; } = null!;
+
+    public virtual Empresas IdEmpresaNavigation { get; set; } = null!;
 }

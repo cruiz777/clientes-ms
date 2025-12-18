@@ -53,6 +53,8 @@ public partial class AutorizacionCaja
 
     public virtual ICollection<AutorizacionCajaUsuario> AutorizacionCajaUsuario { get; set; } = new List<AutorizacionCajaUsuario>();
 
+    public virtual Empresas IdEmpresaNavigation { get; set; } = null!;
+
     public virtual Locales IdLocalNavigation { get; set; } = null!;
 
     public virtual TipoDocumentoSri? IdTipoDocumentoNavigation { get; set; }

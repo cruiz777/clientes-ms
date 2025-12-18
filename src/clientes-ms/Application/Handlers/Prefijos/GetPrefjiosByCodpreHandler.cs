@@ -38,7 +38,7 @@ public class GetPrefijosByCodpreHandler : IRequestHandler<GetPefijosByCodpreQuer
                             .ThenInclude(can => can.IdProvinciaNavigation)
                 .Include(p => p.Gln)
                     .ThenInclude(g => g.IdTipoLocalizacionNavigation)
-                .Where(p => p.Codpre != null && p.Codpre.ToLower().Contains(request.Codpre.ToLower()))
+                .Where(p => p.Codpre != null && p.Codpre.ToLower() == request.Codpre.ToLower())
                 .ToListAsync(cancellationToken);
 
             // var mappedResult = _mapper.Map<List<PrefijosResponse>>(prefijos); CAMBIO ACABRERA

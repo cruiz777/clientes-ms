@@ -31,6 +31,7 @@ public class GetResumenClienteDatosAdicionalesHandler : IRequestHandler<GetClien
                 clientesCodigo: t.ClientesCodigo ?? 0,
                 prefijo: t.Prefijo ?? false,
                 guia: t.Guia ?? false,
+                otros: t.Otros ?? false,
                 estado: t.Estado ?? false
             )).ToList();
 

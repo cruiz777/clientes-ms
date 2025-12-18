@@ -22,4 +22,8 @@ public partial class NumeroCheques
     public long IdEmpresa { get; set; }
 
     public long IdPlanCuentas { get; set; }
+
+    public virtual Empresas IdEmpresaNavigation { get; set; } = null!;
+
+    public virtual PlanCuentas IdPlanCuentasNavigation { get; set; } = null!;
 }

@@ -32,6 +32,7 @@ public class GetClienteDatosAdicionalesByClienteCodigoHandler : IRequestHandler<
                 clientesCodigo: e.ClientesCodigo,
                 prefijo: e.Prefijo,
                 guia: e.Guia,
+                otros:e.Otros,
                 estado: e.Estado
             );
 
