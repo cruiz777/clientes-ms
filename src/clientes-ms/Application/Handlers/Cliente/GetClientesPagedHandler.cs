@@ -15,7 +15,7 @@ namespace clientes_ms.Application.Handlers.Cliente
     public class GetClientesPagedHandler : IRequestHandler<GetClientesPaged, ApiResponse<IEnumerable<ClientesResponse>>>
     {
         private readonly IBaseRepository<Clientes> _repository;
-        private const int MaxPageSize = 20000;
+        private const int MaxPageSize = 40000;
 
         public GetClientesPagedHandler(IBaseRepository<Clientes> repository)
         {
