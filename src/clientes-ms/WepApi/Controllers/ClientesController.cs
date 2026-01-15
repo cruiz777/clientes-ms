@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using clientes_ms.Application.Records.Request;
 using clientes_ms.Application.Records.Response;
 using clientes_ms.Application.Queries.Clientes;
+using clientes_ms.Application.Handlers.Cliente;
 
 namespace clientes_ms.WebApi.Controllers
 {
@@ -188,6 +189,13 @@ namespace clientes_ms.WebApi.Controllers
             var query = new GetClientesByNomcliAsyncQuery(nomcli);
             var resultado = await _mediator.Send(query);
             return Ok(resultado);
+        }
+        [HttpGet("resumen-tipo-cliente/{anio:int}/{mes:int}")]
+        public async Task<ActionResult<ApiResponse<ResumenTipoClienteAnioMesResponse>>> GetResumenTipoCliente(
+    int anio, int mes, CancellationToken ct)
+        {
+            var result = await _mediator.Send(new GetResumenTipoClienteAnioMesQuery(anio, mes), ct);
+            return Ok(result);
         }
 
     }
