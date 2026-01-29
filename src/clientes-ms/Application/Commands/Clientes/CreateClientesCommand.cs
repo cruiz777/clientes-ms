@@ -2,4 +2,8 @@
 using clientes_ms.Application.Records.Request;
 using clientes_ms.Application.Records.Response;
 
-public record CreateClientesCommand(ClientesRequest Request) : IRequest<ApiResponse<bool>>;
+namespace clientes_ms.Application.Handlers.Cliente
+{
+    public sealed record CreateClientesCommand(ClientesRequest Request)
+        : IRequest<ApiResponse<long>>;
+}
