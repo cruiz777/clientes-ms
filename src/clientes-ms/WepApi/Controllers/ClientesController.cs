@@ -198,5 +198,13 @@ namespace clientes_ms.WebApi.Controllers
             return Ok(result);
         }
 
+        [HttpGet("resumen-tipo-cliente-total")]
+        public async Task<ActionResult<ApiResponse<ResumenTipoClienteTotalResponse>>> GetResumenTipoClienteTotal(
+           CancellationToken ct)
+        {
+            var result = await _mediator.Send(new GetResumenTipoClienteTotalQuery(), ct);
+            return Ok(result);
+        }
+
     }
 }
