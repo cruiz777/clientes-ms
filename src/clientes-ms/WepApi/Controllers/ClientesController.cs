@@ -205,6 +205,24 @@ namespace clientes_ms.WebApi.Controllers
             var result = await _mediator.Send(new GetResumenTipoClienteTotalQuery(), ct);
             return Ok(result);
         }
+        // ✅ NUEVO: Resumen tipo cliente (AFILIADAS) por Año/Mes
+        [HttpGet("resumen-tipo-cliente-afiliadas/{anio:int}/{mes:int}")]
+        public async Task<ActionResult<ApiResponse<ResumenTipoClienteAnioMesResponse>>> GetResumenTipoClienteAfiliadas(
+            int anio, int mes, CancellationToken ct)
+        {
+            var result = await _mediator.Send(new GetResumenTipoClienteAnioMesAfiliadasQuery(anio, mes), ct);
+            return Ok(result);
+        }
+
+        // ✅ NUEVO: Resumen tipo cliente TOTAL histórico (AFILIADAS)
+        [HttpGet("resumen-tipo-cliente-total-afiliadas")]
+        public async Task<ActionResult<ApiResponse<ResumenTipoClienteTotalResponse>>> GetResumenTipoClienteTotalAfiliadas(
+            CancellationToken ct)
+        {
+            var result = await _mediator.Send(new GetResumenTipoClienteTotalAfiliadasQuery(), ct);
+            return Ok(result);
+        }
+
 
     }
 }
