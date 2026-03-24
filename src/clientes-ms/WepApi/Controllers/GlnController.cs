@@ -132,6 +132,23 @@ namespace clientes_ms.WebApi.Controllers
             };
         }
 
+        // GET api/gln/validar-secuencia?codigoPais=786&prefijo=123&secuencia=101
+        [HttpGet("validar-secuencia")]
+        public async Task<IActionResult> ValidarSecuenciaDisponible(
+            [FromQuery] string codigoPais,
+            [FromQuery] string prefijo,
+            [FromQuery] int secuencia)
+        {
+            var query = new ValidarSecuenciaDisponibleQuery(codigoPais, prefijo, secuencia);
+            var result = await _mediator.Send(query);
+
+            // SIEMPRE devolver 200 OK, el frontend decide según result.data
+            return result.Type switch
+            {
+                "ERROR" => StatusCode(500, result),
+                _ => Ok(result)  //Tanto CONFLICT como SUCCESS devuelven 200
+            };
+        }
 
     }
 }
