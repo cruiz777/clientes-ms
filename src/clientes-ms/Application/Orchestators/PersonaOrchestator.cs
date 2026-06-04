@@ -111,52 +111,82 @@ public class PersonaOrquestadorService
 
         if (tipoDoc == 1)
         {
-            var rc = await _http.GetFromJsonAsync<RegistroCivilResponse>(
+            try
+            {
+                var rc = await _http.GetFromJsonAsync<RegistroCivilResponse>(
                 $"http://localhost:5001/api/apis-externas/cedula/consultar?parametro={numeroDoc}");
 
-            if (rc is not null)
-            {
-                var nombres = rc.Nombre?.Split(' ', StringSplitOptions.RemoveEmptyEntries) ?? [];
+                if (rc is not null)
+                {
+                    var nombres = rc.Nombre?.Split(' ', StringSplitOptions.RemoveEmptyEntries) ?? [];
 
-                personaReq.Apellido1 = nombres.ElementAtOrDefault(0);
-                personaReq.Apellido2 = nombres.ElementAtOrDefault(1);
-                personaReq.Nombre1 = nombres.ElementAtOrDefault(2);
-                personaReq.Nombre2 = nombres.ElementAtOrDefault(3);
+                    personaReq.Apellido1 = nombres.ElementAtOrDefault(0);
+                    personaReq.Apellido2 = nombres.ElementAtOrDefault(1);
+                    personaReq.Nombre1 = nombres.ElementAtOrDefault(2);
+                    personaReq.Nombre2 = nombres.ElementAtOrDefault(3);
 
-                personaReq.IdGenero = MapGenero(rc.Genero);
-                personaReq.IdEstadoCivil = MapEstadoCivil(rc.EstadoCivil);
+                    personaReq.IdGenero = MapGenero(rc.Genero);
+                    personaReq.IdEstadoCivil = MapEstadoCivil(rc.EstadoCivil);
 
-                if (DateTime.TryParse(rc.FechaNacimiento, out var nac))
-                    personaReq.FechaNacimiento = DateOnly.FromDateTime(nac);
+                    if (DateTime.TryParse(rc.FechaNacimiento, out var nac))
+                        personaReq.FechaNacimiento = DateOnly.FromDateTime(nac);
 
-                personaReq.TipoPersona = "NATURAL";
+                    personaReq.TipoPersona = "NATURAL";
+                }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"⚠️ Registro Civil no disponible: {ex.Message}");
+                personaReq.Nombre1 = !string.IsNullOrWhiteSpace(cliente.RazonSocial)
+                    ? cliente.RazonSocial
+                    : cliente.Nomcli; // fallback al nombre del cliente
+                personaReq.Apellido1 = cliente.Representante;
+                personaReq.TipoPersona = "NATURAL";
+                personaReq.IdGenero = 3;
+                personaReq.IdEstadoCivil = 5;
+            }
+
         }
         else if (tipoDoc == 3)
         {
-            var wrapper = await _http.GetFromJsonAsync<SriWrapperResponse>(
+            try
+            {
+                var wrapper = await _http.GetFromJsonAsync<SriWrapperResponse>(
                 $"http://localhost:5001/api/apis-externas/ruc/consultar?parametro={numeroDoc}");
 
-            var sri = wrapper?.Consulta?.FirstOrDefault();
+                var sri = wrapper?.Consulta?.FirstOrDefault();
 
-            if (sri != null)
-            {
-                personaReq.Nombre1 ??= cliente.RazonSocial ?? sri.RazonSocial;
-                personaReq.Apellido1 ??= cliente.Representante;
-                personaReq.IdGenero = 3;
-                personaReq.IdEstadoCivil = 5; // NO APLICA
-
-                // Capturar datos del SRI
-                actividadComercial = sri.ActividadEconomicaPrincipal;
-                estadoRuc = sri.EstadoContribuyenteRuc?.ToUpper() == "ACTIVO";
-                regimen = sri.Regimen;
-                contribuyenteEspecial = sri.ContribuyenteEspecial;
-                if (DateTime.TryParse(sri.InformacionFechasContribuyente?.FechaInicioActividades, out var fechaInicio))
+                if (sri != null)
                 {
-                    personaReq.FechaNacimiento = DateOnly.FromDateTime(fechaInicio);
-                    fechaInicioAct = DateOnly.FromDateTime(fechaInicio);
+                    personaReq.Nombre1 ??= cliente.RazonSocial ?? sri.RazonSocial;
+                    personaReq.Apellido1 ??= cliente.Representante;
+                    personaReq.IdGenero = 3;
+                    personaReq.IdEstadoCivil = 5; // NO APLICA
+
+                    // Capturar datos del SRI
+                    actividadComercial = sri.ActividadEconomicaPrincipal;
+                    estadoRuc = sri.EstadoContribuyenteRuc?.ToUpper() == "ACTIVO";
+                    regimen = sri.Regimen;
+                    contribuyenteEspecial = sri.ContribuyenteEspecial;
+                    if (DateTime.TryParse(sri.InformacionFechasContribuyente?.FechaInicioActividades, out var fechaInicio))
+                    {
+                        personaReq.FechaNacimiento = DateOnly.FromDateTime(fechaInicio);
+                        fechaInicioAct = DateOnly.FromDateTime(fechaInicio);
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"⚠️ SRI no disponible, creando persona con datos manuales: {ex.Message}");
+                personaReq.Nombre1 = !string.IsNullOrWhiteSpace(cliente.RazonSocial)
+                    ? cliente.RazonSocial
+                    : cliente.Nomcli; // fallback
+                personaReq.Apellido1 = cliente.Representante;
+                personaReq.TipoPersona = "JURÍDICA"; // ← explícito, no depender del default
+                personaReq.IdGenero = 3;
+                personaReq.IdEstadoCivil = 5;
+            }
+
         }
         else // Pasaporte u otro documento
         {
