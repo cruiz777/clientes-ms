@@ -223,6 +223,24 @@ namespace clientes_ms.WebApi.Controllers
             return Ok(result);
         }
 
+        // ✅ NUEVO: Resumen tipo cliente (DESAFILIADAS) por Año/Mes
+        [HttpGet("resumen-tipo-cliente-desafiliadas/{anio:int}/{mes:int}")]
+        public async Task<ActionResult<ApiResponse<ResumenTipoClienteAnioMesResponse>>> GetResumenTipoClienteDesafiliadas(
+            int anio, int mes, CancellationToken ct)
+        {
+            var result = await _mediator.Send(new GetResumenTipoClienteAnioMesDesafiliadasQuery(anio, mes), ct);
+            return Ok(result);
+        }
+
+        // ✅ NUEVO: Resumen tipo cliente TOTAL histórico (DESAFILIADAS)
+        [HttpGet("resumen-tipo-cliente-total-desafiliadas")]
+        public async Task<ActionResult<ApiResponse<ResumenTipoClienteTotalResponse>>> GetResumenTipoClienteTotalDesafiliadas(
+            CancellationToken ct)
+        {
+            var result = await _mediator.Send(new GetResumenTipoClienteTotalDesafiliadasQuery(), ct);
+            return Ok(result);
+        }
+
 
     }
 }
