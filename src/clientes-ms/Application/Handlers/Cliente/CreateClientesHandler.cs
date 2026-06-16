@@ -7,6 +7,10 @@ using clientes_ms.Domain.Entities;
 using clientes_ms.Infrastructure.Persistence.Context;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+
+
+
+
 using Microsoft.EntityFrameworkCore.Storage;
 
 namespace clientes_ms.Application.Handlers.Cliente
