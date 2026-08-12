@@ -15,7 +15,11 @@ public partial class Departamentos
 
     public bool Estado { get; set; }
 
+    public virtual ICollection<ActivoFijo> ActivoFijo { get; set; } = new List<ActivoFijo>();
+
     public virtual Empresas? IdEmpresaNavigation { get; set; }
+
+    public virtual ICollection<RpMaeEmp> RpMaeEmp { get; set; } = new List<RpMaeEmp>();
 
     public virtual ICollection<Usuarios> Usuarios { get; set; } = new List<Usuarios>();
 }

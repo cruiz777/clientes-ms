@@ -7,9 +7,9 @@ public partial class FormaPagoSri
 {
     public long IdFormaPagoSri { get; set; }
 
-    public string? Descripcion { get; set; }
+    public string Descripcion { get; set; } = null!;
 
-    public string? CodigoSri { get; set; }
+    public string CodigoSri { get; set; } = null!;
 
-    public virtual ICollection<FormaPago> FormaPago { get; set; } = new List<FormaPago>();
+    public virtual ICollection<FormaPagoLiquidacion> FormaPagoLiquidacion { get; set; } = new List<FormaPagoLiquidacion>();
 }

@@ -7,13 +7,15 @@ public partial class CabeceraConciliacion
 {
     public long IdConciliacion { get; set; }
 
-    public string Fecconcil { get; set; } = null!;
-
-    public string Cuenta { get; set; } = null!;
-
     public DateTime? Fechaconcil { get; set; }
 
-    public string? Descripcta { get; set; }
+    public string Fecconcil { get; set; } = null!;
+
+    public long IdPlanCuentas { get; set; }
+
+    public string? CodprePc { get; set; }
+
+    public string? Descripcion { get; set; }
 
     public double? Saldcontini { get; set; }
 
@@ -59,5 +61,17 @@ public partial class CabeceraConciliacion
 
     public double? Salconcdif { get; set; }
 
-    public long? IdEmpresa { get; set; }
+    public string? Comentario { get; set; }
+
+    public long IdEmpresa { get; set; }
+
+    public long IdUsuario { get; set; }
+
+    public virtual ICollection<DetalleConciliacion> DetalleConciliacion { get; set; } = new List<DetalleConciliacion>();
+
+    public virtual Empresas IdEmpresaNavigation { get; set; } = null!;
+
+    public virtual PlanCuentas IdPlanCuentasNavigation { get; set; } = null!;
+
+    public virtual Usuarios IdUsuarioNavigation { get; set; } = null!;
 }

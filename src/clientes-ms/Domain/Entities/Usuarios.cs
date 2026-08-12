@@ -29,9 +29,17 @@ public partial class Usuarios
 
     public DateTime? FechaBloqueo { get; set; }
 
+    public DateTime? FechaCaducidad { get; set; }
+
+    public virtual ICollection<ActivoFijo> ActivoFijo { get; set; } = new List<ActivoFijo>();
+
     public virtual ICollection<AuditoriaTransferencia> AuditoriaTransferencia { get; set; } = new List<AuditoriaTransferencia>();
 
     public virtual ICollection<AutorizacionCajaUsuario> AutorizacionCajaUsuario { get; set; } = new List<AutorizacionCajaUsuario>();
+
+    public virtual ICollection<CabeceraConciliacion> CabeceraConciliacion { get; set; } = new List<CabeceraConciliacion>();
+
+    public virtual ICollection<CabeceraLiquidacion> CabeceraLiquidacion { get; set; } = new List<CabeceraLiquidacion>();
 
     public virtual ICollection<CabeceraMaestro> CabeceraMaestro { get; set; } = new List<CabeceraMaestro>();
 
@@ -55,9 +63,25 @@ public partial class Usuarios
 
     public virtual Personas IdPersonaNavigation { get; set; } = null!;
 
+    public virtual ICollection<NominaEspecial> NominaEspecial { get; set; } = new List<NominaEspecial>();
+
+    public virtual ICollection<NominaProvisiones> NominaProvisiones { get; set; } = new List<NominaProvisiones>();
+
+    public virtual ICollection<PlanificacionPagos> PlanificacionPagosUsuarioApruebaNavigation { get; set; } = new List<PlanificacionPagos>();
+
+    public virtual ICollection<PlanificacionPagos> PlanificacionPagosUsuarioIngNavigation { get; set; } = new List<PlanificacionPagos>();
+
     public virtual ICollection<ProductoDatosAdicionales> ProductoDatosAdicionales { get; set; } = new List<ProductoDatosAdicionales>();
 
     public virtual ICollection<RecuperacionClave> RecuperacionClave { get; set; } = new List<RecuperacionClave>();
+
+    public virtual ICollection<Retenciones> Retenciones { get; set; } = new List<Retenciones>();
+
+    public virtual ICollection<RolNomina> RolNomina { get; set; } = new List<RolNomina>();
+
+    public virtual ICollection<RolNominaQuincena> RolNominaQuincena { get; set; } = new List<RolNominaQuincena>();
+
+    public virtual ICollection<RubrosFijos> RubrosFijos { get; set; } = new List<RubrosFijos>();
 
     public virtual ICollection<UsuariosPerfiles> UsuariosPerfiles { get; set; } = new List<UsuariosPerfiles>();
 

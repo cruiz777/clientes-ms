@@ -17,5 +17,9 @@ public partial class PorcentajeIva
 
     public DateTime? Fechafin { get; set; }
 
+    public bool? Estado { get; set; }
+
+    public virtual ICollection<DetalleLiquidacion> DetalleLiquidacion { get; set; } = new List<DetalleLiquidacion>();
+
     public virtual ICollection<DetalleMaestro> DetalleMaestro { get; set; } = new List<DetalleMaestro>();
 }

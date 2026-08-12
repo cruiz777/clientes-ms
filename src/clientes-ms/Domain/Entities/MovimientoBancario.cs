@@ -15,5 +15,7 @@ public partial class MovimientoBancario
 
     public long IdMovBancario { get; set; }
 
+    public virtual ICollection<DetalleConciliacion> DetalleConciliacion { get; set; } = new List<DetalleConciliacion>();
+
     public virtual ICollection<DetalleMaestro> DetalleMaestro { get; set; } = new List<DetalleMaestro>();
 }

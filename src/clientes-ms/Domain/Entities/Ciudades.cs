@@ -32,4 +32,8 @@ public partial class Ciudades
     public virtual ICollection<Personas> Personas { get; set; } = new List<Personas>();
 
     public virtual ICollection<Proveedores> Proveedores { get; set; } = new List<Proveedores>();
+
+    public virtual ICollection<RpMaeEmp> RpMaeEmp { get; set; } = new List<RpMaeEmp>();
+
+    public virtual ICollection<RpMaeEmpHistorialLocal> RpMaeEmpHistorialLocal { get; set; } = new List<RpMaeEmpHistorialLocal>();
 }

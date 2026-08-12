@@ -13,5 +13,7 @@ public partial class Genero
 
     public bool Status { get; set; }
 
+    public virtual ICollection<Cargas> Cargas { get; set; } = new List<Cargas>();
+
     public virtual ICollection<Personas> Personas { get; set; } = new List<Personas>();
 }

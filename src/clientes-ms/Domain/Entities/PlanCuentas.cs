@@ -59,7 +59,23 @@ public partial class PlanCuentas
 
     public string? Formato { get; set; }
 
+    public virtual ICollection<ActivoFijo> ActivoFijoIdPlanCuentas1Navigation { get; set; } = new List<ActivoFijo>();
+
+    public virtual ICollection<ActivoFijo> ActivoFijoIdPlanCuentas2Navigation { get; set; } = new List<ActivoFijo>();
+
+    public virtual ICollection<ActivoFijo> ActivoFijoIdPlanCuentas4Navigation { get; set; } = new List<ActivoFijo>();
+
+    public virtual ICollection<ActivoFijo> ActivoFijoIdPlanCuentas5Navigation { get; set; } = new List<ActivoFijo>();
+
+    public virtual ICollection<ActivoFijo> ActivoFijoIdPlanCuentasNavigation { get; set; } = new List<ActivoFijo>();
+
+    public virtual ICollection<CabeceraConciliacion> CabeceraConciliacion { get; set; } = new List<CabeceraConciliacion>();
+
     public virtual ICollection<CuentasPorPagar> CuentasPorPagar { get; set; } = new List<CuentasPorPagar>();
+
+    public virtual ICollection<DetalleActivoFijo> DetalleActivoFijo { get; set; } = new List<DetalleActivoFijo>();
+
+    public virtual ICollection<DetalleLiquidacion> DetalleLiquidacion { get; set; } = new List<DetalleLiquidacion>();
 
     public virtual ICollection<DetalleMaestro> DetalleMaestro { get; set; } = new List<DetalleMaestro>();
 

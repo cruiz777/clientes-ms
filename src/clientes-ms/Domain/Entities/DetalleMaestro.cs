@@ -91,6 +91,8 @@ public partial class DetalleMaestro
 
     public long? Porcentaje { get; set; }
 
+    public virtual DetalleConciliacion? DetalleConciliacion { get; set; }
+
     public virtual CabeceraMaestro IdCabMaestroNavigation { get; set; } = null!;
 
     public virtual CentroCostos? IdCentroCostosNavigation { get; set; }

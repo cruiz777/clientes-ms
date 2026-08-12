@@ -15,7 +15,7 @@ public partial class FormaPagoCg
 
     public int AplicaPlanPagos { get; set; }
 
-    public virtual ICollection<CuentasPorPagar> CuentasPorPagar { get; set; } = new List<CuentasPorPagar>();
-
     public virtual Empresas IdEmpresaNavigation { get; set; } = null!;
+
+    public virtual ICollection<PlanificacionPagos> PlanificacionPagos { get; set; } = new List<PlanificacionPagos>();
 }

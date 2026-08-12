@@ -47,7 +47,7 @@ public partial class FormaPago
 
     public virtual Empresas? IdEmpresaNavigation { get; set; }
 
-    public virtual FormaPagoSri IdFormaPagoSriNavigation { get; set; } = null!;
+    public virtual FormaPagoSri1 IdFormaPagoSriNavigation { get; set; } = null!;
 
     public virtual PlanCuentas? IdPlanCuentasNavigation { get; set; }
 }

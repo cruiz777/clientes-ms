@@ -49,6 +49,8 @@ public partial class CabeceraMaestro
 
     public int Modulo { get; set; }
 
+    public virtual ICollection<CabeceraLiquidacion> CabeceraLiquidacion { get; set; } = new List<CabeceraLiquidacion>();
+
     public virtual ICollection<CuentasPorPagar> CuentasPorPagar { get; set; } = new List<CuentasPorPagar>();
 
     public virtual ICollection<DetalleMaestro> DetalleMaestro { get; set; } = new List<DetalleMaestro>();

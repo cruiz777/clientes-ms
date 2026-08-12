@@ -19,11 +19,9 @@ public partial class AutorizacionCaja
 
     public DateTime? Fecfin { get; set; }
 
-    public int? DocSri { get; set; }
+    public string? Numero { get; set; }
 
-    public string? NumeroFactura { get; set; }
-
-    public string? EstadoFactura { get; set; }
+    public string? Estado { get; set; }
 
     public string? NumEstablecimiento { get; set; }
 
@@ -41,15 +39,9 @@ public partial class AutorizacionCaja
 
     public long? IdTipoDocumento { get; set; }
 
-    public string? NumeroNcredito { get; set; }
-
-    public string? EstadoNcredito { get; set; }
-
     public string? Sucursal { get; set; }
 
-    public int? ProduccionFactura { get; set; }
-
-    public int? ProduccionNota { get; set; }
+    public int? Produccion { get; set; }
 
     public virtual ICollection<AutorizacionCajaUsuario> AutorizacionCajaUsuario { get; set; } = new List<AutorizacionCajaUsuario>();
 

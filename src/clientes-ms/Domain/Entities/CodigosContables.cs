@@ -57,6 +57,8 @@ public partial class CodigosContables
 
     public DateOnly? FechaInicioAct { get; set; }
 
+    public virtual ICollection<CabeceraLiquidacion> CabeceraLiquidacion { get; set; } = new List<CabeceraLiquidacion>();
+
     public virtual ICollection<CuentasPorPagar> CuentasPorPagar { get; set; } = new List<CuentasPorPagar>();
 
     public virtual ICollection<DetalleMaestro> DetalleMaestro { get; set; } = new List<DetalleMaestro>();
@@ -70,6 +72,8 @@ public partial class CodigosContables
     public virtual TipoContribuyente IdTipoContribuyenteNavigation { get; set; } = null!;
 
     public virtual Usuarios IdUsuarioNavigation { get; set; } = null!;
+
+    public virtual ICollection<PlanificacionPagos> PlanificacionPagos { get; set; } = new List<PlanificacionPagos>();
 
     public virtual ICollection<Retenciones> Retenciones { get; set; } = new List<Retenciones>();
 }

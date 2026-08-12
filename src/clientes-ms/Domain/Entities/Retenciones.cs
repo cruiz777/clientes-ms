@@ -73,6 +73,8 @@ public partial class Retenciones
 
     public bool EstadoIngreso { get; set; }
 
+    public long IdUsuario { get; set; }
+
     public virtual CabeceraMaestro IdCabMaestroNavigation { get; set; } = null!;
 
     public virtual CodigosContables IdCodContableNavigation { get; set; } = null!;
@@ -82,4 +84,6 @@ public partial class Retenciones
     public virtual TipoComprobanteSri? IdTipoCompSriNavigation { get; set; }
 
     public virtual TipoRetencion IdTipoRetencionNavigation { get; set; } = null!;
+
+    public virtual Usuarios IdUsuarioNavigation { get; set; } = null!;
 }

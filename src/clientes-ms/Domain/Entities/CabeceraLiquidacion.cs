@@ -11,13 +11,13 @@ public partial class CabeceraLiquidacion
 
     public string Caja { get; set; } = null!;
 
-    public double CodigoC { get; set; }
+    public long IdCodContable { get; set; }
 
     public string? Ruc { get; set; }
 
-    public DateOnly? Fecha { get; set; }
+    public DateOnly Fecha { get; set; }
 
-    public DateOnly? Fechaing { get; set; }
+    public DateTime Fechaing { get; set; }
 
     public string? Observacion { get; set; }
 
@@ -35,9 +35,31 @@ public partial class CabeceraLiquidacion
 
     public DateOnly? Fechacad { get; set; }
 
-    public string? Tipdoc { get; set; }
+    public long IdEmpresa { get; set; }
+
+    public long IdUsuario { get; set; }
+
+    public long IdCabMaestro { get; set; }
 
     public string? Numdoc { get; set; }
 
-    public long? IdEmpresa { get; set; }
+    public string Tipdoc { get; set; } = null!;
+
+    public long? IdTipoCompSri { get; set; }
+
+    public bool Enviado { get; set; }
+
+    public virtual ICollection<DetalleLiquidacion> DetalleLiquidacion { get; set; } = new List<DetalleLiquidacion>();
+
+    public virtual ICollection<FormaPagoLiquidacion> FormaPagoLiquidacion { get; set; } = new List<FormaPagoLiquidacion>();
+
+    public virtual CabeceraMaestro IdCabMaestroNavigation { get; set; } = null!;
+
+    public virtual CodigosContables IdCodContableNavigation { get; set; } = null!;
+
+    public virtual Empresas IdEmpresaNavigation { get; set; } = null!;
+
+    public virtual TipoComprobanteSri? IdTipoCompSriNavigation { get; set; }
+
+    public virtual Usuarios IdUsuarioNavigation { get; set; } = null!;
 }

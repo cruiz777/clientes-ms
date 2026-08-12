@@ -20,4 +20,6 @@ public partial class Zona
     public virtual ICollection<Clientes> Clientes { get; set; } = new List<Clientes>();
 
     public virtual Empresas? EmpresaCodigoNavigation { get; set; }
+
+    public virtual ICollection<RpMaeEmp> RpMaeEmp { get; set; } = new List<RpMaeEmp>();
 }

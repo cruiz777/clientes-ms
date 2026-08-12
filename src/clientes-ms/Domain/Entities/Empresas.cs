@@ -47,11 +47,25 @@ public partial class Empresas
 
     public long IdCiudad { get; set; }
 
+    public string? NumPatronal { get; set; }
+
+    public int? IdTipoSeguro { get; set; }
+
+    public int? IdTipoEmpleador { get; set; }
+
+    public int? IdEnteSegSocial { get; set; }
+
+    public virtual ICollection<ActivoFijo> ActivoFijo { get; set; } = new List<ActivoFijo>();
+
     public virtual ICollection<AutorizacionCaja> AutorizacionCaja { get; set; } = new List<AutorizacionCaja>();
 
     public virtual ICollection<Bancos> Bancos { get; set; } = new List<Bancos>();
 
     public virtual ICollection<BancosEmpresa> BancosEmpresa { get; set; } = new List<BancosEmpresa>();
+
+    public virtual ICollection<CabeceraConciliacion> CabeceraConciliacion { get; set; } = new List<CabeceraConciliacion>();
+
+    public virtual ICollection<CabeceraLiquidacion> CabeceraLiquidacion { get; set; } = new List<CabeceraLiquidacion>();
 
     public virtual ICollection<CabeceraMaestro> CabeceraMaestro { get; set; } = new List<CabeceraMaestro>();
 
@@ -83,6 +97,12 @@ public partial class Empresas
 
     public virtual Ciudades IdCiudadNavigation { get; set; } = null!;
 
+    public virtual EnteSeguroSocial? IdEnteSegSocialNavigation { get; set; }
+
+    public virtual TipoEmpleador? IdTipoEmpleadorNavigation { get; set; }
+
+    public virtual TipoSeguro? IdTipoSeguroNavigation { get; set; }
+
     public virtual ICollection<Locales> Locales { get; set; } = new List<Locales>();
 
     public virtual ICollection<Nota> Nota { get; set; } = new List<Nota>();
@@ -106,6 +126,12 @@ public partial class Empresas
     public virtual ICollection<Proyectos> Proyectos { get; set; } = new List<Proyectos>();
 
     public virtual ICollection<Retenciones> Retenciones { get; set; } = new List<Retenciones>();
+
+    public virtual ICollection<RpCargos> RpCargos { get; set; } = new List<RpCargos>();
+
+    public virtual ICollection<RpEmpleadosDiscapacidad> RpEmpleadosDiscapacidad { get; set; } = new List<RpEmpleadosDiscapacidad>();
+
+    public virtual ICollection<RpMaeEmp> RpMaeEmp { get; set; } = new List<RpMaeEmp>();
 
     public virtual ICollection<TipoCliente> TipoCliente { get; set; } = new List<TipoCliente>();
 

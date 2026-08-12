@@ -53,6 +53,8 @@ public partial class Personas
 
     public virtual ICollection<Proveedores> Proveedores { get; set; } = new List<Proveedores>();
 
+    public virtual ICollection<RpMaeEmp> RpMaeEmp { get; set; } = new List<RpMaeEmp>();
+
     public virtual ICollection<Telefonos> Telefonos { get; set; } = new List<Telefonos>();
 
     public virtual ICollection<Usuarios> Usuarios { get; set; } = new List<Usuarios>();

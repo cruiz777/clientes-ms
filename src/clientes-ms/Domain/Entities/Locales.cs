@@ -77,7 +77,17 @@ public partial class Locales
 
     public virtual TipoNegocio IdTipoNegocioNavigation { get; set; } = null!;
 
+    public virtual ICollection<NominaProvisiones> NominaProvisiones { get; set; } = new List<NominaProvisiones>();
+
     public virtual ICollection<ProductoUbicacionBodega> ProductoUbicacionBodega { get; set; } = new List<ProductoUbicacionBodega>();
+
+    public virtual ICollection<RolNomina> RolNomina { get; set; } = new List<RolNomina>();
+
+    public virtual ICollection<RolNominaQuincena> RolNominaQuincena { get; set; } = new List<RolNominaQuincena>();
+
+    public virtual ICollection<RpMaeEmp> RpMaeEmp { get; set; } = new List<RpMaeEmp>();
+
+    public virtual ICollection<RubrosFijos> RubrosFijos { get; set; } = new List<RubrosFijos>();
 
     public virtual ICollection<Stocks> Stocks { get; set; } = new List<Stocks>();
 }

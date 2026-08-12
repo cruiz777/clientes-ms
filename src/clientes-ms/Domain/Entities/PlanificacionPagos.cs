@@ -7,9 +7,9 @@ public partial class PlanificacionPagos
 {
     public long IdPlanificacion { get; set; }
 
-    public long? Idcxp { get; set; }
+    public long? IdCuentaPorPagar { get; set; }
 
-    public double? CodigoC { get; set; }
+    public long? IdCodContable { get; set; }
 
     public DateOnly? Fecha { get; set; }
 
@@ -17,7 +17,7 @@ public partial class PlanificacionPagos
 
     public string? CuentaBanco { get; set; }
 
-    public double? CodForPag { get; set; }
+    public long? IdFormaPagoCg { get; set; }
 
     public long NumTransaccion { get; set; }
 
@@ -27,7 +27,7 @@ public partial class PlanificacionPagos
 
     public string? EstadoPago { get; set; }
 
-    public double UsuarioIng { get; set; }
+    public long UsuarioIng { get; set; }
 
     public string Estado { get; set; } = null!;
 
@@ -35,7 +35,7 @@ public partial class PlanificacionPagos
 
     public double TotalPagoPlanilla { get; set; }
 
-    public double? UsuarioAprueba { get; set; }
+    public long? UsuarioAprueba { get; set; }
 
     public int? EstadoAprueba { get; set; }
 
@@ -59,7 +59,17 @@ public partial class PlanificacionPagos
 
     public string? Paciente { get; set; }
 
-    public string? Observacionasiento { get; set; }
+    public string? ObservacionAsiento { get; set; }
 
     public long? IdEmpresa { get; set; }
+
+    public virtual CodigosContables? IdCodContableNavigation { get; set; }
+
+    public virtual CuentasPorPagar? IdCuentaPorPagarNavigation { get; set; }
+
+    public virtual FormaPagoCg? IdFormaPagoCgNavigation { get; set; }
+
+    public virtual Usuarios? UsuarioApruebaNavigation { get; set; }
+
+    public virtual Usuarios UsuarioIngNavigation { get; set; } = null!;
 }

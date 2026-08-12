@@ -16,4 +16,6 @@ public partial class Paises
     public virtual ICollection<Gln> Gln { get; set; } = new List<Gln>();
 
     public virtual ICollection<Provincia> Provincia { get; set; } = new List<Provincia>();
+
+    public virtual ICollection<RpEmpleadosDiscapacidad> RpEmpleadosDiscapacidad { get; set; } = new List<RpEmpleadosDiscapacidad>();
 }

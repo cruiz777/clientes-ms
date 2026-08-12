@@ -13,7 +13,11 @@ public partial class TipoComprobanteSri
 
     public long IdTipoCompSri { get; set; }
 
+    public virtual ICollection<CabeceraLiquidacion> CabeceraLiquidacion { get; set; } = new List<CabeceraLiquidacion>();
+
     public virtual ICollection<DetalleMaestro> DetalleMaestro { get; set; } = new List<DetalleMaestro>();
 
     public virtual ICollection<Retenciones> Retenciones { get; set; } = new List<Retenciones>();
+
+    public virtual ICollection<TipMovComprob> TipMovComprob { get; set; } = new List<TipMovComprob>();
 }

@@ -11,13 +11,11 @@ public partial class CuentasPorPagar
 
     public long IdUsuario { get; set; }
 
-    public long IdFormaPagoCg { get; set; }
+    public long IdTipComp { get; set; }
 
     public long IdCodContable { get; set; }
 
     public long IdCabMaestro { get; set; }
-
-    public string? TipMov { get; set; }
 
     public string? Tipasi { get; set; }
 
@@ -81,9 +79,11 @@ public partial class CuentasPorPagar
 
     public virtual Empresas IdEmpresaNavigation { get; set; } = null!;
 
-    public virtual FormaPagoCg IdFormaPagoCgNavigation { get; set; } = null!;
-
     public virtual PlanCuentas IdPlanCuentasNavigation { get; set; } = null!;
 
+    public virtual TipMovComprob IdTipCompNavigation { get; set; } = null!;
+
     public virtual Usuarios IdUsuarioNavigation { get; set; } = null!;
+
+    public virtual ICollection<PlanificacionPagos> PlanificacionPagos { get; set; } = new List<PlanificacionPagos>();
 }
